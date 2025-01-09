@@ -15,7 +15,7 @@ struct ContentView: View {
     @State var offsetY: CGFloat = 520
     @State var showTitle: Bool = true
     var locations: [Location] = Bundle.main.decode("LocationData.json")
-
+    
     var body: some View {
         ZStack(alignment: .top) {
             
@@ -42,41 +42,37 @@ struct ContentView: View {
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height * 0.59)
                 .safeAreaPadding(.bottom, 50)
-            
+                
             }
-            
-                HStack{
-                    Text("HavenHub")
-                        .frame(width: 160, height: 50)
-                        .font(.title)
-                        .foregroundColor(.primary)
-                        .background(.ultraThinMaterial)
-                        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
-                        .fontWeight(.bold)
+            HStack{
+                Text("HavenHub")
+                    .frame(width: 160, height: 50)
+                    .font(.title)
+                    .foregroundColor(.primary)
+                    .background(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                Button(action: {
                     
-                    Spacer()
-                    
-                    Button(action: {
-                         
-                    }) {
-                        
-                        ZStack{
-                            Circle()
-                                .fill(.ultraThinMaterial)
-                                .frame(width: 40, height: 40)
-                            Image(systemName: "person.circle")
-                                .resizable()
-                                .foregroundColor(.primary)
-                                .cornerRadius(8)
-                                .frame(width: 30, height: 30)
-                        }
-                        
-                        
+                }) {
+                    ZStack{
+                        Circle()
+                            .fill(.ultraThinMaterial)
+                            .frame(width: 40, height: 40)
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .foregroundColor(.primary)
+                            .cornerRadius(8)
+                            .frame(width: 30, height: 30)
                     }
                 }
-                .padding(.horizontal)
-                .opacity(showTitle ? 1 : 0)
-
+            }
+            .padding(.horizontal)
+            .opacity(showTitle ? 1 : 0)
+            
             BottomSheetView(offsetY: $offsetY, showTitle: $showTitle)
         }
     }
