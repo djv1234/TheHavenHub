@@ -10,11 +10,10 @@ import MapKit
 
 struct ContentView: View {
     
-    @StateObject private var locationManager = LocationManager()
-    
-    @State var offsetY: CGFloat = 520
+    @State var offsetY: CGFloat = 540
     @State var showTitle: Bool = true
     var locations: [Location] = Bundle.main.decode("LocationData.json")
+    @State private var isKeyboardVisible = false
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -40,8 +39,15 @@ struct ContentView: View {
                     
                     UserAnnotation()
                 }
-                .frame(width: geometry.size.width, height: geometry.size.height * 0.59)
+                .mapControls {
+                    MapCompass()
+                        .mapControlVisibility(.hidden)
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.495)
+                .ignoresSafeArea(.keyboard)
                 .safeAreaPadding(.bottom, 50)
+                
+                
                 
             }
             HStack{
@@ -73,8 +79,10 @@ struct ContentView: View {
             .padding(.horizontal)
             .opacity(showTitle ? 1 : 0)
             
-            BottomSheetView(offsetY: $offsetY, showTitle: $showTitle)
+            BottomSheetView(offsetY: $offsetY, showTitle: $showTitle, isKeyboardVisible: $isKeyboardVisible)
         }
+        .ignoresSafeArea(.keyboard)
+        
     }
 }
 
@@ -82,6 +90,8 @@ struct BottomSheetView: View {
     @Binding var offsetY: CGFloat // Initial position (halfway up)
     @State var lastDragPosition: CGFloat = 0 // Initial position at the top
     @Binding var showTitle: Bool
+    @State private var searchText: String = ""
+    @Binding var isKeyboardVisible: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -92,6 +102,29 @@ struct BottomSheetView: View {
                         .frame(width: 40, height: 6)
                         .foregroundColor(.gray)
                         .padding(10)
+                    
+                    TextField("Search...", text: $searchText)
+                        .padding(8)
+                        .background(.textFeild)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                            offsetY = geometry.size.height * 0.08
+                            isKeyboardVisible = true
+
+                            // Add a slight delay before the animation
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                withAnimation {
+                                    showTitle = false
+                                }
+                            }
+                        }
+
+                        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                                isKeyboardVisible = false
+        
+                        }
+                    
                     
                     HStack {
                         Button(action: { }) {
@@ -104,6 +137,7 @@ struct BottomSheetView: View {
                                         .foregroundColor(.main)
                                     Text("Favorites")
                                         .foregroundColor(.main)
+                                        .fontWeight(.bold)
                                 }
                             }
                         }
@@ -112,9 +146,15 @@ struct BottomSheetView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
                                     .fill(Color.red)
-                                Text("911")
-                                    .foregroundStyle(.main)
-                                    .fontWeight(.bold)
+                                
+                                VStack {
+                                    Image(systemName: "phone.fill")
+                                        .foregroundColor(.main)
+                                    Text("Emergency")
+                                        .foregroundStyle(.main)
+                                        .fontWeight(.bold)
+                                }
+                                
                             }
                         }
                         
@@ -122,8 +162,14 @@ struct BottomSheetView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
                                     .fill(Color.blue)
-                                Text("Placeholder")
-                                    .foregroundStyle(.main)
+                                VStack {
+                                    Image(systemName: "location.fill")
+                                        .foregroundColor(.main)
+                                    Text("Location")
+                                        .foregroundStyle(.main)
+                                        .fontWeight(.bold)
+                                        .padding(.horizontal)
+                                }
                             }
                         }
                     }
@@ -138,19 +184,19 @@ struct BottomSheetView: View {
                         .fill(.sub)
                         .shadow(radius: 10)
                 )
-                .offset(y: min(max(offsetY, geometry.size.height * 0.08), geometry.size.height * (2/3))) // Clamp offset between top and screenHeight * 0.666666
+                .offset(y: min(max(offsetY, geometry.size.height * 0.08), geometry.size.height * (4/7))) // Clamp offset between top and screenHeight * 0.666666
                 .gesture(
                     DragGesture()
                         .onChanged { value in
                             let newOffset = lastDragPosition + value.translation.height
                             // Allow dragging only if within the limit
-                            if newOffset >= geometry.size.height * 0.08 && newOffset <= geometry.size.height * (2/3) {
+                            if newOffset >= geometry.size.height * 0.08 && newOffset <= geometry.size.height * (4/7) && isKeyboardVisible == false{
                                 offsetY = newOffset
                             }
                         }
                         .onEnded { value in
                             let screenHeight = geometry.size.height
-                            let middlePoint = screenHeight * (1/3)
+                            let middlePoint = screenHeight * 0.4
                             
                             // Snap to closest position
                             if offsetY < middlePoint {
@@ -159,7 +205,7 @@ struct BottomSheetView: View {
                                     showTitle = false
                                 }
                             } else {
-                                offsetY = screenHeight * (2/3) // Snap to bottom
+                                offsetY = screenHeight * (4/7) // Snap to bottom
                                 withAnimation {
                                     showTitle = true
                                 }
@@ -171,7 +217,7 @@ struct BottomSheetView: View {
             }
             .edgesIgnoringSafeArea(.all)
             .onAppear {
-                offsetY = geometry.size.height * (2/3)
+                offsetY = geometry.size.height * (4/7)
             }
         }
     }
