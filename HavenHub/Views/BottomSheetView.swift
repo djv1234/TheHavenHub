@@ -156,7 +156,7 @@ struct BottomSheetView: View {
             cameraPosition = .region(
                 MKCoordinateRegion(
                     center: coordinate,
-                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    span: MKCoordinateSpan(latitudeDelta: 0.00, longitudeDelta: 0.01)
                 )
             )
         } else {
