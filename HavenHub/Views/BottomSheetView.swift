@@ -15,6 +15,10 @@ struct BottomSheetView: View {
     @Binding var isKeyboardVisible: Bool
     @Binding var cameraPosition: MapCameraPosition
     @Binding var showEmergency: Bool
+    @Binding var mapItems: [MKMapItem]
+    @Binding var region: MKCoordinateRegion?
+    @State var showButtons: Bool = false
+    @State var userLocation: MKCoordinateRegion
     
     var body: some View {
         GeometryReader { geometry in
@@ -42,68 +46,21 @@ struct BottomSheetView: View {
                                 }
                             }
                         }
-
                         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
                                 isKeyboardVisible = false
         
                         }
+                        .onChange(of: searchText) { oldvalue, newValue in
+                            let locationSearch = LocationSearch(mapItems: $mapItems)
+                            locationSearch.performSearch(in: region!)
+                        }
                     
                     
-                    HStack {
-                        Button(action: { }) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.green)
-                                
-                                VStack {
-                                    Image(systemName: "star.fill")
-                                        .foregroundColor(.main)
-                                    Text("Favorites")
-                                        .foregroundColor(.main)
-                                        .fontWeight(.bold)
-                                }
-                            }
-                        }
-                        
-                        Button(action: {
-                            withAnimation() {
-                                showEmergency = true
-                            }
-                        }) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.red)
-                                
-                                VStack {
-                                    Image(systemName: "phone.fill")
-                                        .foregroundColor(.main)
-                                    Text("Emergency")
-                                        .foregroundStyle(.main)
-                                        .fontWeight(.bold)
-                                }
-                                
-                            }
-                        }
-                        
-                        Button(action: {
-                            goToUserLocation()
-                        }) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.blue)
-                                VStack {
-                                    Image(systemName: "location.fill")
-                                        .foregroundColor(.main)
-                                    Text("Location")
-                                        .foregroundStyle(.main)
-                                        .fontWeight(.bold)
-                                        .padding(.horizontal)
-                                }
-                            }
-                        }
-                    }
-                    .padding([.horizontal, .bottom])
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.15)
+                    Text("User Location")
+                        .font(.headline)
+                
+                    
+                    ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition)
                     
                     Spacer()
                 }
@@ -149,18 +106,9 @@ struct BottomSheetView: View {
                 offsetY = geometry.size.height * (4/7)
             }
         }
-    }
-    func goToUserLocation() {
-        if let currentLocation = CLLocationManager().location {
-            let coordinate = currentLocation.coordinate
-            cameraPosition = .region(
-                MKCoordinateRegion(
-                    center: coordinate,
-                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                )
-            )
-        } else {
-            print("User location not available")
+        .onReceive(Timer.publish(every: 120, on: .main, in: .common).autoconnect()) { _ in
+            let userLocationfunc = UserLocation(cameraPosition: $cameraPosition)
+            userLocation = userLocationfunc.getUserLocation()
         }
     }
 }
