@@ -10,13 +10,12 @@ import SwiftUI
 import MapKit
 
 struct UserLocation {
+
     
-    @Binding var cameraPosition: MapCameraPosition
-    
-    func goToUserLocation() {
+    func goToUserLocation(cameraPosition: Binding<MapCameraPosition>) {
         if let currentLocation = CLLocationManager().location {
             let coordinate = currentLocation.coordinate
-            cameraPosition = .region(
+            cameraPosition.wrappedValue = .region(
                 MKCoordinateRegion(
                     center: coordinate,
                     span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)

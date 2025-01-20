@@ -40,7 +40,7 @@ struct LocationSearch {
         
         self.mapItems.removeAll()
         
-        let queryKeywords = ["homeless shelter", "food bank", "aid services", "community resources"]
+        let queryKeywords = ["homeless shelter", "food bank", "aid services"]
         
         for keyword in queryKeywords {
             findLocations(region: region, searchReq: keyword) { mapItems1 in

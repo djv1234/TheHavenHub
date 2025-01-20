@@ -8,22 +8,28 @@ import SwiftUI
 import MapKit
 
 struct ButtonView: View {
-    @Binding var showEmergency: Bool
-    var geometry: GeometryProxy
-    @Binding var cameraPosition: MapCameraPosition
+    // Bindings for shared states and view properties
+    @Binding var showEmergency: Bool // Controls whether the emergency view is shown
+    var geometry: GeometryProxy // Provides the size and dimensions of the parent view
+    @Binding var cameraPosition: MapCameraPosition // Tracks the current position of the map camera
     
     var body: some View {
-        
-        VStack{
+        VStack {
+            // First row of buttons
             HStack {
-                Button(action: { }) {
+                // Favorites Button
+                Button(action: {
+                    // Action for the Favorites button (placeholder)
+                }) {
                     ZStack {
+                        // Background style
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.green)
                         
+                        // Icon and label
                         VStack {
                             Image(systemName: "star.fill")
-                                .foregroundColor(.main)
+                                .foregroundColor(.main) // Custom main color
                             Text("Favorites")
                                 .foregroundColor(.main)
                                 .fontWeight(.bold)
@@ -31,15 +37,18 @@ struct ButtonView: View {
                     }
                 }
                 
+                // Emergency Button
                 Button(action: {
                     withAnimation() {
-                        showEmergency = true
+                        showEmergency = true // Show the emergency screen
                     }
                 }) {
                     ZStack {
+                        // Background style
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.red)
                         
+                        // Icon and label
                         VStack {
                             Image(systemName: "phone.fill")
                                 .foregroundColor(.main)
@@ -50,13 +59,18 @@ struct ButtonView: View {
                     }
                 }
                 
+                // Location Button
                 Button(action: {
-                    let locationSearch = UserLocation(cameraPosition: $cameraPosition)
-                    locationSearch.goToUserLocation()
+                    // Navigate to the user's current location
+                    let locationSearch = UserLocation()
+                    locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
                 }) {
                     ZStack {
+                        // Background style
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.blue)
+                        
+                        // Icon and label
                         VStack {
                             Image(systemName: "location.fill")
                                 .foregroundColor(.main)
@@ -68,60 +82,71 @@ struct ButtonView: View {
                     }
                 }
             }
-            .padding([.horizontal])
-            .frame(width: geometry.size.width, height: geometry.size.height * 0.15)
+            .padding([.horizontal]) // Horizontal padding for the button row
+            .frame(width: geometry.size.width, height: geometry.size.height * 0.15) // Row height relative to screen size
             
+            // Second row of buttons
             HStack {
+                // Food Button
                 Button(action: {
-                    
+                    // Action for the Food button (placeholder)
                 }) {
                     ZStack {
+                        // Background style
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(.main)
+                            .fill(.main) // Custom main color
+                            .shadow(radius: 4) // Shadow for depth
                         Image(systemName: "fork.knife")
                             .foregroundColor(Color.yellow)
                     }
                 }
                 
-                
+                // Shelter Button
                 Button(action: {
-                    
+                    // Action for the Shelter button (placeholder)
                 }) {
                     ZStack {
+                        // Background style
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.main)
+                            .shadow(radius: 4)
                         Image(systemName: "house.fill")
                             .foregroundColor(Color.brown)
                     }
                 }
                 
+                // Medical Button
                 Button(action: {
-                    
+                    // Action for the Medical button (placeholder)
                 }) {
                     ZStack {
+                        // Background style
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.main)
+                            .shadow(radius: 4)
                         
                         Image(systemName: "cross.fill")
                             .foregroundColor(Color.red)
                     }
                 }
                 
+                // Clothing Button
                 Button(action: {
-                    
+                    // Action for the Clothing button (placeholder)
                 }) {
                     ZStack {
+                        // Background style
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.main)
+                            .shadow(radius: 4)
                         
                         Image(systemName: "hanger")
                             .foregroundColor(Color.purple)
                     }
                 }
-                
             }
-            .padding([.horizontal])
-            .frame(width: geometry.size.width, height: geometry.size.height * 0.10)
+            .padding([.horizontal]) // Horizontal padding for the button row
+            .frame(width: geometry.size.width, height: geometry.size.height * 0.10) // Row height relative to screen size
         }
     }
 }

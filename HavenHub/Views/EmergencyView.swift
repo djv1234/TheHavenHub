@@ -9,80 +9,91 @@ import SwiftUI
 
 struct EmergencyView: View {
     
-    @Binding var showEmergency: Bool
+    @Binding var showEmergency: Bool // Binding to control the visibility of the emergency view
     
     var body: some View {
-        
         ZStack {
+            // Background overlay
             Rectangle()
-                .fill(.ultraThinMaterial) // Use .fill instead of .background for a shape
-                .ignoresSafeArea()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .fill(.ultraThinMaterial) // Semi-transparent background for focus
+                .ignoresSafeArea() // Extend the background to the edges of the screen
+                .frame(maxWidth: .infinity, maxHeight: .infinity) // Full screen coverage
 
-            VStack{
+            VStack {
+                // Emergency title
                 Text("Emergency")
                     .fontWeight(.bold)
                     .font(.largeTitle)
-                    .foregroundColor(Color.red)
+                    .foregroundColor(Color.red) // Highlight the title in red
                     .padding()
                 
-                Spacer()
+                Spacer() // Spacer to create vertical spacing between the title and buttons
                 
+                // Emergency contact buttons
                 HStack {
+                    // 911 - Police Emergency Button
                     Button(action: {
+                        // Open the phone app to call 911
                         UIApplication.shared.open(URL(string: "tel://911")!)
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.red)
+                                .fill(Color.red) // Red background for urgency
                             
                             VStack {
                                 Text("911 - Police")
-                                    .foregroundColor(.main)
+                                    .foregroundColor(.main) // Use the main color for text
                                     .fontWeight(.bold)
                             }
                         }
+                        .frame(height: 75) // Set consistent height for the button
                     }
+                    
+                    // 988 - Suicide Hotline Button
                     Button(action: {
+                        // Open the phone app to call 988
                         UIApplication.shared.open(URL(string: "tel://988")!)
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.red)
+                                .fill(Color.red) // Red background for urgency
                             
                             VStack {
                                 Text("988 - Suicide Hotline")
-                                    .foregroundColor(.main)
+                                    .foregroundColor(.main) // Use the main color for text
                                     .fontWeight(.bold)
                             }
                         }
+                        .frame(height: 75) // Set consistent height for the button
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: 75)
-                .padding()
-                .background(.ultraThinMaterial)
-                .clipShape(.buttonBorder)
+                .frame(maxWidth: .infinity) // Make buttons stretch horizontally
+                .padding() // Add padding around the buttons
+                .background(.ultraThinMaterial) // Semi-transparent background for the button container
+                .clipShape(RoundedRectangle(cornerRadius: 20)) // Rounded corners for the button container
                 
-                Spacer()
+                Spacer() // Spacer to create vertical spacing between buttons and the close button
                 
+                // Close button
                 Button(action: {
-                    withAnimation() {
+                    // Close the emergency view with animation
+                    withAnimation {
                         showEmergency = false
                     }
                 }) {
                     ZStack {
                         Circle()
-                            .fill(.ultraThinMaterial)
-                            .frame(width: 70, height: 70)
+                            .fill(.ultraThinMaterial) // Semi-transparent circular background
+                            .frame(width: 70, height: 70) // Size of the button
                         
                         Text("X")
-                            .font(.system(size: 25))
-                            .foregroundStyle(Color.primary)
+                            .font(.system(size: 25)) // Font size for the close symbol
+                            .foregroundStyle(Color.primary) // Color for the text
                     }
                 }
-                
+                .padding() // Add padding around the close button
             }
-            .padding()
+            .padding() // Add padding to the entire content
         }
     }
 }
