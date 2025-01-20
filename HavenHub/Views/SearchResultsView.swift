@@ -15,6 +15,7 @@ struct SearchResultsView: View {
     @Binding var keyboardHeight: CGFloat
     @FocusState.Binding var nameIsFocused: Bool
     @Binding var route: MKRoute?
+    @Binding var showingMenu: Bool
     
     let distanceCalc = DistanceCalculator()
     let userLocation = UserLocation()
@@ -25,7 +26,7 @@ struct SearchResultsView: View {
                 searchText: searchText,
                 sortedItems: mapItems.sortedBySearchText(searchText),
                 currentItem: $currentItem,
-                nameIsFocused: $nameIsFocused, route: $route,
+                nameIsFocused: $nameIsFocused, route: $route, showingMenu: $showingMenu,
                 distanceCalc: distanceCalc,
                 userLocation: userLocation
             )
@@ -41,6 +42,7 @@ struct SearchResultsListView: View {
     @Binding var currentItem: MKMapItem?
     @FocusState.Binding var nameIsFocused: Bool
     @Binding var route: MKRoute?
+    @Binding var showingMenu: Bool
     
     let distanceCalc: DistanceCalculator
     let userLocation: UserLocation
@@ -56,6 +58,10 @@ struct SearchResultsListView: View {
                     Button(action: {
                         currentItem = item
                         nameIsFocused = false
+                        withAnimation {
+                            showingMenu = true
+                        }
+                        
 
                         routeBuild.calculateRoute(from: userLocation.getUserLocation().center, to: item.placemark.coordinate) { route in
                             if let route = route {

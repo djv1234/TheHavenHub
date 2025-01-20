@@ -17,6 +17,7 @@ struct BottomSheetView: View {
     @Binding var region: MKCoordinateRegion? // Current map region
     @Binding var currentItem: MKMapItem? // Currently selected map item
     @Binding var showTitle: Bool // Determines whether to display the title in the bottom sheet
+    @Binding var showingMenu: Bool
 
     // State properties for internal view management
     @State var lastDragPosition: CGFloat = 0 // Tracks the last drag position of the bottom sheet
@@ -54,11 +55,19 @@ struct BottomSheetView: View {
                             searchText: $searchText,
                             mapItems: $mapItems,
                             currentItem: $currentItem,
-                            keyboardHeight: $keyboardHeight, nameIsFocused: $nameIsFocused, route: $route
+                            keyboardHeight: $keyboardHeight, nameIsFocused: $nameIsFocused, route: $route, showingMenu: $showingMenu
                         )
+                        .transition(.move(edge: .bottom))
+                    } else if showingMenu{
+                        
+                        MapMenuView(mapItem: $currentItem, showingMenu: $showingMenu)
+                            .transition(.move(edge: .bottom))
+                            .transition(.opacity)
+                        
                     } else {
                         // Emergency button is shown when the keyboard is hidden
                         ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition)
+                            .transition(.move(edge: .bottom))
                     }
 
                     Spacer() // Pushes content to the top

@@ -58,29 +58,6 @@ struct ButtonView: View {
                         }
                     }
                 }
-                
-                // Location Button
-                Button(action: {
-                    // Navigate to the user's current location
-                    let locationSearch = UserLocation()
-                    locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
-                }) {
-                    ZStack {
-                        // Background style
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.blue)
-                        
-                        // Icon and label
-                        VStack {
-                            Image(systemName: "location.fill")
-                                .foregroundColor(.main)
-                            Text("Location")
-                                .foregroundStyle(.main)
-                                .fontWeight(.bold)
-                                .padding(.horizontal)
-                        }
-                    }
-                }
             }
             .padding([.horizontal]) // Horizontal padding for the button row
             .frame(width: geometry.size.width, height: geometry.size.height * 0.15) // Row height relative to screen size
