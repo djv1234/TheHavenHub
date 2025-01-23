@@ -16,7 +16,7 @@ struct SearchBarView: View {
     @Binding var offsetY: CGFloat // Tracks the vertical position of the bottom sheet
     @Binding var mapItems: [MKMapItem] // Stores the search results
     @Binding var keyboardHeight: CGFloat // Captures the height of the keyboard
-    var region: MKCoordinateRegion? // Defines the map region for performing searches
+    @Binding var region: MKCoordinateRegion? // Defines the map region for performing searches
     @FocusState.Binding var nameIsFocused: Bool // Tracks whether the text field is focused
     
     var body: some View {

@@ -38,3 +38,25 @@ extension Bundle {
     }
 }
 
+extension URL {
+    func fetchAndDecode<T: Codable>() async throws -> T {
+        let (data, _) = try await URLSession.shared.data(from: self)
+        let decoder = JSONDecoder()
+        
+        do {
+            return try decoder.decode(T.self, from: data)
+        } catch DecodingError.keyNotFound(let key, let context) {
+            throw NSError(domain: "", code: 1, userInfo: ["message": "Missing key '\(key.stringValue)' - \(context.debugDescription)"])
+        } catch DecodingError.typeMismatch(_, let context) {
+            throw NSError(domain: "", code: 2, userInfo: ["message": "Type mismatch - \(context.debugDescription)"])
+        } catch DecodingError.valueNotFound(let type, let context) {
+            throw NSError(domain: "", code: 3, userInfo: ["message": "\(type) value not found - \(context.debugDescription)"])
+        } catch DecodingError.dataCorrupted(let context) {
+            throw NSError(domain: "", code: 4, userInfo: ["message": "Data corruption - \(context.debugDescription)"])
+        } catch {
+            throw NSError(domain: "", code: 5, userInfo: ["message": error.localizedDescription])
+        }
+    }
+}
+
+

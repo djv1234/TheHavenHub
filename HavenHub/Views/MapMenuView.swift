@@ -12,13 +12,14 @@ public struct MapMenuView: View {
     
     @Binding var mapItem: MKMapItem?
     @Binding var showingMenu: Bool
+    @State var scene: MKLookAroundScene?
     
     public var body: some View {
         VStack{
             HStack{
-                Text(mapItem!.name ?? "No Name")
+                Text(mapItem?.name ?? "No Name")
                     .font(.headline)
-                
+            
                 Spacer()
                 
                 Button {
@@ -26,14 +27,10 @@ public struct MapMenuView: View {
                         showingMenu = false
                     }
                 } label: {
-                    ZStack{
-                        Circle()
-                            .fill(.ultraThinMaterial) // Translucent circular background
-                            .frame(width: 40, height: 40)
-                        Text("X")
-                            .fontWeight(.bold)
-                            .foregroundStyle(.mainOpp)
-                    }
+                    Text("Cancel")
+                        .frame(width: 60, height: 30)
+                        .background(.ultraThinMaterial)
+                        .clipShape(Capsule())
                 }
 
             }

@@ -55,7 +55,20 @@ struct ContentView: View {
                     locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
                 }
                 .onChange(of: route, { oldValue, newValue in
-                    adjustCameraForRoute(route!)
+                    if newValue == nil { return } else {
+                        withAnimation {
+                            adjustCameraForRoute(route!)
+                        }
+                    }
+                })
+                .onChange(of: showingMenu, { oldValue, newValue in
+                    if !newValue {
+                        route = nil
+                        currentItem = nil
+                        withAnimation {
+                            locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
+                        }
+                    }
                 })
                 .onMapCameraChange { context in
                     // Update the visible region when the map camera changes
@@ -86,10 +99,12 @@ struct ContentView: View {
                 // Location Button
                 Button(action: {
                     
-                    if let route = route {
-                        adjustCameraForRoute(route)
-                    } else {
-                        locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
+                    withAnimation{
+                        if let route = route {
+                            adjustCameraForRoute(route)
+                        } else {
+                            locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
+                        }
                     }
                     
                     // Action for the profile button (placeholder)
@@ -134,10 +149,10 @@ struct ContentView: View {
                 region: $visibleRegion,
                 currentItem: $currentItem,
                 showTitle: $showTitle, showingMenu: $showingMenu,
-                userLocation: MKCoordinateRegion(
+                route: $route, userLocation: MKCoordinateRegion(
                     center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988), // Default location: Columbus, Ohio
                     span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                ), route: $route
+                )
             )
             
             // Emergency view overlay
