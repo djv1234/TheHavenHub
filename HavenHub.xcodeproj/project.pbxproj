@@ -10,22 +10,9 @@
 		21AC48882D2DEAF30097F93F /* HavenHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HavenHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		21AC48D42D2EF17F0097F93F /* Exceptions for "HavenHub" folder in "Compile Sources" phase from "HavenHub" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 21AC48842D2DEAF30097F93F /* Sources */;
-			membershipExceptions = (
-				Data/LocationData.json,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		21AC488A2D2DEAF30097F93F /* HavenHub */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				21AC48D42D2EF17F0097F93F /* Exceptions for "HavenHub" folder in "Compile Sources" phase from "HavenHub" target */,
-			);
 			path = HavenHub;
 			sourceTree = "<group>";
 		};

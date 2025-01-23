@@ -9,72 +9,76 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    
-    @State var offsetY: CGFloat = 540
-    @State var showTitle: Bool = true
-    var locations: [Location] = Bundle.main.decode("LocationData.json")
-    @State private var isKeyboardVisible = false
-    @Namespace var mainRegion
-    @State private var cameraPosition: MapCameraPosition = .automatic
-    @State var visibleRegion: MKCoordinateRegion?
-    @State var selectedResult: MKMapItem?
-    @State private var shelters: [MKMapItem] = []
-    @State var showEmergency: Bool = false
+    // State variables to manage the UI and functionality
+    @State var offsetY: CGFloat = 540 // Initial offset for the bottom sheet
+    @State var showTitle: Bool = true // Controls the visibility of the title
+    @State private var isKeyboardVisible = false // Tracks the keyboard visibility
+    @State var cameraPosition: MapCameraPosition = .automatic // Manages the map's camera position
+    @State var visibleRegion: MKCoordinateRegion? // Represents the currently visible region on the map
+    @State private var mapItems: [MKMapItem] = [] // Stores search results for map items
+    @State private var currentItem: MKMapItem? // The currently selected map item
+    @State var showEmergency: Bool = false // Controls the visibility of the emergency view
+    @State var route: MKRoute?
     
     var body: some View {
         ZStack(alignment: .top) {
             
+            // Main map view
             GeometryReader { geometry in
-                
-                Map(position: $cameraPosition, selection: $selectedResult){
-                    
-                    ForEach(shelters, id: \.self) {location in
-                        Marker(location.name!, coordinate: location.placemark.coordinate)
-                            .tint(Color.blue)
+                Map(position: $cameraPosition) {
+                    // Add a marker for the current item if one exists
+                    if currentItem != nil {
+                        Marker(item: currentItem!)
                     }
                     
+                    // User's location annotation
                     UserAnnotation()
+                    
+                    if let route = route{
+                        MapPolyline(route)
+                            .stroke(Color.blue, lineWidth: 3)
+                        
+
+                    }
                 }
+                .onChange(of: route, { oldValue, newValue in
+                    adjustCameraForRoute(route!)
+                })
                 .onMapCameraChange { context in
+                    // Update the visible region when the map camera changes
                     visibleRegion = context.region
                 }
                 .mapControls {
+                    // Customize the map's compass visibility
                     MapCompass()
                         .mapControlVisibility(.hidden)
                 }
-                .frame(width: geometry.size.width, height: geometry.size.height * 0.495)
-                .ignoresSafeArea(.keyboard)
-                .safeAreaPadding(.bottom, 50)
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.495) // Map height is half the screen
+                .ignoresSafeArea(.keyboard) // Ignore safe area adjustments for the keyboard
+                .safeAreaPadding(.bottom, 50) // Add padding at the bottom for the map
             }
-            HStack{
-                Text("HavenHub")
+            
+            // Top title bar
+            HStack {
+                Text("HavenHub") // App title
                     .frame(width: 160, height: 50)
                     .font(.title)
                     .foregroundColor(.primary)
-                    .background(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                    .background(.ultraThinMaterial) // Translucent background
+                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))) // Rounded corners
                     .fontWeight(.bold)
                 
-                Spacer()
+                Spacer() // Spacer to push the button to the right
                 
+                // Profile button
                 Button(action: {
-                    // Safely unwrap the region or use a default fallback
-                        if let region = visibleRegion {
-                            performSearch(in: region)
-                        } else {
-                            // Provide a default region if nil
-                            let defaultRegion = MKCoordinateRegion(
-                                center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5), // Default to Columbus, Ohio
-                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-                            )
-                            performSearch(in: defaultRegion)
-                        }
+                    // Action for the profile button (placeholder)
                 }) {
-                    ZStack{
+                    ZStack {
                         Circle()
-                            .fill(.ultraThinMaterial)
+                            .fill(.ultraThinMaterial) // Translucent circular background
                             .frame(width: 40, height: 40)
-                        Image(systemName: "person.circle")
+                        Image(systemName: "person.circle") // Profile icon
                             .resizable()
                             .foregroundColor(.primary)
                             .cornerRadius(8)
@@ -82,55 +86,40 @@ struct ContentView: View {
                     }
                 }
             }
-            .padding(.horizontal)
-            .opacity(showTitle ? 1 : 0)
+            .padding(.horizontal) // Horizontal padding for the title bar
+            .opacity(showTitle ? 1 : 0) // Hide or show the title bar based on `showTitle`
             
-            BottomSheetView(offsetY: $offsetY, showTitle: $showTitle, isKeyboardVisible: $isKeyboardVisible, cameraPosition: $cameraPosition, showEmergency: $showEmergency)
+            // Bottom sheet
+            BottomSheetView(
+                offsetY: $offsetY,
+                isKeyboardVisible: $isKeyboardVisible,
+                cameraPosition: $cameraPosition,
+                showEmergency: $showEmergency,
+                mapItems: $mapItems,
+                region: $visibleRegion,
+                currentItem: $currentItem,
+                showTitle: $showTitle,
+                userLocation: MKCoordinateRegion(
+                    center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988), // Default location: Columbus, Ohio
+                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                ), route: $route
+            )
             
-            
+            // Emergency view overlay
             EmergencyView(showEmergency: $showEmergency)
-                .opacity(showEmergency ? 1 : 0)
-            
+                .opacity(showEmergency ? 1 : 0) // Show or hide based on `showEmergency`
         }
-        .ignoresSafeArea(.keyboard)
+        .ignoresSafeArea(.keyboard) // Ignore safe area for keyboard visibility adjustments
     }
-
-    func findLocations(region: MKCoordinateRegion, searchReq: String, completion: @escaping ([MKMapItem]?) -> Void) {
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = searchReq
-        searchRequest.region = region
-
+    
+    private func adjustCameraForRoute(_ route: MKRoute) {
+        // Calculate the bounding map rect of the polyline
+        let routeBoundingRect = route.polyline.boundingMapRect
         
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { (response, error) in
-            if let error = error {
-                print("Error during search: \(error.localizedDescription)")
-                completion(nil)
-                return
-            }
-            
-            guard let response = response else {
-                print("No response received.")
-                completion(nil)
-                return
-            }
-            
-            completion(response.mapItems)
-        }
-    }
-
-    func performSearch(in region: MKCoordinateRegion) {
+        // Convert the midpoint of the bounding rect to a CLLocationCoordinate2D
+        let centerCoordinate = MKMapPoint(x: routeBoundingRect.midX, y: routeBoundingRect.midY).coordinate
         
-        shelters.removeAll()
-        
-        let queryKeywords = ["homeless shelter", "food bank", "aid services", "community resources"]
-        
-        for keyword in queryKeywords {
-            findLocations(region: region, searchReq: keyword) { mapItems in
-                if let mapItems = mapItems, !mapItems.isEmpty {
-                    shelters.append(contentsOf: mapItems)
-                }
-            }
-        }
+        // Update the camera position to focus on the polyline
+        cameraPosition = .camera(MapCamera(centerCoordinate: centerCoordinate, distance: route.distance * 2.5))
     }
 }
