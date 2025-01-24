@@ -14,12 +14,20 @@ struct MainMapView: View {
     @Binding var currentItem: MKMapItem?
     @Binding var showingMenu: Bool
     @Binding var visibleRegion: MKCoordinateRegion?
+    @Binding var shelters: [MKMapItem]
+    @Binding var selectedResult: MKMapItem?
     
     let locationSearch = UserLocation()
     
     var body: some View {
         GeometryReader { geometry in
-            Map(position: $cameraPosition) {
+            
+            Map(position: $cameraPosition, selection: $selectedResult) {
+                ForEach(shelters, id: \.self) { shelter in
+                    Marker(shelter.name ?? "Unknown", coordinate: shelter.placemark.coordinate)
+                        .tint(Color.blue)
+                }
+                
                 if let currentItem = currentItem {
                     Marker(item: currentItem)
                 }

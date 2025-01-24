@@ -18,7 +18,11 @@ struct ContentView: View {
     @State private var mapItems: [MKMapItem] = []
     @State private var currentItem: MKMapItem?
     @State var showEmergency: Bool = false
+    @State var showFoodBank: Bool = false
+    @State var showBottomSheet: Bool = true
     @State var route: MKRoute?
+    @State var shelters: [MKMapItem] = []
+    @State var selectedResult: MKMapItem?
     
     let locationSearch = UserLocation()
     
@@ -28,26 +32,39 @@ struct ContentView: View {
                         route: $route,
                         currentItem: $currentItem,
                         showingMenu: $showingMenu,
-                        visibleRegion: $visibleRegion)
+                        visibleRegion: $visibleRegion,
+                        shelters: $shelters,
+                        selectedResult: $selectedResult
+            )
 
             TitleBarView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: locationSearch)
-
-            BottomSheetView(
-                offsetY: $offsetY,
-                isKeyboardVisible: $isKeyboardVisible,
-                cameraPosition: $cameraPosition,
-                showEmergency: $showEmergency,
-                mapItems: $mapItems,
-                region: $visibleRegion,
-                currentItem: $currentItem,
-                showTitle: $showTitle,
-                showingMenu: $showingMenu,
-                route: $route,
-                userLocation: MKCoordinateRegion(
-                    center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
-                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            
+            if (showBottomSheet){
+                BottomSheetView(
+                    offsetY: $offsetY,
+                    isKeyboardVisible: $isKeyboardVisible,
+                    cameraPosition: $cameraPosition,
+                    showEmergency: $showEmergency,
+                    mapItems: $mapItems,
+                    visibleRegion: $visibleRegion,
+                    currentItem: $currentItem,
+                    showTitle: $showTitle,
+                    showingMenu: $showingMenu,
+                    route: $route,
+                    shelters: $shelters,
+                    showBottomSheet: $showBottomSheet,
+                    showFoodBank: $showFoodBank,
+                    userLocation: MKCoordinateRegion(
+                        center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
+                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                    )
+                    
                 )
-            )
+            }
+            
+            if (showFoodBank){
+                FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank)
+            }
 
             EmergencyView(showEmergency: $showEmergency)
                 .opacity(showEmergency ? 1 : 0)
