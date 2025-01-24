@@ -24,7 +24,7 @@ struct BottomSheetView: View {
             ZStack {
                 VStack {
                     Capsule()
-                        .frame(width: 39, height: 6)
+                        .frame(width: 40, height: 6)
                         .foregroundColor(.gray)
                         .padding(10)
                     
