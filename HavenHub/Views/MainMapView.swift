@@ -14,6 +14,7 @@ struct MainMapView: View {
     @Binding var currentItem: MKMapItem?
     @Binding var showingMenu: Bool
     @Binding var visibleRegion: MKCoordinateRegion?
+    let userLocation = UserLocation()
     
     let locationSearch = UserLocation()
     
@@ -40,18 +41,8 @@ struct MainMapView: View {
                     if let centerCoordinate = getCenterCoordinate(from: route) {
                         Annotation("", coordinate: centerCoordinate) {
                             
+                            TravelTimeBubble(from: userLocation.getUserLocation().center, to: currentItem!.placemark.coordinate)
                             
-                            SpeechBubble(rectangleWidth: 50)
-                                .stroke(Color.teal, lineWidth: 5)
-                                .fill(.blue)
-                                .frame(width: 100, height: 30)
-                                .offset(x: 0, y: -20)
-                                .overlay {
-                                    Text("5 mins")
-                                        .offset(x: 0, y: -25)
-                                        .fontWeight(.bold)
-                                    
-                                }
                         }
                     }
                 }
@@ -87,6 +78,8 @@ struct MainMapView: View {
             .safeAreaPadding(.bottom, 50)
         }
     }
+    
+    
 
     private func adjustCameraForRoute(_ route: MKRoute) {
         let routeBoundingRect = route.polyline.boundingMapRect
@@ -104,5 +97,42 @@ struct MainMapView: View {
         let middleIndex = pointCount / 2
         return CLLocationCoordinate2D(latitude: points[middleIndex].coordinate.latitude,
                                       longitude: points[middleIndex].coordinate.longitude)
+    }
+}
+
+
+struct TravelTimeBubble: View {
+    let from: CLLocationCoordinate2D
+    let to: CLLocationCoordinate2D
+    let distanceCalc = DistanceCalculator()
+    
+    var body: some View {
+        let travelTime = estimatedTravelTime(from: from, to: to)
+        
+        SpeechBubble(rectangleWidth: CGFloat((travelTime.count + 1) * 10))
+            .stroke(Color.teal, lineWidth: 5)
+            .fill(.blue)
+            .frame(width: 150, height: 30)
+            .offset(x: 0, y: -20)
+            .overlay {
+                Text(travelTime)
+                    .offset(x: 0, y: -25)
+                    .fontWeight(.bold)
+                
+            }
+    }
+    
+    func estimatedTravelTime(from coordinate1: CLLocationCoordinate2D, to coordinate2: CLLocationCoordinate2D) -> String {
+        let distanceInMiles = distanceCalc.distanceInMiles(coordinate1: coordinate1, coordinate2: coordinate2)
+        let estimatedTime = distanceInMiles * 17
+        
+        let hours = Int(estimatedTime) / 60
+        let minutes = Int(estimatedTime) % 60
+        
+        if hours > 0 {
+            return "\(hours) hrs \(minutes) mins"
+        } else {
+            return "\(minutes) mins"
+        }
     }
 }
