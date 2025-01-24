@@ -98,7 +98,9 @@ struct BottomSheetView: View {
             DispatchQueue.main.async {
                 userLocation = location
             }
-
+        }
+    }
+    
     func goToUserLocation() {
         if let currentLocation = CLLocationManager().location {
             let coordinate = currentLocation.coordinate
@@ -110,7 +112,7 @@ struct BottomSheetView: View {
             )
         } else {
             print("User location not available")
-
+            
         }
     }
 }
