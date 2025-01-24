@@ -16,7 +16,7 @@ struct SearchBarView: View {
     @Binding var offsetY: CGFloat // Tracks the vertical position of the bottom sheet
     @Binding var mapItems: [MKMapItem] // Stores the search results
     @Binding var keyboardHeight: CGFloat // Captures the height of the keyboard
-    var region: MKCoordinateRegion? // Defines the map region for performing searches
+    @Binding var region: MKCoordinateRegion? // Defines the map region for performing searches
     @FocusState.Binding var nameIsFocused: Bool // Tracks whether the text field is focused
     
     var body: some View {
@@ -28,7 +28,11 @@ struct SearchBarView: View {
             
             // Trigger when the keyboard appears
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-                isKeyboardVisible = true // Update the state to indicate the keyboard is visible
+                
+                withAnimation{
+                    isKeyboardVisible = true
+                }
+                // Update the state to indicate the keyboard is visible
                 offsetY = UIScreen.main.bounds.height * 0.08 // Adjust the bottom sheet's position
                 
                 // Hide the title with animation after a short delay
@@ -42,7 +46,11 @@ struct SearchBarView: View {
             
             // Trigger when the keyboard disappears
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-                isKeyboardVisible = false // Update the state to indicate the keyboard is hidden
+                
+                withAnimation {
+                    isKeyboardVisible = false
+                }
+                 // Update the state to indicate the keyboard is hidden
                 offsetY = UIScreen.main.bounds.height * (4/7) // Reset the bottom sheet's position
                 
                 // Show the title with animation after a short delay

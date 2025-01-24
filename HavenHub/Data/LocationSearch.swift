@@ -11,7 +11,6 @@ struct LocationSearch {
     
     @Binding var mapItems: [MKMapItem]
     
-    
     func findLocations(region: MKCoordinateRegion, searchReq: String, completion: @escaping ([MKMapItem]?) -> Void) {
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = searchReq
@@ -40,7 +39,7 @@ struct LocationSearch {
         
         self.mapItems.removeAll()
         
-        let queryKeywords = ["homeless shelter", "food bank", "aid services"]
+        let queryKeywords = ["homeless shelter"]
         
         for keyword in queryKeywords {
             findLocations(region: region, searchReq: keyword) { mapItems1 in

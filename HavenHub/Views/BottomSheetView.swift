@@ -1,110 +1,104 @@
-//
-//  BottomSheetView.swift
-//  HavenHub
-//
-//  Created by Garrett Butchko on 1/11/25.
-//
 import SwiftUI
 import MapKit
 
 struct BottomSheetView: View {
-    // Bindings for dynamic data shared with the parent view or other components
-    @Binding var offsetY: CGFloat // Controls the vertical position of the bottom sheet
-    @Binding var isKeyboardVisible: Bool // Tracks the keyboard visibility
-    @Binding var cameraPosition: MapCameraPosition // Current position of the map camera
-    @Binding var showEmergency: Bool // Indicates whether the emergency button/action is shown
-    @Binding var mapItems: [MKMapItem] // List of map search results
-    @Binding var region: MKCoordinateRegion? // Current map region
-    @Binding var currentItem: MKMapItem? // Currently selected map item
-    @Binding var showTitle: Bool // Determines whether to display the title in the bottom sheet
-
-    // State properties for internal view management
-    @State var lastDragPosition: CGFloat = 0 // Tracks the last drag position of the bottom sheet
-    @State private var searchText: String = "" // Holds the search text entered by the user
-    @State var userLocation: MKCoordinateRegion // Tracks the user's current location
-    @State private var keyboardHeight: CGFloat = 0 // Stores the keyboard height when visible
-    @FocusState private var nameIsFocused: Bool // Tracks whether the search bar is focused
+    @Binding var offsetY: CGFloat
+    @Binding var isKeyboardVisible: Bool
+    @Binding var cameraPosition: MapCameraPosition
+    @Binding var showEmergency: Bool
+    @Binding var mapItems: [MKMapItem]
+    @Binding var region: MKCoordinateRegion?
+    @Binding var currentItem: MKMapItem?
+    @Binding var showTitle: Bool
+    @Binding var showingMenu: Bool
     @Binding var route: MKRoute?
+
+    @State var lastDragPosition: CGFloat = 0
+    @State private var searchText: String = ""
+    @State var userLocation: MKCoordinateRegion
+    @State private var keyboardHeight: CGFloat = 0
+    @FocusState private var nameIsFocused: Bool
 
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
-                    // Handle Bar at the top of the bottom sheet for drag interaction
                     Capsule()
                         .frame(width: 40, height: 6)
                         .foregroundColor(.gray)
                         .padding(10)
                     
-                    // Search Bar component
-                    SearchBarView(
-                        searchText: $searchText,
-                        isKeyboardVisible: $isKeyboardVisible,
-                        showTitle: $showTitle,
-                        offsetY: $offsetY,
-                        mapItems: $mapItems,
-                        keyboardHeight: $keyboardHeight,
-                        region: region, nameIsFocused: $nameIsFocused
-                    )
+                    SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $region, nameIsFocused: $nameIsFocused)
 
-                    // Conditionally display either the search results or the emergency button
-                    if isKeyboardVisible {
-                        // Search results are shown when the keyboard is visible
-                        SearchResultsView(
-                            searchText: $searchText,
-                            mapItems: $mapItems,
-                            currentItem: $currentItem,
-                            keyboardHeight: $keyboardHeight, nameIsFocused: $nameIsFocused, route: $route
-                        )
-                    } else {
-                        // Emergency button is shown when the keyboard is hidden
-                        ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition)
+                    Group {
+                        if isKeyboardVisible {
+                            SearchResultsView(
+                                searchText: $searchText,
+                                mapItems: $mapItems,
+                                currentItem: $currentItem,
+                                keyboardHeight: $keyboardHeight,
+                                nameIsFocused: $nameIsFocused,
+                                route: $route,
+                                showingMenu: $showingMenu
+                            )
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                        } else if showingMenu {
+                            MapMenuView(mapItem: $currentItem, showingMenu: $showingMenu)
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                        } else {
+                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition)
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                        }
                     }
+                    .transition(.opacity)
+                    .animation(.easeInOut, value: isKeyboardVisible)
 
-                    Spacer() // Pushes content to the top
+                    Spacer()
                 }
-                .frame(width: geometry.size.width, height: geometry.size.height + 100) // Sets the bottom sheet size
+                .frame(width: geometry.size.width, height: geometry.size.height + 100)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(.sub) // Custom background fill
-                        .shadow(radius: 10) // Adds shadow for depth
+                        .fill(.sub)
+                        .shadow(radius: 10)
                 )
-                .offset(y: min(max(offsetY, geometry.size.height * 0.08), geometry.size.height * (4/7))) // Restricts drag range
+                .offset(y: min(max(offsetY, geometry.size.height * 0.08), geometry.size.height * (4 / 7)))
                 .gesture(
                     DragGesture()
                         .onChanged { value in
-                            // Updates offset during drag, within allowed bounds
                             let newOffset = lastDragPosition + value.translation.height
-                            if newOffset >= geometry.size.height * 0.08 && newOffset <= geometry.size.height * (4/7) && !isKeyboardVisible {
-                                offsetY = newOffset
+                            if !isKeyboardVisible {
+                                offsetY = min(max(newOffset, geometry.size.height * 0.08), geometry.size.height * (4 / 7))
                             }
                         }
                         .onEnded { _ in
-                            // Snaps to either top or bottom position after drag ends
                             let screenHeight = geometry.size.height
-                            let middlePoint = screenHeight * 0.4
-                            if offsetY < middlePoint {
-                                offsetY = screenHeight * 0.08 // Snap to top
-                                withAnimation { showTitle = false }
-                            } else {
-                                offsetY = screenHeight * (4/7) // Snap to bottom
-                                withAnimation { showTitle = true }
+                            offsetY = offsetY < screenHeight * 0.4
+                                ? screenHeight * 0.08
+                                : screenHeight * (4 / 7)
+                            withAnimation() {
+                                showTitle = offsetY >= screenHeight * 0.4
                             }
-                            lastDragPosition = offsetY // Save final position
+                            
+                            lastDragPosition = offsetY
                         }
                 )
-                .animation(.easeInOut, value: offsetY) // Smooth animations for offset changes
+                .animation(.easeInOut, value: offsetY)
             }
-            .edgesIgnoringSafeArea(.all) // Ensures the bottom sheet overlaps system areas
+            .edgesIgnoringSafeArea(.all)
             .onAppear {
-                // Initialize the bottom sheet position on view load
-                offsetY = geometry.size.height * (4/7)
+                offsetY = geometry.size.height * (4 / 7)
+                updateUserLocation()
             }
         }
-        .onReceive(Timer.publish(every: 120, on: .main, in: .common).autoconnect()) { _ in
-            // Periodically update the user's location
+    }
+
+    private func updateUserLocation() {
+        DispatchQueue.global(qos: .background).async {
             let userLocationFunc = UserLocation()
-            userLocation = userLocationFunc.getUserLocation()
+            let location = userLocationFunc.getUserLocation()
+            DispatchQueue.main.async {
+                userLocation = location
+            }
         }
     }
 }
