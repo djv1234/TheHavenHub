@@ -75,7 +75,10 @@ struct BottomSheetView: View {
                             offsetY = offsetY < screenHeight * 0.4
                                 ? screenHeight * 0.08
                                 : screenHeight * (4 / 7)
-                            showTitle = offsetY >= screenHeight * 0.4
+                            withAnimation() {
+                                showTitle = offsetY >= screenHeight * 0.4
+                            }
+                            
                             lastDragPosition = offsetY
                         }
                 )
