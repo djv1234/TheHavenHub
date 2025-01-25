@@ -8,28 +8,46 @@
 import SwiftUI
 import Combine
 
-class HealthViewModel: ObservableObject {
+import CoreLocation
+
+class HealthViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var medicalServices: [MedicalService] = []
-    
+    @Published var userLocation: CLLocationCoordinate2D? // User's current location
+
+    private let locationManager = CLLocationManager()
+
+    override init() {
+        super.init()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else { return }
+        DispatchQueue.main.async {
+            self.userLocation = location.coordinate
+        }
+    }
+
     func fetchMedicalServices() {
-        // Replace with your API endpoint
-        let urlString = "https://maps2.columbus.gov/arcgis/rest/services/Schemas/PointsOfInterest/MapServer/5/query?outFields=*&where=1%3D1&f=geojson"
-        guard let url = URL(string: urlString) else { return }
+        let downloadsPath = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first
+        let fileURL = downloadsPath?.appendingPathComponent("Medical_Facilities.geojson")
 
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                print("Error fetching data: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
+        guard let url = fileURL else {
+            print("Error: Could not locate file in Downloads folder.")
+            return
+        }
 
-            do {
-                let decodedResponse = try JSONDecoder().decode(MedicalServicesResponse.self, from: data)
-                DispatchQueue.main.async {
-                    self.medicalServices = decodedResponse.features
-                }
-            } catch {
-                print("Error decoding data: \(error)")
+        do {
+            let data = try Data(contentsOf: url)
+            let decodedResponse = try JSONDecoder().decode(MedicalServicesResponse.self, from: data)
+
+            DispatchQueue.main.async {
+                self.medicalServices = decodedResponse.features
             }
-        }.resume()
+        } catch {
+            print("Error decoding JSON from file: \(error)")
+        }
     }
 }

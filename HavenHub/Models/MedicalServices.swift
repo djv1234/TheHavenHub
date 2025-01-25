@@ -8,13 +8,14 @@
 import Foundation
 import CoreLocation
 
-// Model for API data
+// Root object for the GeoJSON response
 struct MedicalServicesResponse: Codable {
     let features: [MedicalService]
 }
 
+// Represents a single medical service
 struct MedicalService: Codable, Identifiable {
-    let id: Int
+    let id: Int // Use the "id" field from the JSON
     let geometry: Geometry
     let properties: Properties
 
@@ -26,7 +27,6 @@ struct MedicalService: Codable, Identifiable {
         let POI_NAME: String
         let POI_TYPE: String
         let PHONE_NUM: String?
-        let LSN: String
     }
-}
+} 
 
