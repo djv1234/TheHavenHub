@@ -35,11 +35,11 @@ struct LocationSearch {
         }
     }
     
-    func performSearch(in region: MKCoordinateRegion) {
+    func performSearch(in region: MKCoordinateRegion, words: [String]) {
         
         self.mapItems.removeAll()
         
-        let queryKeywords = ["homeless shelter"]
+        let queryKeywords = words
         
         for keyword in queryKeywords {
             findLocations(region: region, searchReq: keyword) { mapItems1 in

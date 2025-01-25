@@ -1,5 +1,5 @@
 //
-//  SpeechBubb;e.swift
+//  SpeechBubble.swift
 //  HavenHub
 //
 //  Created by Garrett Butchko on 1/23/25.
@@ -19,7 +19,7 @@ struct SpeechBubble: Shape {
         
         // Define the rounded rectangle with dynamic width
         let rectHeight = rect.height - triangleHeight
-        let roundedRect = CGRect(x: rect.minX + rectangleWidth / 2, y: rect.minY, width: rectangleWidth, height: rectHeight)
+        let roundedRect = CGRect(x: rect.minX + ((150 - rectangleWidth) / 2), y: rect.minY, width: rectangleWidth, height: rectHeight)
         path.addRoundedRect(in: roundedRect, cornerSize: CGSize(width: cornerRadius, height: cornerRadius))
         
         // Define the triangle

@@ -31,6 +31,7 @@ struct ContentView: View {
                         visibleRegion: $visibleRegion)
 
             TitleBarView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: locationSearch)
+                .shadow(radius: 5)
 
             BottomSheetView(
                 offsetY: $offsetY,
