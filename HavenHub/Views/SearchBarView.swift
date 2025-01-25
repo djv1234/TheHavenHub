@@ -66,7 +66,7 @@ struct SearchBarView: View {
                 if !newValue.isEmpty {
                     // Perform a search if the search text is not empty
                     let locationSearch = LocationSearch(mapItems: $mapItems)
-                    locationSearch.performSearch(in: region!) // Pass the region for search
+                    locationSearch.performSearch(in: region!, words: ["homeless shelters"]) // Pass the region for search
                 }
             }
             
