@@ -114,22 +114,24 @@ struct TravelTimeBubble: View {
             .fill(.blue)
             .frame(width: 150, height: 30)
             .offset(x: 0, y: -20)
+            .shadow(radius: 5)
             .overlay {
                 Text(travelTime)
                     .offset(x: 0, y: -25)
                     .fontWeight(.bold)
+                    .foregroundStyle(.white)
                 
             }
     }
     
     func estimatedTravelTime(from coordinate1: CLLocationCoordinate2D, to coordinate2: CLLocationCoordinate2D) -> String {
         let distanceInMiles = distanceCalc.distanceInMiles(coordinate1: coordinate1, coordinate2: coordinate2)
-        let estimatedTime = distanceInMiles * 17
+        let estimatedTime = distanceInMiles * 35
         
         let hours = Int(estimatedTime) / 60
         let minutes = Int(estimatedTime) % 60
         
-        if hours > 0 {
+        if hours > 0 && minutes != 0 {
             return "\(hours) hrs \(minutes) mins"
         } else {
             return "\(minutes) mins"

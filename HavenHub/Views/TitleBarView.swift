@@ -17,7 +17,7 @@ struct TitleBarView: View {
     var body: some View {
         HStack {
             Text("HavenHub")
-                .frame(width: 160, height: 50)
+                .frame(width: 160, height: 40)
                 .font(.title)
                 .foregroundColor(.primary)
                 .background(.ultraThinMaterial)

@@ -28,12 +28,33 @@ public struct MapMenuView: View {
                     }
                 } label: {
                     Text("Cancel")
-                        .frame(width: 60, height: 30)
+                        .frame(width: 70, height: 30)
                         .background(.ultraThinMaterial)
                         .clipShape(Capsule())
                 }
-
             }
+            
+            Button(action: {
+                let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking] // Set driving mode
+
+                MKMapItem.openMaps(with: [mapItem!], launchOptions: launchOptions)
+            }) {
+                ZStack {
+                    // Background style
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.blue)
+                    
+                    // Icon and label
+                    VStack {
+                        Image(systemName: "arrow.turn.up.right")
+                            .foregroundColor(.main)
+                        Text("Directions")
+                            .foregroundStyle(.main)
+                            .fontWeight(.bold)
+                    }
+                }
+            }
+            .frame(height: 60)
         }
         .padding([.horizontal, .bottom])
     }
