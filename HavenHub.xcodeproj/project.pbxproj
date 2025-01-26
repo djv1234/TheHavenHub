@@ -18,7 +18,7 @@
 		21B1EE752D46D52F00B08AD6 /* Exceptions for "HavenHub" folder in "HavenHub" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Data/HealthData.swift,
+				Data/HealthData.json,
 			);
 			target = 21AC48872D2DEAF30097F93F /* HavenHub */;
 		};
@@ -29,7 +29,7 @@
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = 21AC48842D2DEAF30097F93F /* Sources */;
 			membershipExceptions = (
-				Data/HealthData.swift,
+				Data/HealthData.json,
 			);
 		};
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
@@ -42,7 +42,7 @@
 				21B1EE762D46D52F00B08AD6 /* Exceptions for "HavenHub" folder in "Compile Sources" phase from "HavenHub" target */,
 			);
 			explicitFileTypes = {
-				Data/HealthData.swift = text.json;
+				Data/HealthData.json = text.json;
 			};
 			path = HavenHub;
 			sourceTree = "<group>";

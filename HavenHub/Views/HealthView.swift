@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HealthView: View {
     var showTitle = true
+    
+    let healthResources: [HealthModel] = Bundle.main.decode("HealthData.json")
 
     var body: some View {
         ScrollView {
