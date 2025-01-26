@@ -18,6 +18,7 @@ struct SearchBarView: View {
     @Binding var keyboardHeight: CGFloat // Captures the height of the keyboard
     @Binding var region: MKCoordinateRegion? // Defines the map region for performing searches
     @FocusState.Binding var nameIsFocused: Bool // Tracks whether the text field is focused
+    @Binding var searchTerms: [String]
     
     var body: some View {
         TextField("Search...", text: $searchText) // TextField for search input
@@ -66,7 +67,7 @@ struct SearchBarView: View {
                 if !newValue.isEmpty {
                     // Perform a search if the search text is not empty
                     let locationSearch = LocationSearch(mapItems: $mapItems)
-                    locationSearch.performSearch(in: region!, words: ["homeless shelters"]) // Pass the region for search
+                    locationSearch.performSearch(in: region!, words: searchTerms) // Pass the region for search
                 }
             }
             

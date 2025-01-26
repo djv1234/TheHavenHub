@@ -18,6 +18,7 @@ struct BottomSheetView: View {
     @State var userLocation: MKCoordinateRegion
     @State private var keyboardHeight: CGFloat = 0
     @FocusState private var nameIsFocused: Bool
+    @Binding var searchTerms: [String]
 
     var body: some View {
         GeometryReader { geometry in
@@ -28,7 +29,7 @@ struct BottomSheetView: View {
                         .foregroundColor(.gray)
                         .padding(10)
                     
-                    SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $region, nameIsFocused: $nameIsFocused)
+                    SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $region, nameIsFocused: $nameIsFocused, searchTerms: $searchTerms)
 
                     Group {
                         if isKeyboardVisible {

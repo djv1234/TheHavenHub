@@ -19,6 +19,7 @@ struct ContentView: View {
     @State private var currentItem: MKMapItem?
     @State var showEmergency: Bool = false
     @State var route: MKRoute?
+    @State var searchTerms: [String] = ["Homeless Shelters"]
     
     let locationSearch = UserLocation()
     
@@ -30,7 +31,7 @@ struct ContentView: View {
                         showingMenu: $showingMenu,
                         visibleRegion: $visibleRegion)
 
-            TitleBarView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: locationSearch)
+            MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: locationSearch, searchTerms: $searchTerms)
                 .shadow(radius: 5)
 
             BottomSheetView(
@@ -47,7 +48,7 @@ struct ContentView: View {
                 userLocation: MKCoordinateRegion(
                     center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
                     span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                )
+                ), searchTerms: $searchTerms
             )
 
             EmergencyView(showEmergency: $showEmergency)
