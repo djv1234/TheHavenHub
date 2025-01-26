@@ -14,9 +14,10 @@ struct MainMapView: View {
     @Binding var currentItem: MKMapItem?
     @Binding var showingMenu: Bool
     @Binding var visibleRegion: MKCoordinateRegion?
-    let userLocation = UserLocation()
     
-    let locationSearch = UserLocation()
+    let userLocation: UserLocation
+    let distanceCalc: DistanceCalculator
+    let routeCalc: RouteCalculator
     
     var body: some View {
         GeometryReader { geometry in
@@ -38,22 +39,22 @@ struct MainMapView: View {
                             )
                         )
 
-                    if let centerCoordinate = getCenterCoordinate(from: route) {
+                    if let centerCoordinate = routeCalc.getCenterCoordinate(from: route) {
                         Annotation("", coordinate: centerCoordinate) {
                             
-                            TravelTimeBubble(from: userLocation.getUserLocation().center, to: currentItem!.placemark.coordinate)
+                            TravelTimeBubble(from: userLocation.getUserLocation().center, to: currentItem!.placemark.coordinate, distanceCalc: distanceCalc)
                             
                         }
                     }
                 }
             }
             .onAppear {
-                locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
+                userLocation.goToUserLocation(cameraPosition: $cameraPosition)
             }
             .onChange(of: route) { _, newValue in
                 if let newRoute = newValue {
                     withAnimation {
-                        adjustCameraForRoute(newRoute)
+                        cameraPosition = routeCalc.adjustCameraForRoute(newRoute)
                     }
                 }
             }
@@ -62,7 +63,7 @@ struct MainMapView: View {
                     route = nil
                     currentItem = nil
                     withAnimation {
-                        locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
+                        userLocation.goToUserLocation(cameraPosition: $cameraPosition)
                     }
                 }
             }
@@ -79,35 +80,18 @@ struct MainMapView: View {
         }
     }
     
+
     
-
-    private func adjustCameraForRoute(_ route: MKRoute) {
-        let routeBoundingRect = route.polyline.boundingMapRect
-        let centerCoordinate = MKMapPoint(x: routeBoundingRect.midX, y: routeBoundingRect.midY).coordinate
-        cameraPosition = .camera(MapCamera(centerCoordinate: centerCoordinate, distance: route.distance * 2.5))
-    }
-
-    private func getCenterCoordinate(from route: MKRoute) -> CLLocationCoordinate2D? {
-        let polyline = route.polyline
-        let pointCount = polyline.pointCount
-        let points = polyline.points()
-        
-        guard pointCount > 0 else { return nil }
-        
-        let middleIndex = pointCount / 2
-        return CLLocationCoordinate2D(latitude: points[middleIndex].coordinate.latitude,
-                                      longitude: points[middleIndex].coordinate.longitude)
-    }
 }
 
 
 struct TravelTimeBubble: View {
     let from: CLLocationCoordinate2D
     let to: CLLocationCoordinate2D
-    let distanceCalc = DistanceCalculator()
+    let distanceCalc: DistanceCalculator
     
     var body: some View {
-        let travelTime = estimatedTravelTime(from: from, to: to)
+        let travelTime = distanceCalc.estimatedTravelTime(from: from, to: to)
         
         SpeechBubble(rectangleWidth: CGFloat((travelTime.count + 1) * 10))
             .stroke(Color.teal, lineWidth: 5)
@@ -124,17 +108,5 @@ struct TravelTimeBubble: View {
             }
     }
     
-    func estimatedTravelTime(from coordinate1: CLLocationCoordinate2D, to coordinate2: CLLocationCoordinate2D) -> String {
-        let distanceInMiles = distanceCalc.distanceInMiles(coordinate1: coordinate1, coordinate2: coordinate2)
-        let estimatedTime = distanceInMiles * 35
-        
-        let hours = Int(estimatedTime) / 60
-        let minutes = Int(estimatedTime) % 60
-        
-        if hours > 0 && minutes != 0 {
-            return "\(hours) hrs \(minutes) mins"
-        } else {
-            return "\(minutes) mins"
-        }
-    }
+    
 }

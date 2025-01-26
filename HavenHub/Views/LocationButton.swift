@@ -11,15 +11,17 @@ import MapKit
 struct LocationButton: View {
     @Binding var route: MKRoute?
     @Binding var cameraPosition: MapCameraPosition
-    let locationSearch: UserLocation
+    
+    let userLocation: UserLocation
+    let routeCalc: RouteCalculator
     
     var body: some View {
         Button(action: {
             withAnimation {
                 if let route = route {
-                    adjustCameraForRoute(route)
+                    cameraPosition = routeCalc.adjustCameraForRoute(route)
                 } else {
-                    locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
+                    userLocation.goToUserLocation(cameraPosition: $cameraPosition)
                 }
             }
         }) {
@@ -33,11 +35,5 @@ struct LocationButton: View {
                     .frame(width: 20, height: 20)
             }
         }
-    }
-    
-    private func adjustCameraForRoute(_ route: MKRoute) {
-        let routeBoundingRect = route.polyline.boundingMapRect
-        let centerCoordinate = MKMapPoint(x: routeBoundingRect.midX, y: routeBoundingRect.midY).coordinate
-        cameraPosition = .camera(MapCamera(centerCoordinate: centerCoordinate, distance: route.distance * 2.5))
     }
 }

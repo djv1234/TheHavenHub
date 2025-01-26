@@ -21,7 +21,9 @@ struct ContentView: View {
     @State var route: MKRoute?
     @State var searchTerms: [String] = ["Homeless Shelters"]
     
-    let locationSearch = UserLocation()
+    let userLocation = UserLocation()
+    let routeCalc = RouteCalculator()
+    let distanceCalc = DistanceCalculator()
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -29,9 +31,9 @@ struct ContentView: View {
                         route: $route,
                         currentItem: $currentItem,
                         showingMenu: $showingMenu,
-                        visibleRegion: $visibleRegion)
+                        visibleRegion: $visibleRegion, userLocation: userLocation, distanceCalc: distanceCalc, routeCalc: routeCalc)
 
-            MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: locationSearch, searchTerms: $searchTerms)
+            MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: userLocation, searchTerms: $searchTerms, routeCalc: routeCalc, userLocation: userLocation)
                 .shadow(radius: 5)
 
             BottomSheetView(
@@ -48,7 +50,7 @@ struct ContentView: View {
                 userLocation: MKCoordinateRegion(
                     center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
                     span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                ), searchTerms: $searchTerms
+                ), searchTerms: $searchTerms, userLocationStruct: userLocation, distanceCalc: distanceCalc, routeCalc: routeCalc
             )
 
             EmergencyView(showEmergency: $showEmergency)

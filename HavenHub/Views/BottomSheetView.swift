@@ -19,6 +19,10 @@ struct BottomSheetView: View {
     @State private var keyboardHeight: CGFloat = 0
     @FocusState private var nameIsFocused: Bool
     @Binding var searchTerms: [String]
+    
+    let userLocationStruct: UserLocation
+    let distanceCalc: DistanceCalculator
+    let routeCalc: RouteCalculator
 
     var body: some View {
         GeometryReader { geometry in
@@ -40,7 +44,7 @@ struct BottomSheetView: View {
                                 keyboardHeight: $keyboardHeight,
                                 nameIsFocused: $nameIsFocused,
                                 route: $route,
-                                showingMenu: $showingMenu
+                                showingMenu: $showingMenu, distanceCalc: distanceCalc, userLocation: userLocationStruct, routeCalc: routeCalc
                             )
                             .transition(.move(edge: .bottom).combined(with: .opacity))
                         } else if showingMenu {
@@ -88,32 +92,8 @@ struct BottomSheetView: View {
             .edgesIgnoringSafeArea(.all)
             .onAppear {
                 offsetY = geometry.size.height * (4 / 7)
-                updateUserLocation()
+                userLocation = userLocationStruct.getUserLocation()
             }
-        }
-    }
-    private func updateUserLocation() {
-        DispatchQueue.global(qos: .background).async {
-            let userLocationFunc = UserLocation()
-            let location = userLocationFunc.getUserLocation()
-            DispatchQueue.main.async {
-                userLocation = location
-            }
-        }
-    }
-    
-    func goToUserLocation() {
-        if let currentLocation = CLLocationManager().location {
-            let coordinate = currentLocation.coordinate
-            cameraPosition = .region(
-                MKCoordinateRegion(
-                    center: coordinate,
-                    span: MKCoordinateSpan(latitudeDelta: 0.00, longitudeDelta: 0.01)
-                )
-            )
-        } else {
-            print("User location not available")
-            
         }
     }
 }

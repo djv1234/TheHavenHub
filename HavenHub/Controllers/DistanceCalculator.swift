@@ -18,4 +18,18 @@ struct DistanceCalculator {
         
         return floor(miles * 10) / 10.0
     }
+    
+    func estimatedTravelTime(from coordinate1: CLLocationCoordinate2D, to coordinate2: CLLocationCoordinate2D) -> String {
+        let distanceInMiles = distanceInMiles(coordinate1: coordinate1, coordinate2: coordinate2)
+        let estimatedTime = distanceInMiles * 35
+        
+        let hours = Int(estimatedTime) / 60
+        let minutes = Int(estimatedTime) % 60
+        
+        if hours > 0 && minutes != 0 {
+            return "\(hours) hrs \(minutes) mins"
+        } else {
+            return "\(minutes) mins"
+        }
+    }
 }

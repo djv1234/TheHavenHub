@@ -17,8 +17,9 @@ struct SearchResultsView: View {
     @Binding var route: MKRoute?
     @Binding var showingMenu: Bool
     
-    let distanceCalc = DistanceCalculator()
-    let userLocation = UserLocation()
+    let distanceCalc: DistanceCalculator
+    let userLocation: UserLocation
+    let routeCalc: RouteCalculator
     
     var body: some View {
         GeometryReader { geometry in
@@ -28,7 +29,7 @@ struct SearchResultsView: View {
                 currentItem: $currentItem,
                 nameIsFocused: $nameIsFocused, route: $route, showingMenu: $showingMenu,
                 distanceCalc: distanceCalc,
-                userLocation: userLocation
+                userLocation: userLocation, routeCalc: routeCalc
             )
             .frame(width: geometry.size.width, height: geometry.size.height - keyboardHeight - 60)
         }
@@ -46,7 +47,7 @@ struct SearchResultsListView: View {
     
     let distanceCalc: DistanceCalculator
     let userLocation: UserLocation
-    let routeBuild = Route()
+    let routeCalc: RouteCalculator
 
     var body: some View {
         List {
@@ -61,7 +62,7 @@ struct SearchResultsListView: View {
                         withAnimation {
                             showingMenu = true
                         }
-                        routeBuild.calculateRoute(from: userLocation.getUserLocation().center, to: item.placemark.coordinate) { route in
+                        routeCalc.calculateRoute(from: userLocation.getUserLocation().center, to: item.placemark.coordinate) { route in
                             if let route = route {
                                 print("Route distance: \(route.distance) meters")
                                 self.route = route
@@ -128,31 +129,4 @@ struct EmptyStateView: View {
     }
 }
 
-// MARK: - Sorting Extension
-extension Array where Element == MKMapItem {
-    func sortedBySearchText(_ searchText: String) -> [MKMapItem] {
-        let lowerSearchText = searchText.lowercased()
-        return self.sorted { a, b in
-            let aValue = a.name?.lowercased() ?? ""
-            let bValue = b.name?.lowercased() ?? ""
-            
-            // Exact matches first
-            if aValue == lowerSearchText { return true }
-            if bValue == lowerSearchText { return false }
-            
-            // Starts with the search text
-            let aStartsWith = aValue.hasPrefix(lowerSearchText)
-            let bStartsWith = bValue.hasPrefix(lowerSearchText)
-            if aStartsWith && !bStartsWith { return true }
-            if !aStartsWith && bStartsWith { return false }
-            
-            // Contains the search text
-            let aContains = aValue.contains(lowerSearchText)
-            let bContains = bValue.contains(lowerSearchText)
-            if aContains && !bContains { return true }
-            if !aContains && bContains { return false }
-            
-            return false
-        }
-    }
-}
+

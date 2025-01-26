@@ -8,7 +8,7 @@
 import MapKit
 import SwiftUI
 
-struct Route {
+struct RouteCalculator{
     
     func calculateRoute(from start: CLLocationCoordinate2D, to end: CLLocationCoordinate2D, completion: @escaping (MKRoute?) -> Void) {
         let request = MKDirections.Request()
@@ -30,6 +30,24 @@ struct Route {
                 completion(nil)
             }
         }
+    }
+    
+    func adjustCameraForRoute(_ route: MKRoute) -> MapCameraPosition{
+        let routeBoundingRect = route.polyline.boundingMapRect
+        let centerCoordinate = MKMapPoint(x: routeBoundingRect.midX, y: routeBoundingRect.midY).coordinate
+        return .camera(MapCamera(centerCoordinate: centerCoordinate, distance: route.distance * 2.5))
+    }
+    
+    func getCenterCoordinate(from route: MKRoute) -> CLLocationCoordinate2D? {
+        let polyline = route.polyline
+        let pointCount = polyline.pointCount
+        let points = polyline.points()
+        
+        guard pointCount > 0 else { return nil }
+        
+        let middleIndex = pointCount / 2
+        return CLLocationCoordinate2D(latitude: points[middleIndex].coordinate.latitude,
+                                      longitude: points[middleIndex].coordinate.longitude)
     }
 }
 

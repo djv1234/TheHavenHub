@@ -19,6 +19,9 @@ struct MapOverlayView: View {
     @State var but4: Bool = false
     @Binding var searchTerms : [String]
     
+    let routeCalc: RouteCalculator
+    let userLocation: UserLocation
+    
     var body: some View {
         GeometryReader{ geometry in
             VStack{
@@ -33,7 +36,7 @@ struct MapOverlayView: View {
                     
                     Spacer()
                     
-                    LocationButton(route: $route, cameraPosition: $cameraPosition, locationSearch: locationSearch)
+                    LocationButton(route: $route, cameraPosition: $cameraPosition, userLocation: userLocation, routeCalc: routeCalc)
                     
                     ProfileButton()
                 }

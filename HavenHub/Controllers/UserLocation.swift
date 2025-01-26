@@ -11,7 +11,6 @@ import MapKit
 
 struct UserLocation {
 
-    
     func goToUserLocation(cameraPosition: Binding<MapCameraPosition>) {
         if let currentLocation = CLLocationManager().location {
             let coordinate = currentLocation.coordinate
