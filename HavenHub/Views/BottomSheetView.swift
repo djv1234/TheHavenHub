@@ -92,7 +92,6 @@ struct BottomSheetView: View {
             }
         }
     }
-
     private func updateUserLocation() {
         DispatchQueue.global(qos: .background).async {
             let userLocationFunc = UserLocation()
@@ -100,6 +99,21 @@ struct BottomSheetView: View {
             DispatchQueue.main.async {
                 userLocation = location
             }
+        }
+    }
+    
+    func goToUserLocation() {
+        if let currentLocation = CLLocationManager().location {
+            let coordinate = currentLocation.coordinate
+            cameraPosition = .region(
+                MKCoordinateRegion(
+                    center: coordinate,
+                    span: MKCoordinateSpan(latitudeDelta: 0.00, longitudeDelta: 0.01)
+                )
+            )
+        } else {
+            print("User location not available")
+            
         }
     }
 }
