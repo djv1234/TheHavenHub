@@ -2,154 +2,229 @@
 //  HealthView.swift
 //  HavenHub
 //
-//  Created by Dmitry Volf on 1/24/25.
+//  Created by Dmitry Volf on 1/25/25.
 //
 
 import SwiftUI
-import MapKit
 
 struct HealthView: View {
-    @StateObject private var viewModel = HealthViewModel()
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988), // Default: Columbus, OH
-        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-    )
-    @State private var searchQuery = "" // User input for search
-    @State private var suggestedServices: [MedicalService] = []
+    var showTitle = true
 
     var body: some View {
-        NavigationView {
-            VStack {
-                // Map with annotations
-                Map(
-                    coordinateRegion: Binding(
-                        get: {
-                            if let userLocation = viewModel.userLocation {
-                                return MKCoordinateRegion(
-                                    center: userLocation,
-                                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                                )
-                            } else {
-                                return region // Default region
-                            }
-                        },
-                        set: { region = $0 }
-                    )
-                ) {_ in 
-                    ForEach(viewModel.medicalServices) { service in
-                        Annotation(
-                            <#LocalizedStringKey#>, coordinate: CLLocationCoordinate2D(
-                                latitude: service.geometry.coordinates[1],
-                                longitude: service.geometry.coordinates[0]
-                            )
-                        ) {
-                            VStack {
-                                Image(systemName: "mappin.circle.fill")
-                                    .foregroundColor(.blue)
-                                    .font(.title)
-                                Text(service.properties.POI_NAME)
-                                    .font(.caption)
-                                    .fixedSize()
-                            }
-                        }
-                    }
+        ScrollView {
+            VStack(spacing: 20) {
+                if showTitle {
+                    Text("Health Resources")
+                        .frame(width: 250, height: 40)
+                        .font(.title)
+                        .foregroundColor(.primary)
+                        .background(.ultraThinMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                        .fontWeight(.bold)
+                        .padding(.top)
                 }
-                .frame(height: 300)
-                .cornerRadius(15)
-                .padding()
 
-                // Search bar
-                TextField("Search for health facilities...", text: $searchQuery)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
-                    .onChange(of: searchQuery) { newValue in
-                        filterFacilities()
-                    }
+                Text("MENTAL HEALTH & WELL-BEING")
+                    .font(.headline)
+                    .padding(.bottom, 10)
 
-                // Suggested services
-                if !suggestedServices.isEmpty {
-                    VStack(alignment: .leading) {
-                        Text("Suggested Nearby Facilities:")
-                            .font(.headline)
-                            .padding(.horizontal)
-
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 10) {
-                                ForEach(suggestedServices) { service in
-                                    VStack {
-                                        Text(service.properties.POI_NAME)
-                                            .font(.caption)
-                                            .fontWeight(.bold)
-                                        Text(service.properties.POI_TYPE)
-                                            .font(.caption2)
-                                            .foregroundColor(.gray)
-                                    }
-                                    .padding()
-                                    .background(Color.blue.opacity(0.1))
-                                    .cornerRadius(10)
+                VStack(spacing: 16) {
+                    HStack(spacing: 12) {
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.blue)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "person.and.arrow.left.and.arrow.right")
+                                        .foregroundColor(.white)
+                                    Text("Anxiety")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
                                 }
                             }
-                            .padding(.horizontal)
+                        }
+
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.purple)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "cloud.rain.fill")
+                                        .foregroundColor(.white)
+                                    Text("Depression")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.pink)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "person.badge.shield.exclamationmark")
+                                        .foregroundColor(.white)
+                                    Text("Trauma")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
                         }
                     }
-                    .padding(.vertical, 5)
-                }
 
-                // List of filtered medical services
-                List(filteredFacilities()) { service in
-                    VStack(alignment: .leading) {
-                        Text(service.properties.POI_NAME)
-                            .font(.headline)
-                        Text(service.properties.POI_TYPE)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                        if let phone = service.properties.PHONE_NUM {
-                            Text("Phone: \(phone)")
-                                .font(.subheadline)
+                    HStack(spacing: 12) {
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.red)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "pills")
+                                        .foregroundColor(.white)
+                                    Text("Drug Abuse")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.orange)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "waterbottle.fill")
+                                        .foregroundColor(.white)
+                                    Text("Alcohol")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.green)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "bolt.heart")
+                                        .foregroundColor(.white)
+                                    Text("Grief & Loss")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+                    }
+
+                    HStack(spacing: 12) {
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.teal)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "person.crop.circle.badge.exclamationmark.fill")
+                                        .foregroundColor(.white)
+                                    Text("PTSD")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.yellow)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "person.2")
+                                        .foregroundColor(.white)
+                                    Text("Bipolar Disorder")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.gray)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "person.fill.questionmark")
+                                        .foregroundColor(.white)
+                                    Text("Schizophrenia")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
                         }
                     }
                 }
-                .listStyle(InsetGroupedListStyle())
+
+                Text("PHYSICAL HEALTH")
+                    .font(.headline)
+                    .padding(.top, 20)
+
+                VStack(spacing: 16) {
+                    HStack(spacing: 12) {
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.green)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "leaf.fill")
+                                        .foregroundColor(.white)
+                                    Text("Nutrition")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.blue)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "figure.walk")
+                                        .foregroundColor(.white)
+                                    Text("Exercise")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+
+                        Button(action: {}) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.red)
+                                    .shadow(radius: 4)
+                                VStack {
+                                    Image(systemName: "bandage.fill")
+                                        .foregroundColor(.white)
+                                    Text("First Aid")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            .navigationTitle("Health Services")
-            .onAppear {
-                viewModel.fetchMedicalServices()
-                generateSuggestions()
-            }
-        }
-    }
-
-    // Filter facilities based on search query
-    private func filteredFacilities() -> [MedicalService] {
-        if searchQuery.isEmpty {
-            return viewModel.medicalServices
-        }
-        return viewModel.medicalServices.filter {
-            $0.properties.POI_NAME.localizedCaseInsensitiveContains(searchQuery) ||
-            $0.properties.POI_TYPE.localizedCaseInsensitiveContains(searchQuery)
-        }
-    }
-
-    // Generate random suggestions near the user
-    private func generateSuggestions() {
-        guard let userLocation = viewModel.userLocation else { return }
-        let nearbyServices = viewModel.medicalServices.filter { service in
-            let serviceLocation = CLLocation(
-                latitude: service.geometry.coordinates[1],
-                longitude: service.geometry.coordinates[0]
-            )
-            let userLocationCL = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
-            return serviceLocation.distance(from: userLocationCL) < 5000 // Within 5 km
-        }
-        suggestedServices = Array(nearbyServices.shuffled().prefix(5)) // Pick 5 random services
-    }
-
-    // Filter suggestions as search query updates
-    private func filterFacilities() {
-        if searchQuery.isEmpty {
-            generateSuggestions()
-        } else {
-            suggestedServices = filteredFacilities()
+            .padding()
         }
     }
 }
