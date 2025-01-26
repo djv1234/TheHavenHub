@@ -21,6 +21,7 @@ struct MapOverlayView: View {
     
     let routeCalc: RouteCalculator
     let userLocation: UserLocation
+    @StateObject var viewManager: ViewManager
     
     var body: some View {
         GeometryReader{ geometry in
@@ -38,7 +39,7 @@ struct MapOverlayView: View {
                     
                     LocationButton(route: $route, cameraPosition: $cameraPosition, userLocation: userLocation, routeCalc: routeCalc)
                     
-                    ProfileButton()
+                    ProfileButton(viewManager: viewManager)
                 }
                 
                 Spacer()

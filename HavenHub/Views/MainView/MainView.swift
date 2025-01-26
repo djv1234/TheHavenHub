@@ -36,7 +36,7 @@ struct MainView: View {
                         showingMenu: $showingMenu,
                         visibleRegion: $visibleRegion, userLocation: userLocation, distanceCalc: distanceCalc, routeCalc: routeCalc)
 
-            MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: userLocation, searchTerms: $searchTerms, routeCalc: routeCalc, userLocation: userLocation)
+            MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: userLocation, searchTerms: $searchTerms, routeCalc: routeCalc, userLocation: userLocation, viewManager: viewManager)
                 .shadow(radius: 5)
 
             BottomSheetView(

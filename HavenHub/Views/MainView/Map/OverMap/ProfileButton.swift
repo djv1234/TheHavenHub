@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ProfileButton: View {
+    @StateObject var viewManager: ViewManager
+    
     var body: some View {
         Button(action: {
-            // Profile button action placeholder
+            withAnimation{
+                viewManager.navigateToProfile()
+            }
         }) {
             ZStack {
                 Circle()

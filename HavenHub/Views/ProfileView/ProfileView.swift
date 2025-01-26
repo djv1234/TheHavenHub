@@ -12,7 +12,9 @@ struct ProfileView: View {
     
     var body: some View {
         Button {
-            viewManager.navigateToMain()
+            withAnimation(){
+                viewManager.navigateToMain()
+            }
         } label: {
             Text("Click me to go back to the main view")
         }

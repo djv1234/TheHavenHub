@@ -15,8 +15,10 @@ struct ContentView: View {
             switch viewManager.currentView {
             case .main:
                 MainView(viewManager: viewManager)
+                    .transition(.move(edge: .leading))
             case .profile:
                 ProfileView(viewManager: viewManager)
+                    .transition(.move(edge: .trailing))
             case .health:
                 HealthView(viewManager: viewManager)
             }
