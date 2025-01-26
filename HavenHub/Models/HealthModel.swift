@@ -5,14 +5,14 @@
 //  Created by Garrett Butchko on 1/26/25.
 //
 
-struct HealthModel: Codable {
+struct HealthModel: Codable, Hashable {
     var type: String
     var icon: String
     var color: String
-    var info: [Info]
+    var info: Info
 }
 
-struct Info: Codable {
+struct Info: Codable, Hashable {
     var title: String
-    var text: String
+    var subtitle: String
 }

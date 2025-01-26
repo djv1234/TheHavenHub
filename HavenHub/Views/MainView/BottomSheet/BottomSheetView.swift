@@ -23,6 +23,7 @@ struct BottomSheetView: View {
     let userLocationStruct: UserLocation
     let distanceCalc: DistanceCalculator
     let routeCalc: RouteCalculator
+    @StateObject var viewManager: ViewManager
 
     var body: some View {
         GeometryReader { geometry in
@@ -51,7 +52,7 @@ struct BottomSheetView: View {
                             MapMenuView(mapItem: $currentItem, showingMenu: $showingMenu)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         } else {
-                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition)
+                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, viewManager: viewManager)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }

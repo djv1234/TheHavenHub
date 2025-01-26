@@ -12,6 +12,7 @@ struct ButtonView: View {
     @Binding var showEmergency: Bool // Controls whether the emergency view is shown
     var geometry: GeometryProxy // Provides the size and dimensions of the parent view
     @Binding var cameraPosition: MapCameraPosition // Tracks the current position of the map camera
+    @StateObject var viewManager: ViewManager
     
     var body: some View {
         VStack {
@@ -92,21 +93,21 @@ struct ButtonView: View {
                     }
                 }
                 
-                // Medical Button
-                Button(action: {
-                    // Action for the Medical button (placeholder)
-                }) {
-                    ZStack {
-                        // Background style
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.main)
-                            .shadow(radius: 4)
-                        
-                        Image(systemName: "cross.fill")
-                            .foregroundColor(Color.red)
+                    Button(action: {
+                        viewManager.navigateToHealth()
+                    }) {
+                        ZStack {
+                            // Background style
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(.main)
+                                .shadow(radius: 4)
+                            
+                            Image(systemName: "cross.fill")
+                                .foregroundColor(Color.red)
+                        }
                     }
-                }
                 
+    
                 // Clothing Button
                 Button(action: {
                     // Action for the Clothing button (placeholder)
