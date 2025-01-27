@@ -24,6 +24,27 @@ struct HealthView: View {
 
     var body: some View {
         ScrollView {
+            
+            HStack{
+                Button(action: {
+                    withAnimation{
+                        viewManager.navigateToMain()
+                    }
+                }) {
+                    ZStack {
+                        Circle()
+                        VStack {
+                            Image(systemName: "arrow.left")
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+                .frame(width: 30, height: 30)
+                .padding(.horizontal)
+                Spacer()
+            }
+            
+            
             VStack(spacing: 20) {
                 if showTitle {
                     Text("Health Resources")

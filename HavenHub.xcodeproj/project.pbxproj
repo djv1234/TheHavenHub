@@ -347,7 +347,7 @@
 				21AC48972D2DEAF40097F93F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		21AC48982D2DEAF40097F93F /* Build configuration list for PBXNativeTarget "HavenHub" */ = {
 			isa = XCConfigurationList;
@@ -356,7 +356,7 @@
 				21AC489A2D2DEAF40097F93F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

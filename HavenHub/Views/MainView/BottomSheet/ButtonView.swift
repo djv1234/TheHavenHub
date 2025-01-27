@@ -94,7 +94,9 @@ struct ButtonView: View {
                 }
                 
                     Button(action: {
-                        viewManager.navigateToHealth()
+                        withAnimation{
+                            viewManager.navigateToHealth()
+                        }
                     }) {
                         ZStack {
                             // Background style
