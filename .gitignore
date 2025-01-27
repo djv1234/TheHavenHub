@@ -38,5 +38,5 @@ fastlane/test_output
 # API Keys and Config Files
 *.xcconfig
 Secrets.plist
-*.plist
+GoogleService-Info.plist
 .env
