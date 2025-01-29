@@ -1,13 +1,13 @@
 //
-//  SignUpView.swift
+//  LoginPage.swift
 //  HavenHub
 //
-//  Created by Garrett Butchko on 1/29/25.
+//  Created by Garrett Butchko on 1/28/25.
 //
 
 import SwiftUI
 
-struct SingUpView: View {
+struct LoginView: View {
     @StateObject var authViewModel: AuthViewModel
     @StateObject var viewManager: ViewManager
     @State private var email = ""
@@ -64,3 +64,4 @@ struct SingUpView: View {
         .navigationTitle("Firebase Auth")
     }
 }
+

@@ -7,8 +7,7 @@
 
 import Foundation
 import FirebaseAuth
-import FirebaseFirestore
-import FirebaseStorage
+import FirebaseDatabase
 
 class AuthViewModel: ObservableObject {
     @Published var user: User?
@@ -17,23 +16,21 @@ class AuthViewModel: ObservableObject {
         self.user = Auth.auth().currentUser
     }
     
-    func fetchUserName(completion: @escaping (String?) -> Void) {
-        guard let userId = user?.uid else { return }
-
-            let db = Firestore.firestore()
-            db.collection("users").document(userId).getDocument { document, error in
-                if let document = document, document.exists {
-                    completion(document.data()?["name"] as? String ?? "Unknown User")
-                }
+    func fetchData<T>(key: String, completion: @escaping (T?) -> Void) {
+        let ref = Database.database().reference()
+        if let userId = user?.uid{
+            ref.child("users").child(userId).child(key).observe(.value) { snapshot in
+                completion(snapshot.value as? T ?? "N/A" as! T)
             }
         }
+    }
     
-    func saveName(userId: String, name: String, completion: @escaping (Bool) -> Void) {
-        let db = Firestore.firestore()
-        let userRef = db.collection("users").document(userId)
-        
-        userRef.setData(["name": name], merge: true) { error in
-            completion(error == nil)
+    func saveData<T>(key: String, data: T, completion: @escaping (Bool) -> Void) {
+        let ref = Database.database().reference()
+        if let userId = user?.uid{
+            ref.child("users").child(userId).setValue([key: data]) { error, _ in
+                completion(error == nil)
+            }
         }
     }
     

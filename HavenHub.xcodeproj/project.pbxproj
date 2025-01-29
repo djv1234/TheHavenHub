@@ -96,18 +96,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2123A4D92D4A9C9A00AA2CFD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		21AC487F2D2DEAF30097F93F = {
 			isa = PBXGroup;
 			children = (
 				21AC488A2D2DEAF30097F93F /* HavenHub */,
-				2123A4D92D4A9C9A00AA2CFD /* Frameworks */,
 				21AC48892D2DEAF30097F93F /* Products */,
 			);
 			sourceTree = "<group>";
