@@ -27,48 +27,52 @@ struct ContentView: View {
     let locationSearch = UserLocation()
     
     var body: some View {
-        ZStack(alignment: .top) {
-            MainMapView(cameraPosition: $cameraPosition,
-                        route: $route,
-                        currentItem: $currentItem,
-                        showingMenu: $showingMenu,
-                        visibleRegion: $visibleRegion,
-                        shelters: $shelters,
-                        selectedResult: $selectedResult
-            )
-
-            TitleBarView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: locationSearch)
-            
-            if (showBottomSheet){
-                BottomSheetView(
-                    offsetY: $offsetY,
-                    isKeyboardVisible: $isKeyboardVisible,
-                    cameraPosition: $cameraPosition,
-                    showEmergency: $showEmergency,
-                    mapItems: $mapItems,
-                    visibleRegion: $visibleRegion,
-                    currentItem: $currentItem,
-                    showTitle: $showTitle,
-                    showingMenu: $showingMenu,
-                    route: $route,
-                    shelters: $shelters,
-                    showBottomSheet: $showBottomSheet,
-                    showFoodBank: $showFoodBank,
-                    userLocation: MKCoordinateRegion(
-                        center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
-                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                    )
-                    
+        NavigationStack {
+            ZStack(alignment: .top) {
+                MainMapView(cameraPosition: $cameraPosition,
+                            route: $route,
+                            currentItem: $currentItem,
+                            showingMenu: $showingMenu,
+                            visibleRegion: $visibleRegion,
+                            shelters: $shelters,
+                            selectedResult: $selectedResult
                 )
+                
+                TitleBarView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: locationSearch)
+                
+                if (showBottomSheet){
+                    BottomSheetView(
+                        offsetY: $offsetY,
+                        isKeyboardVisible: $isKeyboardVisible,
+                        cameraPosition: $cameraPosition,
+                        showEmergency: $showEmergency,
+                        mapItems: $mapItems,
+                        visibleRegion: $visibleRegion,
+                        currentItem: $currentItem,
+                        showTitle: $showTitle,
+                        showingMenu: $showingMenu,
+                        route: $route,
+                        shelters: $shelters,
+                        showBottomSheet: $showBottomSheet,
+                        showFoodBank: $showFoodBank,
+                        userLocation: MKCoordinateRegion(
+                            center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
+                            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                        )
+                        
+                    )
+                }
+                
+                if (showFoodBank){
+                    FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle)
+                }
+                
+                EmergencyView(showEmergency: $showEmergency)
+                    .opacity(showEmergency ? 1 : 0)
             }
-            
-            if (showFoodBank){
-                FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank)
-            }
-
-            EmergencyView(showEmergency: $showEmergency)
-                .opacity(showEmergency ? 1 : 0)
+            .ignoresSafeArea(.keyboard)
+            .navigationBarHidden(true)
+            .toolbar(.hidden, for: .navigationBar)
         }
-        .ignoresSafeArea(.keyboard)
     }
 }

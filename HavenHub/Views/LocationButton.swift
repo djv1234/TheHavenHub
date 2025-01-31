@@ -11,15 +11,18 @@ import MapKit
 struct LocationButton: View {
     @Binding var route: MKRoute?
     @Binding var cameraPosition: MapCameraPosition
+    @StateObject private var locationManager = LocationManager()
     let locationSearch: UserLocation
     
     var body: some View {
         Button(action: {
             withAnimation {
-                if let route = route {
-                    adjustCameraForRoute(route)
-                } else {
-                    locationSearch.goToUserLocation(cameraPosition: $cameraPosition)
+                if let userLocation = locationManager.userLocation {
+                    let newRegion = MKCoordinateRegion(
+                        center: userLocation,
+                        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    )
+                    cameraPosition = .region(newRegion)
                 }
             }
         }) {
@@ -39,5 +42,25 @@ struct LocationButton: View {
         let routeBoundingRect = route.polyline.boundingMapRect
         let centerCoordinate = MKMapPoint(x: routeBoundingRect.midX, y: routeBoundingRect.midY).coordinate
         cameraPosition = .camera(MapCamera(centerCoordinate: centerCoordinate, distance: route.distance * 2.5))
+    }
+}
+
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private let locationManager = CLLocationManager()
+    @Published var userLocation: CLLocationCoordinate2D?
+
+    override init() {
+        super.init()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            userLocation = location.coordinate
+            locationManager.stopUpdatingLocation()
+        }
     }
 }

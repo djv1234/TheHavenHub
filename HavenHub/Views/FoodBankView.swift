@@ -1,10 +1,3 @@
-//
-//  FoodBank.swift
-//  HavenHub
-//
-//  Created by Khush Patel on 1/23/25.
-//
-
 import SwiftUI
 import MapKit
 
@@ -14,7 +7,11 @@ struct FoodBankView: View {
     @Binding var shelters: [MKMapItem]
     @Binding var showBottomSheet: Bool
     @Binding var showFoodBank: Bool
-    
+    @Binding var showTitle: Bool
+    @State private var isKeyboardVisible: Bool = false
+    @State var offsetY: CGFloat = 540
+    @State var lastDragPosition: CGFloat = 0
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -27,13 +24,16 @@ struct FoodBankView: View {
                         .padding(10)
                     
                     List(shelters, id: \.self) { shelter in
-                        VStack(alignment: .leading) {
-                            Text(shelter.name ?? "Unnamed Food Bank")
-                                .font(.headline)
-                            Text("Address: Placeholder Address")
-                                .font(.subheadline)
+                        NavigationLink(destination: FoodBankDetailView(shelter: shelter)) {
+                            VStack(alignment: .leading) {
+                                Text(shelter.name ?? "Unnamed Food Bank")
+                                    .font(.headline)
+                                Text(shelter.placemark.title ?? "Address unavailable")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding()
                         }
-                        .padding()
                     }
                     .listStyle(PlainListStyle())
                     .frame(height: geometry.size.height * 0.4) // Restrict the list to 40% of the screen height
@@ -56,9 +56,11 @@ struct FoodBankView: View {
                     }
                     .padding()
                 }
-                .background(Color.white.opacity(0.9)) // Make the bottom sheet background slightly opaque
-                .cornerRadius(20)
-                .shadow(radius: 10)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.sub)
+                        .shadow(radius: 10)
+                )
             }
         }
     }
