@@ -114,56 +114,33 @@ struct HealthView: View {
                         }
                     }
                 }
-                Text("MISCELLEANEOUS")
+                Text("MISCELLANEOUS")
                     .font(.headline)
                     .padding(.top, 20)
                 
                 LazyHGrid(rows: rows2, alignment: .center) {
-                                        Button(action: {}) {
-                                            ZStack {
-                                                RoundedRectangle(cornerRadius: 20)
-                                                    .fill(Color.cyan)
-                                                    .shadow(radius: 4)
-                                                VStack {
-                                                    Image(systemName: "figure.mind.and.body.circle")
-                                                        .foregroundColor(.white)
-                                                    Text("Mindfulness")
-                                                        .foregroundColor(.white)
-                                                        .font(.footnote)
-                                                }
-                                            }
-                                        }
-
-                                        Button(action: {}) {
-                                            ZStack {
-                                                RoundedRectangle(cornerRadius: 20)
-                                                    .fill(Color.orange)
-                                                    .shadow(radius: 4)
-                                                VStack {
-                                                    Image(systemName: "bathtub")
-                                                        .foregroundColor(.white)
-                                                    Text("Hygiene")
-                                                        .foregroundColor(.white)
-                                                        .font(.footnote)
-                                                }
-                                            }
-                                        }
-
-                                        Button(action: {}) {
-                                            ZStack {
-                                                RoundedRectangle(cornerRadius: 20)
-                                                    .fill(Color.teal)
-                                                    .shadow(radius: 4)
-                                                VStack {
-                                                    Image(systemName: "progress.indicator")
-                                                        .foregroundColor(.white)
-                                                    Text("MyProgress")
-                                                        .foregroundColor(.white)
-                                                        .font(.footnote)
-                                                }
-                                            }
-                                        }
+                    ForEach(healthResources, id: \.self) { item in
+                        if item.type == "Miscellaneous"{
+                            Button(action: {
+                                
+                            }) {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(Color.fromString(item.color))
+                                        .shadow(radius: 4)
+                                    VStack {
+                                        Image(systemName: item.icon)
+                                            .foregroundColor(.white)
+                                        Text(item.info.title)
+                                            .foregroundColor(.white)
+                                            .font(.footnote)
                                     }
+                                }
+                            }
+                            .frame(width: 120, height: 50)
+                        }
+                    }
+                }
                 
             }
             .padding()
@@ -172,8 +149,4 @@ struct HealthView: View {
 }
 
 
-struct HealthView_Previews: PreviewProvider {
-    static var previews: some View {
-        HealthView()
-    }
-}
+

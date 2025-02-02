@@ -107,5 +107,32 @@
             "title": "First Aid",
             "subtitle": "Emergency health support"
         }
+    },
+    {
+        "type": "Miscellaneous",
+        "icon": "figure.mind.and.body.circle",
+        "color": "cyan",
+        "info": {
+            "title": "Mindfulness",
+            "subtitle": "Let's get you in the right headspace - meditation and more"
+        }
+    },
+    {
+        "type": "Miscellaneous",
+        "icon": "bathtub",
+        "color": "orange",
+        "info": {
+            "title": "Hygiene",
+            "subtitle": "Find resources to help you stay on top of your hygiene game"
+        }
+    },
+    {
+        "type": "Miscellaneous",
+        "icon": "progress.indicator",
+        "color": "teal",
+        "info": {
+            "title": "MyProgress",
+            "subtitle": "Taking small steps daily goes a long way - see how you're progressing over time"
+        }
     }
 ]
