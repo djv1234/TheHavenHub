@@ -14,6 +14,7 @@ class ViewManager: ObservableObject {
         case main
         case profile
         case health
+        case anxiety
     }
     
     func navigateToMain() {
@@ -26,5 +27,9 @@ class ViewManager: ObservableObject {
     
     func navigateToHealth() {
         currentView = .health
+    }
+    
+    func navigateToAnxiety(){
+        currentView = .anxiety
     }
 }

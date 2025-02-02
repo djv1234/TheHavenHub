@@ -22,6 +22,9 @@ struct ContentView: View {
             case .health:
                 HealthView(viewManager: viewManager)
                     .transition(.move(edge: .trailing))
+            case .anxiety:
+                AnxietyView(viewManager: viewManager)
+                    .transition(.move(edge: .trailing))
             }
         }
     }

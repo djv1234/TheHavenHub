@@ -65,8 +65,9 @@ struct HealthView: View {
                 LazyHGrid(rows: rows1, alignment: .center) {
                     ForEach(healthResources, id: \.self) { item in
                         if item.type == "Mental Health"{
-                            Button(action: {
-                                
+                            Button(action: {withAnimation{
+                                viewManager.navigateToAnxiety()
+                                }
                             }){
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
@@ -79,12 +80,7 @@ struct HealthView: View {
                                             .foregroundColor(.white)
                                             .font(.footnote)
                                     }
-                                    NavigationLink(destination: AnxietyView()) {
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.clear)
-                                            .frame(width: 120, height: 50)
-                                            .contentShape(Rectangle())
-                                    }
+                                    
                                 }
                             }
                             .frame(width: 120, height: 50)
