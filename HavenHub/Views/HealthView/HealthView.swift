@@ -67,7 +67,7 @@ struct HealthView: View {
                         if item.type == "Mental Health"{
                             Button(action: {
                                 
-                            }) {
+                            }){
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
                                         .fill(Color.fromString(item.color))
@@ -78,6 +78,12 @@ struct HealthView: View {
                                         Text(item.info.title)
                                             .foregroundColor(.white)
                                             .font(.footnote)
+                                    }
+                                    NavigationLink(destination: AnxietyView()) {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .fill(Color.clear)
+                                            .frame(width: 120, height: 50)
+                                            .contentShape(Rectangle())
                                     }
                                 }
                             }
