@@ -91,14 +91,9 @@ struct ProfileView: View {
             }
         }
         .onAppear(){
-            
-            if let id = authViewModel.user?.uid {
-                authViewModel.fetchUserData(key: "name", completion: { name in
-            
-                    self.name = name!
-                    
-                })
-            }
+            authViewModel.fetchUserData(key: "name", completion: { name in
+                self.name = name!
+            })
         }
     }
 }
