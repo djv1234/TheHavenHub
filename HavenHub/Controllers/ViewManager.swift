@@ -6,15 +6,27 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 class ViewManager: ObservableObject {
-    @Published var currentView: ViewType = .main
+    @Published var currentView: ViewType
     
     enum ViewType {
         case main
         case profile
         case health
         case anxiety
+        case login
+    }
+    
+    init() {
+        // Check if a user is logged in
+        if Auth.auth().currentUser != nil {
+            self.currentView = .main
+        } else {
+            self.currentView = .login
+        }
+   
     }
     
     func navigateToMain() {
@@ -28,8 +40,13 @@ class ViewManager: ObservableObject {
     func navigateToHealth() {
         currentView = .health
     }
-    
+   
     func navigateToAnxiety(){
         currentView = .anxiety
     }
+
+    func navigateToLogin() {
+        currentView = .login
+    }
 }
+
