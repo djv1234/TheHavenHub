@@ -33,7 +33,7 @@ struct HealthView: View {
                     
                     Text("MENTAL HEALTH & WELL-BEING")
                         .font(.headline)
-                        .padding(.bottom, 10)
+                        .padding(.vertical, 10)
                     
                     
                     LazyHGrid(rows: rows1, alignment: .center) {
@@ -91,8 +91,7 @@ struct HealthView: View {
                 }
                 .padding()
                 .padding(.top, 40)
-            }
-           
+                
                 Text("MISCELLANEOUS")
                     .font(.headline)
                     .padding(.top, 20)
@@ -120,6 +119,9 @@ struct HealthView: View {
                         }
                     }
                 }
+            }
+           
+                
           
           HStack{
                 Button(action: {

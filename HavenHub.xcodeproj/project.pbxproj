@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
 		21D6FF2C2D4C894B001B2382 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6FF2B2D4C894B001B2382 /* FirebaseAnalytics */; };
 		21D6FF2E2D4C894B001B2382 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6FF2D2D4C894B001B2382 /* FirebaseAnalyticsOnDeviceConversion */; };
 		21D6FF302D4C894B001B2382 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6FF2F2D4C894B001B2382 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -32,7 +31,6 @@
 		21D6FF562D4C894B001B2382 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6FF552D4C894B001B2382 /* FirebaseStorage */; };
 		21D6FF582D4C894B001B2382 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6FF572D4C894B001B2382 /* FirebaseStorageCombine-Community */; };
 		21D6FF5A2D4C894B001B2382 /* FirebaseVertexAI in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6FF592D4C894B001B2382 /* FirebaseVertexAI */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +50,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				21D6FF4E2D4C894B001B2382 /* FirebaseMessaging in Frameworks */,
 				21D6FF5A2D4C894B001B2382 /* FirebaseVertexAI in Frameworks */,
 				21D6FF442D4C894B001B2382 /* FirebaseFirestoreCombine-Community in Frameworks */,
@@ -83,18 +80,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1EEE23FA2D4C630A00BD28AE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		21AC487F2D2DEAF30097F93F = {
 			isa = PBXGroup;
 			children = (
 				21AC488A2D2DEAF30097F93F /* HavenHub */,
-				1EEE23FA2D4C630A00BD28AE /* Frameworks */,
 				21AC48892D2DEAF30097F93F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,7 +116,6 @@
 			);
 			name = HavenHub;
 			packageProductDependencies = (
-
 				21D6FF2B2D4C894B001B2382 /* FirebaseAnalytics */,
 				21D6FF2D2D4C894B001B2382 /* FirebaseAnalyticsOnDeviceConversion */,
 				21D6FF2F2D4C894B001B2382 /* FirebaseAnalyticsWithoutAdIdSupport */,
@@ -152,7 +140,6 @@
 				21D6FF552D4C894B001B2382 /* FirebaseStorage */,
 				21D6FF572D4C894B001B2382 /* FirebaseStorageCombine-Community */,
 				21D6FF592D4C894B001B2382 /* FirebaseVertexAI */,
-
 			);
 			productName = HavenHub;
 			productReference = 21AC48882D2DEAF30097F93F /* HavenHub.app */;
@@ -183,9 +170,7 @@
 			mainGroup = 21AC487F2D2DEAF30097F93F;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-
 				21D6FF292D4C8940001B2382 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 21AC48892D2DEAF30097F93F /* Products */;
@@ -431,9 +416,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-
 		21D6FF292D4C8940001B2382 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -444,7 +427,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-
 		21D6FF2B2D4C894B001B2382 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 21D6FF292D4C8940001B2382 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -563,7 +545,6 @@
 		21D6FF592D4C894B001B2382 /* FirebaseVertexAI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 21D6FF292D4C8940001B2382 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-
 			productName = FirebaseVertexAI;
 		};
 /* End XCSwiftPackageProductDependency section */
