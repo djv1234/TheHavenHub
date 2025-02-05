@@ -16,7 +16,7 @@ class AuthViewModel: ObservableObject {
         self.user = Auth.auth().currentUser
     }
     
-    func fetchData<T>(key: String, completion: @escaping (T?) -> Void) {
+    func fetchUserData<T>(key: String, completion: @escaping (T?) -> Void) {
         let ref = Database.database().reference()
         if let userId = user?.uid{
             ref.child("users").child(userId).child(key).observe(.value) { snapshot in
@@ -25,7 +25,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func saveData<T>(key: String, data: T, completion: @escaping (Bool) -> Void) {
+    func saveUserData<T>(key: String, data: T, completion: @escaping (Bool) -> Void) {
         let ref = Database.database().reference()
         if let userId = user?.uid{
             ref.child("users").child(userId).setValue([key: data]) { error, _ in

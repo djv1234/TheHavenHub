@@ -71,7 +71,7 @@ struct ProfileView: View {
                 } else {
                     Button("Save") {
                         editProfile = false
-                        authViewModel.saveData(key: "name", data: name, completion: { _ in })
+                        authViewModel.saveUserData(key: "name", data: name, completion: { _ in })
                     }
                 }
                 
@@ -93,7 +93,7 @@ struct ProfileView: View {
         .onAppear(){
             
             if let id = authViewModel.user?.uid {
-                authViewModel.fetchData(key: "name", completion: { name in
+                authViewModel.fetchUserData(key: "name", completion: { name in
             
                     self.name = name!
                     
