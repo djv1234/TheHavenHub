@@ -36,12 +36,7 @@ struct BottomSheetView: View {
                         .foregroundColor(.gray)
                         .padding(10)
                     
-<<<<<<< HEAD:HavenHub/Views/MainView/BottomSheet/BottomSheetView.swift
-                    SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $region, nameIsFocused: $nameIsFocused, searchTerms: $searchTerms)
-=======
-                    SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $visibleRegion, nameIsFocused: $nameIsFocused)
->>>>>>> khush:HavenHub/Views/BottomSheetView.swift
-
+                    SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $visibleRegion, nameIsFocused: $nameIsFocused, searchTerms: $searchTerms)
                     Group {
                         if isKeyboardVisible {
                             SearchResultsView(
@@ -58,11 +53,7 @@ struct BottomSheetView: View {
                             MapMenuView(mapItem: $currentItem, showingMenu: $showingMenu)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         } else {
-<<<<<<< HEAD:HavenHub/Views/MainView/BottomSheet/BottomSheetView.swift
-                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, viewManager: viewManager)
-=======
-                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, shelters: $shelters, visibleRegion: $visibleRegion, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank)
->>>>>>> khush:HavenHub/Views/BottomSheetView.swift
+                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, viewManager: ViewManager(), shelters: $shelters, visibleRegion: $visibleRegion, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }

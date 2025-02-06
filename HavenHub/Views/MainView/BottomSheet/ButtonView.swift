@@ -12,15 +12,12 @@ struct ButtonView: View {
     @Binding var showEmergency: Bool // Controls whether the emergency view is shown
     var geometry: GeometryProxy // Provides the size and dimensions of the parent view
     @Binding var cameraPosition: MapCameraPosition // Tracks the current position of the map camera
-<<<<<<< HEAD:HavenHub/Views/MainView/BottomSheet/ButtonView.swift
     @StateObject var viewManager: ViewManager
-=======
     @Binding var shelters: [MKMapItem]
     @Binding var visibleRegion: MKCoordinateRegion?
     @Binding var showBottomSheet: Bool
     @Binding var showFoodBank: Bool
     @State var queryWords: [String] = []
->>>>>>> khush:HavenHub/Views/ButtonView.swift
     
     var body: some View {
         VStack {
@@ -171,8 +168,8 @@ struct ButtonView: View {
                 Button(action: {
                     // Hide the bottom sheet when food banks are shown
                     withAnimation {
-                        showBottomSheet.toggle()
-                        showFoodBank.toggle() // Toggle the visibility of the food banks
+                        showBottomSheet = false
+                        showFoodBank = true
                         queryWords = ["food banks"]
                         if let region = visibleRegion {
                             performSearch(in: region, queryWords: queryWords)
@@ -188,20 +185,20 @@ struct ButtonView: View {
                 }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.red)
-                        
+                            .fill(.main)
+                            .shadow(radius: 4)
                         VStack {
-                            Image(systemName: "phone.fill")
-                                .foregroundColor(.main)
+                            Image(systemName: "cart.fill")
+                                .foregroundColor(Color.gray)
                             Text("Food Banks")
-                                .foregroundStyle(.main)
+                                .foregroundStyle(Color.gray)
                                 .fontWeight(.bold)
                         }
                     }
                 }
             }
             .padding([.horizontal]) // Horizontal padding for the button row
-            .frame(width: geometry.size.width, height: geometry.size.height * 0.15) // Row height relative to screen size
+            .frame(width: geometry.size.width, height: geometry.size.height * 0.10) // Row height relative to screen size
         }
     }
     func findLocations(region: MKCoordinateRegion, searchReq: String, completion: @escaping ([MKMapItem]?) -> Void) {
