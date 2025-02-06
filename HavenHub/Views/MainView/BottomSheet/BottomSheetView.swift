@@ -7,12 +7,14 @@ struct BottomSheetView: View {
     @Binding var cameraPosition: MapCameraPosition
     @Binding var showEmergency: Bool
     @Binding var mapItems: [MKMapItem]
-    @Binding var region: MKCoordinateRegion?
+    @Binding var visibleRegion: MKCoordinateRegion?
     @Binding var currentItem: MKMapItem?
     @Binding var showTitle: Bool
     @Binding var showingMenu: Bool
     @Binding var route: MKRoute?
-
+    @Binding var shelters: [MKMapItem]
+    @Binding var showBottomSheet: Bool
+    @Binding var showFoodBank: Bool
     @State var lastDragPosition: CGFloat = 0
     @State private var searchText: String = ""
     @State var userLocation: MKCoordinateRegion
@@ -34,7 +36,11 @@ struct BottomSheetView: View {
                         .foregroundColor(.gray)
                         .padding(10)
                     
+<<<<<<< HEAD:HavenHub/Views/MainView/BottomSheet/BottomSheetView.swift
                     SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $region, nameIsFocused: $nameIsFocused, searchTerms: $searchTerms)
+=======
+                    SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $visibleRegion, nameIsFocused: $nameIsFocused)
+>>>>>>> khush:HavenHub/Views/BottomSheetView.swift
 
                     Group {
                         if isKeyboardVisible {
@@ -52,7 +58,11 @@ struct BottomSheetView: View {
                             MapMenuView(mapItem: $currentItem, showingMenu: $showingMenu)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         } else {
+<<<<<<< HEAD:HavenHub/Views/MainView/BottomSheet/BottomSheetView.swift
                             ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, viewManager: viewManager)
+=======
+                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, shelters: $shelters, visibleRegion: $visibleRegion, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank)
+>>>>>>> khush:HavenHub/Views/BottomSheetView.swift
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }
