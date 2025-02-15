@@ -10,6 +10,7 @@ import MapKit
 
 struct MainView: View {
     @StateObject var viewManager: ViewManager
+    @StateObject var authViewModel: AuthViewModel
     
     @State var offsetY: CGFloat = 540
     @State var showTitle: Bool = true
@@ -22,6 +23,7 @@ struct MainView: View {
     @State var showEmergency: Bool = false
     @State var route: MKRoute?
     @State var searchTerms: [String] = ["Homeless Shelters"]
+    @State var isSheetPresented: Bool = false
     
     let userLocation = UserLocation()
     let routeCalc = RouteCalculator()
@@ -36,7 +38,7 @@ struct MainView: View {
                         showingMenu: $showingMenu,
                         visibleRegion: $visibleRegion, userLocation: userLocation, distanceCalc: distanceCalc, routeCalc: routeCalc)
 
-            MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: userLocation, searchTerms: $searchTerms, routeCalc: routeCalc, userLocation: userLocation, viewManager: viewManager)
+            MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: userLocation, searchTerms: $searchTerms, showSheet: $isSheetPresented, routeCalc: routeCalc, userLocation: userLocation, viewManager: viewManager)
                 .shadow(radius: 5)
 
             BottomSheetView(
@@ -60,5 +62,8 @@ struct MainView: View {
                 .opacity(showEmergency ? 1 : 0)
         }
         .ignoresSafeArea(.keyboard)
+        .sheet(isPresented: $isSheetPresented) {
+            ProfileView(viewManager: viewManager, authViewModel: authViewModel)
+        }
     }
 }

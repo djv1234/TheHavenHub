@@ -1,21 +1,27 @@
 //
-//  SignUpView.swift
-//  HavenHub
+//  SingUpView.swift
+//  MiniMate
 //
-//  Created by Garrett Butchko on 1/29/25.
+//  Created by Garrett Butchko on 2/6/25.
 //
+
 
 import SwiftUI
 
-struct SingUpView: View {
+struct SignUpView: View {
     @StateObject var authViewModel: AuthViewModel
     @StateObject var viewManager: ViewManager
     @State private var email = ""
     @State private var password = ""
+    @State private var name = ""
     @State private var errorMessage: String?
     
     var body: some View {
         VStack(spacing: 20) {
+            
+            TextField("Name", text: $name)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.none)
             
             TextField("Email", text: $email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -31,36 +37,32 @@ struct SingUpView: View {
             }
             
             Button("Sign Up") {
+                
                 authViewModel.createUser(email: email, password: password) { result in
                     switch result {
-                    case .success:
+                    case .success(let user):
                         errorMessage = nil
-                        withAnimation(){
-                            viewManager.navigateToMain()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // Slight delay to ensure user is set
+                            authViewModel.saveUserData(key: "name", data: name) { success in
+                                if success {
+                                    withAnimation {
+                                        viewManager.navigateToMain()
+                                    }
+                                } else {
+                                    errorMessage = "Failed to save user data."
+                                }
+                            }
                         }
                     case .failure(let error):
                         errorMessage = error.localizedDescription
                     }
                 }
+
+                
+                
             }
-            .buttonStyle(.bordered)
-            
-            Button("Login") {
-                authViewModel.signIn(email: email, password: password) { result in
-                    switch result {
-                    case .success:
-                        errorMessage = nil
-                        withAnimation(){
-                            viewManager.navigateToMain()
-                        }
-                    case .failure(let error):
-                        errorMessage = error.localizedDescription
-                    }
-                }
-            }
-            .buttonStyle(.bordered)
+            .buttonStyle(.borderedProminent)
         }
         .padding()
-        .navigationTitle("Firebase Auth")
     }
 }

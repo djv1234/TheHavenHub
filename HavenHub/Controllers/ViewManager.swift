@@ -13,10 +13,10 @@ class ViewManager: ObservableObject {
     
     enum ViewType {
         case main
-        case profile
         case health
         case anxiety
         case login
+        case signup
     }
     
     init() {
@@ -33,10 +33,6 @@ class ViewManager: ObservableObject {
         currentView = .main
     }
     
-    func navigateToProfile() {
-        currentView = .profile
-    }
-    
     func navigateToHealth() {
         currentView = .health
     }
@@ -47,6 +43,10 @@ class ViewManager: ObservableObject {
 
     func navigateToLogin() {
         currentView = .login
+    }
+    
+    func navigateToSignUp() {
+        currentView = .signup
     }
 }
 

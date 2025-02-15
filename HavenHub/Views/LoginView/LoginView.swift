@@ -30,21 +30,6 @@ struct LoginView: View {
                     .font(.caption)
             }
             
-            Button("Sign Up") {
-                authViewModel.createUser(email: email, password: password) { result in
-                    switch result {
-                    case .success:
-                        errorMessage = nil
-                        withAnimation(){
-                            viewManager.navigateToMain()
-                        }
-                    case .failure(let error):
-                        errorMessage = error.localizedDescription
-                    }
-                }
-            }
-            .buttonStyle(.bordered)
-            
             Button("Login") {
                 authViewModel.signIn(email: email, password: password) { result in
                     switch result {
@@ -57,6 +42,29 @@ struct LoginView: View {
                         errorMessage = error.localizedDescription
                     }
                 }
+            }
+            .buttonStyle(.borderedProminent)
+            
+            Button("Login with Google") {
+                authViewModel.signInWithGoogle { result in
+                    switch result {
+                    case .success:
+                        errorMessage = nil
+                        withAnimation(){
+                            viewManager.navigateToMain()
+                        }
+                    case .failure(let error):
+                        errorMessage = error.localizedDescription
+                    }
+                }
+            }
+            .buttonStyle(.borderedProminent)
+            
+            Button("Sign Up") {
+                withAnimation(){
+                    viewManager.navigateToSignUp()
+                }
+    
             }
             .buttonStyle(.bordered)
         }
