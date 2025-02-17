@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-struct AnxietyView: View {
+struct HealthModelView: View {
     @StateObject var viewManager: ViewManager
+    
+    @State var healthModel: HealthModel
+    
     var body: some View {
         VStack {
             HStack {
