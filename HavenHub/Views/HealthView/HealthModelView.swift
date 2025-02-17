@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//add a scroller
 struct HealthModelView: View {
     @StateObject var viewManager: ViewManager
     
@@ -33,15 +33,15 @@ struct HealthModelView: View {
             .frame(maxWidth: .infinity, alignment: .leading) // Aligns to the left
             Spacer() // Pushes content below
         }
-        Text("Overview")
+        Text(healthModel.info.title)
             .font(.headline)
             .padding(.bottom, 10)
         
-        Text("Anxiety can feel overwhelming, especially when facing the stress of homelessness or otherwise difficult circumstances. It’s important to take small steps to manage it. Try deep breathing—inhale slowly through your nose, hold for a few seconds, and exhale through your mouth. If possible, find a quiet space, like a park or shelter, to rest and clear your mind. Talking to someone, whether a friend, a support worker, or a hotline, can help ease worries. Focus on one thing at a time—securing food, finding a safe place, or just getting through the day. You’re not alone, and help is available through shelters and community programs.")
+        Text(healthModel.info.overview)
         .padding()
         .lineLimit(nil)
         .fixedSize(horizontal: false, vertical: true)
-        Text("Common Symptoms")
+        //Text(healthModel.info.symptoms)
             .font(.headline)
             .padding(.bottom, 10)
         Text("- Accelerated heart rate")

@@ -10,9 +10,12 @@ struct HealthModel: Codable, Hashable {
     var icon: String
     var color: String
     var info: Info
+    
 }
 
 struct Info: Codable, Hashable {
     var title: String
     var subtitle: String
+    var overview: String
+    var symptoms: [String]
 }

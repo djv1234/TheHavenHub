@@ -6,7 +6,9 @@
         "color": "blue",
         "info": {
             "title": "Anxiety",
-            "subtitle": "Learn about managing anxiety"
+            "subtitle": "Learn about managing anxiety",
+            "overview": "Anxiety can feel overwhelming, especially when facing the stress of homelessness or otherwise difficult circumstances. It’s important to take small steps to manage it. Try deep breathing—inhale slowly through your nose, hold for a few seconds, and exhale through your mouth. If possible, find a quiet space, like a park or shelter, to rest and clear your mind. Talking to someone, whether a friend, a support worker, or a hotline, can help ease worries. Focus on one thing at a time—securing food, finding a safe place, or just getting through the day. You’re not alone, and help is available through shelters and community programs.",
+            "symptoms" : ["- accelerated heart rate", "- impending feeling of doom", "- physical pain or tension", "- hard time sleeping", "- irritability"]
         }
     },
     {
@@ -15,7 +17,9 @@
         "color": "purple",
         "info": {
             "title": "Depression",
-            "subtitle": "Resources for coping with depression"
+            "subtitle": "Resources for coping with depression",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -24,7 +28,9 @@
         "color": "red",
         "info": {
             "title": "Trauma",
-            "subtitle": "Support for trauma recovery"
+            "subtitle": "Support for trauma recovery",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -33,7 +39,9 @@
         "color": "orange",
         "info": {
             "title": "Drug Abuse",
-            "subtitle": "Help for substance abuse"
+            "subtitle": "Help for substance abuse",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -42,7 +50,9 @@
         "color": "yellow",
         "info": {
             "title": "Alcohol",
-            "subtitle": "Alcohol addiction resources"
+            "subtitle": "Alcohol addiction resources",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -51,7 +61,9 @@
         "color": "green",
         "info": {
             "title": "Grief & Loss",
-            "subtitle": "Dealing with loss and grief"
+            "subtitle": "Dealing with loss and grief",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -60,7 +72,9 @@
         "color": "teal",
         "info": {
             "title": "PTSD",
-            "subtitle": "Post-Traumatic Stress Disorder support"
+            "subtitle": "Post-Traumatic Stress Disorder support",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -69,7 +83,9 @@
         "color": "red",
         "info": {
             "title": "Bipolar Disorder",
-            "subtitle": "Managing bipolar disorder"
+            "subtitle": "Managing bipolar disorder",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -78,7 +94,9 @@
         "color": "gray",
         "info": {
             "title": "Schizophrenia",
-            "subtitle": "Understanding schizophrenia"
+            "subtitle": "Understanding schizophrenia",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -87,7 +105,9 @@
         "color": "green",
         "info": {
             "title": "Nutrition",
-            "subtitle": "Healthy eating tips"
+            "subtitle": "Healthy eating tips",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -96,7 +116,9 @@
         "color": "blue",
         "info": {
             "title": "Exercise",
-            "subtitle": "Staying active"
+            "subtitle": "Staying active",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -105,7 +127,9 @@
         "color": "red",
         "info": {
             "title": "First Aid",
-            "subtitle": "Emergency health support"
+            "subtitle": "Emergency health support",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -114,7 +138,9 @@
         "color": "cyan",
         "info": {
             "title": "Mindfulness",
-            "subtitle": "Let's get you in the right headspace - meditation and more"
+            "subtitle": "Let's get you in the right headspace - meditation and more",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -123,7 +149,9 @@
         "color": "orange",
         "info": {
             "title": "Hygiene",
-            "subtitle": "Find resources to help you stay on top of your hygiene game"
+            "subtitle": "Find resources to help you stay on top of your hygiene game",
+            "overview":"",
+            "symptoms": []
         }
     },
     {
@@ -132,7 +160,10 @@
         "color": "teal",
         "info": {
             "title": "MyProgress",
-            "subtitle": "Taking small steps daily goes a long way - see how you're progressing over time"
+            "subtitle": "Taking small steps daily goes a long way - see how you're progressing over time",
+            "overview":"",
+            "symptoms": []
         }
     }
+    
 ]
