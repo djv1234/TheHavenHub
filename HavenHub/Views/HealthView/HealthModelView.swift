@@ -41,16 +41,31 @@ struct HealthModelView: View {
         .padding()
         .lineLimit(nil)
         .fixedSize(horizontal: false, vertical: true)
-        //Text(healthModel.info.symptoms)
+        
             .font(.headline)
             .padding(.bottom, 10)
-        Text("- Accelerated heart rate")
-        Text("- Impending feeling of doom")
-        Text("- Physical pain or tension")
-        Text("- Hard time sleeping")
-        Text("- Irritability")
+        Text("Symptoms of " + healthModel.info.title)
+            .font(.headline)
+            .padding(10)
+        if !healthModel.info.symptoms.isEmpty {
+                        
+                        VStack(alignment: .leading, spacing: 5) {
+                            ForEach(healthModel.info.symptoms, id: \.self) { symptom in
+                                Text(symptom)
+                                    .padding(.leading, 10)
+                                    .lineLimit(nil)  
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
+                        .padding(.horizontal)
+                    } else {
+                        Text("No specific symptoms listed.")
+                            .foregroundColor(.gray)
+                            .padding(.top, 10)
+                    }
         
-        Text("Resources for managing anxiety")
+        
+        Text("Resources for managing " + healthModel.info.title)
             .font(.headline)
             .padding(10)
     }
