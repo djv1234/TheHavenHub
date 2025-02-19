@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E6917222D659763003BEF2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E6917212D659763003BEF2B /* Images.xcassets */; };
 		21D6FF2C2D4C894B001B2382 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6FF2B2D4C894B001B2382 /* FirebaseAnalytics */; };
 		21D6FF2E2D4C894B001B2382 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6FF2D2D4C894B001B2382 /* FirebaseAnalyticsOnDeviceConversion */; };
 		21D6FF302D4C894B001B2382 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6FF2F2D4C894B001B2382 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -35,7 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E6917212D659763003BEF2B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		21AC48882D2DEAF30097F93F /* HavenHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HavenHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,7 +83,6 @@
 		21AC487F2D2DEAF30097F93F = {
 			isa = PBXGroup;
 			children = (
-				1E6917212D659763003BEF2B /* Images.xcassets */,
 				21AC488A2D2DEAF30097F93F /* HavenHub */,
 				21AC48892D2DEAF30097F93F /* Products */,
 			);
@@ -190,7 +187,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E6917222D659763003BEF2B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
