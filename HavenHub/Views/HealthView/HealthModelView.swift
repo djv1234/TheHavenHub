@@ -12,34 +12,34 @@ struct HealthModelView: View {
     @State var healthModel: HealthModel
     
     var body: some View {
-        ScrollView {
-            VStack {
-                HStack {
-                    Button {
-                        withAnimation {
-                            viewManager.navigateToHealth()
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemName: "arrow.left")
-                                .foregroundColor(.blue)
-                            Text("Back")
-                                .foregroundColor(.blue)
-                        }
-                    }
-                    .padding()
-                    Spacer() // Pushes the button to the left
+        
+        HStack{
+            Button(action: {
+                withAnimation{
+                    viewManager.navigateToHealth()
                 }
-                .frame(maxWidth: .infinity, alignment: .leading) // Aligns to the left
-                Spacer() // Pushes content below
+            }) {
+                ZStack {
+                    //Circle()
+                    HStack {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.blue)
+                        Text("Back")
+                            .foregroundColor(.blue)
+                    }
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading)
             
-            
+            Spacer()
+        }
+        ScrollView {
             Text(healthModel.info.title)
                 .font(.headline)
                 .padding(.bottom, 10)
             
-            Image(healthModel.info.image) // Load image from Assets.xcassets
+            Image(healthModel.image) // Load image from Assets.xcassets
                                .resizable()
                                .scaledToFit()
                                .frame(width: 300, height: 200) // Adjust size as needed
@@ -56,10 +56,10 @@ struct HealthModelView: View {
             Text("Symptoms of " + healthModel.info.title)
                 .font(.headline)
                 .padding(10)
-            if !healthModel.info.symptoms.isEmpty {
+            if healthModel.type == "Mental Health" && !healthModel.info.symptoms!.isEmpty{
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    ForEach(healthModel.info.symptoms, id: \.self) { symptom in
+                    ForEach(healthModel.info.symptoms!, id: \.self) { symptom in
                         Text(symptom)
                             .padding(.leading, 10)
                             .lineLimit(nil)

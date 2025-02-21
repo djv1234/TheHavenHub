@@ -18,6 +18,5 @@ struct Info: Codable, Hashable {
     var title: String
     var subtitle: String
     var overview: String
-    var image: String
-    var symptoms: [String]
+    var symptoms: [String]?
 }
