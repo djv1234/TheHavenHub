@@ -29,6 +29,11 @@ struct ContentView: View {
             case .signup:
                 SignUpView(authViewModel: authViewModel, viewManager: viewManager)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
+            case .signupshelter:
+                SignUpViewShelter(authViewModel: authViewModel, viewManager: viewManager)
+                .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
+            case .text:
+                Text("Please wait until you are verified, thank you!")
             }
         }
     }

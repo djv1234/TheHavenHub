@@ -7,6 +7,10 @@
 
 import SwiftUI
 import FirebaseAuth
+import Foundation
+import FirebaseDatabase
+import GoogleSignIn
+import FirebaseCore
 
 class ViewManager: ObservableObject {
     @Published var currentView: ViewType
@@ -17,17 +21,40 @@ class ViewManager: ObservableObject {
         case anxiety
         case login
         case signup
+        case signupshelter
+        case text
+        case shelter
     }
     
     init() {
-        // Check if a user is logged in
         if Auth.auth().currentUser != nil {
-            self.currentView = .main
+            fetchUserRole { role in
+                DispatchQueue.main.async { // Ensure UI updates happen on the main thread
+                    if role == "shelter" {
+                        self.currentView = .shelter
+                    } else {
+                        self.currentView = .main
+                    }
+                }
+            }
         } else {
             self.currentView = .login
         }
-   
     }
+    
+    func fetchUserRole(completion: @escaping (String?) -> Void) {
+        let ref = Database.database().reference()
+        
+        if let userId = Auth.auth().currentUser?.uid {
+            ref.child("users").child(userId).child("role").observeSingleEvent(of: .value) { snapshot in
+                completion(snapshot.value as? String) // Assuming "role" is stored as a String (e.g., "shelter" or "user")
+            }
+        } else {
+            completion(nil)
+        }
+    }
+    
+    
     
     func navigateToMain() {
         currentView = .main
@@ -47,6 +74,14 @@ class ViewManager: ObservableObject {
     
     func navigateToSignUp() {
         currentView = .signup
+    }
+    
+    func navigateToSignUpShelter() {
+        currentView = .signupshelter
+    }
+    
+    func navigateText() {
+        currentView = .text
     }
 }
 

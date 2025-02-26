@@ -30,43 +30,83 @@ struct LoginView: View {
                     .font(.caption)
             }
             
-            Button("Login") {
-                authViewModel.signIn(email: email, password: password) { result in
-                    switch result {
-                    case .success:
-                        errorMessage = nil
-                        withAnimation(){
-                            viewManager.navigateToMain()
+            
+            HStack{
+                Button {
+                    authViewModel.signIn(email: email, password: password) { result in
+                        switch result {
+                        case .success:
+                            errorMessage = nil
+                            withAnimation(){
+                                viewManager.navigateToMain()
+                            }
+                        case .failure(let error):
+                            errorMessage = error.localizedDescription
                         }
-                    case .failure(let error):
-                        errorMessage = error.localizedDescription
+                    }
+                } label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(height: 50)
+                        Text("Login")
+                            .foregroundStyle(.white)
+                    }
+                }
+                
+                Button {
+                    authViewModel.signInWithGoogle { result in
+                        switch result {
+                        case .success:
+                            errorMessage = nil
+                            withAnimation(){
+                                viewManager.navigateToMain()
+                            }
+                        case .failure(let error):
+                            errorMessage = error.localizedDescription
+                        }
+                    }
+                } label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(height: 50)
+                            .foregroundStyle(.ultraThinMaterial)
+                        HStack{
+                            Image("google")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                            Text("Login")
+                                .foregroundStyle(.mainOpp)
+                        }
                     }
                 }
             }
-            .buttonStyle(.borderedProminent)
             
-            Button("Login with Google") {
-                authViewModel.signInWithGoogle { result in
-                    switch result {
-                    case .success:
-                        errorMessage = nil
-                        withAnimation(){
-                            viewManager.navigateToMain()
-                        }
-                    case .failure(let error):
-                        errorMessage = error.localizedDescription
-                    }
-                }
-            }
-            .buttonStyle(.borderedProminent)
             
-            Button("Sign Up") {
+            Button {
                 withAnimation(){
                     viewManager.navigateToSignUp()
                 }
-    
+            } label: {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(style: StrokeStyle(lineWidth: 1))
+                        .frame(width: 200, height: 50)
+                    Text("Sign Up")
+                }
             }
-            .buttonStyle(.bordered)
+            
+            Button {
+                withAnimation(){
+                    viewManager.navigateToSignUpShelter()
+                }
+            } label: {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(style: StrokeStyle(lineWidth: 1))
+                        .frame(width: 200, height: 50)
+                    Text("Shelter Sign Up")
+                }
+            }
         }
         .padding()
         .navigationTitle("Firebase Auth")
