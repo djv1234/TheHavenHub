@@ -12,6 +12,7 @@ import FirebaseDatabase
 import GoogleSignIn
 import FirebaseCore
 
+
 class AuthViewModel: ObservableObject {
     @Published var user: User?
 
@@ -55,6 +56,7 @@ class AuthViewModel: ObservableObject {
                 } else if let user = result?.user {
                     DispatchQueue.main.async {
                         self.user = user
+                        self.saveUserData(user: UserModel(name: user.displayName!, email: user.email!, password: "google")) { _ in }
                     }
                     completion(.success(user))
                 }
@@ -90,20 +92,119 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func fetchUserData<T>(key: String, completion: @escaping (T?) -> Void) {
+    func saveUserData(user: UserModel, completion: @escaping (Bool) -> Void) {
         let ref = Database.database().reference()
-        if let userId = user?.uid{
-            ref.child("users").child(userId).child(key).observe(.value) { snapshot in
-                completion(snapshot.value as? T ?? "N/A" as! T)
+        
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(false)
+            return
+        }
+
+        do {
+            let data = try JSONEncoder().encode(user)
+            let dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+
+            ref.child(userId).setValue(dictionary) { error, _ in
+                completion(error == nil)
+            }
+        } catch {
+            print("Error encoding user data: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
+    func fetchUserData(completion: @escaping (UserModel?) -> Void) {
+        let ref = Database.database().reference()
+        
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+
+        ref.child(userId).observeSingleEvent(of: .value) { snapshot, arg  in
+            guard let data = snapshot.value as? [String: Any] else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: data)
+                let user = try JSONDecoder().decode(UserModel.self, from: jsonData)
+                completion(user)
+            } catch {
+                print("Error decoding user data: \(error.localizedDescription)")
+                completion(nil)
             }
         }
     }
     
-    func saveUserData<T>(key: String, data: T, completion: @escaping (Bool) -> Void) {
+    func saveShelterData(user: ShelterModel, completion: @escaping (Bool) -> Void) {
+        
         let ref = Database.database().reference()
-        if let userId = user?.uid{
-            ref.child("users").child(userId).setValue([key: data]) { error, _ in
+        
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(false)
+            return
+        }
+
+        do {
+            let data = try JSONEncoder().encode(user)
+            let dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+
+            ref.child(userId).setValue(dictionary) { error, _ in
                 completion(error == nil)
+            }
+            
+            ref.child("shelters").childByAutoId().setValue(dictionary) { error, _ in
+                completion(error == nil)
+            }
+        } catch {
+            print("Error encoding user data: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
+    func fetchShelterData(completion: @escaping (ShelterModel?) -> Void) {
+        let ref = Database.database().reference()
+        
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+
+        ref.child(userId).observeSingleEvent(of: .value) { snapshot, arg  in
+            guard let data = snapshot.value as? [String: Any] else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: data)
+                let user = try JSONDecoder().decode(ShelterModel.self, from: jsonData)
+                completion(user)
+            } catch {
+                print("Error decoding user data: \(error.localizedDescription)")
+                completion(nil)
+            }
+        }
+    }
+    
+    func fetchGlobalShelters(completion: @escaping ([ShelterModel]?) -> Void) {
+        let ref = Database.database().reference().child("shelters")
+        
+        ref.observeSingleEvent(of: .value) { snapshot in
+            guard let value = snapshot.value as? [String: Any] else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: Array(value.values))
+                let shelters = try JSONDecoder().decode([ShelterModel].self, from: jsonData)
+                completion(shelters)
+            } catch {
+                print("Error decoding shelters: \(error.localizedDescription)")
+                completion(nil)
             }
         }
     }
@@ -118,4 +219,7 @@ class AuthViewModel: ObservableObject {
             print("Error signing out: \(error.localizedDescription)")
         }
     }
+    
+    
+
 }

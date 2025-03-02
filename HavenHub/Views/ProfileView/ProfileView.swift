@@ -1,23 +1,15 @@
-//
-//  ProfileView.swift
-//  MiniMate
-//
-//  Created by Garrett Butchko on 2/3/25.
-//
-
-
 import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewManager: ViewManager
     @StateObject var authViewModel: AuthViewModel
-    @State var name: String = "N/A"
+
     @State var editProfile: Bool = false
     
+    @State private var user : UserModel = UserModel(name: "", email: "", password: "")
+    
     var body: some View {
-        
-        VStack{
-            
+        VStack {
             Capsule()
                 .frame(width: 38, height: 6)
                 .foregroundColor(.gray)
@@ -28,27 +20,23 @@ struct ProfileView: View {
                 .font(.title)
                 .foregroundColor(.primary)
                 .fontWeight(.bold)
-
         }
         
-        List{
-            HStack{
+        List {
+            HStack {
                 Text("Name:")
-                if !editProfile{
-                    Text(name)
+                if !editProfile {
+                    Text(user.name) // Use @State variable
                 } else {
-                    TextField("name", text: $name)
+                    TextField("Name", text: $user.name) // Bind to @State variable
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .background(.ultraThinMaterial)
                 }
             }
             
-            
-            
-            Text("Email:  \(authViewModel.user?.email ?? "No email")")
-            
+            Text("Email: \(user.email)") // Show email from @State
             
             if authViewModel.user != nil {
-                
                 if !editProfile {
                     Button("Edit Profile") {
                         editProfile = true
@@ -56,21 +44,19 @@ struct ProfileView: View {
                 } else {
                     Button("Save") {
                         editProfile = false
-                        authViewModel.saveUserData(key: "name", data: name, completion: { _ in })
+                        authViewModel.saveUserData(user: user) { _ in }
                     }
                 }
                 
                 Button("Logout") {
-                    withAnimation{
+                    withAnimation {
                         viewManager.navigateToLogin()
                     }
                     authViewModel.logout()
-                    name = "N/A"
                 }
-                
             } else {
                 Button(action: {
-                    withAnimation{
+                    withAnimation {
                         viewManager.navigateToLogin()
                     }
                 }) {
@@ -78,13 +64,12 @@ struct ProfileView: View {
                 }
             }
         }
-        .onAppear(){
-            authViewModel.fetchUserData(key: "name", completion: { name in
-            
-                self.name = name!
-                    
-            })
+        .onAppear {
+            authViewModel.fetchUserData() { user in
+                if let newUser = user {
+                    self.user = newUser
+                }
+            }
         }
     }
 }
-

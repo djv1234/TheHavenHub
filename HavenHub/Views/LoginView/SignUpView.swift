@@ -11,27 +11,21 @@ import SwiftUI
 struct SignUpView: View {
     @StateObject var authViewModel: AuthViewModel
     @StateObject var viewManager: ViewManager
-    @State private var email = ""
+    
     @State private var password = ""
-    @State private var name = ""
+    
     @State private var errorMessage: String?
     
-    private var userData: [String: Any] {
-        [
-            "name": name,
-            "email": email,
-            "userType": "user"
-        ]
-    }
+    @State private var user = UserModel(name: "", email: "", password: "")
     
     var body: some View {
         VStack(spacing: 20) {
             
-            TextField("Name", text: $name)
+            TextField("Name", text: $user.name)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
             
-            TextField("Email", text: $email)
+            TextField("Email", text: $user.name)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
             
@@ -46,12 +40,12 @@ struct SignUpView: View {
             
             Button("Sign Up") {
                 
-                authViewModel.createUser(email: email, password: password) { result in
+                authViewModel.createUser(email: user.email, password: password) { result in
                     switch result {
                     case .success(_):
                         errorMessage = nil
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // Slight delay to ensure user is set
-                            authViewModel.saveUserData(key: "User Data", data: userData) { success in
+                            authViewModel.saveUserData(user: user) { success in
                                 if success {
                                     withAnimation {
                                         viewManager.navigateToMain()

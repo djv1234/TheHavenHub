@@ -34,6 +34,14 @@ struct ContentView: View {
                 .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
             case .text:
                 Text("Please wait until you are verified, thank you!")
+                Button("Logout") {
+                    withAnimation {
+                        viewManager.navigateToLogin()
+                    }
+                    authViewModel.logout()
+                }
+            case .shelter:
+                ShelterView(viewManager: viewManager, authViewModel: authViewModel)
             }
         }
     }

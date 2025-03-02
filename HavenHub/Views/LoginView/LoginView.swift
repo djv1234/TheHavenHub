@@ -38,7 +38,7 @@ struct LoginView: View {
                         case .success:
                             errorMessage = nil
                             withAnimation(){
-                                viewManager.navigateToMain()
+                                viewManager.checkUserStatus()
                             }
                         case .failure(let error):
                             errorMessage = error.localizedDescription

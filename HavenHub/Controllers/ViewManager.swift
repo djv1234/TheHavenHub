@@ -13,7 +13,7 @@ import GoogleSignIn
 import FirebaseCore
 
 class ViewManager: ObservableObject {
-    @Published var currentView: ViewType
+    @Published var currentView: ViewType = .login // Default to login
     
     enum ViewType {
         case main
@@ -27,61 +27,84 @@ class ViewManager: ObservableObject {
     }
     
     init() {
-        if Auth.auth().currentUser != nil {
-            fetchUserRole { role in
-                DispatchQueue.main.async { // Ensure UI updates happen on the main thread
-                    if role == "shelter" {
-                        self.currentView = .shelter
-                    } else {
-                        self.currentView = .main
+        checkUserStatus()
+    }
+    
+    func checkUserStatus() {
+        guard Auth.auth().currentUser != nil else {
+            DispatchQueue.main.async {
+                self.currentView = .login
+            }
+            return
+        }
+        
+        fetchUserRole { role in
+            DispatchQueue.main.async {
+                if role == "shelter"{
+                    self.fetchIsVerified { verified in
+                        if verified! {
+                            self.currentView = .shelter
+                        } else {
+                            self.currentView = .text
+                        }
                     }
+                } else {
+                    self.currentView = .main
                 }
             }
-        } else {
-            self.currentView = .login
         }
     }
     
-    func fetchUserRole(completion: @escaping (String?) -> Void) {
-        let ref = Database.database().reference()
-        
-        if let userId = Auth.auth().currentUser?.uid {
-            ref.child("users").child(userId).child("role").observeSingleEvent(of: .value) { snapshot in
-                completion(snapshot.value as? String) // Assuming "role" is stored as a String (e.g., "shelter" or "user")
-            }
-        } else {
+    private func fetchUserRole(completion: @escaping (String?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
             completion(nil)
+            return
+        }
+        
+        let ref = Database.database().reference()
+        ref.child(userId).child("userType").observeSingleEvent(of: .value) { snapshot in
+            completion(snapshot.value as? String) // Role is assumed to be stored as a String
         }
     }
     
-    
+    private func fetchIsVerified(completion: @escaping (Bool?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+        
+        let ref = Database.database().reference()
+        ref.child(userId).child("verified").observeSingleEvent(of: .value) { snapshot in
+            completion(snapshot.value as? Bool) // Role is assumed to be stored as a String
+        }
+    }
     
     func navigateToMain() {
-        currentView = .main
-    }
-    
-    func navigateToHealth() {
-        currentView = .health
-    }
-   
-    func navigateToAnxiety(){
-        currentView = .anxiety
-    }
+            currentView = .main
+        }
+        
+        func navigateToHealth() {
+            currentView = .health
+        }
+       
+        func navigateToAnxiety(){
+            currentView = .anxiety
+        }
 
-    func navigateToLogin() {
-        currentView = .login
-    }
-    
-    func navigateToSignUp() {
-        currentView = .signup
-    }
-    
-    func navigateToSignUpShelter() {
-        currentView = .signupshelter
-    }
-    
-    func navigateText() {
-        currentView = .text
-    }
+        func navigateToLogin() {
+            currentView = .login
+        }
+        
+        func navigateToSignUp() {
+            currentView = .signup
+        }
+        
+        func navigateToSignUpShelter() {
+            currentView = .signupshelter
+        }
+        
+        func navigateText() {
+            currentView = .text
+        }
 }
 
