@@ -6,7 +6,7 @@ struct ShelterView: View {
 
     @State var editProfile: Bool = false
     
-    @State private var user = ShelterModel(name: "", contact: Contact(phone: "", email: ""), location: Location(address: "", city: "", state: "", zip: "", latitude: 0, longitude: 0), info: ShelterInfo(subtitle: "", description: "", capacity: 0, subType: ""), verified: true, password: "")
+    @State private var user = ShelterModel(id: "", name: "", contact: Contact(phone: "", email: ""), location: Location(address: "", city: "", state: "", zip: "", latitude: 0, longitude: 0), info: ShelterInfo(subtitle: "", description: "", capacity: 0, subType: ""), verified: true, password: "")
     
     var body: some View {
         VStack {

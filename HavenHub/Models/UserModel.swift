@@ -5,6 +5,8 @@
 //  Created by Garrett Butchko on 3/1/25.
 //
 
+import Foundation
+
 struct UserModel: Codable, Hashable {
     var name: String
     var email: String
@@ -13,6 +15,7 @@ struct UserModel: Codable, Hashable {
 }
 
 struct ShelterModel: Codable, Hashable {
+    var id: String
     var name: String
     var contact: Contact
     var location: Location

@@ -139,7 +139,6 @@ class AuthViewModel: ObservableObject {
     }
     
     func saveShelterData(user: ShelterModel, completion: @escaping (Bool) -> Void) {
-        
         let ref = Database.database().reference()
         
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -148,14 +147,28 @@ class AuthViewModel: ObservableObject {
         }
 
         do {
+            var user = user // Make a mutable copy if ShelterModel is immutable
             let data = try JSONEncoder().encode(user)
-            let dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+            guard var dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                completion(false)
+                return
+            }
+            
+            // Check if shelter already has an ID; if not, create one
+            if user.id.isEmpty {
+                let newRef = ref.child("shelters").childByAutoId()
+                user.id = newRef.key ?? UUID().uuidString // Assign the generated key
+            }
+            
+            dictionary["id"] = user.id // Ensure the dictionary has the ID
 
+            // Save data under the user's ID
             ref.child(userId).setValue(dictionary) { error, _ in
                 completion(error == nil)
             }
             
-            ref.child("shelters").childByAutoId().setValue(dictionary) { error, _ in
+            // Save or update data in "shelters" using the shelter's unique ID
+            ref.child("shelters").child(user.id).setValue(dictionary) { error, _ in
                 completion(error == nil)
             }
         } catch {
@@ -163,6 +176,7 @@ class AuthViewModel: ObservableObject {
             completion(false)
         }
     }
+
     
     func fetchShelterData(completion: @escaping (ShelterModel?) -> Void) {
         let ref = Database.database().reference()

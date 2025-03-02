@@ -17,7 +17,7 @@ struct SignUpViewShelter: View {
     
     @State private var errorMessage: String?
     
-    @State private var shelter = ShelterModel(name: "", contact: Contact(phone: "", email: ""), location: Location(address: "", city: "", state: "", zip: "", latitude: 0, longitude: 0), info: ShelterInfo(subtitle: "", description: "", capacity: 0, subType: ""), verified: false, password: "")
+    @State private var shelter = ShelterModel(id: "", name: "", contact: Contact(phone: "", email: ""), location: Location(address: "", city: "", state: "", zip: "", latitude: 0, longitude: 0), info: ShelterInfo(subtitle: "", description: "", capacity: 0, subType: ""), verified: false, password: "")
     
     var body: some View {
         VStack(spacing: 20) {

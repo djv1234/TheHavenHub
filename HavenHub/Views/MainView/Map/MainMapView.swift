@@ -79,9 +79,6 @@ struct MainMapView: View {
             .safeAreaPadding(.bottom, 50)
         }
     }
-    
-
-    
 }
 
 
