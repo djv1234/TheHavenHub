@@ -77,6 +77,10 @@ struct HealthModelView: View {
             Text("Resources for managing " + healthModel.info.title)
                 .font(.headline)
                 .padding(10)
+            Text("Let us help you get better - all one click away!")
+                .padding()
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }
