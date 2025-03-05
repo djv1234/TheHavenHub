@@ -15,14 +15,133 @@ struct LoginView: View {
     @State private var errorMessage: String?
     
     var body: some View {
+        
+        
+        
+        
         VStack(spacing: 20) {
+        
+            Spacer()
             
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
+            VStack{
+                HStack{
+                    Text("Login")
+                        .font(.system(size: 40, weight: .bold, design: .default))
+                        .foregroundStyle(.accent)
+                    Spacer()
+                    
+                }
+                HStack{
+                    Text("If you are an existing user, please login here.")
+                        .font(.system(size: 20, weight: .light, design: .default))
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                }
+            }
+            .padding(.vertical, 30)
             
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            
+            
+            VStack{
+                HStack{
+                    Text("Email")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                }
+                ZStack{
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(style: StrokeStyle(lineWidth: 1))
+                        .frame(height: 50)
+                        .foregroundStyle(.secondary)
+                    HStack{
+                        Image(systemName: "envelope")
+                            .foregroundStyle(.secondary)
+                        TextField("example@example", text: $email)
+                            .foregroundColor(.secondary)
+                            .textSelection(.disabled)
+                            .autocapitalization(.none)
+                            .keyboardType(.emailAddress)
+                            .textInputAutocapitalization(.never)
+                            .padding(.trailing, 5)
+                    }
+                    .padding(.leading)
+                }
+            }
+            VStack{
+                HStack{
+                    Text("Password")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                }
+                ZStack{
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(style: StrokeStyle(lineWidth: 1))
+                        .frame(height: 50)
+                        .foregroundStyle(.secondary)
+                    HStack{
+                        Image(systemName: "lock")
+                            .foregroundStyle(.secondary)
+                            .padding(.trailing, 5)
+                        SecureField("123ABC", text: $password)
+                            .foregroundStyle(.secondary)
+                            .padding(.trailing, 5)
+                    }
+                    .padding(.leading, 20)
+                }
+            }
+            
+            
+            
+            HStack{
+                HStack{
+                    Button {
+                        authViewModel.signInWithGoogle { result in
+                            switch result {
+                            case .success:
+                                errorMessage = nil
+                                withAnimation(){
+                                    viewManager.navigateToMain()
+                                }
+                            case .failure(let error):
+                                errorMessage = error.localizedDescription
+                            }
+                        }
+                    } label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 8)
+                                .frame(width: 50, height: 50)
+                                .foregroundStyle(.ultraThinMaterial)
+                            Image("google")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                        }
+                    }
+                }
+                
+                VStack{
+                    Button {
+                        authViewModel.signIn(email: email, password: password) { result in
+                            switch result {
+                            case .success:
+                                errorMessage = nil
+                                withAnimation(){
+                                    viewManager.checkUserStatus()
+                                }
+                            case .failure(let error):
+                                errorMessage = error.localizedDescription
+                            }
+                        }
+                    } label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 8)
+                                .frame(width: 150, height: 50)
+                            Text("Login")
+                                .foregroundStyle(.white)
+                        }
+                    }
+                }
+            }
             
             if let errorMessage = errorMessage {
                 Text(errorMessage)
@@ -30,86 +149,35 @@ struct LoginView: View {
                     .font(.caption)
             }
             
+            Spacer()
             
             HStack{
+                Text("If you are a new user")
+                    .foregroundStyle(.secondary)
                 Button {
-                    authViewModel.signIn(email: email, password: password) { result in
-                        switch result {
-                        case .success:
-                            errorMessage = nil
-                            withAnimation(){
-                                viewManager.checkUserStatus()
-                            }
-                        case .failure(let error):
-                            errorMessage = error.localizedDescription
-                        }
+                    withAnimation(){
+                        viewManager.navigateToSignUp()
                     }
                 } label: {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 50)
-                        Text("Login")
-                            .foregroundStyle(.white)
-                    }
+                    
+                    Text("sign up here")
                 }
-                
+            }
+            
+            HStack{
+                Text("If you are a location")
+                    .foregroundStyle(.secondary)
                 Button {
-                    authViewModel.signInWithGoogle { result in
-                        switch result {
-                        case .success:
-                            errorMessage = nil
-                            withAnimation(){
-                                viewManager.navigateToMain()
-                            }
-                        case .failure(let error):
-                            errorMessage = error.localizedDescription
-                        }
+                    withAnimation(){
+                        viewManager.navigateToSignUpShelter()
                     }
                 } label: {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 50)
-                            .foregroundStyle(.ultraThinMaterial)
-                        HStack{
-                            Image("google")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                            Text("Login")
-                                .foregroundStyle(.mainOpp)
-                        }
-                    }
+                    Text("sign up here")
                 }
             }
             
-            
-            Button {
-                withAnimation(){
-                    viewManager.navigateToSignUp()
-                }
-            } label: {
-                ZStack{
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(style: StrokeStyle(lineWidth: 1))
-                        .frame(width: 200, height: 50)
-                    Text("Sign Up")
-                }
-            }
-            
-            Button {
-                withAnimation(){
-                    viewManager.navigateToSignUpShelter()
-                }
-            } label: {
-                ZStack{
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(style: StrokeStyle(lineWidth: 1))
-                        .frame(width: 200, height: 50)
-                    Text("Shelter Sign Up")
-                }
-            }
         }
         .padding()
-        .navigationTitle("Firebase Auth")
     }
 }
 
