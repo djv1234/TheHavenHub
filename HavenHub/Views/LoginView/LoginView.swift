@@ -40,9 +40,7 @@ struct LoginView: View {
             }
             .padding(.vertical, 30)
             
-            
-            
-            
+
             VStack{
                 HStack{
                     Text("Email")
@@ -68,6 +66,8 @@ struct LoginView: View {
                     .padding(.leading)
                 }
             }
+            
+            
             VStack{
                 HStack{
                     Text("Password")
@@ -90,7 +90,6 @@ struct LoginView: View {
                     .padding(.leading, 20)
                 }
             }
-            
             
             
             HStack{
