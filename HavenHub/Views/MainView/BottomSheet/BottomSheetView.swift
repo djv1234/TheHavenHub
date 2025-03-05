@@ -6,9 +6,9 @@ struct BottomSheetView: View {
     @Binding var isKeyboardVisible: Bool
     @Binding var cameraPosition: MapCameraPosition
     @Binding var showEmergency: Bool
-    @Binding var mapItems: [MKMapItem]
+    @Binding var mapItems: [MapItemModel]
     @Binding var region: MKCoordinateRegion?
-    @Binding var currentItem: MKMapItem?
+    @Binding var currentItem: MapItemModel?
     @Binding var showTitle: Bool
     @Binding var showingMenu: Bool
     @Binding var route: MKRoute?

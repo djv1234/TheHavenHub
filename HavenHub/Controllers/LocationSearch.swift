@@ -10,7 +10,7 @@ import Contacts
 
 struct LocationSearch {
     
-    @Binding var mapItems: [MKMapItem]
+    @Binding var mapItems: [MapItemModel]
     var authViewModel = AuthViewModel()
     
     
@@ -40,9 +40,9 @@ struct LocationSearch {
     }
     
 
-    func findLocationsNew(region: MKCoordinateRegion, searchReq: String, completion: @escaping ([MKMapItem]?) -> Void) {
+    func findLocationsNew(region: MKCoordinateRegion, searchReq: String, completion: @escaping ([MapItemModel]?) -> Void) {
             
-        var mapItems: [MKMapItem] = []
+        var mapItems: [MapItemModel] = []
         
         authViewModel.fetchGlobalShelters() { shelters in
             if let newShelters = shelters {
@@ -63,7 +63,8 @@ struct LocationSearch {
                         let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
                         let mapItem = MKMapItem(placemark: placemark)
                         mapItem.name = shelter.name // Assign shelter name
-                        mapItems.append(mapItem)
+                        let mapItemModel = MapItemModel(shelter: shelter, mapItem: mapItem)
+                        mapItems.append(mapItemModel)
                     }
                 }
             }
