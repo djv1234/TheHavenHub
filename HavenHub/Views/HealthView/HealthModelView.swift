@@ -81,6 +81,46 @@ struct HealthModelView: View {
                 .padding()
                 .lineLimit(nil)
                 .fixedSize(horizontal: false, vertical: true)
+            
+            
+            Button(action: {
+                withAnimation {
+                    // Your action code here
+                }
+            }) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(LinearGradient(
+                            colors: [Color.mint, Color.blue],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ))
+                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                        .scaleEffect(1.0)
+                    
+                    VStack(spacing: 8) {
+                        Image(systemName: "person.line.dotted.person.fill")
+                            .font(.system(size: 40))
+                            .foregroundColor(.white)
+                            .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                        
+                        Text("Resources")
+                            .foregroundColor(.white)
+                            .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                    }
+                    .padding(8)
+                }
+            }
+            .buttonStyle(PlainButtonStyle())
+            .scaleEffect(0.93)
+            .onHover { hovering in
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    if hovering {
+                        // Optional hover effect
+                    }
+                }
+            }
+            .padding()
         }
     }
 }
