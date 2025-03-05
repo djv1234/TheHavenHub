@@ -85,7 +85,7 @@ struct HealthModelView: View {
             
             Button(action: {
                 withAnimation {
-                    // Your action code here
+                    // navigation code here
                 }
             }) {
                 ZStack {
