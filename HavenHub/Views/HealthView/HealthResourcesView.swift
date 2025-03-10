@@ -18,18 +18,28 @@ struct HealthResourcesView: View {
     @State private var isKeyboardVisible: Bool = false
     @State var offsetY: CGFloat = 540
     @State var lastDragPosition: CGFloat = 0
+    @ObservedObject var viewManager: ViewManager
 
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer() // Push the list to the bottom
-                
+                // Add Map view at the top
+                Map(position: $cameraPosition) {
+                    ForEach(resources, id: \.self) { resource in
+                        Marker(resource.name ?? "Unknown", coordinate: resource.placemark.coordinate)
+                    }
+                }
+                .frame(height: geometry.size.height * 0.6) // 60% of screen for map
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .padding()
+
+                // Bottom sheet with list
                 VStack(spacing: 0) {
                     Capsule()
                         .frame(width: 40, height: 6)
                         .foregroundColor(.gray)
                         .padding(10)
-                    
+
                     List(resources, id: \.self) { resource in
                         NavigationLink(destination: HealthResourcesDetailView(resource: resource)) {
                             VStack(alignment: .leading) {
@@ -43,8 +53,8 @@ struct HealthResourcesView: View {
                         }
                     }
                     .listStyle(PlainListStyle())
-                    .frame(height: geometry.size.height * 0.4) // Restrict the list to 40% of the screen height
-                    
+                    .frame(height: geometry.size.height * 0.3) // 30% of screen for list
+
                     Button(action: {
                         withAnimation {
                             showResources = false
@@ -55,7 +65,6 @@ struct HealthResourcesView: View {
                             Circle()
                                 .fill(.ultraThinMaterial)
                                 .frame(width: 70, height: 70)
-                            
                             Text("X")
                                 .font(.system(size: 25))
                                 .foregroundStyle(Color.primary)
