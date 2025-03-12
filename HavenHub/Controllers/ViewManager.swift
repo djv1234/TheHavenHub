@@ -13,6 +13,7 @@ class ViewManager: NSObject, ObservableObject {
     @Published var currentView: ViewType
     @Published var userLocation: CLLocationCoordinate2D?
     private let locationManager = CLLocationManager()
+    @Published var currentHealthModel: HealthModel?
     
     enum ViewType {
         case main
@@ -25,39 +26,41 @@ class ViewManager: NSObject, ObservableObject {
     
     override init() {
             // Initialize stored properties before calling super.init()
-            let initialView = Auth.auth().currentUser != nil ? ViewType.main : .login
-            self.currentView = initialView
-            
-            // Now safe to call super.init()
-            super.init()
-            
-            // Set up location manager after super.init()
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
+                let initialView = Auth.auth().currentUser != nil ? ViewType.main : .login
+                self.currentView = initialView
+                self.currentHealthModel = nil
+                super.init()
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.requestWhenInUseAuthorization()
+                locationManager.startUpdatingLocation()
         }
     
     // Simplified navigation methods using a single method with a parameter
     func navigateToMain() {
             currentView = .main
+            currentHealthModel = nil
         }
         
         func navigateToProfile() {
             currentView = .profile
+            currentHealthModel = nil
         }
         
         func navigateToHealth() {
             currentView = .health
+            currentHealthModel = nil
         }
         
         func navigateToLogin() {
             currentView = .login
+            currentHealthModel = nil
         }
         
         // Add navigation methods for the new cases
         func navigateToHealthModel(healthModel: HealthModel) {
             currentView = .healthModel(healthModel)
+            currentHealthModel = healthModel
         }
         
         func navigateToHealthResources() {

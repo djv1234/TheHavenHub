@@ -23,7 +23,32 @@ struct HealthResourcesView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                // Add Map view at the top
+                // Back button to navigate to HealthModelView
+                HStack {
+                    Button(action: {
+                        withAnimation {
+                            if let healthModel = viewManager.currentHealthModel {
+                                viewManager.navigateToHealthModel(healthModel: healthModel)
+                            } else {
+                                // Fallback to health view if no healthModel is available
+                                viewManager.navigateToHealth()
+                            }
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.left")
+                                .foregroundColor(.blue)
+                            Text("Back")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
+                    
+                    Spacer()
+                }
+
+                // Map view at the top
                 Map(position: $cameraPosition) {
                     ForEach(resources, id: \.self) { resource in
                         Marker(resource.name ?? "Unknown", coordinate: resource.placemark.coordinate)
