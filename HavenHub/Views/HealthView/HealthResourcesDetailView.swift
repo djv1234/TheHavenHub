@@ -42,7 +42,7 @@ struct HealthResourcesDetailView: View {
                     // Phone number
                     if let phoneNumber = resource.phoneNumber {
                         Button(action: {
-                            if let phoneURL = URL(string: "tel://\(phoneNumber.replacingOccurrences(of: " ", with: ""))") {
+                            if let phoneURL = URL(string: "tel://" + phoneNumber) {
                                 UIApplication.shared.open(phoneURL)
                             }
                         }) {

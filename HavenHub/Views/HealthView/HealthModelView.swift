@@ -95,7 +95,7 @@ struct HealthModelView: View {
                                 performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                     if success {
                                         // After search completes successfully, navigate to HealthResourcesView
-                                        viewManager.navigateToHealthResources()
+                                        viewManager.navigateToHealthResources(healthModel: healthModel)
                                     } else {
                                         print("Search failed or returned no results.")
                                     }
@@ -109,7 +109,7 @@ struct HealthModelView: View {
                                 let queryWords = ["\(healthModel.info.title) resource", "\(healthModel.info.title) health service"]
                                 performSearch(in: defaultRegion, queryWords: queryWords) { success in
                                     if success {
-                                        viewManager.navigateToHealthResources()
+                                        viewManager.navigateToHealthResources(healthModel: healthModel)
                                     } else {
                                         print("Search with default region failed.")
                                     }
@@ -144,19 +144,11 @@ struct HealthModelView: View {
             }
         }
         .onAppear {
-            // Set visibleRegion based on user's location if available
-            if let userLocation = viewManager.userLocation {
-                visibleRegion = MKCoordinateRegion(
-                    center: userLocation,
-                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                )
-            } else {
-                // Fallback to a default region if location is not available
+            
                 visibleRegion = MKCoordinateRegion(
                     center: CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.0312186), // Default to Apple HQ
                     span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                 )
-            }
         }
     }
     

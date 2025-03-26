@@ -37,9 +37,9 @@ struct ContentView: View {
                                 resources: $resources,
                                 healthModel: healthModel)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
-            case .healthResources:
+            case .healthResources(let healthModel):
                             HealthResourcesView(
-                                cameraPosition: $cameraPosition,
+                                healthModel: healthModel, cameraPosition: $cameraPosition,
                                 visibleRegion: $visibleRegion,
                                 resources: $resources,
                                 showBottomSheet: $showBottomSheet,
@@ -48,6 +48,9 @@ struct ContentView: View {
                                 viewManager: viewManager
                             )
                             .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
+            case .healthDetail(let mapItem):
+                    HealthResourcesDetailView(resource: mapItem)
+            .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
             case .login:
                 LoginView(authViewModel: authViewModel, viewManager: viewManager)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))

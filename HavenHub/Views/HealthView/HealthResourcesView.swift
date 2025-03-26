@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct HealthResourcesView: View {
+    var healthModel: HealthModel
     @Binding var cameraPosition: MapCameraPosition
     @Binding var visibleRegion: MKCoordinateRegion?
     @Binding var resources: [MKMapItem]
@@ -27,12 +28,7 @@ struct HealthResourcesView: View {
                 HStack {
                     Button(action: {
                         withAnimation {
-                            if let healthModel = viewManager.currentHealthModel {
-                                viewManager.navigateToHealthModel(healthModel: healthModel)
-                            } else {
-                                // Fallback to health view if no healthModel is available
-                                viewManager.navigateToHealth()
-                            }
+                            viewManager.navigateToHealthModel(healthModel: healthModel)
                         }
                     }) {
                         HStack {
@@ -66,7 +62,9 @@ struct HealthResourcesView: View {
                         .padding(10)
 
                     List(resources, id: \.self) { resource in
-                        NavigationLink(destination: HealthResourcesDetailView(resource: resource)) {
+                        Button {
+                            viewManager.navigateToHealthDetail(mapItem: resource)
+                        } label: {
                             VStack(alignment: .leading) {
                                 Text(resource.name ?? "Unnamed Resource")
                                     .font(.headline)
