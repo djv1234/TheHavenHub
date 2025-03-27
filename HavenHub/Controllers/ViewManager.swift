@@ -80,8 +80,8 @@ class ViewManager: ObservableObject {
     }
     
     func navigateToMain() {
-            currentView = .main
-        }
+        currentView = .main
+    }
         
         func navigateToHealth() {
             currentView = .health
