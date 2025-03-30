@@ -72,6 +72,22 @@ struct ButtonView: View {
             HStack {
                 // Food Button
                 Button(action: {
+                    // Hide the bottom sheet when food banks are shown
+                    withAnimation {
+                        showBottomSheet = false
+                        showFoodBank = true
+                        queryWords = ["food banks"]
+                        if let region = visibleRegion {
+                            performSearch(in: region, queryWords: queryWords)
+                        } else {
+                            // Fallback region if visibleRegion is nil
+                            let defaultRegion = MKCoordinateRegion(
+                                center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
+                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                            )
+                            performSearch(in: defaultRegion, queryWords: queryWords)
+                        }
+                    }
                     // Action for the Food button (placeholder)
                 }) {
                     ZStack {
@@ -134,71 +150,71 @@ struct ButtonView: View {
             .frame(width: geometry.size.width, height: geometry.size.height * 0.10) // Row height relative to screen size
             
             // Third Row of Buttons
-            HStack {
-                Button(action: {
-                    zoomMap(byFactor: 0.5)  // Zoom In
-                }) {
-                    ZStack {
-                        Circle()
-                            .fill(.ultraThinMaterial)
-                            .frame(width: 40, height: 40)
-                        Image(systemName: "plus.magnifyingglass")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.primary)
-                    }
-                }
-                
-                // Zoom Out Button
-                Button(action: {
-                    zoomMap(byFactor: 2.0)  // Zoom Out
-                }) {
-                    ZStack {
-                        Circle()
-                            .fill(.ultraThinMaterial)
-                            .frame(width: 40, height: 40)
-                        Image(systemName: "minus.magnifyingglass")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.primary)
-                    }
-                }
-                
-                // Food Banks Button
-                Button(action: {
-                    // Hide the bottom sheet when food banks are shown
-                    withAnimation {
-                        showBottomSheet = false
-                        showFoodBank = true
-                        queryWords = ["food banks"]
-                        if let region = visibleRegion {
-                            performSearch(in: region, queryWords: queryWords)
-                        } else {
-                            // Fallback region if visibleRegion is nil
-                            let defaultRegion = MKCoordinateRegion(
-                                center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
-                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-                            )
-                            performSearch(in: defaultRegion, queryWords: queryWords)
-                        }
-                    }
-                }) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.main)
-                            .shadow(radius: 4)
-                        VStack {
-                            Image(systemName: "cart.fill")
-                                .foregroundColor(Color.gray)
-                            Text("Food Banks")
-                                .foregroundStyle(Color.gray)
-                                .fontWeight(.bold)
-                        }
-                    }
-                }
-            }
-            .padding([.horizontal]) // Horizontal padding for the button row
-            .frame(width: geometry.size.width, height: geometry.size.height * 0.10) // Row height relative to screen size
+//            HStack {
+//                Button(action: {
+//                    zoomMap(byFactor: 0.5)  // Zoom In
+//                }) {
+//                    ZStack {
+//                        Circle()
+//                            .fill(.ultraThinMaterial)
+//                            .frame(width: 40, height: 40)
+//                        Image(systemName: "plus.magnifyingglass")
+//                            .resizable()
+//                            .frame(width: 20, height: 20)
+//                            .foregroundColor(.primary)
+//                    }
+//                }
+//                
+//                // Zoom Out Button
+//                Button(action: {
+//                    zoomMap(byFactor: 2.0)  // Zoom Out
+//                }) {
+//                    ZStack {
+//                        Circle()
+//                            .fill(.ultraThinMaterial)
+//                            .frame(width: 40, height: 40)
+//                        Image(systemName: "minus.magnifyingglass")
+//                            .resizable()
+//                            .frame(width: 20, height: 20)
+//                            .foregroundColor(.primary)
+//                    }
+//                }
+//                
+//                // Food Banks Button
+//                Button(action: {
+//                    // Hide the bottom sheet when food banks are shown
+//                    withAnimation {
+//                        showBottomSheet = false
+//                        showFoodBank = true
+//                        queryWords = ["food banks"]
+//                        if let region = visibleRegion {
+//                            performSearch(in: region, queryWords: queryWords)
+//                        } else {
+//                            // Fallback region if visibleRegion is nil
+//                            let defaultRegion = MKCoordinateRegion(
+//                                center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
+//                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+//                            )
+//                            performSearch(in: defaultRegion, queryWords: queryWords)
+//                        }
+//                    }
+//                }) {
+//                    ZStack {
+//                        RoundedRectangle(cornerRadius: 20)
+//                            .fill(.main)
+//                            .shadow(radius: 4)
+//                        VStack {
+//                            Image(systemName: "cart.fill")
+//                                .foregroundColor(Color.gray)
+//                            Text("Food Banks")
+//                                .foregroundStyle(Color.gray)
+//                                .fontWeight(.bold)
+//                        }
+//                    }
+//                }
+//            }
+//            .padding([.horizontal]) // Horizontal padding for the button row
+//            .frame(width: geometry.size.width, height: geometry.size.height * 0.10) // Row height relative to screen size
         }
     }
     func findLocations(region: MKCoordinateRegion, searchReq: String, completion: @escaping ([MKMapItem]?) -> Void) {
