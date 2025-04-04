@@ -18,7 +18,9 @@ class ViewManager: ObservableObject {
     enum ViewType {
         case main
         case health
-        case anxiety
+        case healthModel(HealthModel)
+        case healthDetail(MKMapItem)
+        case healthResources(HealthModel)
         case login
         case signup
         case signupshelter
@@ -82,29 +84,37 @@ class ViewManager: ObservableObject {
     func navigateToMain() {
         currentView = .main
     }
+    
+    func navigateToHealth() {
+        currentView = .health
+    }
         
-        func navigateToHealth() {
-            currentView = .health
+    func navigateToLogin() {
+        currentView = .login
+    }
+    
+    func navigateToSignUp() {
+        currentView = .signup
+    }
+    
+    func navigateToSignUpShelter() {
+        currentView = .signupshelter
+    }
+    
+    func navigateText() {
+        currentView = .text
+    }
+        // Add navigation methods for the new cases
+        func navigateToHealthModel(healthModel: HealthModel) {
+            currentView = .healthModel(healthModel)
         }
-       
-        func navigateToAnxiety(){
-            currentView = .anxiety
-        }
-
-        func navigateToLogin() {
-            currentView = .login
+    
+        func navigateToHealthDetail(mapItem: MKMapItem) {
+            currentView = .healthDetail(mapItem)
         }
         
-        func navigateToSignUp() {
-            currentView = .signup
-        }
-        
-        func navigateToSignUpShelter() {
-            currentView = .signupshelter
-        }
-        
-        func navigateText() {
-            currentView = .text
+        func navigateToHealthResources(healthModel: HealthModel) {
+            currentView = .healthResources(healthModel)
         }
 }
 
