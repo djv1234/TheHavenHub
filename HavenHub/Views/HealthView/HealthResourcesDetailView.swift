@@ -25,6 +25,7 @@ struct HealthResourcesDetailView: View {
 
     var body: some View {
         VStack {
+            
             Text(resource.name ?? "Unnamed Resource")
                 .font(.title)
                 .fontWeight(.bold)

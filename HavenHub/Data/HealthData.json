@@ -21,7 +21,7 @@
             "title": "Depression",
             "subtitle": "Resources for coping with depression",
             "overview": "Depression can make everyday life feel overwhelming, especially when facing homelessness or difficult circumstances. It’s more than just feeling sad—it can drain your energy, make it hard to focus, and take away your motivation. You might feel hopeless, but you are not alone, and help is available. Small steps can make a difference: try to get rest when you can, eat something nourishing, and reach out to someone—even a shelter worker, a hotline, or a community support group. You deserve care and support, and there are people who want to help you through this.",
-            "symptoms": ["-persistent sadness", "- low energy", "- emptiness", "- loss of interest in activities once enjoyed", "- feelings of hopelessness or worthlessness", "- consuming guilt or shame"]
+            "symptoms": ["- persistent sadness", "- low energy", "- emptiness", "- loss of interest in activities once enjoyed", "- feelings of hopelessness or worthlessness", "- consuming guilt or shame"]
         }
     },
     {
@@ -125,7 +125,7 @@
                 "- periods of high energy, little need for sleep, and racing thoughts",
                 "- feeling overly confident or taking big risks without thinking",
                 "- sudden crashes into sadness, hopelessness, or exhaustion",
-                "-trouble focusing or making decisions during mood shifts",
+                "- trouble focusing or making decisions during mood shifts",
                 "- pulling away from people or struggling to take care of yourself"]
         }
     },

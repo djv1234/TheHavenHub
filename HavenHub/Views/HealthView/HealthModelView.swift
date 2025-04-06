@@ -57,6 +57,17 @@ struct HealthModelView: View {
                         .cornerRadius(10)
                         .padding(.bottom, 10)
                     
+                    if healthModel.info.title == "MyProgress"{
+                        VStack(alignment: .center, spacing: 8) {
+                            Text("COMING SOON!")
+                                .font(.title)
+                                .padding(.bottom, 10)
+                            Text("We are not here just to help you survive. We want to see you THRIVE. Stay tuned for the next update, which will include features to provide you with more insight into your health and allow you to set measurable goals to track your overall progress!")
+                                .font(.headline)
+                                .padding(.top, 10)
+                        }
+                        .padding()
+                    }
                     
                     if healthModel.type == "Mental Health" || healthModel.type == "Physical Health" || healthModel.info.title == "Mindfulness" || healthModel.info.title == "Hygiene"{
                             Text(healthModel.info.overview)
@@ -190,37 +201,24 @@ struct HealthModelView: View {
                             }
                         }
                         
-                        if healthModel.type == "Mental Health"{
-                            Text("Symptoms of " + healthModel.info.title)
-                                .font(.headline)
-                                .padding(10)
-                            
-                            if healthModel.type == "Mental Health", let symptoms = healthModel.info.symptoms, !symptoms.isEmpty {
-                                VStack(alignment: .leading, spacing: 5) {
-                                    ForEach(symptoms, id: \.self) { symptom in
-                                        Text(symptom)
-                                            .padding(.leading, 10)
-                                    }
-                                }
-                                .padding(.horizontal)
-                            } else {
-                                Text("No specific symptoms listed.")
-                                    .foregroundColor(.gray)
-                                    .padding(.top, 10)
+                        if healthModel.info.title == "Mindfulness"{
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("• Deep Breathing: Take slow, deep breaths, inhaling through your nose for 4 seconds, holding for 4, then exhaling through your mouth for 4, to calm your mind.")
+                                Text("• Body Scan: Focus on one part of your body at a time, noticing any tension or sensations, moving from your toes to your head to feel more connected.")
+                                Text("• Grounding with Senses: Name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste to anchor yourself in the moment.")
+                                Text("• Mindful Observation: Pick an object nearby, like a leaf or stone, and study its details—color, texture, shape—for a minute to focus your attention.")
+                                Text("• Gratitude Pause: Think of one or two things you’re thankful for, even small ones like a warm day or a kind word, to shift your mindset.")
                             }
-                            
-                            Text("Resources for managing " + healthModel.info.title)
-                                .font(.headline)
-                                .padding(10)
-                            
-                            Text("Let us help you get better - all one click away!")
-                                .padding()
-                            
+                            .padding()
+                        }
+                        
+                        if healthModel.info.title == "Hygiene"{
+                            Text("Check out nearby places to better your hygiene: ")
                             Button(action: {
                                 withAnimation {
                                     // Perform search based on healthModel.info.title
                                     if let visibleRegion = visibleRegion {
-                                        let queryWords = ["\(healthModel.info.title) resource", "\(healthModel.info.title) health service"]
+                                        let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "YMCA", "community center"]
                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                             if success {
                                                 // After search completes successfully, navigate to HealthResourcesView
@@ -235,7 +233,85 @@ struct HealthModelView: View {
                                             center: CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.0312186), // Default to Apple HQ
                                             span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                                         )
-                                        let queryWords = ["\(healthModel.info.title) resource", "\(healthModel.info.title) health service"]
+                                        let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "YMCA", "community center"]
+                                        performSearch(in: defaultRegion, queryWords: queryWords) { success in
+                                            if success {
+                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                            } else {
+                                                print("Search with default region failed.")
+                                            }
+                                        }
+                                    }
+                                }
+                            }) {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(LinearGradient(
+                                            colors: [Color.mint, Color.blue],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ))
+                                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                                    
+                                    VStack(spacing: 8) {
+                                        Image(systemName: "bathtub")
+                                            .font(.system(size: 40))
+                                            .foregroundColor(.white)
+                                            .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                                        
+                                        Text("Let's get clean!")
+                                            .foregroundColor(.white)
+                                            .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                                    }
+                                    .padding(8)
+                                }
+                                .padding()
+                            }
+                        }
+                            
+                            
+                        if healthModel.type == "Mental Health"{
+                            Text("Symptoms of " + healthModel.info.title)
+                                .font(.headline)
+                                .padding(10)
+                            
+                            if healthModel.type == "Mental Health", let symptoms = healthModel.info.symptoms, !symptoms.isEmpty {
+                                VStack(alignment: .leading, spacing: 5) {
+                                    ForEach(symptoms, id: \.self) { symptom in
+                                        Text(symptom)
+                                            .padding(.leading, 10)
+                                    }
+                                }
+                                .padding(.horizontal)
+                            }
+                            
+                            Text("Resources for managing " + healthModel.info.title)
+                                .font(.headline)
+                                .padding(10)
+                            
+                            Text("Let us help you get better - all one click away!")
+                                .padding()
+                            
+                            Button(action: {
+                                withAnimation {
+                                    // Perform search based on healthModel.info.title
+                                    if let visibleRegion = visibleRegion {
+                                        let queryWords = ["\(healthModel.info.title) resource", "counseling for \(healthModel.info.title)", "counseling", "mental health therapy", "mental health support",  "\(healthModel.info.title) health service"]
+                                        performSearch(in: visibleRegion, queryWords: queryWords) { success in
+                                            if success {
+                                                // After search completes successfully, navigate to HealthResourcesView
+                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                            } else {
+                                                print("Search failed or returned no results.")
+                                            }
+                                        }
+                                    } else {
+                                        print("Visible region is not set. Using default region.")
+                                        let defaultRegion = MKCoordinateRegion(
+                                            center: CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.0312186), // Default to Apple HQ
+                                            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                                        )
+                                        let queryWords = ["\(healthModel.info.title) resource", "counseling for \(healthModel.info.title)", "counseling", "mental health therapy", "mental health support",  "\(healthModel.info.title) health service"]
                                         performSearch(in: defaultRegion, queryWords: queryWords) { success in
                                             if success {
                                                 viewManager.navigateToHealthResources(healthModel: healthModel)
@@ -328,5 +404,3 @@ struct HealthModelView: View {
         }
     }
 }
-
-
