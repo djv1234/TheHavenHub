@@ -26,9 +26,9 @@ struct HealthResourcesDetailView: View {
                 }) {
                     HStack {
                         Image(systemName: "arrow.left")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.accentColor)
                         Text("Back")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -60,7 +60,7 @@ struct HealthResourcesDetailView: View {
                                             }) {
                                                 ZStack {
                                                     RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.blue)
+                                                        .fill(Color.accentColor)
                                                         .frame(height: 50)
                                                     Text("Call \(phoneNumber)")
                                                         .foregroundColor(.white)
@@ -84,7 +84,7 @@ struct HealthResourcesDetailView: View {
                                             }) {
                                                 ZStack {
                                                     RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.blue)
+                                                        .fill(Color.accentColor)
                                                         .frame(height: 50)
                                                     Text("Email \(email)")
                                                         .foregroundColor(.white)
@@ -106,7 +106,7 @@ struct HealthResourcesDetailView: View {
                                             }) {
                                                 ZStack {
                                                     RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.blue)
+                                                        .fill(Color.accentColor)
                                                         .frame(height: 50)
                                                     Text(url.absoluteString)
                                                         .foregroundColor(.white)
@@ -128,7 +128,7 @@ struct HealthResourcesDetailView: View {
                                             }) {
                                                 ZStack {
                                                     RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.blue)
+                                                        .fill(Color.accentColor)
                                                         .frame(height: 50)
                                                     Text(address)
                                                         .foregroundColor(.white)

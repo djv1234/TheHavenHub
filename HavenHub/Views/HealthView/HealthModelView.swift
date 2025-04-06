@@ -34,9 +34,9 @@ struct HealthModelView: View {
                     }) {
                         HStack {
                             Image(systemName: "arrow.left")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                             Text("Back")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -117,7 +117,7 @@ struct HealthModelView: View {
                                  ZStack {
                                      RoundedRectangle(cornerRadius: 20)
                                          .fill(LinearGradient(
-                                             colors: [Color.mint, Color.blue],
+                                             colors: [.pink, Color.accentColor],
                                              startPoint: .topLeading,
                                              endPoint: .bottomTrailing
                                          ))
@@ -187,7 +187,7 @@ struct HealthModelView: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
                                         .fill(LinearGradient(
-                                            colors: [Color.mint, Color.blue],
+                                            colors: [.pink, Color.accentColor],
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing
                                         ))
@@ -259,7 +259,7 @@ struct HealthModelView: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
                                         .fill(LinearGradient(
-                                            colors: [Color.mint, Color.blue],
+                                            colors: [.pink, Color.accentColor],
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing
                                         ))
@@ -341,7 +341,7 @@ struct HealthModelView: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
                                         .fill(LinearGradient(
-                                            colors: [Color.mint, Color.blue],
+                                            colors: [.pink, Color.accentColor],
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing
                                         ))

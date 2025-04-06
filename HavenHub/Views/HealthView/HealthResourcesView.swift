@@ -33,9 +33,9 @@ struct HealthResourcesView: View {
                     }) {
                         HStack {
                             Image(systemName: "arrow.left")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                             Text("Back")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
