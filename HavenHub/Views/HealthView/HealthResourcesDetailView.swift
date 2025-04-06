@@ -36,6 +36,8 @@ struct HealthResourcesDetailView: View {
                 Spacer()
             }
 
+            
+            
             Text(resource.name ?? "Unnamed Resource")
                 .font(.title)
                 .fontWeight(.bold)
