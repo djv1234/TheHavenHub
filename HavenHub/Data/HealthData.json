@@ -154,7 +154,7 @@
         "info": {
             "title": "Nutrition",
             "subtitle": "Healthy eating tips",
-            "overview":"",
+            "overview":"Nutrition is a crucial part of our daily lives and as such, it is important to take it seriously. Nutrition can impact everything from physical well-being to mood and mental processing. Focus on finding affordable, nutrient-dense foods like peanut butter, beans, or oats, which provide protein and energy and are often available at shelters or food banks. If possible, prioritize fruits and vegetables that don’t require refrigeration, like apples or carrots, to get essential vitamins. Staying hydrated is key, so drink water whenever it’s accessible, especially if relying on salty or processed foods.",
             "symptoms": []
         }
     },
@@ -166,7 +166,7 @@
         "info": {
             "title": "Exercise",
             "subtitle": "Staying active",
-            "overview":"",
+            "overview":"Exercising in any capacity has the power to be a great tool to improving one's health and quality of life. From burning calories and increasing metabolism to building muscle and even improving one's willpower and discipline, it is essential for any human being. Ideal exercise amounts vary person-to-person but as a general guideline, it is suggested to aim for at least 150 minutes of moderate aerobic exercise, like brisk walking, per week. While often our circumstances may not be ideal for exercising, here are some easy, free ways to get started:",
             "symptoms": []
         }
     },
@@ -178,19 +178,19 @@
         "info": {
             "title": "First Aid",
             "subtitle": "Emergency health support",
-            "overview":"",
+            "overview":"Whether you've suffered a cut or something more major, let us help you find the immediate aid you need. Click the button below to access different pharmacies, clinics, and hospitals in your area",
             "symptoms": []
         }
     },
     {
         "type": "Miscellaneous",
         "icon": "figure.mind.and.body.circle",
-        "color": "cyan",
+        "color": "blue",
         "image": "MindfulnessPhoto",
         "info": {
             "title": "Mindfulness",
             "subtitle": "Let's get you in the right headspace - meditation and more",
-            "overview":"",
+            "overview":"Mindfulness is about staying present and aware of your thoughts and surroundings, which can help reduce stress and anxiety even in tough situations. It can be as simple as taking a few deep breaths to calm your mind or noticing the feel of the ground under your feet to stay grounded. It doesn’t require any tools or a quiet space—just a moment to focus on what’s happening right now, which can offer a sense of control and peace amid uncertainty.",
             "symptoms": []
         }
     },
@@ -202,7 +202,7 @@
         "info": {
             "title": "Hygiene",
             "subtitle": "Find resources to help you stay on top of your hygiene game",
-            "overview":"",
+            "overview":"Maintaining hygiene without regular access to facilities can be challenging, but focusing on key areas like hands, face, and feet can prevent illness and infections. Use public restrooms or shelters to wash with soap and water when possible, or carry hand sanitizer and wipes for quick cleanups. Keeping feet dry and clean, even with spare socks or a cloth, can avoid issues like blisters or fungal infections, especially if you’re someone that is on the move a lot.",
             "symptoms": []
         }
     },

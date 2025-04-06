@@ -57,98 +57,117 @@ struct HealthModelView: View {
                         .cornerRadius(10)
                         .padding(.bottom, 10)
                     
-                    Text(healthModel.info.overview)
-                        .padding()
-                        .font(.headline)
-                        .padding(.bottom, 10)
                     
-                    Text("Symptoms of " + healthModel.info.title)
-                        .font(.headline)
-                        .padding(10)
-                    
-                    if healthModel.type == "Mental Health", let symptoms = healthModel.info.symptoms, !symptoms.isEmpty {
-                        VStack(alignment: .leading, spacing: 5) {
-                            ForEach(symptoms, id: \.self) { symptom in
-                                Text(symptom)
-                                    .padding(.leading, 10)
+                    if healthModel.type == "Mental Health" || healthModel.type == "Physical Health" || healthModel.info.title == "Mindfulness" || healthModel.info.title == "Hygiene"{
+                            Text(healthModel.info.overview)
+                                .padding()
+                                .font(.headline)
+                                .padding(.bottom, 10)
+                        
+                         if healthModel.info.title == "Nutrition" {
+                             Text("Lets take care of your hunger in an affordable way - check out our food bank section!") //Button with navigation here?
+                         }
+                        if healthModel.info.title == "Exercise"{
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("• Walking is one of the easiest and most accessible ways to exercise, requiring no equipment.")
+                                Text("• Bodyweight exercises like squats, push-ups, or lunges can be done anywhere, such as a park or open space, to build strength and stamina.")
+                                Text("• Stretching or simple yoga poses, like reaching for the sky or touching your toes, can improve flexibility and relieve tension, needing only a few minutes and a quiet spot.")
+                                Text("• Some public parks may have basic fitness equipment like a pull up bar or resistance machines that can help one improve their fitness level.")
                             }
+                            .padding()
                         }
-                        .padding(.horizontal)
-                    } else {
-                        Text("No specific symptoms listed.")
-                            .foregroundColor(.gray)
-                            .padding(.top, 10)
-                    }
-                    
-                    Text("Resources for managing " + healthModel.info.title)
-                        .font(.headline)
-                        .padding(10)
-                    
-                    Text("Let us help you get better - all one click away!")
-                        .padding()
-                    
-                    Button(action: {
-                        withAnimation {
-                            // Perform search based on healthModel.info.title
-                            if let visibleRegion = visibleRegion {
-                                let queryWords = ["\(healthModel.info.title) resource", "\(healthModel.info.title) health service"]
-                                performSearch(in: visibleRegion, queryWords: queryWords) { success in
-                                    if success {
-                                        // After search completes successfully, navigate to HealthResourcesView
-                                        viewManager.navigateToHealthResources(healthModel: healthModel)
-                                    } else {
-                                        print("Search failed or returned no results.")
-                                    }
-                                }
-                            } else {
-                                print("Visible region is not set. Using default region.")
-                                let defaultRegion = MKCoordinateRegion(
-                                    center: CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.0312186), // Default to Apple HQ
-                                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                                )
-                                let queryWords = ["\(healthModel.info.title) resource", "\(healthModel.info.title) health service"]
-                                performSearch(in: defaultRegion, queryWords: queryWords) { success in
-                                    if success {
-                                        viewManager.navigateToHealthResources(healthModel: healthModel)
-                                    } else {
-                                        print("Search with default region failed.")
-                                    }
-                                }
-                            }
-                        }
-                    }) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(LinearGradient(
-                                    colors: [Color.mint, Color.blue],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ))
-                                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                        // if hm.info.title == "First Aid"{resources button}
+                        
+                        if healthModel.type == "Mental Health"{
+                            Text("Symptoms of " + healthModel.info.title)
+                                .font(.headline)
+                                .padding(10)
                             
-                            VStack(spacing: 8) {
-                                Image(systemName: "person.line.dotted.person.fill")
-                                    .font(.system(size: 40))
-                                    .foregroundColor(.white)
-                                    .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
-                                
-                                Text("Resources")
-                                    .foregroundColor(.white)
-                                    .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                            if healthModel.type == "Mental Health", let symptoms = healthModel.info.symptoms, !symptoms.isEmpty {
+                                VStack(alignment: .leading, spacing: 5) {
+                                    ForEach(symptoms, id: \.self) { symptom in
+                                        Text(symptom)
+                                            .padding(.leading, 10)
+                                    }
+                                }
+                                .padding(.horizontal)
+                            } else {
+                                Text("No specific symptoms listed.")
+                                    .foregroundColor(.gray)
+                                    .padding(.top, 10)
                             }
-                            .padding(8)
+                            
+                            Text("Resources for managing " + healthModel.info.title)
+                                .font(.headline)
+                                .padding(10)
+                            
+                            Text("Let us help you get better - all one click away!")
+                                .padding()
+                            
+                            Button(action: {
+                                withAnimation {
+                                    // Perform search based on healthModel.info.title
+                                    if let visibleRegion = visibleRegion {
+                                        let queryWords = ["\(healthModel.info.title) resource", "\(healthModel.info.title) health service"]
+                                        performSearch(in: visibleRegion, queryWords: queryWords) { success in
+                                            if success {
+                                                // After search completes successfully, navigate to HealthResourcesView
+                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                            } else {
+                                                print("Search failed or returned no results.")
+                                            }
+                                        }
+                                    } else {
+                                        print("Visible region is not set. Using default region.")
+                                        let defaultRegion = MKCoordinateRegion(
+                                            center: CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.0312186), // Default to Apple HQ
+                                            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                                        )
+                                        let queryWords = ["\(healthModel.info.title) resource", "\(healthModel.info.title) health service"]
+                                        performSearch(in: defaultRegion, queryWords: queryWords) { success in
+                                            if success {
+                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                            } else {
+                                                print("Search with default region failed.")
+                                            }
+                                        }
+                                    }
+                                }
+                            }) {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(LinearGradient(
+                                            colors: [Color.mint, Color.blue],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ))
+                                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                                    
+                                    VStack(spacing: 8) {
+                                        Image(systemName: "person.line.dotted.person.fill")
+                                            .font(.system(size: 40))
+                                            .foregroundColor(.white)
+                                            .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                                        
+                                        Text("Resources")
+                                            .foregroundColor(.white)
+                                            .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                                    }
+                                    .padding(8)
+                                }
+                                .padding()
+                            }
                         }
-                        .padding()
                     }
                 }
+                .onAppear {
+                    
+                    visibleRegion = MKCoordinateRegion(
+                        center: CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.0312186), // Default to Apple HQ
+                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                    )
+                }
             }
-        }
-        .onAppear {
-            
-                visibleRegion = MKCoordinateRegion(
-                    center: CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.0312186), // Default to Apple HQ
-                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                )
         }
     }
     

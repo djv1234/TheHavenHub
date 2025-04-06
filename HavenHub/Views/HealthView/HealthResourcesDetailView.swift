@@ -149,7 +149,7 @@ struct HealthResourcesDetailView: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
-
+ // 
                     // Description
                     Text("Description")
                         .font(.headline)
