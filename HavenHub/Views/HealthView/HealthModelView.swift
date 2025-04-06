@@ -88,7 +88,9 @@ struct HealthModelView: View {
                                          performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                              if success {
                                                  // After search completes successfully, navigate to HealthResourcesView
-                                                 viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                 withAnimation {
+                                                     viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                 }
                                              } else {
                                                  print("Search failed or returned no results.")
                                              }
@@ -102,7 +104,9 @@ struct HealthModelView: View {
                                          let queryWords = ["food bank", "food pantry", "food donation", "soup kitchen", "free food"]
                                          performSearch(in: defaultRegion, queryWords: queryWords) { success in
                                              if success {
-                                                 viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                 withAnimation {
+                                                     viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                 }
                                              } else {
                                                  print("Search with default region failed.")
                                              }
@@ -154,7 +158,9 @@ struct HealthModelView: View {
                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                             if success {
                                                 // After search completes successfully, navigate to HealthResourcesView
-                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                withAnimation {
+                                                    viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                }
                                             } else {
                                                 print("Search failed or returned no results.")
                                             }
@@ -168,7 +174,9 @@ struct HealthModelView: View {
                                         let queryWords = ["pharmacy", "clinic", "hospital", "first aid", "medicine"]
                                         performSearch(in: defaultRegion, queryWords: queryWords) { success in
                                             if success {
-                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                withAnimation {
+                                                    viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                }
                                             } else {
                                                 print("Search with default region failed.")
                                             }
@@ -222,7 +230,9 @@ struct HealthModelView: View {
                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                             if success {
                                                 // After search completes successfully, navigate to HealthResourcesView
-                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                withAnimation {
+                                                    viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                }
                                             } else {
                                                 print("Search failed or returned no results.")
                                             }
@@ -236,7 +246,9 @@ struct HealthModelView: View {
                                         let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "YMCA", "community center"]
                                         performSearch(in: defaultRegion, queryWords: queryWords) { success in
                                             if success {
-                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                withAnimation {
+                                                    viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                }
                                             } else {
                                                 print("Search with default region failed.")
                                             }
@@ -300,7 +312,9 @@ struct HealthModelView: View {
                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                             if success {
                                                 // After search completes successfully, navigate to HealthResourcesView
-                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                withAnimation {
+                                                    viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                }
                                             } else {
                                                 print("Search failed or returned no results.")
                                             }
@@ -314,7 +328,9 @@ struct HealthModelView: View {
                                         let queryWords = ["\(healthModel.info.title) resource", "counseling for \(healthModel.info.title)", "counseling", "mental health therapy", "mental health support",  "\(healthModel.info.title) health service"]
                                         performSearch(in: defaultRegion, queryWords: queryWords) { success in
                                             if success {
-                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                withAnimation {
+                                                    viewManager.navigateToHealthResources(healthModel: healthModel)
+                                                }
                                             } else {
                                                 print("Search with default region failed.")
                                             }
