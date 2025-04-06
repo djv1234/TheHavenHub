@@ -65,8 +65,65 @@ struct HealthModelView: View {
                                 .padding(.bottom, 10)
                         
                          if healthModel.info.title == "Nutrition" {
-                             Text("Lets take care of your hunger in an affordable way - check out our food bank section!") //Button with navigation here?
+                             Text("Lets take care of your hunger in an affordable way - check out our food bank section!")
+                                 .padding()
+                                 .padding(.bottom, 10)
+                             
+                             //Button with navigation here
+                             Button(action: {
+                                 withAnimation {
+                                     if let visibleRegion = visibleRegion {
+                                         let queryWords = ["food bank", "food pantry", "food donation", "soup kitchen", "free food"]
+                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
+                                             if success {
+                                                 // After search completes successfully, navigate to HealthResourcesView
+                                                 viewManager.navigateToHealthResources(healthModel: healthModel)
+                                             } else {
+                                                 print("Search failed or returned no results.")
+                                             }
+                                         }
+                                     } else {
+                                         print("Visible region is not set. Using default region.")
+                                         let defaultRegion = MKCoordinateRegion(
+                                             center: CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.0312186), // Default to Apple HQ
+                                             span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                                         )
+                                         let queryWords = ["food bank", "food pantry", "food donation", "soup kitchen", "free food"]
+                                         performSearch(in: defaultRegion, queryWords: queryWords) { success in
+                                             if success {
+                                                 viewManager.navigateToHealthResources(healthModel: healthModel)
+                                             } else {
+                                                 print("Search with default region failed.")
+                                             }
+                                         }
+                                     }
+                                 }
+                             }) {
+                                 ZStack {
+                                     RoundedRectangle(cornerRadius: 20)
+                                         .fill(LinearGradient(
+                                             colors: [Color.mint, Color.blue],
+                                             startPoint: .topLeading,
+                                             endPoint: .bottomTrailing
+                                         ))
+                                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                                     
+                                     VStack(spacing: 8) {
+                                         Image(systemName: "fork.knife")
+                                             .font(.system(size: 40))
+                                             .foregroundColor(.white)
+                                             .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                                         
+                                         Text("See food banks in your area!")
+                                             .foregroundColor(.white)
+                                             .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                                     }
+                                     .padding(8)
+                                 }
+                                 .padding()
+                             }
                          }
+                        
                         if healthModel.info.title == "Exercise"{
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("• Walking is one of the easiest and most accessible ways to exercise, requiring no equipment.")
@@ -75,8 +132,63 @@ struct HealthModelView: View {
                                 Text("• Some public parks may have basic fitness equipment like a pull up bar or resistance machines that can help one improve their fitness level.")
                             }
                             .padding()
+                            
                         }
-                        // if hm.info.title == "First Aid"{resources button}
+                        
+                        if healthModel.info.title == "First Aid"{
+                            Button(action: {
+                                withAnimation {
+                                    if let visibleRegion = visibleRegion {
+                                        let queryWords = ["pharmacy", "clinic", "hospital", "first aid", "medicine"]
+                                        performSearch(in: visibleRegion, queryWords: queryWords) { success in
+                                            if success {
+                                                // After search completes successfully, navigate to HealthResourcesView
+                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                            } else {
+                                                print("Search failed or returned no results.")
+                                            }
+                                        }
+                                    } else {
+                                        print("Visible region is not set. Using default region.")
+                                        let defaultRegion = MKCoordinateRegion(
+                                            center: CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.0312186), // Default to Apple HQ
+                                            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                                        )
+                                        let queryWords = ["pharmacy", "clinic", "hospital", "first aid", "medicine"]
+                                        performSearch(in: defaultRegion, queryWords: queryWords) { success in
+                                            if success {
+                                                viewManager.navigateToHealthResources(healthModel: healthModel)
+                                            } else {
+                                                print("Search with default region failed.")
+                                            }
+                                        }
+                                    }
+                                }
+                            }) {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(LinearGradient(
+                                            colors: [Color.mint, Color.blue],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ))
+                                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                                    
+                                    VStack(spacing: 8) {
+                                        Image(systemName: "cross.case.circle.fill")
+                                            .font(.system(size: 40))
+                                            .foregroundColor(.white)
+                                            .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                                        
+                                        Text("See first aid resources in your area!")
+                                            .foregroundColor(.white)
+                                            .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
+                                    }
+                                    .padding(8)
+                                }
+                                .padding()
+                            }
+                        }
                         
                         if healthModel.type == "Mental Health"{
                             Text("Symptoms of " + healthModel.info.title)

@@ -148,6 +148,7 @@ struct HealthView: View {
                 }
                 .frame(width: 40, height: 40)
                 .padding(.leading)
+                .padding(.top)
                 
                 Spacer()
                 
