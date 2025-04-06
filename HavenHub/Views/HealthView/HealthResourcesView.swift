@@ -63,7 +63,7 @@ struct HealthResourcesView: View {
 
                     List(resources, id: \.self) { resource in
                         Button {
-                            viewManager.navigateToHealthDetail(mapItem: resource)
+                            viewManager.navigateToHealthDetail(mapItem: resource, healthModel: healthModel)
                         } label: {
                             VStack(alignment: .leading) {
                                 Text(resource.name ?? "Unnamed Resource")
