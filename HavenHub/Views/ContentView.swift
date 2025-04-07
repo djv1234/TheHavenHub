@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
+    
     @StateObject private var viewManager = ViewManager()
     @StateObject var authViewModel = AuthViewModel()
     

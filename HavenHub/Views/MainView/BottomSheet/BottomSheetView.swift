@@ -12,7 +12,9 @@ struct BottomSheetView: View {
     @Binding var showTitle: Bool
     @Binding var showingMenu: Bool
     @Binding var route: MKRoute?
-
+    @Binding var shelters: [MKMapItem]
+    @Binding var showBottomSheet: Bool
+    @Binding var showFoodBank: Bool
     @State var lastDragPosition: CGFloat = 0
     @State private var searchText: String = ""
     @State var userLocation: MKCoordinateRegion
@@ -34,8 +36,7 @@ struct BottomSheetView: View {
                         .foregroundColor(.gray)
                         .padding(10)
                     
-                    SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $region, nameIsFocused: $nameIsFocused, searchTerms: $searchTerms)
-
+                    SearchBarView(searchText: $searchText, isKeyboardVisible: $isKeyboardVisible, showTitle: $showTitle, offsetY: $offsetY, mapItems: $mapItems, keyboardHeight: $keyboardHeight, region: $visibleRegion, nameIsFocused: $nameIsFocused, searchTerms: $searchTerms)
                     Group {
                         if isKeyboardVisible {
                             SearchResultsView(
@@ -52,7 +53,7 @@ struct BottomSheetView: View {
                             MapMenuView(mapItem: $currentItem, showingMenu: $showingMenu)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         } else {
-                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, viewManager: viewManager)
+                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, viewManager: ViewManager(), shelters: $shelters, visibleRegion: $visibleRegion, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }
