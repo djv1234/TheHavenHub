@@ -103,8 +103,9 @@ class ViewManager: ObservableObject {
             currentView = .signupshelter
         }
         
-        func navigateText() {
-            currentView = .text
+    func navigateText() {
+        currentView = .text
+    }
         // Add navigation methods for the new cases
         func navigateToHealthModel(healthModel: HealthModel) {
             currentView = .healthModel(healthModel)

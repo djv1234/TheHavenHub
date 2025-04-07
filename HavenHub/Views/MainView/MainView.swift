@@ -23,6 +23,7 @@ struct MainView: View {
     @State var showEmergency: Bool = false
     @State var route: MKRoute?
     @State var searchTerms: [String] = ["Homeless Shelters"]
+    @State var showSheet: Bool = false
     @State var showFoodBank: Bool = false
     @State var showBottomSheet: Bool = true
     @State var shelters: [MKMapItem] = []
@@ -48,7 +49,7 @@ struct MainView: View {
                             routeCalc: routeCalc
                 )
                 
-                MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: userLocation, searchTerms: $searchTerms, routeCalc: routeCalc, userLocation: userLocation, viewManager: viewManager)
+                MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: userLocation, searchTerms: $searchTerms, showSheet: $showSheet, routeCalc: routeCalc, userLocation: userLocation, viewManager: viewManager)
                     .shadow(radius: 5)
                 
                 if (showBottomSheet) {
@@ -57,8 +58,7 @@ struct MainView: View {
                         isKeyboardVisible: $isKeyboardVisible,
                         cameraPosition: $cameraPosition,
                         showEmergency: $showEmergency,
-                        mapItems: $mapItems,
-                        visibleRegion: $visibleRegion,
+                        mapItems: $mapItems, region:  $visibleRegion,
                         currentItem: $currentItem,
                         showTitle: $showTitle,
                         showingMenu: $showingMenu,
@@ -83,6 +83,9 @@ struct MainView: View {
                 EmergencyView(showEmergency: $showEmergency)
                     .opacity(showEmergency ? 1 : 0)
             }
+            .sheet(isPresented: $showSheet, content: {
+                ProfileView(viewManager: viewManager, authViewModel: authViewModel)
+            })
             .ignoresSafeArea(.keyboard)
             .navigationBarHidden(true)
             .toolbar(.hidden, for: .navigationBar)
