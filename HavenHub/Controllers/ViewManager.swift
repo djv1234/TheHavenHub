@@ -11,6 +11,8 @@ import Foundation
 import FirebaseDatabase
 import GoogleSignIn
 import FirebaseCore
+import CoreLocation
+import MapKit
 
 class ViewManager: ObservableObject {
     @Published var currentView: ViewType = .login // Default to login
@@ -18,7 +20,9 @@ class ViewManager: ObservableObject {
     enum ViewType {
         case main
         case health
-        case anxiety
+        case healthModel(HealthModel)
+        case healthDetail(MKMapItem)
+        case healthResources(HealthModel)
         case login
         case signup
         case signupshelter
@@ -86,11 +90,7 @@ class ViewManager: ObservableObject {
         func navigateToHealth() {
             currentView = .health
         }
-       
-        func navigateToAnxiety(){
-            currentView = .anxiety
-        }
-
+        
         func navigateToLogin() {
             currentView = .login
         }
@@ -105,6 +105,17 @@ class ViewManager: ObservableObject {
         
         func navigateText() {
             currentView = .text
+        // Add navigation methods for the new cases
+        func navigateToHealthModel(healthModel: HealthModel) {
+            currentView = .healthModel(healthModel)
+        }
+    
+        func navigateToHealthDetail(mapItem: MKMapItem) {
+            currentView = .healthDetail(mapItem)
+        }
+        
+        func navigateToHealthResources(healthModel: HealthModel) {
+            currentView = .healthResources(healthModel)
         }
 }
 
