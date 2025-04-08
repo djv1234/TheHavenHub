@@ -27,7 +27,7 @@ struct MainMapView: View {
             Map(position: $cameraPosition, selection: $selectedResult) {
                 ForEach(shelters, id: \.self) { shelter in
                     Marker(shelter.name ?? "Unknown", coordinate: shelter.placemark.coordinate)
-                        .tint(Color.blue)
+                        .tint(Color.red)
                 }
                 
                 if let currentItem = currentItem {

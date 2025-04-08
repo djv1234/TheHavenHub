@@ -11,6 +11,7 @@ struct FoodBankDetailView: View {
     let shelter: MKMapItem
     @State private var cameraPosition: MapCameraPosition
     @State private var showMapOptions = false
+    @Environment(\.dismiss) private var dismiss
     
     init(shelter: MKMapItem) {
         self.shelter = shelter
@@ -48,7 +49,7 @@ struct FoodBankDetailView: View {
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.blue)
+                                .fill(Color.red)
                                 .frame(height: 50)
 
                             Text("Call \(phoneNumber)")
@@ -56,6 +57,7 @@ struct FoodBankDetailView: View {
                                 .fontWeight(.bold)
                         }
                     }
+                    .padding(.horizontal)
                 } else {
                     Text("Phone number unavailable")
                         .font(.subheadline)
@@ -69,7 +71,7 @@ struct FoodBankDetailView: View {
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.blue)
+                                .fill(Color.red)
                                 .frame(height: 50)
 
                             Text(url.absoluteString)
@@ -79,6 +81,7 @@ struct FoodBankDetailView: View {
                                 .padding(.horizontal, 10)
                         }
                     }
+                    .padding(.horizontal)
                 } else {
                     Text("Website unavailable")
                         .font(.subheadline)
@@ -92,7 +95,7 @@ struct FoodBankDetailView: View {
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.blue)
+                                .fill(Color.red)
                                 .frame(height: 50)
 
                             Text(address)
@@ -102,6 +105,7 @@ struct FoodBankDetailView: View {
                                 .padding(.horizontal, 10)
                         }
                     }
+                    .padding(.horizontal)
                     .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
                         Button("Open in Apple Maps") {
                             if let shelterName = shelter.name, let address = shelter.placemark.title {
@@ -131,5 +135,25 @@ struct FoodBankDetailView: View {
         }
         .navigationTitle("Food Bank Details")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true) // Hide the default one
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    // Dismiss the current view
+                    // Assuming you're inside a NavigationStack
+                    // If you're using a NavigationLink to present this, use `dismiss()` from the environment
+                    dismiss()
+                }) {
+                    ZStack {
+                        Circle()
+                            .fill(Color.red)
+                            .frame(width: 36, height: 36)
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .bold))
+                    }
+                }
+            }
+        }
     }
 }
