@@ -21,7 +21,7 @@ class ViewManager: ObservableObject {
         case main
         case health
         case healthModel(HealthModel)
-        case healthDetail(MKMapItem)
+        case healthDetail(MKMapItem, HealthModel)
         case healthResources(HealthModel)
         case login
         case signup
@@ -111,8 +111,8 @@ class ViewManager: ObservableObject {
             currentView = .healthModel(healthModel)
         }
     
-        func navigateToHealthDetail(mapItem: MKMapItem) {
-            currentView = .healthDetail(mapItem)
+        func navigateToHealthDetail(mapItem: MKMapItem, healthModel: HealthModel) {
+            currentView = .healthDetail(mapItem, healthModel)
         }
         
         func navigateToHealthResources(healthModel: HealthModel) {
