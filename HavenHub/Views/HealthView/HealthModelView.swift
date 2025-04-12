@@ -80,11 +80,11 @@ struct HealthModelView: View {
                                  .padding()
                                  .padding(.bottom, 10)
                              
-                             //Button with navigation here
+                             //Button with navigation for food banks
                              Button(action: {
                                  withAnimation {
                                      if let visibleRegion = visibleRegion {
-                                         let queryWords = ["food bank", "food pantry", "food donation", "soup kitchen", "free food"]
+                                         let queryWords = ["food bank", "food pantry", "food donation", "soup kitchen"]
                                          performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                              if success {
                                                  // After search completes successfully, navigate to HealthResourcesView
@@ -147,7 +147,6 @@ struct HealthModelView: View {
                                 Text("• Some public parks may have basic fitness equipment like a pull up bar or resistance machines that can help one improve their fitness level.")
                             }
                             .padding()
-                            
                         }
                         
                         if healthModel.info.title == "First Aid"{
