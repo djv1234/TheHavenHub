@@ -11,6 +11,7 @@ import Foundation
 import FirebaseDatabase
 import GoogleSignIn
 import FirebaseCore
+import MapKit
 
 class ViewManager: ObservableObject {
     @Published var currentView: ViewType = .login // Default to login
