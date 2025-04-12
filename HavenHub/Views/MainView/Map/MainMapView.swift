@@ -145,19 +145,22 @@ struct MapItemBubble: View {
                     .offset(x: 0, y: -25)
                 }
         } else {
-            SpeechBubble(rectangleWidth: CGFloat((mapItem.shelter.name.count + 1) * 10), rectangleHeight: 20)
+            SpeechBubble(rectangleWidth: CGFloat((mapItem.shelter.name.count + 4) * 10), rectangleHeight: 30)
                 .fill(.secondary)
-                .frame(width: 150, height: 30)
+                .frame(width: 150, height: 40)
                 .offset(x: 0, y: -20)
                 .shadow(radius: 5)
                 .overlay {
                     VStack{
                         HStack{
                             Image(systemName: getImage(mapItem: mapItem))
-                            Text(mapItem.shelter.name)
-                                .offset(x: 0, y: -35)
+                                .offset(x: 0, y: -25)
                                 .fontWeight(.bold)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.main)
+                            Text(mapItem.shelter.name)
+                                .offset(x: 0, y: -25)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.main)
                         }
                     }
                 }
