@@ -10,6 +10,7 @@ import MapKit
 
 struct MainView: View {
     @StateObject var viewManager: ViewManager
+    @StateObject var authViewModel: AuthViewModel
     
     @State var offsetY: CGFloat = 540
     @State var showTitle: Bool = true
@@ -17,15 +18,19 @@ struct MainView: View {
     @State private var showingMenu = false
     @State var cameraPosition: MapCameraPosition = .automatic
     @State var visibleRegion: MKCoordinateRegion?
-    @State private var mapItems: [MKMapItem] = []
-    @State private var currentItem: MKMapItem?
+    @State private var mapItems: [MapItemModel] = []
+    @State private var currentItem: MapItemModel?
     @State var showEmergency: Bool = false
     @State var route: MKRoute?
     @State var searchTerms: [String] = ["Homeless Shelters"]
+<<<<<<< HEAD
     @State var showFoodBank: Bool = false
     @State var showBottomSheet: Bool = true
     @State var shelters: [MKMapItem] = []
     @State var selectedResult: MKMapItem?
+=======
+    @State var isSheetPresented: Bool = false
+>>>>>>> newMain
     
     let userLocation = UserLocation()
     let routeCalc = RouteCalculator()
@@ -61,6 +66,7 @@ struct MainView: View {
                         currentItem: $currentItem,
                         showTitle: $showTitle,
                         showingMenu: $showingMenu,
+<<<<<<< HEAD
                         route: $route,
                         shelters: $shelters,
                         showBottomSheet: $showBottomSheet,
@@ -87,5 +93,36 @@ struct MainView: View {
             .toolbar(.hidden, for: .navigationBar)
         }
     
+=======
+                        visibleRegion: $visibleRegion, userLocation: userLocation, distanceCalc: distanceCalc, routeCalc: routeCalc)
+
+            MapOverlayView(showTitle: $showTitle, route: $route, cameraPosition: $cameraPosition, locationSearch: userLocation, searchTerms: $searchTerms, showSheet: $isSheetPresented, routeCalc: routeCalc, userLocation: userLocation, viewManager: viewManager)
+                .shadow(radius: 5)
+
+            BottomSheetView(
+                offsetY: $offsetY,
+                isKeyboardVisible: $isKeyboardVisible,
+                cameraPosition: $cameraPosition,
+                showEmergency: $showEmergency,
+                mapItems: $mapItems,
+                region: $visibleRegion,
+                currentItem: $currentItem,
+                showTitle: $showTitle,
+                showingMenu: $showingMenu,
+                route: $route,
+                userLocation: MKCoordinateRegion(
+                    center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
+                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                ), searchTerms: $searchTerms, userLocationStruct: userLocation, distanceCalc: distanceCalc, routeCalc: routeCalc, viewManager: viewManager
+            )
+
+            EmergencyView(showEmergency: $showEmergency)
+                .opacity(showEmergency ? 1 : 0)
+        }
+        .ignoresSafeArea(.keyboard)
+        .sheet(isPresented: $isSheetPresented) {
+            ProfileView(viewManager: viewManager, authViewModel: authViewModel)
+        }
+>>>>>>> newMain
     }
 }
