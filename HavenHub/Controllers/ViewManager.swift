@@ -11,6 +11,8 @@ import Foundation
 import FirebaseDatabase
 import GoogleSignIn
 import FirebaseCore
+import CoreLocation
+import MapKit
 
 class ViewManager: ObservableObject {
     @Published var currentView: ViewType = .login // Default to login
@@ -19,7 +21,7 @@ class ViewManager: ObservableObject {
         case main
         case health
         case healthModel(HealthModel)
-        case healthDetail(MKMapItem)
+        case healthDetail(MKMapItem, HealthModel)
         case healthResources(HealthModel)
         case login
         case signup
@@ -84,23 +86,23 @@ class ViewManager: ObservableObject {
     func navigateToMain() {
         currentView = .main
     }
-    
-    func navigateToHealth() {
-        currentView = .health
-    }
         
-    func navigateToLogin() {
-        currentView = .login
-    }
-    
-    func navigateToSignUp() {
-        currentView = .signup
-    }
-    
-    func navigateToSignUpShelter() {
-        currentView = .signupshelter
-    }
-    
+        func navigateToHealth() {
+            currentView = .health
+        }
+        
+        func navigateToLogin() {
+            currentView = .login
+        }
+        
+        func navigateToSignUp() {
+            currentView = .signup
+        }
+        
+        func navigateToSignUpShelter() {
+            currentView = .signupshelter
+        }
+        
     func navigateText() {
         currentView = .text
     }
@@ -109,8 +111,8 @@ class ViewManager: ObservableObject {
             currentView = .healthModel(healthModel)
         }
     
-        func navigateToHealthDetail(mapItem: MKMapItem) {
-            currentView = .healthDetail(mapItem)
+        func navigateToHealthDetail(mapItem: MKMapItem, healthModel: HealthModel) {
+            currentView = .healthDetail(mapItem, healthModel)
         }
         
         func navigateToHealthResources(healthModel: HealthModel) {

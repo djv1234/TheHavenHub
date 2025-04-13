@@ -22,6 +22,9 @@ struct HealthView: View {
     let rows2 = [
             GridItem(.fixed(50))
         ]
+    let rows3 = [
+            GridItem(.fixed(50))
+        ]
 
     var body: some View {
         
@@ -33,14 +36,16 @@ struct HealthView: View {
                     
                     Text("MENTAL HEALTH & WELL-BEING")
                         .font(.headline)
-                        .padding(.vertical, 10)
+                        .padding(.top, 20)
                     
                     
                     LazyHGrid(rows: rows1, alignment: .center) {
                         ForEach(healthResources, id: \.self) { item in
                             if item.type == "Mental Health"{
                                 Button(action: {
-                                    viewManager.navigateToHealthModel(healthModel: item)
+                                    withAnimation{
+                                        viewManager.navigateToHealthModel(healthModel: item)
+                                    }
                                 }) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
@@ -69,7 +74,9 @@ struct HealthView: View {
                         ForEach(healthResources, id: \.self) { item in
                             if item.type == "Physical Health"{
                                 Button(action: {
-                                    viewManager.navigateToHealthModel(healthModel: item)
+                                    withAnimation{
+                                        viewManager.navigateToHealthModel(healthModel: item)
+                                    }
                                 }) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
@@ -100,7 +107,9 @@ struct HealthView: View {
                     ForEach(healthResources, id: \.self) { item in
                         if item.type == "Miscellaneous"{
                             Button(action: {
-                                viewManager.navigateToHealthModel(healthModel: item)
+                                withAnimation{
+                                    viewManager.navigateToHealthModel(healthModel: item)
+                                }
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
@@ -137,8 +146,9 @@ struct HealthView: View {
                         }
                     }
                 }
-                .frame(width: 30, height: 30)
+                .frame(width: 40, height: 40)
                 .padding(.leading)
+                .padding(.top)
                 
                 Spacer()
                 

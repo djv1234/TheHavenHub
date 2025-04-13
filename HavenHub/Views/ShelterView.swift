@@ -3,7 +3,7 @@ import SwiftUI
 struct ShelterView: View {
     @StateObject var viewManager: ViewManager
     @StateObject var authViewModel: AuthViewModel
-
+    
     @State var editProfile: Bool = false
     
     @State private var user = ShelterModel(id: "", name: "", contact: Contact(phone: "", email: ""), location: Location(address: "", city: "", state: "", zip: "", latitude: 0, longitude: 0), info: ShelterInfo(subtitle: "", description: "", capacity: 0, subType: ""), verified: true, password: "")
@@ -93,16 +93,19 @@ struct ShelterView: View {
             }
             
             
-            VStack{
-                HStack{
-                    Text("Capacity: \(Int(user.info.capacity) + 1)")
-                    Spacer()
-                }
-            
-                Slider(value: $user.info.capacity, in: 0...4, step: 1)
-                    .onChange(of: user.info.capacity) { oldValue, newValue in
-                        authViewModel.saveShelterData(user: user) { _ in }
+            if (user.info.subType == "Shelter"){
+                VStack{
+                    HStack{
+                        Text("Capacity: \(Int(user.info.capacity) + 1)")
+                        Spacer()
                     }
+                    
+                    
+                    Slider(value: $user.info.capacity, in: 0...4, step: 1)
+                        .onChange(of: user.info.capacity) { oldValue, newValue in
+                            authViewModel.saveShelterData(user: user) { _ in }
+                        }
+                }
             }
             
             

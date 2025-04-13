@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
+    
     @StateObject private var viewManager = ViewManager()
     @StateObject var authViewModel = AuthViewModel()
     
@@ -45,8 +46,8 @@ struct ContentView: View {
                                 viewManager: viewManager
                             )
                             .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
-            case .healthDetail(let mapItem):
-                    HealthResourcesDetailView(resource: mapItem)
+            case .healthDetail(let mapItem, let healthModel):
+                HealthResourcesDetailView(viewManager: viewManager, resource: mapItem, healthModel: healthModel)
             .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
             case .login:
                 LoginView(authViewModel: authViewModel, viewManager: viewManager)

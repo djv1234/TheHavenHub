@@ -14,6 +14,8 @@ struct MainMapView: View {
     @Binding var currentItem: MapItemModel?
     @Binding var showingMenu: Bool
     @Binding var visibleRegion: MKCoordinateRegion?
+    @Binding var shelters: [MKMapItem]
+    @Binding var selectedResult: MKMapItem?
     
     let userLocation: UserLocation
     let distanceCalc: DistanceCalculator
@@ -21,7 +23,13 @@ struct MainMapView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            Map(position: $cameraPosition) {
+            
+            Map(position: $cameraPosition, selection: $selectedResult) {
+                ForEach(shelters, id: \.self) { shelter in
+                    Marker(shelter.name ?? "Unknown", coordinate: shelter.placemark.coordinate)
+                        .tint(Color.blue)
+                }
+                
                 if let currentItem = currentItem {
                     Annotation("", coordinate: currentItem.mapItem.placemark.coordinate) {
                         MapItemBubble(mapItem: currentItem)
@@ -137,19 +145,22 @@ struct MapItemBubble: View {
                     .offset(x: 0, y: -25)
                 }
         } else {
-            SpeechBubble(rectangleWidth: CGFloat((mapItem.shelter.name.count + 1) * 10), rectangleHeight: 20)
+            SpeechBubble(rectangleWidth: CGFloat((mapItem.shelter.name.count + 4) * 10), rectangleHeight: 30)
                 .fill(.secondary)
-                .frame(width: 150, height: 30)
+                .frame(width: 150, height: 40)
                 .offset(x: 0, y: -20)
                 .shadow(radius: 5)
                 .overlay {
                     VStack{
                         HStack{
                             Image(systemName: getImage(mapItem: mapItem))
-                            Text(mapItem.shelter.name)
-                                .offset(x: 0, y: -35)
+                                .offset(x: 0, y: -25)
                                 .fontWeight(.bold)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.main)
+                            Text(mapItem.shelter.name)
+                                .offset(x: 0, y: -25)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.main)
                         }
                     }
                 }
