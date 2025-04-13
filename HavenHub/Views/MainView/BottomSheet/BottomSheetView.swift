@@ -53,7 +53,7 @@ struct BottomSheetView: View {
                             MapMenuView(mapItem: $currentItem, showingMenu: $showingMenu)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         } else {
-                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, viewManager: ViewManager(), shelters: $shelters, visibleRegion: $region, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank)
+                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, viewManager: viewManager, shelters: $shelters, visibleRegion: $region, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }
@@ -93,8 +93,11 @@ struct BottomSheetView: View {
             }
             .edgesIgnoringSafeArea(.all)
             .onAppear {
-                offsetY = geometry.size.height * (4 / 7)
-                userLocation = userLocationStruct.getUserLocation()
+                DispatchQueue.main.async {
+                    offsetY = UIScreen.main.bounds.height * 0.85
+                    lastDragPosition = offsetY
+                    userLocation = userLocationStruct.getUserLocation()
+                }
             }
         }
     }

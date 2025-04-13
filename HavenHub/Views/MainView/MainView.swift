@@ -89,9 +89,5 @@ struct MainView: View {
             .toolbar(.hidden, for: .navigationBar)
         }
     }
-//    .ignoresSafeArea(.keyboard)
-//    .sheet(isPresented: $isSheetPresented) {
-//        ProfileView(viewManager: viewManager, authViewModel: authViewModel)
-//    }
 }
 

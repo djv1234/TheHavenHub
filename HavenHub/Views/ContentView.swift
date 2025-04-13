@@ -10,7 +10,7 @@ import MapKit
 
 struct ContentView: View {
     
-    @StateObject private var viewManager = ViewManager()
+    @StateObject var viewManager = ViewManager()
     @StateObject var authViewModel = AuthViewModel()
     
     @State private var showBottomSheet: Bool = false

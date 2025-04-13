@@ -105,17 +105,17 @@ class ViewManager: ObservableObject {
     func navigateText() {
         currentView = .text
     }
-        // Add navigation methods for the new cases
-        func navigateToHealthModel(healthModel: HealthModel) {
-            currentView = .healthModel(healthModel)
-        }
+    // Add navigation methods for the new cases
+    func navigateToHealthModel(healthModel: HealthModel) {
+        currentView = .healthModel(healthModel)
+    }
+
+    func navigateToHealthDetail(mapItem: MKMapItem) {
+        currentView = .healthDetail(mapItem)
+    }
     
-        func navigateToHealthDetail(mapItem: MKMapItem) {
-            currentView = .healthDetail(mapItem)
-        }
-        
-        func navigateToHealthResources(healthModel: HealthModel) {
-            currentView = .healthResources(healthModel)
-        }
+    func navigateToHealthResources(healthModel: HealthModel) {
+        currentView = .healthResources(healthModel)
+    }
 }
 

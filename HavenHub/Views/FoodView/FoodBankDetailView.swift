@@ -50,7 +50,6 @@ struct FoodBankDetailView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.red)
-                                .fill(Color.blue)
                                 .frame(height: 50)
 
                             Text("Call \(phoneNumber)")
@@ -73,7 +72,6 @@ struct FoodBankDetailView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.red)
-                                .fill(Color.blue)
                                 .frame(height: 50)
 
                             Text(url.absoluteString)
@@ -98,7 +96,6 @@ struct FoodBankDetailView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.red)
-                                .fill(Color.blue)
                                 .frame(height: 50)
                             Text(address)
                                 .foregroundColor(.white)

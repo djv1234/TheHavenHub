@@ -114,21 +114,21 @@ struct ButtonView: View {
                     }
                 }
                 
-                    Button(action: {
-                        withAnimation{
-                            viewManager.navigateToHealth()
-                        }
-                    }) {
-                        ZStack {
-                            // Background style
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(.main)
-                                .shadow(radius: 4)
-                            
-                            Image(systemName: "cross.fill")
-                                .foregroundColor(Color.red)
-                        }
+                Button(action: {
+                    withAnimation{
+                        viewManager.navigateToHealth()
                     }
+                }) {
+                    ZStack {
+                        // Background style
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.main)
+                            .shadow(radius: 4)
+                        
+                        Image(systemName: "cross.fill")
+                            .foregroundColor(Color.red)
+                    }
+                }
                 
     
                 // Clothing Button
