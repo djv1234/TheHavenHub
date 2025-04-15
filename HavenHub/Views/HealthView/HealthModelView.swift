@@ -32,11 +32,13 @@ struct HealthModelView: View {
                             viewManager.navigateToHealth()
                         }
                     }) {
-                        HStack {
+                        ZStack {
+                            Circle()
+                                .fill(Color.red)
+                                .frame(width: 36, height: 36)
                             Image(systemName: "arrow.left")
-                                .foregroundColor(.accentColor)
-                            Text("Back")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(.white)
+                                .font(.system(size: 16, weight: .bold))
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)

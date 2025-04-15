@@ -24,11 +24,13 @@ struct HealthResourcesDetailView: View {
                         viewManager.navigateToHealthResources(healthModel: healthModel)
                     }
                 }) {
-                    HStack {
+                    ZStack {
+                        Circle()
+                            .fill(Color.red)
+                            .frame(width: 36, height: 36)
                         Image(systemName: "arrow.left")
-                            .foregroundColor(.accentColor)
-                        Text("Back")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .bold))
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -54,123 +56,123 @@ struct HealthResourcesDetailView: View {
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
-                                        if let phoneNumber = resource.phoneNumber {
-                                            Button(action: {
-                                                if let phoneURL = URL(string: "tel://" + phoneNumber) {
-                                                    UIApplication.shared.open(phoneURL)
-                                                }
-                                            }) {
-                                                ZStack {
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.accentColor)
-                                                        .frame(height: 50)
-                                                    Text("Call \(phoneNumber)")
-                                                        .foregroundColor(.white)
-                                                        .fontWeight(.bold)
-                                                }
-                                            }
-                                        } else {
-                                            Text("Phone number unavailable")
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
-                                        }
+                    if let phoneNumber = resource.phoneNumber {
+                        Button(action: {
+                            if let phoneURL = URL(string: "tel://" + phoneNumber) {
+                                UIApplication.shared.open(phoneURL)
+                            }
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.accentColor)
+                                    .frame(height: 50)
+                                Text("Call \(phoneNumber)")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                        }
+                    } else {
+                        Text("Phone number unavailable")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
 
-                                        // Email (corrected logic)
-                                        if let urlString = resource.url?.absoluteString,
-                                           urlString.contains("mailto:"),
-                                           let email = urlString.split(separator: ":").last.map(String.init), !email.isEmpty {
-                                            Button(action: {
-                                                if let emailURL = URL(string: "mailto:\(email)") {
-                                                    UIApplication.shared.open(emailURL)
-                                                }
-                                            }) {
-                                                ZStack {
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.accentColor)
-                                                        .frame(height: 50)
-                                                    Text("Email \(email)")
-                                                        .foregroundColor(.white)
-                                                        .fontWeight(.bold)
-                                                        .truncationMode(.tail)
-                                                        .padding(.horizontal, 10)
-                                                }
-                                            }
-                                        } else {
-                                            Text("Email unavailable")
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
-                                        }
+                    // Email (corrected logic)
+                    if let urlString = resource.url?.absoluteString,
+                       urlString.contains("mailto:"),
+                       let email = urlString.split(separator: ":").last.map(String.init), !email.isEmpty {
+                        Button(action: {
+                            if let emailURL = URL(string: "mailto:\(email)") {
+                                UIApplication.shared.open(emailURL)
+                            }
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.accentColor)
+                                    .frame(height: 50)
+                                Text("Email \(email)")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .truncationMode(.tail)
+                                    .padding(.horizontal, 10)
+                            }
+                        }
+                    } else {
+                        Text("Email unavailable")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
 
-                                        // Website
-                                        if let url = resource.url, !url.absoluteString.contains("mailto:") {
-                                            Button(action: {
-                                                UIApplication.shared.open(url)
-                                            }) {
-                                                ZStack {
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.accentColor)
-                                                        .frame(height: 50)
-                                                    Text(url.absoluteString)
-                                                        .foregroundColor(.white)
-                                                        .fontWeight(.bold)
-                                                        .truncationMode(.tail)
-                                                        .padding(.horizontal, 10)
-                                                }
-                                            }
-                                        } else {
-                                            Text("Website unavailable")
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
-                                        }
+                    // Website
+                    if let url = resource.url, !url.absoluteString.contains("mailto:") {
+                        Button(action: {
+                            UIApplication.shared.open(url)
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.accentColor)
+                                    .frame(height: 50)
+                                Text(url.absoluteString)
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .truncationMode(.tail)
+                                    .padding(.horizontal, 10)
+                            }
+                        }
+                    } else {
+                        Text("Website unavailable")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
 
-                                        // Address
-                                        if let address = resource.placemark.title {
-                                            Button(action: {
-                                                showMapOptions = true
-                                            }) {
-                                                ZStack {
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.accentColor)
-                                                        .frame(height: 50)
-                                                    Text(address)
-                                                        .foregroundColor(.white)
-                                                        .fontWeight(.bold)
-                                                        .truncationMode(.tail)
-                                                        .padding(.horizontal, 10)
-                                                }
-                                            }
-                                            .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
-                                                Button("Open in Apple Maps") {
-                                                    if let resourceName = resource.name, let address = resource.placemark.title {
-                                                        let query = "\(resourceName), \(address)"
-                                                        let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                                        let appleMapsURL = URL(string: "http://maps.apple.com/?q=\(encodedQuery)")!
-                                                        UIApplication.shared.open(appleMapsURL)
-                                                    }
-                                                }
-                                                Button("Open in Google Maps") {
-                                                    if let resourceName = resource.name, let address = resource.placemark.title {
-                                                        let query = "\(resourceName), \(address)"
-                                                        let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                                        let googleMapsURL = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encodedQuery)")!
-                                                        UIApplication.shared.open(googleMapsURL)
-                                                    }
-                                                }
-                                                Button("Cancel", role: .cancel) { }
-                                            }
-                                        } else {
-                                            Text("Address unavailable")
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
-                                        }
-                                        // Description
-                                        Text("Description")
-                                            .font(.headline)
-                                            .padding(.top, 10)
-                                        Text(description)
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
-                                            .padding(.bottom, 10)
+                    // Address
+                    if let address = resource.placemark.title {
+                        Button(action: {
+                            showMapOptions = true
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.accentColor)
+                                    .frame(height: 50)
+                                Text(address)
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .truncationMode(.tail)
+                                    .padding(.horizontal, 10)
+                            }
+                        }
+                        .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
+                            Button("Open in Apple Maps") {
+                                if let resourceName = resource.name, let address = resource.placemark.title {
+                                    let query = "\(resourceName), \(address)"
+                                    let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                    let appleMapsURL = URL(string: "http://maps.apple.com/?q=\(encodedQuery)")!
+                                    UIApplication.shared.open(appleMapsURL)
+                                }
+                            }
+                            Button("Open in Google Maps") {
+                                if let resourceName = resource.name, let address = resource.placemark.title {
+                                    let query = "\(resourceName), \(address)"
+                                    let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                    let googleMapsURL = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encodedQuery)")!
+                                    UIApplication.shared.open(googleMapsURL)
+                                }
+                            }
+                            Button("Cancel", role: .cancel) { }
+                        }
+                    } else {
+                        Text("Address unavailable")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                    // Description
+                    Text("Description")
+                        .font(.headline)
+                        .padding(.top, 10)
+                    Text(description)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.bottom, 10)
                 }
                 .padding(.horizontal)
             }
