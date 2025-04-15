@@ -33,9 +33,9 @@ struct HealthResourcesView: View {
                     }) {
                         HStack {
                             Image(systemName: "arrow.left")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                             Text("Back")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -43,6 +43,11 @@ struct HealthResourcesView: View {
                     
                     Spacer()
                 }
+                
+                Text(healthModel.info.title + " Resources")
+                    .font(.title)
+                    .padding()
+                 //   .fontWeight(.bold)
 
                 // Map view at the top
                 Map(position: $cameraPosition) {
@@ -50,7 +55,7 @@ struct HealthResourcesView: View {
                         Marker(resource.name ?? "Unknown", coordinate: resource.placemark.coordinate)
                     }
                 }
-                .frame(height: geometry.size.height * 0.6) // 60% of screen for map
+                .frame(height: geometry.size.height * 0.60) // 60% of screen for map
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
 
@@ -63,7 +68,7 @@ struct HealthResourcesView: View {
 
                     List(resources, id: \.self) { resource in
                         Button {
-                            viewManager.navigateToHealthDetail(mapItem: resource)
+                            viewManager.navigateToHealthDetail(mapItem: resource, healthModel: healthModel)
                         } label: {
                             VStack(alignment: .leading) {
                                 Text(resource.name ?? "Unnamed Resource")
@@ -76,7 +81,7 @@ struct HealthResourcesView: View {
                         }
                     }
                     .listStyle(PlainListStyle())
-                    .frame(height: geometry.size.height * 0.3) // 30% of screen for list
+                    .frame(height: geometry.size.height * 0.35) // 35% of screen for list
 
                     Button(action: {
                         withAnimation {

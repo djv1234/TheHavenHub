@@ -72,7 +72,7 @@ struct SearchResultsListView: View {
                         }
                     }) {
                         SearchResultRow(
-                            item: item.mapItem,
+                            item: item,
                             distanceCalc: distanceCalc,
                             userLocation: userLocation
                         )
@@ -89,16 +89,22 @@ struct SearchResultsListView: View {
 
 // MARK: - Single Search Result Row
 struct SearchResultRow: View {
-    let item: MKMapItem
+    let item: MapItemModel
     let distanceCalc: DistanceCalculator
     let userLocation: UserLocation
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(item.name ?? "Unknown Place")
-                .font(.headline)
+            HStack{
+                Text(item.mapItem.name ?? "Unknown Place")
+                    .font(.headline)
+                
+                Text(item.shelter.info.subType)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
 
-            Text("\(distanceCalc.distanceInMiles(coordinate1: item.placemark.coordinate, coordinate2: userLocation.getUserLocation().center)) mi - " + getPostalAddress(from: item))
+            Text("\(distanceCalc.distanceInMiles(coordinate1: item.mapItem.placemark.coordinate, coordinate2: userLocation.getUserLocation().center)) mi - " + getPostalAddress(from: item.mapItem))
                 .font(.subheadline)
         }
     }

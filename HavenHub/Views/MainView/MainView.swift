@@ -84,6 +84,7 @@ struct MainView: View {
                 EmergencyView(showEmergency: $showEmergency)
                     .opacity(showEmergency ? 1 : 0)
             }
+            
             .ignoresSafeArea(.keyboard)
             .navigationBarHidden(true)
             .toolbar(.hidden, for: .navigationBar)
