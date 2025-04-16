@@ -75,32 +75,6 @@ struct HealthResourcesDetailView: View {
                                                 .foregroundColor(.gray)
                                         }
 
-                                        // Email (corrected logic)
-                                        if let urlString = resource.url?.absoluteString,
-                                           urlString.contains("mailto:"),
-                                           let email = urlString.split(separator: ":").last.map(String.init), !email.isEmpty {
-                                            Button(action: {
-                                                if let emailURL = URL(string: "mailto:\(email)") {
-                                                    UIApplication.shared.open(emailURL)
-                                                }
-                                            }) {
-                                                ZStack {
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.accentColor)
-                                                        .frame(height: 50)
-                                                    Text("Email \(email)")
-                                                        .foregroundColor(.white)
-                                                        .fontWeight(.bold)
-                                                        .truncationMode(.tail)
-                                                        .padding(.horizontal, 10)
-                                                }
-                                            }
-                                        } else {
-                                            Text("Email unavailable")
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
-                                        }
-
                                         // Website
                                         if let url = resource.url, !url.absoluteString.contains("mailto:") {
                                             Button(action: {
@@ -187,7 +161,7 @@ struct HealthResourcesDetailView: View {
             }
 
             if let name = resource.name {
-                description = "This is a resource for \(name). For more information, please contact them via the provided phone number or website."
+                description = "This is \(name). For more information, including how they can help you, please contact them via the provided phone number or website."
             }
         }
     }
