@@ -17,9 +17,9 @@ struct MainView: View {
     @State private var isKeyboardVisible = false
     @State private var showingMenu = false
     @State var cameraPosition: MapCameraPosition = .automatic
-    @State var visibleRegion: MKCoordinateRegion?
-    @State private var mapItems: [MapItemModel] = []
-    @State private var currentItem: MapItemModel?
+    @Binding var visibleRegion: MKCoordinateRegion?
+    @State private var mapItems: [MKMapItem] = []
+    @State private var currentItem: MKMapItem?
     @State var showEmergency: Bool = false
     @State var route: MKRoute?
     @State var searchTerms: [String] = ["Homeless Shelters"]

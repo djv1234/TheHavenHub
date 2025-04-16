@@ -100,10 +100,10 @@ struct HealthModelView: View {
                                      } else {
                                          print("Visible region is not set. Using default region.")
                                          let defaultRegion = MKCoordinateRegion(
-                                             center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283), // Default to Apple HQ
+                                             center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283),
                                              span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                                          )
-                                         let queryWords = ["food bank", "food pantry", "food donation", "soup kitchen", "free food"]
+                                         let queryWords = ["food bank", "food pantry", "food donation", "soup kitchen"]
                                          performSearch(in: defaultRegion, queryWords: queryWords) { success in
                                              if success {
                                                  withAnimation {
@@ -155,7 +155,7 @@ struct HealthModelView: View {
                             Button(action: {
                                 withAnimation {
                                     if let visibleRegion = visibleRegion {
-                                        let queryWords = ["pharmacy", "clinic", "hospital", "first aid", "medicine"]
+                                        let queryWords = ["pharmacy", "clinic", "hospital", "medicine", "urgent care", "emergency room"]
                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                             if success {
                                                 // After search completes successfully, navigate to HealthResourcesView
@@ -169,7 +169,7 @@ struct HealthModelView: View {
                                     } else {
                                         print("Visible region is not set. Using default region.")
                                         let defaultRegion = MKCoordinateRegion(
-                                            center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283), // Default to Apple HQ
+                                            center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283),
                                             span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                                         )
                                         let queryWords = ["pharmacy", "clinic", "hospital", "first aid", "medicine"]
@@ -227,7 +227,7 @@ struct HealthModelView: View {
                                 withAnimation {
                                     // Perform search based on healthModel.info.title
                                     if let visibleRegion = visibleRegion {
-                                        let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "YMCA", "community center"]
+                                        let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "community center"]
                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                             if success {
                                                 // After search completes successfully, navigate to HealthResourcesView
@@ -241,10 +241,10 @@ struct HealthModelView: View {
                                     } else {
                                         print("Visible region is not set. Using default region.")
                                         let defaultRegion = MKCoordinateRegion(
-                                            center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283), // Default to Apple HQ
+                                            center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283),
                                             span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                                         )
-                                        let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "YMCA", "community center"]
+                                        let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "community center"]
                                         performSearch(in: defaultRegion, queryWords: queryWords) { success in
                                             if success {
                                                 withAnimation {
@@ -323,7 +323,7 @@ struct HealthModelView: View {
                                     } else {
                                         print("Visible region is not set. Using default region.")
                                         let defaultRegion = MKCoordinateRegion(
-                                            center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283), // Default to Apple HQ
+                                            center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283),
                                             span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                                         )
                                         let queryWords = ["\(healthModel.info.title) resource", "counseling for \(healthModel.info.title)", "counseling", "mental health therapy", "mental health support",  "\(healthModel.info.title) health service"]

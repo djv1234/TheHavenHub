@@ -23,8 +23,11 @@ struct ContentView: View {
         VStack {
             switch viewManager.currentView {
             case .main:
-                MainView(viewManager: viewManager, authViewModel: authViewModel)
+                MainView(viewManager: viewManager, visibleRegion: $visibleRegion)
                     .transition(.asymmetric(insertion: .move(edge: .leading), removal: .opacity))
+            case .profile:
+                ProfileView(viewManager: viewManager, authViewModel: authViewModel)
+                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
             case .health:
                 HealthView(viewManager: viewManager)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
