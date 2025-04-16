@@ -39,22 +39,9 @@
 		21AC48882D2DEAF30097F93F /* HavenHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HavenHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		21DF1E3B2D61448300135A96 /* Exceptions for "HavenHub" folder in "HavenHub" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 21AC48872D2DEAF30097F93F /* HavenHub */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		21AC488A2D2DEAF30097F93F /* HavenHub */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				21DF1E3B2D61448300135A96 /* Exceptions for "HavenHub" folder in "HavenHub" target */,
-			);
 			path = HavenHub;
 			sourceTree = "<group>";
 		};
@@ -366,7 +353,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.circuitleaf.HavenHub.dmitry;
+				PRODUCT_BUNDLE_IDENTIFIER = net.circuitleaf.HavenHubKhush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -402,7 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.circuitleaf.HavenHub.dmitry;
+				PRODUCT_BUNDLE_IDENTIFIER = net.circuitleaf.HavenHubKhush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

@@ -10,7 +10,7 @@ import MapKit
 
 struct MainView: View {
     @StateObject var viewManager: ViewManager
-    @StateObject var authViewModel: AuthViewModel
+//    @StateObject var authViewModel: AuthViewModel
     
     @State var offsetY: CGFloat = 540
     @State var showTitle: Bool = true
@@ -18,12 +18,13 @@ struct MainView: View {
     @State private var showingMenu = false
     @State var cameraPosition: MapCameraPosition = .automatic
     @Binding var visibleRegion: MKCoordinateRegion?
-    @State private var mapItems: [MKMapItem] = []
-    @State private var currentItem: MKMapItem?
+    @State private var mapItems: [MapItemModel] = []
+    @State private var currentItem: MapItemModel?
     @State var showEmergency: Bool = false
     @State var route: MKRoute?
     @State var searchTerms: [String] = ["Homeless Shelters"]
     @State var showFoodBank: Bool = false
+    @State var showClothing: Bool = false
     @State var showBottomSheet: Bool = true
     @State var shelters: [MKMapItem] = []
     @State var selectedResult: MKMapItem?
@@ -67,6 +68,7 @@ struct MainView: View {
                         shelters: $shelters,
                         showBottomSheet: $showBottomSheet,
                         showFoodBank: $showFoodBank,
+                        showClothing: $showClothing,
                         
                         userLocation: MKCoordinateRegion(
                             center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
@@ -76,9 +78,11 @@ struct MainView: View {
                 }
                 
                 if (showFoodBank){
-                    
                     FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle)
-                    
+                }
+                
+                if (showClothing){
+                    ClothingView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showClothing: $showClothing, showTitle: $showTitle)
                 }
                 
                 EmergencyView(showEmergency: $showEmergency)

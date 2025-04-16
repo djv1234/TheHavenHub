@@ -17,6 +17,7 @@ struct ButtonView: View {
     @Binding var visibleRegion: MKCoordinateRegion?
     @Binding var showBottomSheet: Bool
     @Binding var showFoodBank: Bool
+    @Binding var showClothing: Bool
     @State var queryWords: [String] = []
     
     var body: some View {
@@ -134,6 +135,22 @@ struct ButtonView: View {
                 // Clothing Button
                 Button(action: {
                     // Action for the Clothing button (placeholder)
+                    withAnimation {
+                        showBottomSheet = false
+                        showClothing = true
+                        queryWords = ["clothing drive", "clothing donations", "volunteers of America", "thrift store"]
+                        print("button clicked")
+                        if let region = visibleRegion {
+                            performSearch(in: region, queryWords: queryWords)
+                        } else {
+                            // Fallback region if visibleRegion is nil
+                            let defaultRegion = MKCoordinateRegion(
+                                center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
+                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                            )
+                            performSearch(in: defaultRegion, queryWords: queryWords)
+                        }
+                    }
                 }) {
                     ZStack {
                         // Background style
