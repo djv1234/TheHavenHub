@@ -82,7 +82,7 @@ struct HealthResourcesView: View {
                                     .listStyle(PlainListStyle())
                                     
                                 }
-                                .frame(height: geometry.size.height * 0.80) // Allow up to 80% of screen height
+                                .frame(height: geometry.size.height) // Allows sheet to go over the map
                                 .background(
                                     RoundedRectangle(cornerRadius: 20)
                                         .fill(.background)
@@ -95,7 +95,7 @@ struct HealthResourcesView: View {
                                             // Calculate new offset based on drag
                                             let newOffset = lastDragPosition + value.translation.height
                                             // Restrict offset to prevent dragging too far up or down
-                                            let maxOffsetUp: CGFloat = -geometry.size.height * 0.45
+                                            let maxOffsetUp: CGFloat = -geometry.size.height * 0.55 // allow sheet to go over map
                                             let maxOffsetDown: CGFloat = 0 // Minimized (45% of screen)
                                             offsetY = min(max(newOffset, maxOffsetUp), maxOffsetDown)
                                         }
