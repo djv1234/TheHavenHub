@@ -51,10 +51,22 @@ struct HealthResourcesView: View {
                 // Map view at the top
                 Map(position: $cameraPosition) {
                     ForEach(resources, id: \.self) { resource in
-                        Marker(resource.name ?? "Unknown", coordinate: resource.placemark.coordinate)
+                        Annotation(resource.name ?? "Unknown", coordinate: resource.placemark.coordinate) {
+                            Button(action: {
+                                withAnimation {
+                                    viewManager.navigateToHealthDetail(mapItem: resource, healthModel: healthModel)
+                                }
+                            }) {
+                                Image(systemName: "mappin")
+                                    .padding(6)
+                                    .background(Color.accentColor.opacity(0.8))
+                                    .foregroundColor(.white)
+                                    .clipShape(Capsule())
+                            }
+                        }
                     }
                 }
-                .frame(height: geometry.size.height * 0.50) // 60% of screen for map
+                .frame(height: geometry.size.height * 0.50) // 50% of screen for map
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
 
@@ -67,7 +79,9 @@ struct HealthResourcesView: View {
                                     
                                     List(resources, id: \.self) { resource in
                                         Button {
-                                            viewManager.navigateToHealthDetail(mapItem: resource, healthModel: healthModel)
+                                            withAnimation {
+                                                viewManager.navigateToHealthDetail(mapItem: resource, healthModel: healthModel)
+                                            }
                                         } label: {
                                             VStack(alignment: .leading) {
                                                 Text(resource.name ?? "Unnamed Resource")
