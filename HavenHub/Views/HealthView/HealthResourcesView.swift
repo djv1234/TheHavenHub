@@ -17,7 +17,7 @@ struct HealthResourcesView: View {
     @Binding var showResources: Bool
     @Binding var showTitle: Bool
     @State private var isKeyboardVisible: Bool = false
-    @State var offsetY: CGFloat = 540
+    @State var offsetY: CGFloat = 0
     @State var lastDragPosition: CGFloat = 0
     @ObservedObject var viewManager: ViewManager
 
@@ -47,64 +47,78 @@ struct HealthResourcesView: View {
                 Text(healthModel.info.title + " Resources")
                     .font(.title)
                     .padding()
-                 //   .fontWeight(.bold)
 
                 // Map view at the top
                 Map(position: $cameraPosition) {
                     ForEach(resources, id: \.self) { resource in
-                        Marker(resource.name ?? "Unknown", coordinate: resource.placemark.coordinate)
+                        Annotation(resource.name ?? "Unknown", coordinate: resource.placemark.coordinate) {
+                            Button(action: {
+                                withAnimation {
+                                    viewManager.navigateToHealthDetail(mapItem: resource, healthModel: healthModel)
+                                }
+                            }) {
+                                Image(systemName: "mappin")
+                                    .padding(6)
+                                    .background(Color.accentColor.opacity(0.8))
+                                    .foregroundColor(.white)
+                                    .clipShape(Capsule())
+                            }
+                        }
                     }
                 }
-                .frame(height: geometry.size.height * 0.60) // 60% of screen for map
+                .frame(height: geometry.size.height * 0.50) // 50% of screen for map
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
 
-                // Bottom sheet with list
-                VStack(spacing: 0) {
-                    Capsule()
-                        .frame(width: 40, height: 6)
-                        .foregroundColor(.gray)
-                        .padding(10)
-
-                    List(resources, id: \.self) { resource in
-                        Button {
-                            viewManager.navigateToHealthDetail(mapItem: resource, healthModel: healthModel)
-                        } label: {
-                            VStack(alignment: .leading) {
-                                Text(resource.name ?? "Unnamed Resource")
-                                    .font(.headline)
-                                Text(resource.placemark.title ?? "Address unavailable")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
-                            .padding()
-                        }
-                    }
-                    .listStyle(PlainListStyle())
-                    .frame(height: geometry.size.height * 0.35) // 35% of screen for list
-
-                    Button(action: {
-                        withAnimation {
-                            showResources = false
-                            showBottomSheet = true
-                        }
-                    }) {
-                        ZStack {
-                            Circle()
-                                .fill(.ultraThinMaterial)
-                                .frame(width: 70, height: 70)
-                            Text("X")
-                                .font(.system(size: 25))
-                                .foregroundStyle(Color.primary)
-                        }
-                    }
-                    .padding()
-                }
-                .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.sub)
-                        .shadow(radius: 10)
-                )
+                // Bottom sheet with drag gesture
+                                VStack(spacing: 0) {
+                                    Capsule()
+                                        .frame(width: 40, height: 6)
+                                        .foregroundColor(.gray)
+                                        .padding(10)
+                                    
+                                    List(resources, id: \.self) { resource in
+                                        Button {
+                                            withAnimation {
+                                                viewManager.navigateToHealthDetail(mapItem: resource, healthModel: healthModel)
+                                            }
+                                        } label: {
+                                            VStack(alignment: .leading) {
+                                                Text(resource.name ?? "Unnamed Resource")
+                                                    .font(.headline)
+                                                Text(resource.placemark.title ?? "Address unavailable")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.gray)
+                                            }
+                                            .padding()
+                                        }
+                                    }
+                                    .listStyle(PlainListStyle())
+                                    
+                                }
+                                .frame(height: geometry.size.height) // Allows sheet to go over the map
+                                .background(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(.background)
+                                        .shadow(radius: 10)
+                                )
+                                .offset(y: offsetY)
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged { value in
+                                            // Calculate new offset based on drag
+                                            let newOffset = lastDragPosition + value.translation.height
+                                            // Restrict offset to prevent dragging too far up or down
+                                            let maxOffsetUp: CGFloat = -geometry.size.height * 0.55 // allow sheet to go over map
+                                            let maxOffsetDown: CGFloat = 0 // Minimized (45% of screen)
+                                            offsetY = min(max(newOffset, maxOffsetUp), maxOffsetDown)
+                                        }
+                                        .onEnded { value in
+                                            // Update last drag position to the final offset
+                                            lastDragPosition = offsetY
+                                        }
+                                )
+                                .animation(.interactiveSpring(), value: offsetY)
             }
         }
     }

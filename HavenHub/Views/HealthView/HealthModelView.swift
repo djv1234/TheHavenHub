@@ -244,7 +244,7 @@ struct HealthModelView: View {
                                             center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283),
                                             span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                                         )
-                                        let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "community center"]
+                                        let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "community center", "Porta potty"]
                                         performSearch(in: defaultRegion, queryWords: queryWords) { success in
                                             if success {
                                                 withAnimation {
