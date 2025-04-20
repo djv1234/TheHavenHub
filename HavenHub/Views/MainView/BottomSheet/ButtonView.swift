@@ -18,6 +18,7 @@ struct ButtonView: View {
     @Binding var showBottomSheet: Bool
     @Binding var showFoodBank: Bool
     @Binding var showClothing: Bool
+    @Binding var showShelter: Bool
     @State var queryWords: [String] = []
     
     var body: some View {
@@ -77,7 +78,7 @@ struct ButtonView: View {
                     withAnimation {
                         showBottomSheet = false
                         showFoodBank = true
-                        queryWords = ["food banks"]
+                        queryWords = ["food banks", "food pantry"]
                         if let region = visibleRegion {
                             performSearch(in: region, queryWords: queryWords)
                         } else {
@@ -104,6 +105,21 @@ struct ButtonView: View {
                 // Shelter Button
                 Button(action: {
                     // Action for the Shelter button (placeholder)
+                    withAnimation {
+                        showBottomSheet = false
+                        showShelter = true
+                        queryWords = ["homeless shelters", "crisis shelters", "overnight shelter", "emergency shelter", "temporary housing"]
+                        if let region = visibleRegion {
+                            performSearch(in: region, queryWords: queryWords)
+                        } else {
+                            // Fallback region if visibleRegion is nil
+                            let defaultRegion = MKCoordinateRegion(
+                                center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
+                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                            )
+                            performSearch(in: defaultRegion, queryWords: queryWords)
+                        }
+                    }
                 }) {
                     ZStack {
                         // Background style

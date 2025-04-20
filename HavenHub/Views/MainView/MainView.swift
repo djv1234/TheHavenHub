@@ -25,6 +25,7 @@ struct MainView: View {
     @State var searchTerms: [String] = ["Homeless Shelters"]
     @State var showFoodBank: Bool = false
     @State var showClothing: Bool = false
+    @State var showShelter: Bool = false
     @State var showBottomSheet: Bool = true
     @State var shelters: [MKMapItem] = []
     @State var selectedResult: MKMapItem?
@@ -69,6 +70,7 @@ struct MainView: View {
                         showBottomSheet: $showBottomSheet,
                         showFoodBank: $showFoodBank,
                         showClothing: $showClothing,
+                        showShelter: $showShelter,
                         
                         userLocation: MKCoordinateRegion(
                             center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
@@ -83,6 +85,10 @@ struct MainView: View {
                 
                 if (showClothing){
                     ClothingView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showClothing: $showClothing, showTitle: $showTitle)
+                }
+                
+                if (showShelter){
+                    SheltersView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showShelter: $showShelter, showTitle: $showTitle)
                 }
                 
                 EmergencyView(showEmergency: $showEmergency)

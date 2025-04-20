@@ -1,14 +1,14 @@
 //
-//  FoodBankDetailView.swift
+//  ShelterDetailView.swift
 //  HavenHub
 //
-//  Created by Khush Patel on 1/29/25.
+//  Created by Khush Patel on 4/20/25.
 //
 
 import SwiftUI
 import MapKit
 
-struct FoodBankDetailView: View {
+struct ShelterDetailView: View {
     let shelter: MKMapItem
     @State private var cameraPosition: MapCameraPosition
     @State private var showMapOptions = false
@@ -25,7 +25,7 @@ struct FoodBankDetailView: View {
 
     var body: some View {
         VStack {
-            Text(shelter.name ?? "Unnamed Food Bank")
+            Text(shelter.name ?? "Unnamed Shelter")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()
@@ -133,7 +133,7 @@ struct FoodBankDetailView: View {
             }
             Spacer()
         }
-        .navigationTitle("Food Bank Details")
+        .navigationTitle("Shelter Details")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true) // Hide the default one
         .toolbar {
