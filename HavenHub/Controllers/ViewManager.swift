@@ -28,6 +28,7 @@ class ViewManager: ObservableObject {
         case signupshelter
         case text
         case shelter
+        case profile
     }
     
     init() {
@@ -116,6 +117,9 @@ class ViewManager: ObservableObject {
     }
     func navigateToHealthDetail(mapItem: MKMapItem, healthModel: HealthModel) {
         currentView = .healthDetail(mapItem, healthModel)
+    }
+    func navigateToProfile() {
+        currentView = .profile
     }
 }
 

@@ -68,6 +68,8 @@ struct ContentView: View {
                 }
             case .shelter:
                 ShelterView(viewManager: viewManager, authViewModel: authViewModel)
+            case .profile:
+                ProfileView(viewManager: viewManager, authViewModel: authViewModel)
             }
         }
     }

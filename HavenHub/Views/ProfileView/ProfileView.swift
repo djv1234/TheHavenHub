@@ -9,11 +9,26 @@ struct ProfileView: View {
     @State private var user : UserModel = UserModel(name: "", email: "", password: "")
     
     var body: some View {
-        VStack {
-            Capsule()
-                .frame(width: 38, height: 6)
-                .foregroundColor(.gray)
-                .padding(10)
+        HStack {
+//            Capsule()
+//                .frame(width: 38, height: 6)
+//                .foregroundColor(.gray)
+//                .padding(10)
+            Button(
+                action: {
+                withAnimation {
+                    viewManager.navigateToMain()
+                }
+            }) {
+                ZStack {
+                    Circle()
+                        .fill(Color.red)
+                        .frame(width: 36, height: 36)
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(.white)
+                        .font(.system(size: 16, weight: .bold))
+                }
+            }
             
             Text("Profile")
                 .frame(width: 250, height: 40)
@@ -71,5 +86,7 @@ struct ProfileView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading)
     }
 }

@@ -13,6 +13,7 @@ struct ProfileButton: View {
     
     var body: some View {
         Button(action: {
+            viewManager.navigateToProfile()
             showSheet = true
         }) {
             ZStack {
