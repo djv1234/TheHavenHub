@@ -39,9 +39,22 @@
 		21AC48882D2DEAF30097F93F /* HavenHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HavenHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1EE49E152DB6E74100D92010 /* Exceptions for "HavenHub" folder in "HavenHub" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 21AC48872D2DEAF30097F93F /* HavenHub */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		21AC488A2D2DEAF30097F93F /* HavenHub */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1EE49E152DB6E74100D92010 /* Exceptions for "HavenHub" folder in "HavenHub" target */,
+			);
 			path = HavenHub;
 			sourceTree = "<group>";
 		};
@@ -337,7 +350,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HavenHub/Preview Content\"";
-				DEVELOPMENT_TEAM = RDWV4746K5;
+				DEVELOPMENT_TEAM = Z4PQBS2656;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HavenHub/Info.plist;
@@ -353,7 +366,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.circuitleaf.HavenHubKhush;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impactdevelopers.HavenHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -373,7 +386,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HavenHub/Preview Content\"";
-				DEVELOPMENT_TEAM = RDWV4746K5;
+				DEVELOPMENT_TEAM = Z4PQBS2656;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HavenHub/Info.plist;
@@ -389,7 +402,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.circuitleaf.HavenHubKhush;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impactdevelopers.HavenHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
