@@ -13,8 +13,8 @@ struct ProfileButton: View {
     
     var body: some View {
         Button(action: {
-            viewManager.navigateToProfile()
-            showSheet = true
+        //    viewManager.navigateToProfile()     commented out for now
+        //    showSheet = true
         }) {
             ZStack {
                 Circle()

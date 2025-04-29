@@ -15,7 +15,7 @@ import CoreLocation
 import MapKit
 
 class ViewManager: ObservableObject {
-    @Published var currentView: ViewType = .login // Default to login
+    @Published var currentView: ViewType = .main // Default to main
     
     enum ViewType {
         case main
@@ -31,9 +31,9 @@ class ViewManager: ObservableObject {
         case profile
     }
     
-    init() {
-        checkUserStatus()
-    }
+   // init() {
+   //     checkUserStatus()
+  //  }
     
     func checkUserStatus() {
         guard Auth.auth().currentUser != nil else {
