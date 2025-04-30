@@ -2,8 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleIdentifier</key>
-	<string>&lt;key&gt;NSLocationWhenInUseUsageDescription&lt;/key&gt;&lt;string&gt;We need access to your location to provide local resource recommendations.&lt;/string&gt;
-&lt;string&gt;Turning on location services allows us to show you local resources and services in your area like shelters, food banks, medical resources, and affordable clothing.&lt;/string&gt;</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use your location to show nearby shelters, food banks, medical resources, and affordable clothing options.</string>
 </dict>
 </plist>
