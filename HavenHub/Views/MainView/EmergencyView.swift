@@ -41,7 +41,7 @@ struct EmergencyView: View {
                                 .fill(Color.red) // Red background for urgency
                             
                             VStack {
-                                Text("911 - Police")
+                                Text("911 - Emergency")
                                     .foregroundColor(.main) // Use the main color for text
                                     .fontWeight(.bold)
                             }

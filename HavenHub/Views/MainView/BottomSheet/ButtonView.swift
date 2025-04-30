@@ -181,6 +181,8 @@ struct ButtonView: View {
             }
             .padding([.horizontal]) // Horizontal padding for the button row
             .frame(width: geometry.size.width, height: geometry.size.height * 0.10) // Row height relative to screen size
+            
+            
         }
     }
     func findLocations(region: MKCoordinateRegion, searchReq: String, completion: @escaping ([MKMapItem]?) -> Void) {

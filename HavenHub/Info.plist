@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>&lt;key&gt;NSLocationWhenInUseUsageDescription&lt;/key&gt;
+	<string>&lt;key&gt;NSLocationWhenInUseUsageDescription&lt;/key&gt;&lt;string&gt;We need access to your location to provide local resource recommendations.&lt;/string&gt;
 &lt;string&gt;Turning on location services allows us to show you local resources and services in your area like shelters, food banks, medical resources, and affordable clothing.&lt;/string&gt;</string>
 </dict>
 </plist>
