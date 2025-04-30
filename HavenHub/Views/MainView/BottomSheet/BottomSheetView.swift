@@ -17,6 +17,7 @@ struct BottomSheetView: View {
     @Binding var showFoodBank: Bool
     @Binding var showClothing: Bool
     @Binding var showShelter: Bool
+    @Binding var showFavorites: Bool
     @State var lastDragPosition: CGFloat = 0
     @State private var searchText: String = ""
     @State var userLocation: MKCoordinateRegion
@@ -55,7 +56,7 @@ struct BottomSheetView: View {
                             MapMenuView(mapItem: $currentItem, showingMenu: $showingMenu)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         } else {
-                            ButtonView(showEmergency: $showEmergency, geometry: geometry, cameraPosition: $cameraPosition, viewManager: viewManager, shelters: $shelters, visibleRegion: $region, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showClothing: $showClothing, showShelter: $showShelter)
+                            ButtonView(showEmergency: $showEmergency, showFavorites: $showFavorites, geometry: geometry, cameraPosition: $cameraPosition, viewManager: viewManager, shelters: $shelters, visibleRegion: $region, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showClothing: $showClothing, showShelter: $showShelter)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }

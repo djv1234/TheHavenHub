@@ -10,6 +10,7 @@ import MapKit
 struct ButtonView: View {
     // Bindings for shared states and view properties
     @Binding var showEmergency: Bool // Controls whether the emergency view is shown
+    @Binding var showFavorites: Bool // Controls whether the favorites view is shown
     var geometry: GeometryProxy // Provides the size and dimensions of the parent view
     @Binding var cameraPosition: MapCameraPosition // Tracks the current position of the map camera
     @StateObject var viewManager: ViewManager
@@ -27,7 +28,9 @@ struct ButtonView: View {
             HStack {
                 // Favorites Button
                 Button(action: {
-                    // Action for the Favorites button (placeholder)
+                    withAnimation() {
+                        showFavorites = true // Show the emergency screen
+                    }
                 }) {
                     ZStack {
                         // Background style

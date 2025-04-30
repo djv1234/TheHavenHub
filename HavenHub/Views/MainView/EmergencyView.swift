@@ -88,7 +88,7 @@ struct EmergencyView: View {
                         
                         Text("X")
                             .font(.system(size: 25)) // Font size for the close symbol
-                            .foregroundStyle(Color.primary) // Color for the text
+                            .foregroundStyle(.primary) // Color for the text
                     }
                 }
                 .padding() // Add padding around the close button
