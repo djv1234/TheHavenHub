@@ -27,26 +27,26 @@ struct ButtonView: View {
             // First row of buttons
             HStack {
                 // Favorites Button
-                Button(action: {
-                    withAnimation() {
-                        showFavorites = true // Show the emergency screen
-                    }
-                }) {
-                    ZStack {
-                        // Background style
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.green)
-                        
-                        // Icon and label
-                        VStack {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(.main) // Custom main color
-                            Text("Favorites")
-                                .foregroundColor(.main)
-                                .fontWeight(.bold)
-                        }
-                    }
-                }
+//                Button(action: {
+//                    withAnimation() {
+//                        showFavorites = true // Show the emergency screen
+//                    }
+//                }) {
+//                    ZStack {
+//                        // Background style
+//                        RoundedRectangle(cornerRadius: 20)
+//                            .fill(Color.green)
+//                        
+//                        // Icon and label
+//                        VStack {
+//                            Image(systemName: "star.fill")
+//                                .foregroundColor(.main) // Custom main color
+//                            Text("Favorites")
+//                                .foregroundColor(.main)
+//                                .fontWeight(.bold)
+//                        }
+//                    }
+//                }
                 
                 // Emergency Button
                 Button(action: {
@@ -111,7 +111,7 @@ struct ButtonView: View {
                     withAnimation {
                         showBottomSheet = false
                         showShelter = true
-                        queryWords = ["homeless shelters for people", "overnight shelter for humans", "men's homeless shelter", "women's homeless shelter"]
+                        queryWords = ["homeless shelter for people", "drop-in homeless shelter", "overnight homeless shelter", "men's homeless shelter", "women's homeless shelter", "family shelter"]
                         if let region = visibleRegion {
                             performSearch(in: region, queryWords: queryWords)
                         } else {

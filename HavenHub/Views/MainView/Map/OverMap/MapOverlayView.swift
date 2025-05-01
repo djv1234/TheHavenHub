@@ -40,7 +40,7 @@ struct MapOverlayView: View {
                     
                     LocationButton(route: $route, cameraPosition: $cameraPosition, locationSearch: UserLocation())
                     
-                    ProfileButton(viewManager: viewManager, showSheet: $showSheet)
+                //    ProfileButton(viewManager: viewManager, showSheet: $showSheet)
                 }
                 
                 Spacer()

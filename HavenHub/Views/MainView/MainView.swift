@@ -94,8 +94,8 @@ struct MainView: View {
                 }
         
                 
-                FavoritesView(showFavorites: $showFavorites)
-                    .opacity(showFavorites ? 1 : 0)
+     //           FavoritesView(showFavorites: $showFavorites)
+     //               .opacity(showFavorites ? 1 : 0)
                 
                 EmergencyView(showEmergency: $showEmergency)
                     .opacity(showEmergency ? 1 : 0)
