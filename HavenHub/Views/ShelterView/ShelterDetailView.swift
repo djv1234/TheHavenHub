@@ -24,7 +24,7 @@ struct ShelterDetailView: View {
     }
 
     var body: some View {
-        
+        ScrollView {
         Text(shelter.name ?? "Unnamed Shelter")
             .font(.title)
             .fontWeight(.bold)
@@ -39,7 +39,6 @@ struct ShelterDetailView: View {
         .frame(height: 300)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding()
-        ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 Text("To reserve a bed at the shelter, call:")
                     .font(.headline)
