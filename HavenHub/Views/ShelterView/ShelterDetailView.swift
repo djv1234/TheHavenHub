@@ -24,114 +24,138 @@ struct ShelterDetailView: View {
     }
 
     var body: some View {
-        VStack {
-            Text(shelter.name ?? "Unnamed Shelter")
-                .font(.title)
-                .fontWeight(.bold)
-                .padding()
-
-            // Map with rounded corners
-            Map(position: $cameraPosition) {
-                Marker(shelter.name ?? "Unknown", coordinate: shelter.placemark.coordinate)
-            }
-            .frame(height: 300)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+        
+        Text(shelter.name ?? "Unnamed Shelter")
+            .font(.title)
+            .fontWeight(.bold)
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
             .padding()
+        
+        // Map with rounded corners
+        Map(position: $cameraPosition) {
+            Marker(shelter.name ?? "Unknown", coordinate: shelter.placemark.coordinate)
+        }
+        .frame(height: 300)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding()
+        
+        VStack(alignment: .leading, spacing: 20) {
+            Text("To reserve a bed at the shelter, call:")
+                .font(.headline)
+                .padding(.horizontal)
             
-            // stack for details about food bank
-            VStack(alignment: .leading, spacing: 10) {
-                
-                // phone number
-                if let phoneNumber = shelter.phoneNumber {
-                    Button(action: {
-                        if let phoneURL = URL(string: "tel://\(phoneNumber.replacingOccurrences(of: " ", with: ""))") {
-                            UIApplication.shared.open(phoneURL)
-                        }
-                    }) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.red)
-                                .frame(height: 50)
-
-                            Text("Call \(phoneNumber)")
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                        }
-                    }
-                    .padding(.horizontal)
-                } else {
-                    Text("Phone number unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+            Button(action: {
+                if let phoneURL = URL(string: "tel://6142747000") {
+                    UIApplication.shared.open(phoneURL)
                 }
-                
-                // website button
-                if let url = shelter.url {
-                    Button(action: {
-                        UIApplication.shared.open(url)
-                    }) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.red)
-                                .frame(height: 50)
-
-                            Text(url.absoluteString)
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .truncationMode(.tail)
-                                .padding(.horizontal, 10)
-                        }
-                    }
-                    .padding(.horizontal)
-                } else {
-                    Text("Website unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
-                
-                // address with option to open in apple/google maps
-                if let address = shelter.placemark.title {
-                    Button(action: {
-                        showMapOptions = true
-                    }) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.red)
-                                .frame(height: 50)
-                            Text(address)
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .truncationMode(.tail)
-                                .padding(.horizontal, 10)
-                        }
-                    }
-                    .padding(.horizontal)
-                    .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
-                        Button("Open in Apple Maps") {
-                            if let shelterName = shelter.name, let address = shelter.placemark.title {
-                                let query = "\(shelterName), \(address)"
-                                let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                let appleMapsURL = URL(string: "http://maps.apple.com/?q=\(encodedQuery)")!
-                                UIApplication.shared.open(appleMapsURL)
-                            }
-                        }
-                        Button("Open in Google Maps") {
-                            if let shelterName = shelter.name, let address = shelter.placemark.title {
-                                let query = "\(shelterName), \(address)"
-                                let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                let googleMapsURL = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encodedQuery)")!
-                                UIApplication.shared.open(googleMapsURL)
-                            }
-                        }
-                        Button("Cancel", role: .cancel) { }
-                    }
-                } else {
-                    Text("Address unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+            }) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.red)
+                        .frame(height: 45)
+                    Text("+1 (614) 274-7000")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
                 }
             }
-            Spacer()
+            .padding(.horizontal)
+            
+            // Website Button
+            if let url = shelter.url {
+                Button(action: {
+                    UIApplication.shared.open(url)
+                }) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.red)
+                            .frame(height: 45)
+                        
+                        Text(url.absoluteString)
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .truncationMode(.tail)
+                            .padding(.horizontal, 10)
+                    }
+                }
+                .padding(.horizontal)
+            } else {
+                Text("Website unavailable")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal)
+            }
+            
+            // Address with Maps options
+            if let address = shelter.placemark.title {
+                Button(action: {
+                    showMapOptions = true
+                }) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.red)
+                            .frame(height: 45)
+                        Text(address)
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .truncationMode(.tail)
+                            .padding(.horizontal, 10)
+                    }
+                }
+                .padding(.horizontal)
+                .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
+                    Button("Open in Apple Maps") {
+                        if let shelterName = shelter.name {
+                            let query = "\(shelterName), \(address)"
+                            let encoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                            if let url = URL(string: "http://maps.apple.com/?q=\(encoded)") {
+                                UIApplication.shared.open(url)
+                            }
+                        }
+                    }
+                    Button("Open in Google Maps") {
+                        if let shelterName = shelter.name {
+                            let query = "\(shelterName), \(address)"
+                            let encoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                            if let url = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encoded)") {
+                                UIApplication.shared.open(url)
+                            }
+                        }
+                    }
+                    Button("Cancel", role: .cancel) {}
+                }
+            } else {
+                Text("Address unavailable")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal)
+            }
+            
+            // General contact info at the bottom
+            Divider().padding(.horizontal)
+            
+            Text("For general purposes, call this number:")
+                .font(.headline)
+                .padding(.horizontal)
+            
+            if let phoneNumber = shelter.phoneNumber {
+                Button(action: {
+                    if let phoneURL = URL(string: "tel://\(phoneNumber.replacingOccurrences(of: " ", with: ""))") {
+                        UIApplication.shared.open(phoneURL)
+                    }
+                }) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.red)
+                            .frame(height: 45)
+                        
+                        Text("\(phoneNumber)")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                    }
+                }
+                .padding(.horizontal)
+            }
         }
         .navigationTitle("Shelter Details")
         .navigationBarTitleDisplayMode(.inline)

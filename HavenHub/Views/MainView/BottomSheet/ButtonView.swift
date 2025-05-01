@@ -111,7 +111,7 @@ struct ButtonView: View {
                     withAnimation {
                         showBottomSheet = false
                         showShelter = true
-                        queryWords = ["homeless shelters", "crisis shelters", "overnight shelter", "emergency shelter", "temporary housing"]
+                        queryWords = ["homeless shelters for people", "overnight shelter for humans", "men's homeless shelter", "women's homeless shelter"]
                         if let region = visibleRegion {
                             performSearch(in: region, queryWords: queryWords)
                         } else {
