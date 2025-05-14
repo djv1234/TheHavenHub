@@ -4,8 +4,8 @@
         "name": "Equitas Healthcare",
         "latitude": 39.967530,
         "longitude": -82.981401,
-        "services": ["General healthcare needs"],
-        "address": "750 East Long Street",
+        "services": "General healthcare needs",
+        "address": "750 East Long St",
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM"
     },
@@ -14,8 +14,8 @@
         "name": "Equitas Healthcare",
         "latitude": 39.983539,
         "longitude": -83.005119,
-        "services": ["General healthcare needs"],
-        "address": "1033 North High Street",
+        "services": "General healthcare needs",
+        "address": "1033 North High St",
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM"
     },
@@ -24,8 +24,8 @@
         "name": "Equitas Healthcare",
         "latitude": 40.051955,
         "longitude": -83.019636,
-        "services": ["HIV Services"],
-        "address": "4400 North High Street",
+        "services": "HIV Services",
+        "address": "4400 North High St",
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM"
     },
@@ -34,10 +34,150 @@
         "name": "Physicians Care Connection",
         "latitude": 39.959919,
         "longitude": -82.980118,
-        "services": ["Medical and dental"],
-        "address": "240 Parsons Avenue",
+        "services": "Medical and dental",
+        "address": "240 Parsons Ave",
         "phone": "(614) 884-2441",
         "hours": "Monday 4:30 PM"
     },
+    {
+        "type": "Health resources",
+        "name": "Columbus Free Clinic",
+        "latitude": 40.007664,
+        "longitude": -83.009915,
+        "services": "Sign up at ColumbusFreeClinic.com",
+        "address": "2231 North High St",
+        "phone": "(614) 404-8417",
+        "hours": "Thursday 5PM arrive"
+    },
+    {
+        "type": "Health resources",
+        "name": "Helping Hands Free Clinic",
+        "latitude": 40.0709844,
+        "longitude": -82.9757651,
+        "services": "General healthcare",
+        "address": "5100 Karl Road",
+        "phone": "(614) 262-5094",
+        "hours": "Walk-ins Thursday 2-4:30PM"
+    },
+    {
+        "type": "Health resources",
+        "name": "Health Center at Faith Mission",
+        "latitude": 39.9684001,
+        "longitude": -82.9921417,
+        "services": "General healthcare",
+        "address": "245 North Grant Ave",
+        "phone": "(614) 224-6617",
+        "hours": "Monday - Friday 8:30AM-5PM, Thursday 6PM-8PM"
+    },
+    {
+        "type": "Health resources",
+        "name": "Lower Lights Christian Health",
+        "latitude": 39.9585322,
+        "longitude": -83.0316493,
+        "services": "Additional locations available",
+        "address": "1160 West Broad St",
+        "phone": "(614) 274-1455",
+        "hours": ""
+    },
+    {
+        "type": "Health resources",
+        "name": "Mount Carmel Mobile Coach and Street Medicine",
+        "latitude": null,
+        "longitude": null,
+        "services": "Call for locations",
+        "address": "",
+        "phone": "(614) 234-4777",
+        "hours": ""
+    },
+    {
+        "type": "Health resources",
+        "name": "New Life Community Outreach",
+        "latitude": 39.9868792,
+        "longitude": -83.0063894,
+        "services": "",
+        "address": "25 W 5th Ave",
+        "phone": "(614) 294-0134",
+        "hours": "Sunday 7AM-8:30AM"
+    },
+    {
+        "type": "Health resources",
+        "name": "Southeast Healthcare",
+        "latitude": 39.964935,
+        "longitude": -83.00192,
+        "services": "Mental, dental, and other services",
+        "address": "16 West Long St",
+        "phone": "(614) 225-0990",
+        "hours": "Monday-Friday 8AM-5PM"
+    },
+    {
+        "type": "Health resources",
+        "name": "Southeast Healthcare",
+        "latitude": 39.9605872,
+        "longitude": -83.0145973,
+        "services": "Mental, dental, and other services",
+        "address": "524 West Broad St",
+        "phone": "(614) 225-0990",
+        "hours": "Monday-Friday 8AM-5PM"
+    },
+    {
+        "type": "Health resources",
+        "name": "Stowe Mission of Central Ohio",
+        "latitude": 39.9453778,
+        "longitude": -82.982531,
+        "services": "Dental and vision care by appt.",
+        "address": "888 Parsons",
+        "phone": "(614) 445-8400",
+        "hours": "Every Monday and 3rd Thursday 5:30PM"
+    },
+    {
+        "type": "Health resources",
+        "name": "Vineyard Free Health Clinic",
+        "latitude": 39.9868255,
+        "longitude": -83.0003909,
+        "services": "",
+        "address": "171 E 5th Ave",
+        "phone": "(614) 259-5428",
+        "hours": "http://ww2.vineyardcommunitycenter.org"
+    },
+    {
+        "type": "Health resources",
+        "name": "Vineyard Free Health Clinic",
+        "latitude": 40.0934939,
+        "longitude": -82.9336416,
+        "services": "Medical, dental, vision, & chiropractic clinics for uninsured 18+",
+        "address": "6000 Cooper Rd",
+        "phone": "(614) 259-5428",
+        "hours": "Hours vary, call for details"
+    },
+    {
+        "type": "Health resources",
+        "name": "Family Planning & Sexual Health",
+        "latitude": 39.9593029,
+        "longitude": -82.9807177,
+        "services": "Columbus public health",
+        "address": "240 Parsons Ave",
+        "phone": "(614) 654-1850",
+        "hours": "Hours vary, call for details"
+    },
+    {
+        "type": "Health resources",
+        "name": "Dwell Free Clinic",
+        "latitude": 40.0579721,
+        "longitude": -82.9944542,
+        "services": "",
+        "address": "1934 N. Fourth St",
+        "phone": "(614) 654-1850",
+        "hours": "1st and 3rd Monday each month"
+    },
+    {
+        "type": "Health resources",
+        "name": "PrimaryOne Health",
+        "latitude": null,
+        "longitude": null,
+        "services": "Medical, dental, vision, ob-gyn, and transportation services",
+        "address": "",
+        "phone": "(614) 645-0521",
+        "hours": "Call for details & locations"
+    }
     
 ]
