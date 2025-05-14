@@ -1,0 +1,33 @@
+[
+    {
+        "type": "Health resources",
+        "name": "Equitas Healthcare",
+        "latitude": 39.967530,
+        "longitude": -82.981401,
+        "services": ["General healthcare needs"],
+        "address": "750 East Long Street",
+        "phone": "(614) 340-6777",
+        "hours": "Monday-Friday 9AM-4PM"
+    },
+    {
+        "type": "Health resources",
+        "name": "Equitas Healthcare",
+        "latitude": 39.983539,
+        "longitude": -83.005119,
+        "services": ["General healthcare needs"],
+        "address": "1033 North High Street",
+        "phone": "(614) 340-6777",
+        "hours": "Monday-Friday 9AM-4PM"
+    },
+    {
+        "type": "Health resources",
+        "name": "Equitas Healthcare",
+        "latitude": 40.051955,
+        "longitude": -83.019636,
+        "services": ["HIV Services"],
+        "address": "4400 North High Street",
+        "phone": "(614) 340-6777",
+        "hours": "Monday-Friday 9AM-4PM"
+    },
+    
+]

@@ -157,8 +157,9 @@ struct ButtonView: View {
                     withAnimation {
                         showBottomSheet = false
                         showClothing = true
-                        queryWords = ["clothing drive", "clothing donations", "volunteers of America", "thrift store"]
-                        print("button clicked")
+                        queryWords = ["clothing donations", "volunteers of America", "thrift store", "thrift shop"
+                                      //, "joseph's coat", "new life community outreach", "christ's cocoons", "united //methodist free store", "st.vincent de paul free store", "jordan's crossing"
+                        ]
                         if let region = visibleRegion {
                             performSearch(in: region, queryWords: queryWords)
                         } else {
@@ -185,9 +186,10 @@ struct ButtonView: View {
             .padding([.horizontal]) // Horizontal padding for the button row
             .frame(width: geometry.size.width, height: geometry.size.height * 0.10) // Row height relative to screen size
             
-            
         }
     }
+    
+    //in findLocations or performSearch, add in the search terms from the streetcard
     func findLocations(region: MKCoordinateRegion, searchReq: String, completion: @escaping ([MKMapItem]?) -> Void) {
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = searchReq
@@ -213,7 +215,7 @@ struct ButtonView: View {
     }
 
     func performSearch(in region: MKCoordinateRegion, queryWords: [String]) {
-        
+        // if MKCoordinateRegion.longitude < columbus city limit west, MKCoordinateRegion.longitude > columbus city limit east && MKCoordinateRegion.latitude < columbus city limit north, MKCoordinateRegion.longitude > columbus city limit south { add the street card places to queryWords}
         shelters.removeAll()
         for keyword in queryWords {
             findLocations(region: region, searchReq: keyword) { mapItems in
