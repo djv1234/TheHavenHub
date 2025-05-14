@@ -29,5 +29,15 @@
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM"
     },
+    {
+        "type": "Health resources",
+        "name": "Physicians Care Connection",
+        "latitude": 39.959919,
+        "longitude": -82.980118,
+        "services": ["Medical and dental"],
+        "address": "240 Parsons Avenue",
+        "phone": "(614) 884-2441",
+        "hours": "Monday 4:30 PM"
+    },
     
 ]
