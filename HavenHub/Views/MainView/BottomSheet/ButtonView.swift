@@ -82,15 +82,19 @@ struct ButtonView: View {
                         showBottomSheet = false
                         showFoodBank = true
                         queryWords = ["food banks", "food pantry"]
-                        if let region = visibleRegion {
-                            performSearch(in: region, queryWords: queryWords)
+                        if let center = visibleRegion?.center, isInColumbus(center) {
+                            // You're inside Columbus, get the streetCard information for foodBanks into here!!
                         } else {
-                            // Fallback region if visibleRegion is nil
-                            let defaultRegion = MKCoordinateRegion(
-                                center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
-                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-                            )
-                            performSearch(in: defaultRegion, queryWords: queryWords)
+                            if let region = visibleRegion {
+                                performSearch(in: region, queryWords: queryWords)
+                            } else {
+                                // Fallback region if visibleRegion is nil
+                                let defaultRegion = MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                                )
+                                performSearch(in: defaultRegion, queryWords: queryWords)
+                            }
                         }
                     }
                     // Action for the Food button (placeholder)
@@ -112,15 +116,19 @@ struct ButtonView: View {
                         showBottomSheet = false
                         showShelter = true
                         queryWords = ["homeless shelter for people", "drop-in homeless shelter", "overnight homeless shelter", "men's homeless shelter", "women's homeless shelter", "family shelter"]
-                        if let region = visibleRegion {
-                            performSearch(in: region, queryWords: queryWords)
+                        if let center = visibleRegion?.center, isInColumbus(center) {
+                            // You're inside Columbus, get the streetCard information for csb approved shelters into here!!
                         } else {
-                            // Fallback region if visibleRegion is nil
-                            let defaultRegion = MKCoordinateRegion(
-                                center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
-                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-                            )
-                            performSearch(in: defaultRegion, queryWords: queryWords)
+                            if let region = visibleRegion {
+                                performSearch(in: region, queryWords: queryWords)
+                            } else {
+                                // Fallback region if visibleRegion is nil
+                                let defaultRegion = MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                                )
+                                performSearch(in: defaultRegion, queryWords: queryWords)
+                            }
                         }
                     }
                 }) {
@@ -157,18 +165,20 @@ struct ButtonView: View {
                     withAnimation {
                         showBottomSheet = false
                         showClothing = true
-                        queryWords = ["clothing donations", "volunteers of America", "thrift store", "thrift shop"
-                                      //, "joseph's coat", "new life community outreach", "christ's cocoons", "united //methodist free store", "st.vincent de paul free store", "jordan's crossing"
-                        ]
-                        if let region = visibleRegion {
-                            performSearch(in: region, queryWords: queryWords)
+                        queryWords = ["clothing donations", "volunteers of America", "thrift store", "thrift shop"]
+                        if let center = visibleRegion?.center, isInColumbus(center) {
+                            // You're inside Columbus, get the streetCard information for free clothing into here from the json!!
                         } else {
-                            // Fallback region if visibleRegion is nil
-                            let defaultRegion = MKCoordinateRegion(
-                                center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
-                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-                            )
-                            performSearch(in: defaultRegion, queryWords: queryWords)
+                            if let region = visibleRegion {
+                                performSearch(in: region, queryWords: queryWords)
+                            } else {
+                                // Fallback region if visibleRegion is nil
+                                let defaultRegion = MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                                )
+                                performSearch(in: defaultRegion, queryWords: queryWords)
+                            }
                         }
                     }
                 }) {
@@ -224,6 +234,13 @@ struct ButtonView: View {
                 }
             }
         }
+    }
+    
+    func isInColumbus(_ location: CLLocationCoordinate2D) -> Bool {
+        let lat = location.latitude
+        let lon = location.longitude
+        return lat >= 39.80 && lat <= 40.15 &&
+               lon >= -83.20 && lon <= -82.75
     }
     
     func zoomMap(byFactor delta: Double) {
