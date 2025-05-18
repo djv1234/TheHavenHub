@@ -180,123 +180,183 @@
         "hours": "Call for details & locations"
     },
     {
-            "type": "Free Meals",
-            "name": "Bethany Presbyterian",
-            "latitude": 39.9685503,
-            "longitude": -82.9800716,
-            "services": "",
-            "address": "206 N. Garfiled Ave",
-            "phone": "(614) 253-0077",
-            "hours": "Sat 11:30AM-1:30PM"
-        },
-        {
-            "type": "Free Meals",
-            "name": "The Dream Center",
-            "latitude": 39.986390,
-            "longitude": -83.006483,
-            "services": "",
-            "address": "38 W. Greenwood Ave",
-            "phone": "(614) 547-3138",
-            "hours": "Mon, Tue, Thur, Fri 7:00PM and Mon Tue, Wed, Fri 9:30AM"
-        },
-        {
-            "type": "Free Meals",
-            "name": "Victory Ministries Center of Hope",
-            "latitude": 39.956290,
-            "longitude": -82.892888,
-            "services": "",
-            "address": "3964 E. Main St",
-            "phone": "(614) 252-2500",
-            "hours": "Tue & Fri 12:00pm-3:00pm for pantry, clothing"
-        },
-        {
-            "type": "Free Meals",
-            "name": "Community Kitchen Inc.",
-            "latitude": 39.952156,
-            "longitude": -82.971120,
-            "services": "",
-            "address": "640 S. Ohio Ave",
-            "phone": "(614) 252-6428",
-            "hours": "Mon-Sat 8:30AM-10:00AM & 11:30AM-1:00PM"
-        },
-        {
-            "type": "Free Meals",
-            "name": "Holy Family Meal Program",
-            "latitude": 39.961106,
-            "longitude": -83.016691,
-            "services": "",
-            "address": "588 W. Gay St",
-            "phone": "(614) 461-9444",
-            "hours": "Mon-Fri Sack lunch 9:00AM-12:00PM"
-        },
-        {
-            "type": "Free Meals",
-            "name": "St. John's UCC at Trinity",
-            "latitude": 39.962374,
-            "longitude": -82.997678,
-            "services": "",
-            "address": "125 E. Broad St",
-            "phone": "(614) 224-8634",
-            "hours": "Wed at 12:00PM"
-        },
-        {
-            "type": "Free Meals",
-            "name": "Mt. Olivet Baptist Church",
-            "latitude": 39.958009,
-            "longitude": -82.987969,
-            "services": "",
-            "address": "428 E. Main St",
-            "phone": "(614) 221-3446",
-            "hours": "Fri 11:00AM-1:00PM meal, clothes, hygeine"
-        },
-        {
-            "type": "Free Meals",
-            "name": "New Life Community Outreach",
-            "latitude": 39.841530,
-            "longitude": -82.807941,
-            "services": "",
-            "address": "25 W. 5th St",
-            "phone": "(614) 294-0134",
-            "hours": "Sun 7:00AM-8:30AM breakfast"
-        },
-        {
-            "type": "Free Meals",
-            "name": "Open Shelter",
-            "latitude": 39.942444,
-            "longitude": -82.983234,
-            "services": "",
-            "address": "1037 Parsons Ave",
-            "phone": "(614) 222-2885",
-            "hours": "Mon-Fri 10:30AM-2:00PM"
-        },
-        {
-            "type": "Free Meals",
-            "name": "Shiloah Christian Center",
-            "latitude": 39.964245,
-            "longitude": -82.979399,
-            "services": "",
-            "address": "787 E. Broad St",
-            "phone": "",
-            "hours": "Lunch Wed 11:00AM-1:00PM, Thur-Sat 9:30AM-10:15AM & 7:00Pm-7:45PM"
-        },
-        {
-            "type": "Free Meals",
-            "name": "St. Lawrence Haven - SVDP",
-            "latitude": 39.958791,
-            "longitude": -82.992916,
-            "services": "",
-            "address": "244 E. Rich St",
-            "phone": "(614) 241-2569",
-            "hours": "Meal Mon-Fri 12:00PM-2:00PM"
-        },
-        {
-            "type": "Free Meals",
-            "name": "First English Lutheran",
-            "latitude": 39.957610,
-            "longitude": -82.972118,
-            "services": "",
-            "address": "1015 E. Main St",
-            "phone": "(614) 252-3191",
-            "hours": "Thur 5:30PM-6:30PM, Sun 8:30AM-9:30AM"
-        }
-    ]
+        "type": "Free Meals",
+        "name": "Bethany Presbyterian",
+        "latitude": 39.9685503,
+        "longitude": -82.9800716,
+        "services": "",
+        "address": "206 N. Garfiled Ave",
+        "phone": "(614) 253-0077",
+        "hours": "Sat 11:30AM-1:30PM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "The Dream Center",
+        "latitude": 39.986390,
+        "longitude": -83.006483,
+        "services": "",
+        "address": "38 W. Greenwood Ave",
+        "phone": "(614) 547-3138",
+        "hours": "Mon, Tue, Thur, Fri 7:00PM and Mon Tue, Wed, Fri 9:30AM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Victory Ministries Center of Hope",
+        "latitude": 39.956290,
+        "longitude": -82.892888,
+        "services": "",
+        "address": "3964 E. Main St",
+        "phone": "(614) 252-2500",
+        "hours": "Tue & Fri 12:00pm-3:00pm for pantry, clothing"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Community Kitchen Inc.",
+        "latitude": 39.952156,
+        "longitude": -82.971120,
+        "services": "",
+        "address": "640 S. Ohio Ave",
+        "phone": "(614) 252-6428",
+        "hours": "Mon-Sat 8:30AM-10:00AM & 11:30AM-1:00PM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Holy Family Meal Program",
+        "latitude": 39.961106,
+        "longitude": -83.016691,
+        "services": "",
+        "address": "588 W. Gay St",
+        "phone": "(614) 461-9444",
+        "hours": "Mon-Fri Sack lunch 9:00AM-12:00PM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "St. John's UCC at Trinity",
+        "latitude": 39.962374,
+        "longitude": -82.997678,
+        "services": "",
+        "address": "125 E. Broad St",
+        "phone": "(614) 224-8634",
+        "hours": "Wed at 12:00PM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Mt. Olivet Baptist Church",
+        "latitude": 39.958009,
+        "longitude": -82.987969,
+        "services": "meal, clothes, hygeine",
+        "address": "428 E. Main St",
+        "phone": "(614) 221-3446",
+        "hours": "Fri 11:00AM-1:00PM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "New Life Community Outreach",
+        "latitude": 39.841530,
+        "longitude": -82.807941,
+        "services": "breakfast",
+        "address": "25 W. 5th St",
+        "phone": "(614) 294-0134",
+        "hours": "Sun 7:00AM-8:30AM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Open Shelter",
+        "latitude": 39.942444,
+        "longitude": -82.983234,
+        "services": "",
+        "address": "1037 Parsons Ave",
+        "phone": "(614) 222-2885",
+        "hours": "Mon-Fri 10:30AM-2:00PM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Shiloah Christian Center",
+        "latitude": 39.964245,
+        "longitude": -82.979399,
+        "services": "",
+        "address": "787 E. Broad St",
+        "phone": "",
+        "hours": "Lunch Wed 11:00AM-1:00PM, Thur-Sat 9:30AM-10:15AM & 7:00Pm-7:45PM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "St. Lawrence Haven - SVDP",
+        "latitude": 39.958791,
+        "longitude": -82.992916,
+        "services": "",
+        "address": "244 E. Rich St",
+        "phone": "(614) 241-2569",
+        "hours": "Meal Mon-Fri 12:00PM-2:00PM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "First English Lutheran",
+        "latitude": 39.957610,
+        "longitude": -82.972118,
+        "services": "",
+        "address": "1015 E. Main St",
+        "phone": "(614) 252-3191",
+        "hours": "Thur 5:30PM-6:30PM, Sun 8:30AM-9:30AM"
+    }
+    {
+        "type": "Free Clothing",
+        "name": "Joseph's Coat",
+        "latitude": ,
+        "longitude": ,
+        "services": "Clothing, household goods, furniture",
+        "address": "",
+        "phone": "(614) 863-1371",
+        "hours": ""
+    }
+    {
+        "type": "Free Clothing",
+        "name": "New Life Community Outreach",
+        "latitude": 41.446894,
+        "longitude": -90.462689,
+        "services": "Clothing, employment",
+        "address": "25 W. 5th Ave.",
+        "phone": "(614) 294-0134",
+        "hours": "Sunday 7:00AM-8:15AM"
+    }
+    {
+        "type": "Free Clothing",
+        "name": "Christ's Cocoons",
+        "latitude": ,
+        "longitude": ,
+        "services": "Sleeping bags for homeless individuals",
+        "address": "",
+        "phone": "(614) 288-0810",
+        "hours": ""
+    }
+    {
+        "type": "Free Clothing",
+        "name": "United Methodist Free Store",
+        "latitude": 39.944422,
+        "longitude": -82.982777,
+        "services": "",
+        "address": "946 Parsons Ave.",
+        "phone": "(614) 443-1713",
+        "hours": "Tue, Thur, Sat 10:00AM-12:30PM & Wed, Fri 3:00PM-5:30PM"
+    }
+    {
+        "type": "Free Clothing",
+        "name": "St. Vincent De Paul Free Store",
+        "latitude": 36.701013,
+        "longitude": -105.395423,
+        "services": "",
+        "address": "578 E. Main St",
+        "phone": "(614) 241-3554",
+        "hours": "Mon, Tue, Thur 10:00AM-12:00PM"
+    }
+    {
+        "type": "Free Clothing",
+        "name": "Jordan's Crossing",
+        "latitude": 39.961699,
+        "longitude": -83.075740,
+        "services": "",
+        "address": "342 N. Hague Ave",
+        "phone": "(614) 507-3246",
+        "hours": "Mon-Fri 9:00AM-5:00PM, Sat 9:00AM-11:00AM"
+    }
+]
