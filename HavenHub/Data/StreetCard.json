@@ -5,7 +5,7 @@
         "latitude": 39.967530,
         "longitude": -82.981401,
         "services": "General healthcare needs",
-        "address": "750 East Long St",
+        "address": "750 East Long St, Columbus, OH, United States",
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM"
     },
@@ -15,7 +15,7 @@
         "latitude": 39.983539,
         "longitude": -83.005119,
         "services": "General healthcare needs",
-        "address": "1033 North High St",
+        "address": "1033 North High St, Columbus, OH, United States",
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM"
     },
@@ -25,7 +25,7 @@
         "latitude": 40.051955,
         "longitude": -83.019636,
         "services": "HIV Services",
-        "address": "4400 North High St",
+        "address": "4400 North High St, Columbus, OH, United States",
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM"
     },
@@ -35,7 +35,7 @@
         "latitude": 39.959919,
         "longitude": -82.980118,
         "services": "Medical and dental",
-        "address": "240 Parsons Ave",
+        "address": "240 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 884-2441",
         "hours": "Monday 4:30 PM"
     },
@@ -45,7 +45,7 @@
         "latitude": 40.007664,
         "longitude": -83.009915,
         "services": "Sign up at ColumbusFreeClinic.com",
-        "address": "2231 North High St",
+        "address": "2231 North High St, Columbus, OH, United States",
         "phone": "(614) 404-8417",
         "hours": "Thursday 5PM arrive"
     },
@@ -55,7 +55,7 @@
         "latitude": 40.0709844,
         "longitude": -82.9757651,
         "services": "General healthcare",
-        "address": "5100 Karl Road",
+        "address": "5100 Karl Road, Columbus, OH, United States",
         "phone": "(614) 262-5094",
         "hours": "Walk-ins Thursday 2-4:30PM"
     },
@@ -65,7 +65,7 @@
         "latitude": 39.9684001,
         "longitude": -82.9921417,
         "services": "General healthcare",
-        "address": "245 North Grant Ave",
+        "address": "245 North Grant Ave, Columbus, OH, United States",
         "phone": "(614) 224-6617",
         "hours": "Monday - Friday 8:30AM-5PM, Thursday 6PM-8PM"
     },
@@ -75,7 +75,7 @@
         "latitude": 39.9585322,
         "longitude": -83.0316493,
         "services": "Additional locations available",
-        "address": "1160 West Broad St",
+        "address": "1160 West Broad St, Columbus, OH, United States",
         "phone": "(614) 274-1455",
         "hours": ""
     },
@@ -95,7 +95,7 @@
         "latitude": 39.9868792,
         "longitude": -83.0063894,
         "services": "",
-        "address": "25 W 5th Ave",
+        "address": "25 W 5th Ave, Columbus, OH, United States",
         "phone": "(614) 294-0134",
         "hours": "Sunday 7AM-8:30AM"
     },
@@ -105,7 +105,7 @@
         "latitude": 39.964935,
         "longitude": -83.00192,
         "services": "Mental, dental, and other services",
-        "address": "16 West Long St",
+        "address": "16 West Long St, Columbus, OH, United States",
         "phone": "(614) 225-0990",
         "hours": "Monday-Friday 8AM-5PM"
     },
@@ -115,7 +115,7 @@
         "latitude": 39.9605872,
         "longitude": -83.0145973,
         "services": "Mental, dental, and other services",
-        "address": "524 West Broad St",
+        "address": "524 West Broad St, Columbus, OH, United States",
         "phone": "(614) 225-0990",
         "hours": "Monday-Friday 8AM-5PM"
     },
@@ -125,7 +125,7 @@
         "latitude": 39.9453778,
         "longitude": -82.982531,
         "services": "Dental and vision care by appt.",
-        "address": "888 Parsons",
+        "address": "888 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 445-8400",
         "hours": "Every Monday and 3rd Thursday 5:30PM"
     },
@@ -135,7 +135,7 @@
         "latitude": 39.9868255,
         "longitude": -83.0003909,
         "services": "",
-        "address": "171 E 5th Ave",
+        "address": "171 E 5th Ave, Columbus, OH, United States",
         "phone": "(614) 259-5428",
         "hours": "http://ww2.vineyardcommunitycenter.org"
     },
@@ -145,7 +145,7 @@
         "latitude": 40.0934939,
         "longitude": -82.9336416,
         "services": "Medical, dental, vision, & chiropractic clinics for uninsured 18+",
-        "address": "6000 Cooper Rd",
+        "address": "6000 Cooper Rd, Columbus, OH, United States",
         "phone": "(614) 259-5428",
         "hours": "Hours vary, call for details"
     },
@@ -155,7 +155,7 @@
         "latitude": 39.9593029,
         "longitude": -82.9807177,
         "services": "Columbus public health",
-        "address": "240 Parsons Ave",
+        "address": "240 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 654-1850",
         "hours": "Hours vary, call for details"
     },
@@ -165,7 +165,7 @@
         "latitude": 40.0579721,
         "longitude": -82.9944542,
         "services": "",
-        "address": "1934 N. Fourth St",
+        "address": "1934 N. Fourth St, Columbus, OH, United States",
         "phone": "(614) 654-1850",
         "hours": "1st and 3rd Monday each month"
     },
@@ -185,7 +185,7 @@
         "latitude": 39.9685503,
         "longitude": -82.9800716,
         "services": "",
-        "address": "206 N. Garfiled Ave",
+        "address": "206 N. Garfiled Ave, Columbus, OH, United States",
         "phone": "(614) 253-0077",
         "hours": "Sat 11:30AM-1:30PM"
     },
@@ -195,7 +195,7 @@
         "latitude": 39.986390,
         "longitude": -83.006483,
         "services": "",
-        "address": "38 W. Greenwood Ave",
+        "address": "38 W. Greenwood Ave, Columbus, OH, United States",
         "phone": "(614) 547-3138",
         "hours": "Mon, Tue, Thur, Fri 7:00PM and Mon Tue, Wed, Fri 9:30AM"
     },
@@ -205,7 +205,7 @@
         "latitude": 39.956290,
         "longitude": -82.892888,
         "services": "",
-        "address": "3964 E. Main St",
+        "address": "3964 E. Main St, Columbus, OH, United States",
         "phone": "(614) 252-2500",
         "hours": "Tue & Fri 12:00pm-3:00pm for pantry, clothing"
     },
@@ -215,7 +215,7 @@
         "latitude": 39.952156,
         "longitude": -82.971120,
         "services": "",
-        "address": "640 S. Ohio Ave",
+        "address": "640 S. Ohio Ave, Columbus, OH, United States",
         "phone": "(614) 252-6428",
         "hours": "Mon-Sat 8:30AM-10:00AM & 11:30AM-1:00PM"
     },
@@ -225,7 +225,7 @@
         "latitude": 39.961106,
         "longitude": -83.016691,
         "services": "",
-        "address": "588 W. Gay St",
+        "address": "588 W. Gay St, Columbus, OH, United States",
         "phone": "(614) 461-9444",
         "hours": "Mon-Fri Sack lunch 9:00AM-12:00PM"
     },
@@ -235,7 +235,7 @@
         "latitude": 39.962374,
         "longitude": -82.997678,
         "services": "",
-        "address": "125 E. Broad St",
+        "address": "125 E. Broad St, Columbus, OH, United States",
         "phone": "(614) 224-8634",
         "hours": "Wed at 12:00PM"
     },
@@ -245,7 +245,7 @@
         "latitude": 39.958009,
         "longitude": -82.987969,
         "services": "meal, clothes, hygeine",
-        "address": "428 E. Main St",
+        "address": "428 E. Main St, Columbus, OH, United States",
         "phone": "(614) 221-3446",
         "hours": "Fri 11:00AM-1:00PM"
     },
@@ -255,7 +255,7 @@
         "latitude": 39.841530,
         "longitude": -82.807941,
         "services": "breakfast",
-        "address": "25 W. 5th St",
+        "address": "25 W. 5th St, Columbus, OH, United States",
         "phone": "(614) 294-0134",
         "hours": "Sun 7:00AM-8:30AM"
     },
@@ -265,7 +265,7 @@
         "latitude": 39.942444,
         "longitude": -82.983234,
         "services": "",
-        "address": "1037 Parsons Ave",
+        "address": "1037 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 222-2885",
         "hours": "Mon-Fri 10:30AM-2:00PM"
     },
@@ -275,7 +275,7 @@
         "latitude": 39.964245,
         "longitude": -82.979399,
         "services": "",
-        "address": "787 E. Broad St",
+        "address": "787 E. Broad St, Columbus, OH, United States",
         "phone": "",
         "hours": "Lunch Wed 11:00AM-1:00PM, Thur-Sat 9:30AM-10:15AM & 7:00Pm-7:45PM"
     },
@@ -285,7 +285,7 @@
         "latitude": 39.958791,
         "longitude": -82.992916,
         "services": "",
-        "address": "244 E. Rich St",
+        "address": "244 E. Rich St, Columbus, OH, United States",
         "phone": "(614) 241-2569",
         "hours": "Meals Mon-Fri 12:00PM-2:00PM"
     },
@@ -295,7 +295,7 @@
         "latitude": 39.957610,
         "longitude": -82.972118,
         "services": "",
-        "address": "1015 E. Main St",
+        "address": "1015 E. Main St, Columbus, OH, United States",
         "phone": "(614) 252-3191",
         "hours": "Thur 5:30PM-6:30PM, Sun 8:30AM-9:30AM"
     },
@@ -307,15 +307,15 @@
         "services": "Clothing, household goods, furniture",
         "address": "",
         "phone": "(614) 863-1371",
-        "hours": ""
+        "hours": "Call to schedule appointment!"
     },
     {
         "type": "Free Clothing",
         "name": "New Life Community Outreach",
         "latitude": 41.446894,
         "longitude": -90.462689,
-        "services": "Clothing, employment",
-        "address": "25 W. 5th Ave.",
+        "services": "Clothing, employment. Call for employment, clothing appt.",
+        "address": "25 W. 5th Ave., Columbus, OH, United States",
         "phone": "(614) 294-0134",
         "hours": "Sunday 7:00AM-8:15AM"
     },
@@ -335,19 +335,19 @@
         "latitude": 39.944422,
         "longitude": -82.982777,
         "services": "",
-        "address": "946 Parsons Ave.",
+        "address": "946 Parsons Ave., Columbus, OH, United States",
         "phone": "(614) 443-1713",
-        "hours": "Tue, Thur, Sat 10:00AM-12:30PM & Wed, Fri 3:00PM-5:30PM"
+        "hours": "Tue, Thur, Sat 10:00AM-12:30PM & Wed 1:00 - 3:30, Fri 3:00PM-5:30PM. Fresh Produce: T - Sat- 10AM to 4PM, Weds - 10:00 - 11:00"
     },
     {
         "type": "Free Clothing",
         "name": "St. Vincent De Paul Free Store",
-        "latitude": 36.701013,
-        "longitude": -105.395423,
+        "latitude": 39.9579549,
+        "longitude": -82.9842938,
         "services": "",
-        "address": "578 E. Main St",
+        "address": "578 E. Main St, Columbus, OH, United States",
         "phone": "(614) 241-3554",
-        "hours": "Mon, Tue, Thur 10:00AM-12:00PM"
+        "hours": "Mon, Tue, Thur 10:00AM-12:00PM ID Needed"
     },
     {
         "type": "Free Clothing",
@@ -355,7 +355,7 @@
         "latitude": 39.961699,
         "longitude": -83.075740,
         "services": "",
-        "address": "342 N. Hague Ave",
+        "address": "342 N. Hague Ave, Columbus, OH, United States",
         "phone": "(614) 507-3246",
         "hours": "Mon-Fri 9:00AM-5:00PM, Sat 9:00AM-11:00AM"
     }

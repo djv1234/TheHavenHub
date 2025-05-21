@@ -38,7 +38,7 @@ struct ClothingDetailView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
             } else {
-                Text("Map not available")
+                Text("Location not available. Please contact the resource to get information!")
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .padding()
@@ -49,21 +49,21 @@ struct ClothingDetailView: View {
                     Text("Services: \(services)")
                         .font(.subheadline)
                         .foregroundColor(.black)
-                } else {
-                    Text("Services unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
+                } // else {
+                //    Text("Services unavailable")
+              //          .font(.subheadline)
+              //          .foregroundColor(.gray)
+            //    }
                 
                 if let hours = resource.hours, !hours.isEmpty {
                     Text("Hours: \(hours)")
                         .font(.subheadline)
                         .foregroundColor(.black)
-                } else {
-                    Text("Hours unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
+                } //else {
+                 //   Text("Hours unavailable")
+                 //       .font(.subheadline)
+               //         .foregroundColor(.gray)
+           //     }
                 
                 if let phone = resource.phone {
                     Button(action: {
@@ -81,11 +81,11 @@ struct ClothingDetailView: View {
                         }
                     }
                     .padding(.horizontal)
-                } else {
-                    Text("Phone number unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
+                } //else {
+             //       Text("Phone number unavailable")
+              //          .font(.subheadline)
+              //          .foregroundColor(.gray)
+            //    }
                 
                 if let url = resource.url {
                     Button(action: {
@@ -103,59 +103,48 @@ struct ClothingDetailView: View {
                         }
                     }
                     .padding(.horizontal)
-                } else {
-                    Text("Website unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
+                } //else {
+                //    Text("Website unavailable")
+                //        .font(.subheadline)
+                 //       .foregroundColor(.gray)
+            //    }
                 
-                if resource.coordinate != nil || resource.address != nil {
-                    Button(action: {
-                        showMapOptions = true
-                    }) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.red)
-                                .frame(height: 50)
-                            Text(resource.address ?? resource.name)
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .truncationMode(.tail)
-                                .padding(.horizontal, 10)
-                        }
-                    }
-                    .padding(.horizontal)
-                    .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
-                        if let coordinate = resource.coordinate {
-                            Button("Open in Apple Maps") {
-                                let url = URL(string: "http://maps.apple.com/?ll=\(coordinate.latitude),\(coordinate.longitude)")!
-                                UIApplication.shared.open(url)
-                            }
-                            Button("Open in Google Maps") {
-                                let url = URL(string: "https://www.google.com/maps/@?api=1&map_action=map&center=\(coordinate.latitude),\(coordinate.longitude)&zoom=15")!
-                                UIApplication.shared.open(url)
-                            }
-                        } else if let address = resource.address {
-                            Button("Search in Apple Maps") {
-                                let query = "\(resource.name), \(address)"
-                                let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                let url = URL(string: "http://maps.apple.com/?q=\(encodedQuery)")!
-                                UIApplication.shared.open(url)
-                            }
-                            Button("Search in Google Maps") {
-                                let query = "\(resource.name), \(address)"
-                                let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                let url = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encodedQuery)")!
-                                UIApplication.shared.open(url)
-                            }
-                        }
-                        Button("Cancel", role: .cancel) { }
-                    }
-                } else {
-                    Text("Address unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
+                if let address = resource.address, !address.isEmpty {
+                                    Button(action: {
+                                        showMapOptions = true
+                                    }) {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .fill(Color.accentColor)
+                                                .frame(height: 50)
+                                            Text(address)
+                                                .foregroundColor(.white)
+                                                .fontWeight(.bold)
+                                                .truncationMode(.tail)
+                                                .padding(.horizontal, 10)
+                                        }
+                                    }
+                                    .padding(.horizontal)
+                                    .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
+                                        Button("Open in Apple Maps") {
+                                            let query = "\(resource.name), \(address)"
+                                            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                            let url = URL(string: "http://maps.apple.com/?q=\(encodedQuery)")!
+                                            UIApplication.shared.open(url)
+                                        }
+                                        Button("Open in Google Maps") {
+                                            let query = "\(resource.name), \(address)"
+                                            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                            let url = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encodedQuery)")!
+                                            UIApplication.shared.open(url)
+                                        }
+                                        Button("Cancel", role: .cancel) { }
+                                    }
+                                } else {
+                                    Text("Address unavailable")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
             }
             Spacer()
         }

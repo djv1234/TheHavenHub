@@ -176,8 +176,10 @@ struct ButtonView: View {
                                         print("Inside Columbus!")
                         } else {
                             if let region = visibleRegion {
+                                shelters.removeAll()
                                 performSearch(in: region, queryWords: queryWords)
                             } else {
+                                shelters.removeAll()
                                 // Fallback region if visibleRegion is nil
                                 let defaultRegion = MKCoordinateRegion(
                                     center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
