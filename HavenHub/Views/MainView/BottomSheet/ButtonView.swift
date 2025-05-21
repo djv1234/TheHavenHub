@@ -14,7 +14,7 @@ struct ButtonView: View {
     var geometry: GeometryProxy // Provides the size and dimensions of the parent view
     @Binding var cameraPosition: MapCameraPosition // Tracks the current position of the map camera
     @StateObject var viewManager: ViewManager
-    @Binding var shelters: [MKMapItem]
+    @Binding var shelters: [Resource]
     @Binding var visibleRegion: MKCoordinateRegion?
     @Binding var showBottomSheet: Bool
     @Binding var showFoodBank: Bool
@@ -161,13 +161,19 @@ struct ButtonView: View {
     
                 // Clothing Button
                 Button(action: {
-                    // Action for the Clothing button (placeholder)
                     withAnimation {
                         showBottomSheet = false
                         showClothing = true
                         queryWords = ["clothing donations", "volunteers of America", "thrift store", "thrift shop"]
                         if let center = visibleRegion?.center, isInColumbus(center) {
-                            // You're inside Columbus, get the streetCard information for free clothing into here from the json!!
+                            shelters.removeAll()
+                            if let region = visibleRegion {
+                                performSearch(in: region, queryWords: queryWords)
+                            }
+                            let streetCards = loadStreetCardData().filter { $0.type == "Free Clothing" }
+                                        let streetCardResources = streetCards.map { resource(from: $0) }
+                                        shelters.append(contentsOf: streetCardResources)
+                                        print("Inside Columbus!")
                         } else {
                             if let region = visibleRegion {
                                 performSearch(in: region, queryWords: queryWords)
@@ -199,12 +205,10 @@ struct ButtonView: View {
         }
     }
     
-    //in findLocations or performSearch, add in the search terms from the streetcard
     func findLocations(region: MKCoordinateRegion, searchReq: String, completion: @escaping ([MKMapItem]?) -> Void) {
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = searchReq
         searchRequest.region = region
-
         
         let search = MKLocalSearch(request: searchRequest)
         search.start { (response, error) in
@@ -225,12 +229,11 @@ struct ButtonView: View {
     }
 
     func performSearch(in region: MKCoordinateRegion, queryWords: [String]) {
-        // if MKCoordinateRegion.longitude < columbus city limit west, MKCoordinateRegion.longitude > columbus city limit east && MKCoordinateRegion.latitude < columbus city limit north, MKCoordinateRegion.longitude > columbus city limit south { add the street card places to queryWords}
-        shelters.removeAll()
         for keyword in queryWords {
             findLocations(region: region, searchReq: keyword) { mapItems in
                 if let mapItems = mapItems, !mapItems.isEmpty {
-                    shelters.append(contentsOf: mapItems)
+                    let resources = mapItems.map { resource(from: $0) }
+                    shelters.append(contentsOf: resources)
                 }
             }
         }

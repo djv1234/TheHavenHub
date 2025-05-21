@@ -14,7 +14,7 @@ struct MainMapView: View {
     @Binding var currentItem: MapItemModel?
     @Binding var showingMenu: Bool
     @Binding var visibleRegion: MKCoordinateRegion?
-    @Binding var shelters: [MKMapItem]
+    @Binding var shelters: [Resource]
     @Binding var selectedResult: MKMapItem?
     
     let userLocation: UserLocation
@@ -23,11 +23,12 @@ struct MainMapView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            
             Map(position: $cameraPosition, selection: $selectedResult) {
-                ForEach(shelters, id: \.self) { shelter in
-                    Marker(shelter.name ?? "Unknown", coordinate: shelter.placemark.coordinate)
-                        .tint(Color.red)
+                ForEach(shelters.filter { $0.coordinate != nil }) { resource in
+                    if let coordinate = resource.coordinate {
+                        Marker(resource.name, coordinate: coordinate)
+                            .tint(Color.red)
+                    }
                 }
                 
                 if let currentItem = currentItem {
@@ -51,9 +52,7 @@ struct MainMapView: View {
 
                     if let centerCoordinate = routeCalc.getCenterCoordinate(from: route) {
                         Annotation("", coordinate: centerCoordinate) {
-                        
                             TravelTimeBubble(from: userLocation.getUserLocation().center, to: currentItem!.mapItem.placemark.coordinate, distanceCalc: distanceCalc)
-                            
                         }
                     }
                 }
@@ -183,6 +182,4 @@ struct MapItemBubble: View {
             }
         return systemName
         }
-    
-    
 }

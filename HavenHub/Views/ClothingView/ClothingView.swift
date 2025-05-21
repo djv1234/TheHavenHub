@@ -11,9 +11,8 @@ import MapKit
 struct ClothingView: View {
     @Binding var cameraPosition: MapCameraPosition
     @Binding var visibleRegion: MKCoordinateRegion?
-    @Binding var shelters: [MKMapItem]
+    @Binding var shelters: [Resource]
     @Binding var showBottomSheet: Bool
-//    @Binding var showFoodBank: Bool
     @Binding var showClothing: Bool
     @Binding var showTitle: Bool
     @State private var isKeyboardVisible: Bool = false
@@ -23,7 +22,7 @@ struct ClothingView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer() // Push the list to the bottom
+                Spacer()
                 
                 VStack(spacing: 0) {
                     Capsule()
@@ -31,12 +30,12 @@ struct ClothingView: View {
                         .foregroundColor(.gray)
                         .padding(10)
                     
-                    List(shelters, id: \.self) { shelter in
-                        NavigationLink(destination: ClothingDetailView(shelter: shelter)) {
+                    List(shelters) { resource in
+                        NavigationLink(destination: ClothingDetailView(resource: resource)) {
                             VStack(alignment: .leading) {
-                                Text(shelter.name ?? "Unnamed Clothing Drive Resource")
+                                Text(resource.name)
                                     .font(.headline)
-                                Text(shelter.placemark.title ?? "Address unavailable")
+                                Text(resource.address ?? "Address unavailable")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -44,7 +43,7 @@ struct ClothingView: View {
                         }
                     }
                     .listStyle(PlainListStyle())
-                    .frame(height: geometry.size.height * 0.4) // Restrict the list to 40% of the screen height
+                    .frame(height: geometry.size.height * 0.4)
                     
                     Button(action: {
                         withAnimation {

@@ -28,7 +28,7 @@ struct MainView: View {
     @State var showShelter: Bool = false
     @State var showFavorites: Bool = false
     @State var showBottomSheet: Bool = true
-    @State var shelters: [MKMapItem] = []
+    @State var shelters: [Resource] = []
     @State var selectedResult: MKMapItem?
     @State var isSheetPresented: Bool = false
     
@@ -81,17 +81,17 @@ struct MainView: View {
                     )
                 }
                 
-                if (showFoodBank){
-                    FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle)
-                }
+       //         if (showFoodBank){
+      //              FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: //$shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle)
+            //    }
                 
                 if (showClothing){
                     ClothingView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showClothing: $showClothing, showTitle: $showTitle)
                 }
                 
-                if (showShelter){
-                    SheltersView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showShelter: $showShelter, showTitle: $showTitle)
-                }
+         //       if (showShelter){
+         //           SheltersView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showShelter: $showShelter, showTitle: $showTitle)
+         //       }
         
                 
      //           FavoritesView(showFavorites: $showFavorites)

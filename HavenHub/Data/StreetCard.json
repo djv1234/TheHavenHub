@@ -287,7 +287,7 @@
         "services": "",
         "address": "244 E. Rich St",
         "phone": "(614) 241-2569",
-        "hours": "Meal Mon-Fri 12:00PM-2:00PM"
+        "hours": "Meals Mon-Fri 12:00PM-2:00PM"
     },
     {
         "type": "Free Meals",
@@ -298,17 +298,17 @@
         "address": "1015 E. Main St",
         "phone": "(614) 252-3191",
         "hours": "Thur 5:30PM-6:30PM, Sun 8:30AM-9:30AM"
-    }
+    },
     {
         "type": "Free Clothing",
         "name": "Joseph's Coat",
-        "latitude": ,
-        "longitude": ,
+        "latitude": null,
+        "longitude": null,
         "services": "Clothing, household goods, furniture",
         "address": "",
         "phone": "(614) 863-1371",
         "hours": ""
-    }
+    },
     {
         "type": "Free Clothing",
         "name": "New Life Community Outreach",
@@ -318,17 +318,17 @@
         "address": "25 W. 5th Ave.",
         "phone": "(614) 294-0134",
         "hours": "Sunday 7:00AM-8:15AM"
-    }
+    },
     {
         "type": "Free Clothing",
         "name": "Christ's Cocoons",
-        "latitude": ,
-        "longitude": ,
+        "latitude": null,
+        "longitude": null,
         "services": "Sleeping bags for homeless individuals",
         "address": "",
         "phone": "(614) 288-0810",
         "hours": ""
-    }
+    },
     {
         "type": "Free Clothing",
         "name": "United Methodist Free Store",
@@ -338,7 +338,7 @@
         "address": "946 Parsons Ave.",
         "phone": "(614) 443-1713",
         "hours": "Tue, Thur, Sat 10:00AM-12:30PM & Wed, Fri 3:00PM-5:30PM"
-    }
+    },
     {
         "type": "Free Clothing",
         "name": "St. Vincent De Paul Free Store",
@@ -348,7 +348,7 @@
         "address": "578 E. Main St",
         "phone": "(614) 241-3554",
         "hours": "Mon, Tue, Thur 10:00AM-12:00PM"
-    }
+    },
     {
         "type": "Free Clothing",
         "name": "Jordan's Crossing",

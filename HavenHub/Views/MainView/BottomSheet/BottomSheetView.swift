@@ -12,7 +12,7 @@ struct BottomSheetView: View {
     @Binding var showTitle: Bool
     @Binding var showingMenu: Bool
     @Binding var route: MKRoute?
-    @Binding var shelters: [MKMapItem]
+    @Binding var shelters: [Resource]
     @Binding var showBottomSheet: Bool
     @Binding var showFoodBank: Bool
     @Binding var showClothing: Bool
