@@ -24,12 +24,16 @@ struct ClothingDetailView: View {
     }
 
     var body: some View {
+        ScrollView {
         VStack {
             Text(resource.name)
                 .font(.title)
                 .fontWeight(.bold)
+                .lineLimit(nil)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .multilineTextAlignment(.center)
                 .padding()
-
+            
             if let coordinate = resource.coordinate {
                 Map(position: $cameraPosition) {
                     Marker(resource.name, coordinate: coordinate)
@@ -38,32 +42,35 @@ struct ClothingDetailView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
             } else {
-                Text("Location not available. Please contact the resource to get information!")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                Text("Please contact the resource to get address and other information!")
+                    .frame(height: 50)
+                    .font(.headline)
+                    .foregroundColor(.black)
                     .padding()
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .multilineTextAlignment(.center)
             }
             
             VStack(alignment: .leading, spacing: 10) {
                 if let services = resource.services, !services.isEmpty {
                     Text("Services: \(services)")
-                        .font(.subheadline)
+                        .font(.headline)
                         .foregroundColor(.black)
-                } // else {
-                //    Text("Services unavailable")
-              //          .font(.subheadline)
-              //          .foregroundColor(.gray)
-            //    }
+                        .padding()
+                        .lineLimit(nil)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .multilineTextAlignment(.center)
+                }
                 
                 if let hours = resource.hours, !hours.isEmpty {
                     Text("Hours: \(hours)")
-                        .font(.subheadline)
+                        .font(.headline)
                         .foregroundColor(.black)
-                } //else {
-                 //   Text("Hours unavailable")
-                 //       .font(.subheadline)
-               //         .foregroundColor(.gray)
-           //     }
+                        .lineLimit(nil)
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .multilineTextAlignment(.center)
+                }
                 
                 if let phone = resource.phone {
                     Button(action: {
@@ -81,11 +88,7 @@ struct ClothingDetailView: View {
                         }
                     }
                     .padding(.horizontal)
-                } //else {
-             //       Text("Phone number unavailable")
-              //          .font(.subheadline)
-              //          .foregroundColor(.gray)
-            //    }
+                }
                 
                 if let url = resource.url {
                     Button(action: {
@@ -103,48 +106,48 @@ struct ClothingDetailView: View {
                         }
                     }
                     .padding(.horizontal)
-                } //else {
-                //    Text("Website unavailable")
-                //        .font(.subheadline)
-                 //       .foregroundColor(.gray)
-            //    }
+                }
                 
                 if let address = resource.address, !address.isEmpty {
-                                    Button(action: {
-                                        showMapOptions = true
-                                    }) {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 20)
-                                                .fill(Color.accentColor)
-                                                .frame(height: 50)
-                                            Text(address)
-                                                .foregroundColor(.white)
-                                                .fontWeight(.bold)
-                                                .truncationMode(.tail)
-                                                .padding(.horizontal, 10)
-                                        }
-                                    }
-                                    .padding(.horizontal)
-                                    .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
-                                        Button("Open in Apple Maps") {
-                                            let query = "\(resource.name), \(address)"
-                                            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                            let url = URL(string: "http://maps.apple.com/?q=\(encodedQuery)")!
-                                            UIApplication.shared.open(url)
-                                        }
-                                        Button("Open in Google Maps") {
-                                            let query = "\(resource.name), \(address)"
-                                            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                            let url = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encodedQuery)")!
-                                            UIApplication.shared.open(url)
-                                        }
-                                        Button("Cancel", role: .cancel) { }
-                                    }
-                                } else {
-                                    Text("Address unavailable")
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
-                                }
+                    Button(action: {
+                        showMapOptions = true
+                    }) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.accentColor)
+                                .frame(height: 50)
+                            Text(address)
+                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                                .truncationMode(.tail)
+                                .padding(.horizontal, 10)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
+                        Button("Open in Apple Maps") {
+                            let query = "\(resource.name), \(address)"
+                            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                            let url = URL(string: "http://maps.apple.com/?q=\(encodedQuery)")!
+                            UIApplication.shared.open(url)
+                        }
+                        Button("Open in Google Maps") {
+                            let query = "\(resource.name), \(address)"
+                            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                            let url = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encodedQuery)")!
+                            UIApplication.shared.open(url)
+                        }
+                        Button("Cancel", role: .cancel) { }
+                    }
+                } else {
+                   // Text("Address unavailable")
+                  //      .frame(height: 50)
+                  //      .font(.headline)
+                  //      .foregroundColor(.black)
+                  //      .padding()
+                   //     .frame(maxWidth: .infinity, alignment: .center)
+                   //     .multilineTextAlignment(.center)
+                }
             }
             Spacer()
         }
@@ -167,5 +170,6 @@ struct ClothingDetailView: View {
                 }
             }
         }
+    }
     }
 }
