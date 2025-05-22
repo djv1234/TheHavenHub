@@ -117,11 +117,15 @@ struct ButtonView: View {
                 Button(action: {
                     // Action for the Shelter button (placeholder)
                     withAnimation {
+                        shelters.removeAll()
                         showBottomSheet = false
                         showShelter = true
                         queryWords = ["homeless shelter for people", "drop-in homeless shelter", "overnight homeless shelter", "men's homeless shelter", "women's homeless shelter", "family shelter"]
                         if let center = visibleRegion?.center, isInColumbus(center) {
-                            // You're inside Columbus, get the streetCard information for csb approved shelters into here!!
+                            let streetCards = loadStreetCardData().filter { $0.type == "Shelters" }
+                                        let streetCardResources = streetCards.map { resource(from: $0) }
+                                        shelters.append(contentsOf: streetCardResources)
+                                        print("Inside Columbus!")
                         } else {
                             if let region = visibleRegion {
                                 performSearch(in: region, queryWords: queryWords)

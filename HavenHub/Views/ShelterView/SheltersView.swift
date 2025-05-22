@@ -11,7 +11,7 @@ import MapKit
 struct SheltersView: View {
     @Binding var cameraPosition: MapCameraPosition
     @Binding var visibleRegion: MKCoordinateRegion?
-    @Binding var shelters: [MKMapItem]
+    @Binding var shelters: [Resource]
     @Binding var showBottomSheet: Bool
     @Binding var showShelter: Bool
     @Binding var showTitle: Bool
@@ -30,12 +30,12 @@ struct SheltersView: View {
                         .foregroundColor(.gray)
                         .padding(10)
                     
-                    List(shelters, id: \.self) { shelter in
-                        NavigationLink(destination: ShelterDetailView(shelter: shelter)) {
+                    List(shelters) { resource in
+                        NavigationLink(destination: ShelterDetailView(resource: resource)) {
                             VStack(alignment: .leading) {
-                                Text(shelter.name ?? "Unnamed Shelter")
+                                Text(resource.name)
                                     .font(.headline)
-                                Text(shelter.placemark.title ?? "Address unavailable")
+                                Text(resource.address ?? "Address unavailable")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }

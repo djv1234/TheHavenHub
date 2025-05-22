@@ -44,7 +44,7 @@ import MapKit
            coordinate: coordinate,
            address: streetCard.address.isEmpty ? nil : streetCard.address,
            phone: streetCard.phone.isEmpty ? nil : streetCard.phone,
-           url: nil,
+           url: streetCard.website.isEmpty ? nil : URL(string: streetCard.website)!,
            services: streetCard.services.isEmpty ? nil : streetCard.services,
            hours: streetCard.hours.isEmpty ? nil : streetCard.hours
        )

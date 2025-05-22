@@ -7,7 +7,8 @@
         "services": "General healthcare needs",
         "address": "750 East Long St, Columbus, OH, United States",
         "phone": "(614) 340-6777",
-        "hours": "Monday-Friday 9AM-4PM"
+        "hours": "Monday-Friday 9AM-4PM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -17,7 +18,8 @@
         "services": "General healthcare needs",
         "address": "1033 North High St, Columbus, OH, United States",
         "phone": "(614) 340-6777",
-        "hours": "Monday-Friday 9AM-4PM"
+        "hours": "Monday-Friday 9AM-4PM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -27,7 +29,8 @@
         "services": "HIV Services",
         "address": "4400 North High St, Columbus, OH, United States",
         "phone": "(614) 340-6777",
-        "hours": "Monday-Friday 9AM-4PM"
+        "hours": "Monday-Friday 9AM-4PM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -37,7 +40,8 @@
         "services": "Medical and dental",
         "address": "240 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 884-2441",
-        "hours": "Monday 4:30 PM"
+        "hours": "Monday 4:30 PM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -47,7 +51,8 @@
         "services": "Sign up at ColumbusFreeClinic.com",
         "address": "2231 North High St, Columbus, OH, United States",
         "phone": "(614) 404-8417",
-        "hours": "Thursday 5PM arrive"
+        "hours": "Thursday 5PM arrive",
+        "website": "https://columbusfreeclinic.com"
     },
     {
         "type": "Health resources",
@@ -57,7 +62,8 @@
         "services": "General healthcare",
         "address": "5100 Karl Road, Columbus, OH, United States",
         "phone": "(614) 262-5094",
-        "hours": "Walk-ins Thursday 2-4:30PM"
+        "hours": "Walk-ins Thursday 2-4:30PM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -67,7 +73,8 @@
         "services": "General healthcare",
         "address": "245 North Grant Ave, Columbus, OH, United States",
         "phone": "(614) 224-6617",
-        "hours": "Monday - Friday 8:30AM-5PM, Thursday 6PM-8PM"
+        "hours": "Monday - Friday 8:30AM-5PM, Thursday 6PM-8PM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -77,7 +84,8 @@
         "services": "Additional locations available",
         "address": "1160 West Broad St, Columbus, OH, United States",
         "phone": "(614) 274-1455",
-        "hours": ""
+        "hours": "",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -87,7 +95,8 @@
         "services": "Call for locations",
         "address": "",
         "phone": "(614) 234-4777",
-        "hours": ""
+        "hours": "",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -97,7 +106,8 @@
         "services": "",
         "address": "25 W 5th Ave, Columbus, OH, United States",
         "phone": "(614) 294-0134",
-        "hours": "Sunday 7AM-8:30AM"
+        "hours": "Sunday 7AM-8:30AM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -107,7 +117,8 @@
         "services": "Mental, dental, and other services",
         "address": "16 West Long St, Columbus, OH, United States",
         "phone": "(614) 225-0990",
-        "hours": "Monday-Friday 8AM-5PM"
+        "hours": "Monday-Friday 8AM-5PM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -117,7 +128,8 @@
         "services": "Mental, dental, and other services",
         "address": "524 West Broad St, Columbus, OH, United States",
         "phone": "(614) 225-0990",
-        "hours": "Monday-Friday 8AM-5PM"
+        "hours": "Monday-Friday 8AM-5PM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -127,7 +139,8 @@
         "services": "Dental and vision care by appt.",
         "address": "888 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 445-8400",
-        "hours": "Every Monday and 3rd Thursday 5:30PM"
+        "hours": "Every Monday and 3rd Thursday 5:30PM",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -137,7 +150,8 @@
         "services": "",
         "address": "171 E 5th Ave, Columbus, OH, United States",
         "phone": "(614) 259-5428",
-        "hours": "http://ww2.vineyardcommunitycenter.org"
+        "hours": "",
+        "website": "https://www.vineyardcommunitycenter.org/free-health-legal-clinic"
     },
     {
         "type": "Health resources",
@@ -147,7 +161,8 @@
         "services": "Medical, dental, vision, & chiropractic clinics for uninsured 18+",
         "address": "6000 Cooper Rd, Columbus, OH, United States",
         "phone": "(614) 259-5428",
-        "hours": "Hours vary, call for details"
+        "hours": "Hours vary, call for details",
+        "website": "https://www.vineyardcommunitycenter.org/free-health-legal-clinic"
     },
     {
         "type": "Health resources",
@@ -157,7 +172,8 @@
         "services": "Columbus public health",
         "address": "240 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 654-1850",
-        "hours": "Hours vary, call for details"
+        "hours": "Hours vary, call for details",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -167,7 +183,8 @@
         "services": "",
         "address": "1934 N. Fourth St, Columbus, OH, United States",
         "phone": "(614) 654-1850",
-        "hours": "1st and 3rd Monday each month"
+        "hours": "1st and 3rd Monday each month",
+        "website": ""
     },
     {
         "type": "Health resources",
@@ -177,7 +194,8 @@
         "services": "Medical, dental, vision, ob-gyn, and transportation services",
         "address": "",
         "phone": "(614) 645-0521",
-        "hours": "Call for details & locations"
+        "hours": "Call for details & locations",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -187,7 +205,8 @@
         "services": "",
         "address": "206 N. Garfiled Ave, Columbus, OH, United States",
         "phone": "(614) 253-0077",
-        "hours": "Sat 11:30AM-1:30PM"
+        "hours": "Sat 11:30AM-1:30PM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -197,7 +216,8 @@
         "services": "",
         "address": "38 W. Greenwood Ave, Columbus, OH, United States",
         "phone": "(614) 547-3138",
-        "hours": "Mon, Tue, Thur, Fri 7:00PM and Mon Tue, Wed, Fri 9:30AM"
+        "hours": "Mon, Tue, Thur, Fri 7:00PM and Mon Tue, Wed, Fri 9:30AM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -207,7 +227,8 @@
         "services": "",
         "address": "3964 E. Main St, Columbus, OH, United States",
         "phone": "(614) 252-2500",
-        "hours": "Tue & Fri 12:00pm-3:00pm for pantry, clothing"
+        "hours": "Tue & Fri 12:00pm-3:00pm for pantry, clothing",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -217,7 +238,8 @@
         "services": "",
         "address": "640 S. Ohio Ave, Columbus, OH, United States",
         "phone": "(614) 252-6428",
-        "hours": "Mon-Sat 8:30AM-10:00AM & 11:30AM-1:00PM"
+        "hours": "Mon-Sat 8:30AM-10:00AM & 11:30AM-1:00PM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -227,7 +249,8 @@
         "services": "",
         "address": "588 W. Gay St, Columbus, OH, United States",
         "phone": "(614) 461-9444",
-        "hours": "Mon-Fri Sack lunch 9:00AM-12:00PM"
+        "hours": "Mon-Fri Sack lunch 9:00AM-12:00PM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -237,7 +260,8 @@
         "services": "",
         "address": "125 E. Broad St, Columbus, OH, United States",
         "phone": "(614) 224-8634",
-        "hours": "Wed at 12:00PM"
+        "hours": "Wed at 12:00PM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -247,7 +271,8 @@
         "services": "meal, clothes, hygeine",
         "address": "428 E. Main St, Columbus, OH, United States",
         "phone": "(614) 221-3446",
-        "hours": "Fri 11:00AM-1:00PM"
+        "hours": "Fri 11:00AM-1:00PM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -257,7 +282,8 @@
         "services": "breakfast",
         "address": "25 W. 5th St, Columbus, OH, United States",
         "phone": "(614) 294-0134",
-        "hours": "Sun 7:00AM-8:30AM"
+        "hours": "Sun 7:00AM-8:30AM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -267,7 +293,8 @@
         "services": "",
         "address": "1037 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 222-2885",
-        "hours": "Mon-Fri 10:30AM-2:00PM"
+        "hours": "Mon-Fri 10:30AM-2:00PM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -277,7 +304,8 @@
         "services": "",
         "address": "787 E. Broad St, Columbus, OH, United States",
         "phone": "",
-        "hours": "Lunch Wed 11:00AM-1:00PM, Thur-Sat 9:30AM-10:15AM & 7:00Pm-7:45PM"
+        "hours": "Lunch Wed 11:00AM-1:00PM, Thur-Sat 9:30AM-10:15AM & 7:00Pm-7:45PM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -287,7 +315,8 @@
         "services": "",
         "address": "244 E. Rich St, Columbus, OH, United States",
         "phone": "(614) 241-2569",
-        "hours": "Meals Mon-Fri 12:00PM-2:00PM"
+        "hours": "Meals Mon-Fri 12:00PM-2:00PM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -297,7 +326,8 @@
         "services": "",
         "address": "1015 E. Main St, Columbus, OH, United States",
         "phone": "(614) 252-3191",
-        "hours": "Thur 5:30PM-6:30PM, Sun 8:30AM-9:30AM"
+        "hours": "Thur 5:30PM-6:30PM, Sun 8:30AM-9:30AM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -307,7 +337,8 @@
         "services": "",
         "address": "787 E Broad St., Columbus, OH, United States",
         "phone": "‭(614) 500-0656‬",
-        "hours": "Breakfast Thu, Fri & Sat. 9:30am-10:15am. Dinner Thur, Fri & Sat. 7pm-7:45pm "
+        "hours": "Breakfast Thu, Fri & Sat. 9:30am-10:15am. Dinner Thur, Fri & Sat. 7pm-7:45pm",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -317,7 +348,8 @@
         "services": "",
         "address": "888 Parsons Ave., Columbus, OH, United States",
         "phone": "(614) 445-8400",
-        "hours": "Meals Mon. - Fri. 8:30am-4:30pm "
+        "hours": "Meals Mon. - Fri. 8:30am-4:30pm",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -327,7 +359,8 @@
         "services": "",
         "address": "125 E Broad St., Columbus, OH, United States",
         "phone": "(614) 221-5351",
-        "hours": "Meals Sunday 1:00PM"
+        "hours": "Meals Sunday 1:00PM",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -337,7 +370,8 @@
         "services": "",
         "address": "800 Frebis Ave., Columbus, OH, United States",
         "phone": "(614) 517-2038",
-        "hours": "Meals Sat. 11:30am - 1:30pm "
+        "hours": "Meals Sat. 11:30am - 1:30pm ",
+        "website": "https://www.cbusrelief.org"
     },
     {
         "type": "Free Meals",
@@ -347,7 +381,8 @@
         "services": "",
         "address": "2364 W Broad St., Columbus, OH, United States",
         "phone": "(614) 721-5414",
-        "hours": "Dinner Tues 6pm - 8pm "
+        "hours": "Dinner Tues 6pm - 8pm ",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -357,7 +392,8 @@
         "services": "",
         "address": "1003 W. Town St., Columbus, OH, United States",
         "phone": "(614) 620-1420",
-        "hours": "Serving meals Fri. & Sat 6-9pm"
+        "hours": "Serving meals Fri. & Sat 6-9pm",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -367,7 +403,8 @@
         "services": "",
         "address": "14 W. Lakeview Ave., Columbus, OH, United States",
         "phone": "(614) 268-8818",
-        "hours": "Meals M-F 12pm-4pm "
+        "hours": "Meals M-F 12pm-4pm ",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -377,7 +414,8 @@
         "services": "Social Service Programs",
         "address": "1150 E Main St, Columbus, OH, United States",
         "phone": "(614) 252-3157",
-        "hours": ""
+        "hours": "",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -387,7 +425,8 @@
         "services": "",
         "address": "342 N. Hague Ave, Columbus, OH, United States",
         "phone": "(614) 507-3246",
-        "hours": "Daily lunch 11 am to 1 pm"
+        "hours": "Daily lunch 11 am to 1 pm",
+        "website": ""
     },
     {
         "type": "Free Meals",
@@ -397,7 +436,8 @@
         "services": "",
         "address": "280 Reeb Avenue, Columbus, OH, United States",
         "phone": "",
-        "hours": "Meals: Lunch M-F 11am-2pm. Dinner Tues 5pm-7pm"
+        "hours": "Meals: Lunch M-F 11am-2pm. Dinner Tues 5pm-7pm",
+        "website": ""
     },
     {
         "type": "Free Clothing",
@@ -407,7 +447,8 @@
         "services": "Clothing, household goods, furniture",
         "address": "",
         "phone": "(614) 863-1371",
-        "hours": "Call to schedule appointment!"
+        "hours": "Call to schedule appointment!",
+        "website": ""
     },
     {
         "type": "Free Clothing",
@@ -417,7 +458,8 @@
         "services": "Clothing, employment. Call for employment, clothing appt.",
         "address": "25 W. 5th Ave., Columbus, OH, United States",
         "phone": "(614) 294-0134",
-        "hours": "Sunday 7:00AM-8:15AM"
+        "hours": "Sunday 7:00AM-8:15AM",
+        "website": ""
     },
     {
         "type": "Free Clothing",
@@ -427,7 +469,8 @@
         "services": "Sleeping bags for homeless individuals. Call (614) 288-0810",
         "address": "",
         "phone": "(614) 288-0810",
-        "hours": ""
+        "hours": "",
+        "website": "https://christs-cocoons.org"
     },
     {
         "type": "Free Clothing",
@@ -437,7 +480,8 @@
         "services": "",
         "address": "946 Parsons Ave., Columbus, OH, United States",
         "phone": "(614) 443-1713",
-        "hours": "Tue, Thur, Sat 10:00AM-12:30PM & Wed 1:00PM - 3:30PM, Fri 3:00PM-5:30PM. Fresh Produce: T - Sat- 10AM to 4PM, Weds - 10:00 - 11:00AM"
+        "hours": "Tue, Thur, Sat 10:00AM-12:30PM & Wed 1:00PM - 3:30PM, Fri 3:00PM-5:30PM. Fresh Produce: T - Sat- 10AM to 4PM, Weds - 10:00 - 11:00AM",
+        "website": ""
     },
     {
         "type": "Free Clothing",
@@ -447,7 +491,8 @@
         "services": "",
         "address": "578 E. Main St, Columbus, OH, United States",
         "phone": "(614) 241-3554",
-        "hours": "Mon, Tue, Thur 10:00AM-12:00PM ID Needed"
+        "hours": "Mon, Tue, Thur 10:00AM-12:00PM ID Needed",
+        "website": ""
     },
     {
         "type": "Free Clothing",
@@ -457,6 +502,161 @@
         "services": "",
         "address": "342 N. Hague Ave, Columbus, OH, United States",
         "phone": "(614) 507-3246",
-        "hours": "Mon-Fri 9:00AM-5:00PM, Sat 9:00AM-11:00AM"
+        "hours": "Mon-Fri 9:00AM-5:00PM, Sat 9:00AM-11:00AM",
+        "website": ""
+    },
+    {
+        "type": "Shelters",
+        "name": "Friends of the Homeless",
+        "latitude": 39.9579916,
+        "longitude": -82.9731484,
+        "services": "Emergency shelter and housing support for single adults. Please call (614) 274-7000 to access emergency shelter services in Franklin County.",
+        "address": "924 East Main Street, Columbus, OH, United States",
+        "phone": "(614) 274-7000",
+        "hours": "",
+        "website": "http://www.fohcolumbus.com"
+    },
+    {
+        "type": "Shelters",
+        "name": "Faith Mission",
+        "latitude": 39.9684001,
+        "longitude": -82.9921417,
+        "services": "Emergency shelter for single homeless men. Please call (614) 274-7000 to access emergency shelter services in Franklin County.",
+        "address": "245 N Grant Ave, Columbus, OH, United States",
+        "phone": "(614) 274-7000",
+        "hours": "",
+        "website": "https://lssnetworkofhope.org/faithmission/"
+    },
+    {
+        "type": "Shelters",
+        "name": "Faith Mission on 8th Ave",
+        "latitude": 39.9906497,
+        "longitude": -82.9889546,
+        "services": "Emergency shelter for single homeless men. Please call (614) 274-7000 to access emergency shelter services in Franklin County.",
+        "address": "599 E 8th Ave, Columbus, OH, United States",
+        "phone": "(614) 274-7000",
+        "hours": "",
+        "website": "https://lssnetworkofhope.org/faithmission/"
+    },
+    {
+        "type": "Shelters",
+        "name": "Faith Mission Nancy's Place",
+        "latitude": 39.9660159,
+        "longitude": -82.9913525,
+        "services": "Emergency shelter for single homeless women. Please call (614) 274-7000 to access emergency shelter services in Franklin County.",
+        "address": "325 E Long St, Columbus, OH, United States",
+        "phone": "(614) 274-7000",
+        "hours": "",
+        "website": "https://lssnetworkofhope.org/faithmission/"
+    },
+    {
+        "type": "Shelters",
+        "name": "YMCA Van Buren Center Emergency Shelter",
+        "latitude": 39.9468934,
+        "longitude": -83.0207296,
+        "services": "Emergency shelter serving families, women, and men. Please call (614) 274-7000 to access emergency shelter services in Franklin County.",
+        "address": "595 Van Buren Drive, Columbus, OH, United States",
+        "phone": "(614) 274-7000",
+        "hours": "",
+        "website": "https://ymcacolumbus.org/locations/vanburen"
+    },
+    {
+        "type": "Shelters",
+        "name": "YWCA Center for Women",
+        "latitude": 39.928256,
+        "longitude": -82.9931238,
+        "services": "Emergency shelter serving women. Please call (614) 274-7000 to access emergency shelter services in Franklin County. Provides shelter, meals, childcare, and employment help",
+        "address": "65 South Fourth Street, Columbus, OH, United States",
+        "phone": "(614) 274-7000",
+        "hours": "",
+        "website": "https://www.ywcacolumbus.org"
+    },
+    {
+        "type": "Shelters",
+        "name": "YWCA Family Center",
+        "latitude": 39.9872471,
+        "longitude": -82.9482954,
+        "services": "Emergency shelter serving families and women. Please call (614) 274-7000 to access emergency shelter services in Franklin County. Provides shelter, meals, childcare, and employment help",
+        "address": "900 Harvey Court, Columbus, OH, United States",
+        "phone": "(614) 274-7000",
+        "hours": "",
+        "website": "https://www.ywcacolumbus.org"
+    },
+    {
+        "type": "Shelters",
+        "name": "Maryhaven Engagement Center",
+        "latitude": 39.9316727,
+        "longitude": -82.9410014,
+        "services": "Temporary, year-round nightly refuge for homeless adults. Please call (614) 445-8131 to be picked up and dropped off by our team",
+        "address": "1791 Alum Creek Dr, Columbus, OH, United States",
+        "phone": "(614) 445-8131",
+        "hours": "",
+        "website": "https://maryhaven.com/homeless-services/"
+    },
+    {
+        "type": "Shelters",
+        "name": "Star House",
+        "latitude": 40.060409,
+        "longitude": -82.931953,
+        "services": "24/7 drop-in center providing free and confidential assistance to homeless youth ages 14 to 24. Meals, clothing, laundry, hygiene items, rest, internet services, telephone calls, linkages to local resources and counseling, healthcare, education support, housing help, job-seeking help, and more.",
+        "address": "1220 Corrugate Way, Columbus, OH, United States",
+        "phone": "(614) 826-5868",
+        "hours": "",
+        "website": "https://www.starhouse.us"
+    },
+    {
+        "type": "Shelters",
+        "name": "Huckleberry House",
+        "latitude": 39.9921736,
+        "longitude": -83.0005741,
+        "services": "Helps Central Ohio youth ages 12-24 who are dealing with issues like family conflict, violence, poverty, and homelessness through providing crisis shelter housing, counseling, educational, employment, and housing support. Call (614) 294-5553 to reach our 24/7 crisis hotline.",
+        "address": "1421 Hamlet Street, Columbus, OH, United States",
+        "phone": "(614) 294-5553",
+        "hours": "",
+        "website": "https://huckhouse.org"
+    },
+    {
+        "type": "Shelters",
+        "name": "Youth Outreach Program at YOP Shop",
+        "latitude": 40.0122658,
+        "longitude": -82.9645199,
+        "services": "Provides services for ages 12-24 to get connected to community services, connect with YOP counselors, and get help with housing, employment, or education needs. Call (614) 294-5553 to reach our 24/7 crisis hotline.",
+        "address": "2216 Bancroft Street, Columbus, OH, United States",
+        "phone": "(614) 294-5553",
+        "hours": "",
+        "website": "https://huckhouse.org"
+    },
+    {
+        "type": "Shelters",
+        "name": "LSS Choices Domestic Violence Shelter",
+        "latitude": 40.1016323,
+        "longitude": -82.9850201,
+        "services": "24-hour emergency shelter for victims of Domestic Violence and their children, counseling, educational resources, and more",
+        "address": "1105 Schrock Rd, Suite 100, Columbus, OH, United States",
+        "phone": "(614) 224-4663",
+        "hours": "",
+        "website": "https://lssnetworkofhope.org/choices/"
+    },
+    {
+        "type": "Shelters",
+        "name": "Jordan's Crossing Resource Center",
+        "latitude": 39.9618509,
+        "longitude": -83.0759239,
+        "services": "Daily meals and Narcan distribution, clothing, documentation/ID assistance, laundry and shower services, cooling and heating stations, bicycle program, and additional wraparound services for homeless adults.",
+        "address": "342 North Hague Avenue, Columbus, OH, United States",
+        "phone": "(380) 219-8950",
+        "hours": "",
+        "website": "https://jordanscrossingcolumbus.org"
+    },
+    {
+        "type": "Shelters",
+        "name": "The Open Shelter",
+        "latitude": 39.9545545,
+        "longitude": -82.9974429,
+        "services": "Provides emergency shelter and assistance for homeless and marginally housed adults in Central Ohio. Also offer coordinated, supportive services, and transitional and/or permanent housing.",
+        "address": "61 East Mound Street, Columbus, OH, United States",
+        "phone": "(614) 222-2885",
+        "hours": "",
+        "website": "https://theopenshelter.org"
     }
 ]
