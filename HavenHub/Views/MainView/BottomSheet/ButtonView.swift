@@ -79,11 +79,15 @@ struct ButtonView: View {
                 Button(action: {
                     // Hide the bottom sheet when food banks are shown
                     withAnimation {
+                        shelters.removeAll()
                         showBottomSheet = false
                         showFoodBank = true
                         queryWords = ["food banks", "food pantry"]
                         if let center = visibleRegion?.center, isInColumbus(center) {
-                            // You're inside Columbus, get the streetCard information for foodBanks into here!!
+                            let streetCards = loadStreetCardData().filter { $0.type == "Free Meals" }
+                                        let streetCardResources = streetCards.map { resource(from: $0) }
+                                        shelters.append(contentsOf: streetCardResources)
+                                        print("Inside Columbus!")
                         } else {
                             if let region = visibleRegion {
                                 performSearch(in: region, queryWords: queryWords)
@@ -162,11 +166,11 @@ struct ButtonView: View {
                 // Clothing Button
                 Button(action: {
                     withAnimation {
+                        shelters.removeAll()
                         showBottomSheet = false
                         showClothing = true
                         queryWords = ["clothing donations", "volunteers of America", "thrift store", "thrift shop"]
                         if let center = visibleRegion?.center, isInColumbus(center) {
-                            shelters.removeAll()
                             if let region = visibleRegion {
                                 performSearch(in: region, queryWords: queryWords)
                             }
@@ -195,7 +199,7 @@ struct ButtonView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.main)
                             .shadow(radius: 4)
-                        
+
                         Image(systemName: "hanger")
                             .foregroundColor(Color.purple)
                     }

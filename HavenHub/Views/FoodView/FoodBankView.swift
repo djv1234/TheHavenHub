@@ -4,7 +4,7 @@ import MapKit
 struct FoodBankView: View {
     @Binding var cameraPosition: MapCameraPosition
     @Binding var visibleRegion: MKCoordinateRegion?
-    @Binding var shelters: [MKMapItem]
+    @Binding var shelters: [Resource]
     @Binding var showBottomSheet: Bool
     @Binding var showFoodBank: Bool
     @Binding var showTitle: Bool
@@ -23,12 +23,12 @@ struct FoodBankView: View {
                         .foregroundColor(.gray)
                         .padding(10)
                     
-                    List(shelters, id: \.self) { shelter in
-                        NavigationLink(destination: FoodBankDetailView(shelter: shelter)) {
+                    List(shelters) { resource in
+                        NavigationLink(destination: FoodBankDetailView(resource: resource)) {
                             VStack(alignment: .leading) {
-                                Text(shelter.name ?? "Unnamed Food Bank")
+                                Text(resource.name)
                                     .font(.headline)
-                                Text(shelter.placemark.title ?? "Address unavailable")
+                                Text(resource.address ?? "Address unavailable")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }

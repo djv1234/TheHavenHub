@@ -81,9 +81,9 @@ struct MainView: View {
                     )
                 }
                 
-       //         if (showFoodBank){
-      //              FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: //$shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle)
-            //    }
+                if (showFoodBank){
+                    FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle)
+                }
                 
                 if (showClothing){
                     ClothingView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showClothing: $showClothing, showTitle: $showTitle)

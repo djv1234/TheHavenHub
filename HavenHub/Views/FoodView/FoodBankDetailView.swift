@@ -9,14 +9,14 @@ import SwiftUI
 import MapKit
 
 struct FoodBankDetailView: View {
-    let shelter: MKMapItem
+    let resource: Resource
     @State private var cameraPosition: MapCameraPosition
     @State private var showMapOptions = false
     @Environment(\.dismiss) private var dismiss
     
-    init(shelter: MKMapItem) {
-        self.shelter = shelter
-        let coordinate = shelter.placemark.coordinate
+    init(resource: Resource) {
+        self.resource = resource
+        let coordinate = resource.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
         _cameraPosition = State(initialValue: .region(MKCoordinateRegion(
             center: coordinate,
             span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -24,27 +24,57 @@ struct FoodBankDetailView: View {
     }
 
     var body: some View {
+        ScrollView {
         VStack {
-            Text(shelter.name ?? "Unnamed Food Bank")
+            Text(resource.name)
                 .font(.title)
                 .fontWeight(.bold)
+                .lineLimit(nil)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .multilineTextAlignment(.center)
                 .padding()
-
-            // Map with rounded corners
-            Map(position: $cameraPosition) {
-                Marker(shelter.name ?? "Unknown", coordinate: shelter.placemark.coordinate)
-            }
-            .frame(height: 300)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .padding()
             
-            // stack for details about food bank
+            if let coordinate = resource.coordinate {
+                Map(position: $cameraPosition) {
+                    Marker(resource.name, coordinate: coordinate)
+                }
+                .frame(height: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .padding()
+            } else {
+                Text("Please contact the resource to get address and other information!")
+                    .frame(height: 50)
+                    .font(.headline)
+                    .foregroundColor(.black)
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .multilineTextAlignment(.center)
+            }
+            
             VStack(alignment: .leading, spacing: 10) {
+                if let services = resource.services, !services.isEmpty {
+                    Text("Services: \(services)")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .padding()
+                        .lineLimit(nil)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .multilineTextAlignment(.center)
+                }
                 
-                // phone number
-                if let phoneNumber = shelter.phoneNumber {
+                if let hours = resource.hours, !hours.isEmpty {
+                    Text("Hours: \(hours)")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .lineLimit(nil)
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .multilineTextAlignment(.center)
+                }
+                
+                if let phone = resource.phone {
                     Button(action: {
-                        if let phoneURL = URL(string: "tel://\(phoneNumber.replacingOccurrences(of: " ", with: ""))") {
+                        if let phoneURL = URL(string: "tel://\(phone.replacingOccurrences(of: " ", with: ""))") {
                             UIApplication.shared.open(phoneURL)
                         }
                     }) {
@@ -52,21 +82,15 @@ struct FoodBankDetailView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.red)
                                 .frame(height: 50)
-
-                            Text("Call \(phoneNumber)")
+                            Text("Call \(phone)")
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
                         }
                     }
                     .padding(.horizontal)
-                } else {
-                    Text("Phone number unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
                 }
                 
-                // website button
-                if let url = shelter.url {
+                if let url = resource.url {
                     Button(action: {
                         UIApplication.shared.open(url)
                     }) {
@@ -74,7 +98,6 @@ struct FoodBankDetailView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.red)
                                 .frame(height: 50)
-
                             Text(url.absoluteString)
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
@@ -83,20 +106,15 @@ struct FoodBankDetailView: View {
                         }
                     }
                     .padding(.horizontal)
-                } else {
-                    Text("Website unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
                 }
                 
-                // address with option to open in apple/google maps
-                if let address = shelter.placemark.title {
+                if let address = resource.address, !address.isEmpty {
                     Button(action: {
                         showMapOptions = true
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.red)
+                                .fill(Color.accentColor)
                                 .frame(height: 50)
                             Text(address)
                                 .foregroundColor(.white)
@@ -108,40 +126,29 @@ struct FoodBankDetailView: View {
                     .padding(.horizontal)
                     .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
                         Button("Open in Apple Maps") {
-                            if let shelterName = shelter.name, let address = shelter.placemark.title {
-                                let query = "\(shelterName), \(address)"
-                                let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                let appleMapsURL = URL(string: "http://maps.apple.com/?q=\(encodedQuery)")!
-                                UIApplication.shared.open(appleMapsURL)
-                            }
+                            let query = "\(resource.name), \(address)"
+                            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                            let url = URL(string: "http://maps.apple.com/?q=\(encodedQuery)")!
+                            UIApplication.shared.open(url)
                         }
                         Button("Open in Google Maps") {
-                            if let shelterName = shelter.name, let address = shelter.placemark.title {
-                                let query = "\(shelterName), \(address)"
-                                let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                let googleMapsURL = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encodedQuery)")!
-                                UIApplication.shared.open(googleMapsURL)
-                            }
+                            let query = "\(resource.name), \(address)"
+                            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                            let url = URL(string: "https://www.google.com/maps/search/?api=1&query=\(encodedQuery)")!
+                            UIApplication.shared.open(url)
                         }
                         Button("Cancel", role: .cancel) { }
                     }
-                } else {
-                    Text("Address unavailable")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
+                } 
             }
             Spacer()
         }
-        .navigationTitle("Food Bank Details")
+        .navigationTitle("Free Meal Resource Details")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true) // Hide the default one
+        .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
-                    // Dismiss the current view
-                    // Assuming you're inside a NavigationStack
-                    // If you're using a NavigationLink to present this, use `dismiss()` from the environment
                     dismiss()
                 }) {
                     ZStack {
@@ -155,5 +162,6 @@ struct FoodBankDetailView: View {
                 }
             }
         }
+    }
     }
 }

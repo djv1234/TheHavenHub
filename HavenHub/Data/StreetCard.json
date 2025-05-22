@@ -300,6 +300,106 @@
         "hours": "Thur 5:30PM-6:30PM, Sun 8:30AM-9:30AM"
     },
     {
+        "type": "Free Meals",
+        "name": "Bridge Ministry",
+        "latitude": 39.9642664,
+        "longitude": -82.9794063,
+        "services": "",
+        "address": "787 E Broad St., Columbus, OH, United States",
+        "phone": "‭(614) 500-0656‬",
+        "hours": "Breakfast Thu, Fri & Sat. 9:30am-10:15am. Dinner Thur, Fri & Sat. 7pm-7:45pm "
+    },
+    {
+        "type": "Free Meals",
+        "name": "Stowe Mission",
+        "latitude": 39.9453778,
+        "longitude": -82.982531,
+        "services": "",
+        "address": "888 Parsons Ave., Columbus, OH, United States",
+        "phone": "(614) 445-8400",
+        "hours": "Meals Mon. - Fri. 8:30am-4:30pm "
+    },
+    {
+        "type": "Free Meals",
+        "name": "Trinity Episcopal Church",
+        "latitude": 39.962499,
+        "longitude": -82.9974387,
+        "services": "",
+        "address": "125 E Broad St., Columbus, OH, United States",
+        "phone": "(614) 221-5351",
+        "hours": "Meals Sunday 1:00PM"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Columbus Relief",
+        "latitude": 39.935109,
+        "longitude": -82.973647,
+        "services": "",
+        "address": "800 Frebis Ave., Columbus, OH, United States",
+        "phone": "(614) 517-2038",
+        "hours": "Meals Sat. 11:30am - 1:30pm "
+    },
+    {
+        "type": "Free Meals",
+        "name": "Feed My Sheep Ministries",
+        "latitude": 39.9555353,
+        "longitude": -83.0634614,
+        "services": "",
+        "address": "2364 W Broad St., Columbus, OH, United States",
+        "phone": "(614) 721-5414",
+        "hours": "Dinner Tues 6pm - 8pm "
+    },
+    {
+        "type": "Free Meals",
+        "name": "Jericho Light Club One Way St. Ministries",
+        "latitude": 39.9554803,
+        "longitude": -83.0264824,
+        "services": "",
+        "address": "1003 W. Town St., Columbus, OH, United States",
+        "phone": "(614) 620-1420",
+        "hours": "Serving meals Fri. & Sat 6-9pm"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Clintonville Crc",
+        "latitude": 40.0275484,
+        "longitude": -83.0152463,
+        "services": "",
+        "address": "14 W. Lakeview Ave., Columbus, OH, United States",
+        "phone": "(614) 268-8818",
+        "hours": "Meals M-F 12pm-4pm "
+    },
+    {
+        "type": "Free Meals",
+        "name": "Central Community House",
+        "latitude": 39.9579081,
+        "longitude": -82.9688873,
+        "services": "Social Service Programs",
+        "address": "1150 E Main St, Columbus, OH, United States",
+        "phone": "(614) 252-3157",
+        "hours": ""
+    },
+    {
+        "type": "Free Meals",
+        "name": "Jordan's Crossing",
+        "latitude": 39.9618509,
+        "longitude": -83.0759239,
+        "services": "",
+        "address": "342 N. Hague Ave, Columbus, OH, United States",
+        "phone": "(614) 507-3246",
+        "hours": "Daily lunch 11 am to 1 pm"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Reeb Center",
+        "latitude": 39.9251888,
+        "longitude": -82.987318,
+        "services": "",
+        "address": "280 Reeb Avenue, Columbus, OH, United States",
+        "phone": "",
+        "hours": "Meals: Lunch M-F 11am-2pm. Dinner Tues 5pm-7pm"
+    },
+    {
         "type": "Free Clothing",
         "name": "Joseph's Coat",
         "latitude": null,
