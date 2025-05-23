@@ -507,6 +507,39 @@
     },
     {
         "type": "Shelters",
+        "name": "Community Shelter Board 24/7 Shelter Hotline for Families and Single adults",
+        "latitude": null,
+        "longitude": null,
+        "services": "For families and single adults: call the 24/7 hotline to find emergency shelter housing in Franklin County",
+        "address": "",
+        "phone": "(614) 274-7000",
+        "hours": "",
+        "website": ""
+    },
+    {
+        "type": "Shelters",
+        "name": "Victims of Domestic Violence 24/7 Hotline",
+        "latitude": null,
+        "longitude": null,
+        "services": "For victims of domestic violence: call the 24/7 domestic violence crisis hotline to get connected to professionals, find shelter, and more services",
+        "address": "",
+        "phone": "(614) 224-4663",
+        "hours": "",
+        "website": ""
+    },
+    {
+        "type": "Shelters",
+        "name": "Huckleberry House 24/7 Teen Crisis Shelter Hotline",
+        "latitude": null,
+        "longitude": null,
+        "services": "For at-risk youth: call the 24/7 Huckleberry House teen crisis hotline to access shelter and housing resources",
+        "address": "",
+        "phone": "(614) 294-5553",
+        "hours": "",
+        "website": ""
+    },
+    {
+        "type": "Shelters",
         "name": "Friends of the Homeless",
         "latitude": 39.9579916,
         "longitude": -82.9731484,
