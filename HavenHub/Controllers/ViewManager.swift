@@ -121,5 +121,6 @@ class ViewManager: ObservableObject {
     func navigateToProfile() {
         currentView = .profile
     }
+    
 }
 

@@ -90,14 +90,14 @@ struct ButtonView: View {
                                         print("Inside Columbus!")
                         } else {
                             if let region = visibleRegion {
-                                performSearch(in: region, queryWords: queryWords)
+                                performSearch(in: region, queryWords: queryWords, type: "FoodBank")
                             } else {
                                 // Fallback region if visibleRegion is nil
                                 let defaultRegion = MKCoordinateRegion(
                                     center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
                                     span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
                                 )
-                                performSearch(in: defaultRegion, queryWords: queryWords)
+                                performSearch(in: defaultRegion, queryWords: queryWords, type: "FoodBank")
                             }
                         }
                     }
@@ -128,14 +128,14 @@ struct ButtonView: View {
                                         print("Inside Columbus!")
                         } else {
                             if let region = visibleRegion {
-                                performSearch(in: region, queryWords: queryWords)
+                                performSearch(in: region, queryWords: queryWords, type: "Shelter")
                             } else {
                                 // Fallback region if visibleRegion is nil
                                 let defaultRegion = MKCoordinateRegion(
                                     center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
                                     span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
                                 )
-                                performSearch(in: defaultRegion, queryWords: queryWords)
+                                performSearch(in: defaultRegion, queryWords: queryWords, type: "Shelter")
                             }
                         }
                     }
@@ -176,7 +176,7 @@ struct ButtonView: View {
                         queryWords = ["clothing donations", "volunteers of America", "thrift store", "thrift shop"]
                         if let center = visibleRegion?.center, isInColumbus(center) {
                             if let region = visibleRegion {
-                                performSearch(in: region, queryWords: queryWords)
+                                performSearch(in: region, queryWords: queryWords, type: "Clothing")
                             }
                             let streetCards = loadStreetCardData().filter { $0.type == "Free Clothing" }
                                         let streetCardResources = streetCards.map { resource(from: $0) }
@@ -185,7 +185,7 @@ struct ButtonView: View {
                         } else {
                             if let region = visibleRegion {
                                 shelters.removeAll()
-                                performSearch(in: region, queryWords: queryWords)
+                                performSearch(in: region, queryWords: queryWords, type: "Clothing")
                             } else {
                                 shelters.removeAll()
                                 // Fallback region if visibleRegion is nil
@@ -193,7 +193,7 @@ struct ButtonView: View {
                                     center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
                                     span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
                                 )
-                                performSearch(in: defaultRegion, queryWords: queryWords)
+                                performSearch(in: defaultRegion, queryWords: queryWords, type: "Clothing")
                             }
                         }
                     }
@@ -238,16 +238,16 @@ struct ButtonView: View {
         }
     }
 
-    func performSearch(in region: MKCoordinateRegion, queryWords: [String]) {
-        for keyword in queryWords {
-            findLocations(region: region, searchReq: keyword) { mapItems in
-                if let mapItems = mapItems, !mapItems.isEmpty {
-                    let resources = mapItems.map { resource(from: $0) }
-                    shelters.append(contentsOf: resources)
+    func performSearch(in region: MKCoordinateRegion, queryWords: [String], type: String) {
+            for keyword in queryWords {
+                findLocations(region: region, searchReq: keyword) { mapItems in
+                    if let mapItems = mapItems, !mapItems.isEmpty {
+                        let resources = mapItems.map { resource(from: $0, type: type) }
+                        shelters.append(contentsOf: resources)
+                    }
                 }
             }
         }
-    }
     
     func isInColumbus(_ location: CLLocationCoordinate2D) -> Bool {
         let lat = location.latitude

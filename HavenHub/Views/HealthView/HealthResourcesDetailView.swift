@@ -37,7 +37,7 @@ struct HealthResourcesDetailView: View {
             }
 
             
-            
+            ScrollView {
             Text(resource.name ?? "Unnamed Resource")
                 .font(.title)
                 .fontWeight(.bold)
@@ -52,7 +52,7 @@ struct HealthResourcesDetailView: View {
                 .padding()
             }
 
-            ScrollView {
+            
                 VStack(alignment: .leading, spacing: 10) {
                                         if let phoneNumber = resource.phoneNumber {
                                             Button(action: {

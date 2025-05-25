@@ -17,10 +17,11 @@ import MapKit
        let url: URL?
        let services: String?
        let hours: String?
+       let type: String? // Added to identify resource type
    }
 
    // Conversion functions
-   func resource(from mapItem: MKMapItem) -> Resource {
+func resource(from mapItem: MKMapItem, type: String) -> Resource {
        return Resource(
            name: mapItem.name ?? "Unnamed",
            coordinate: mapItem.placemark.coordinate,
@@ -28,7 +29,8 @@ import MapKit
            phone: mapItem.phoneNumber,
            url: mapItem.url,
            services: nil,
-           hours: nil
+           hours: nil,
+           type: type
        )
    }
 
@@ -39,13 +41,25 @@ import MapKit
        } else {
            coordinate = nil
        }
-       return Resource(
-           name: streetCard.name,
-           coordinate: coordinate,
-           address: streetCard.address.isEmpty ? nil : streetCard.address,
-           phone: streetCard.phone.isEmpty ? nil : streetCard.phone,
-           url: streetCard.website.isEmpty ? nil : URL(string: streetCard.website)!,
-           services: streetCard.services.isEmpty ? nil : streetCard.services,
-           hours: streetCard.hours.isEmpty ? nil : streetCard.hours
-       )
+       let resourceType: String
+           switch streetCard.type {
+           case "Shelters":
+               resourceType = "Shelter"
+           case "Free Meals":
+               resourceType = "FoodBank"
+           case "Free Clothing":
+               resourceType = "Clothing"
+           default:
+               resourceType = "Unknown"
+           }
+           return Resource(
+               name: streetCard.name,
+               coordinate: coordinate,
+               address: streetCard.address.isEmpty ? nil : streetCard.address,
+               phone: streetCard.phone.isEmpty ? nil : streetCard.phone,
+               url: nil,
+               services: streetCard.services.isEmpty ? nil : streetCard.services,
+               hours: streetCard.hours.isEmpty ? nil : streetCard.hours,
+               type: resourceType
+           )
    }

@@ -31,6 +31,8 @@ struct MainView: View {
     @State var shelters: [Resource] = []
     @State var selectedResult: MKMapItem?
     @State var isSheetPresented: Bool = false
+    @State private var selectedResource: Resource? // Added for navigation
+    @State private var isShowingDetail: Bool = false // Added for sheet control
     
     let userLocation = UserLocation()
     let routeCalc = RouteCalculator()
@@ -47,6 +49,8 @@ struct MainView: View {
                             visibleRegion: $visibleRegion,
                             shelters: $shelters,
                             selectedResult: $selectedResult,
+                            selectedResource: $selectedResource,
+                            isShowingDetail: $isShowingDetail,
                             userLocation: userLocation,
                             distanceCalc: distanceCalc,
                             routeCalc: routeCalc
@@ -104,6 +108,20 @@ struct MainView: View {
             .ignoresSafeArea(.keyboard)
             .navigationBarHidden(true)
             .toolbar(.hidden, for: .navigationBar)
+            .sheet(isPresented: $isShowingDetail) {
+                            if let resource = selectedResource {
+                                switch resource.type {
+                                case "Shelter":
+                                    ShelterDetailView(resource: resource)
+                                case "FoodBank":
+                                    FoodBankDetailView(resource: resource)
+                                case "Clothing":
+                                    ClothingDetailView(resource: resource)
+                                default:
+                                    Text("Unknown resource type")
+                                }
+                            }
+                        }
         }
     }
 }

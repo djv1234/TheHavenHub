@@ -35,7 +35,7 @@ struct SheltersView: View {
                             VStack(alignment: .leading) {
                                 Text(resource.name)
                                     .font(.headline)
-                                Text(resource.address ?? "Address unavailable")
+                                Text(resource.address ?? "")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }

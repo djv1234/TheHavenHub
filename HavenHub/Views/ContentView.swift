@@ -18,6 +18,8 @@ struct ContentView: View {
     @State private var cameraPosition: MapCameraPosition = .automatic
     @State private var visibleRegion: MKCoordinateRegion?
     @State private var resources: [MKMapItem] = []
+    @State private var selectedResource: Resource?
+    @State private var isShowingDetail: Bool = false
     
     var body: some View {
         VStack {
@@ -72,5 +74,19 @@ struct ContentView: View {
                 ProfileView(viewManager: viewManager, authViewModel: authViewModel)
             }
         }
+        .sheet(isPresented: $isShowingDetail) {
+                    if let resource = selectedResource {
+                        switch resource.type {
+                        case "Shelter":
+                            ShelterDetailView(resource: resource)
+                        case "FoodBank":
+                            FoodBankDetailView(resource: resource)
+                        case "Clothing":
+                            ClothingDetailView(resource: resource)
+                        default:
+                            Text("Unknown resource type")
+                        }
+                    }
+                }
     }
 }

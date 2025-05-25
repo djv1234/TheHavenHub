@@ -16,6 +16,8 @@ struct MainMapView: View {
     @Binding var visibleRegion: MKCoordinateRegion?
     @Binding var shelters: [Resource]
     @Binding var selectedResult: MKMapItem?
+    @Binding var selectedResource: Resource?
+    @Binding var isShowingDetail: Bool
     
     let userLocation: UserLocation
     let distanceCalc: DistanceCalculator
@@ -25,11 +27,25 @@ struct MainMapView: View {
         GeometryReader { geometry in
             Map(position: $cameraPosition, selection: $selectedResult) {
                 ForEach(shelters.filter { $0.coordinate != nil }) { resource in
-                    if let coordinate = resource.coordinate {
-                        Marker(resource.name, coordinate: coordinate)
-                            .tint(Color.red)
-                    }
-                }
+                                    if let coordinate = resource.coordinate {
+                                        Annotation(resource.name, coordinate: coordinate) {
+                                            Button(action: {
+                                                withAnimation {
+                                                    selectedResource = resource
+                                                    isShowingDetail = true
+                                                }
+                                            }) {
+                                                Image(systemName: "mappin")
+                                                    .padding(6)
+                                                    .background(Color.accentColor.opacity(0.8))
+                                                    .foregroundColor(.white)
+                                                    .clipShape(Capsule())
+                                            }
+                                        }
+                                    }
+                                }
+                
+                
                 
                 if let currentItem = currentItem {
                     Annotation("", coordinate: currentItem.mapItem.placemark.coordinate) {
