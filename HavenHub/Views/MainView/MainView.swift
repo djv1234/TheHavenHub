@@ -86,15 +86,15 @@ struct MainView: View {
                 }
                 
                 if (showFoodBank){
-                    FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle)
+                    FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle, selectedResource: $selectedResource, isShowingDetail: $isShowingDetail)
                 }
                 
                 if (showClothing){
-                    ClothingView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showClothing: $showClothing, showTitle: $showTitle)
+                    ClothingView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showClothing: $showClothing, showTitle: $showTitle, selectedResource: $selectedResource, isShowingDetail: $isShowingDetail)
                 }
                 
                 if (showShelter){
-                    SheltersView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showShelter: $showShelter, showTitle: $showTitle)
+                    SheltersView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showShelter: $showShelter, showTitle: $showTitle, selectedResource: $selectedResource, isShowingDetail: $isShowingDetail)
                 }
         
                 

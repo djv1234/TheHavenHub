@@ -28,8 +28,8 @@ struct MapOverlayView: View {
         GeometryReader{ geometry in
             VStack{
                 HStack {
-                    Text("HavenHub")
-                        .frame(width: 160, height: 40)
+                    Text("TheHavenHub")
+                        .frame(width: 200, height: 40)
                         .font(.title)
                         .foregroundColor(.primary)
                         .background(.ultraThinMaterial)

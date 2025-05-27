@@ -18,6 +18,8 @@ struct SheltersView: View {
     @State private var isKeyboardVisible: Bool = false
     @State var offsetY: CGFloat = 540
     @State var lastDragPosition: CGFloat = 0
+    @Binding var selectedResource: Resource?
+    @Binding var isShowingDetail: Bool
 
     var body: some View {
         GeometryReader { geometry in
@@ -31,16 +33,22 @@ struct SheltersView: View {
                         .padding(10)
                     
                     List(shelters) { resource in
-                        NavigationLink(destination: ShelterDetailView(resource: resource)) {
-                            VStack(alignment: .leading) {
-                                Text(resource.name)
-                                    .font(.headline)
-                                Text(resource.address ?? "")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
-                            .padding()
-                        }
+                        Button(action: {
+                                            withAnimation {
+                                                selectedResource = resource
+                                                isShowingDetail = true
+                                            }
+                                        }) {
+                                            VStack(alignment: .leading) {
+                                                Text(resource.name)
+                                                    .font(.headline)
+                                                Text(resource.address ?? "")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.gray)
+                                            }
+                                            .padding()
+                                        }
+                                        .buttonStyle(.plain)
                     }
                     .listStyle(PlainListStyle())
                     .frame(height: geometry.size.height * 0.4) // Restrict the list to 40% of the screen height
