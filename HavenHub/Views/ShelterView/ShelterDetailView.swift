@@ -13,7 +13,6 @@ struct ShelterDetailView: View {
     @State private var cameraPosition: MapCameraPosition
     @State private var showMapOptions = false
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.presentationMode) private var presentationMode // Added to detect sheet context
     
     init(resource: Resource) {
         self.resource = resource
@@ -203,5 +202,4 @@ struct ShelterDetailView: View {
         }
     }
     }
-    
 }

@@ -25,26 +25,26 @@ struct FoodBankView: View {
                         .foregroundColor(.gray)
                         .padding(10)
                     
-                    List(shelters) { resource in
-                        Button(action: {
-                                            withAnimation {
-                                                selectedResource = resource
-                                                isShowingDetail = true
-                                            }
-                                        }) {
-                                            VStack(alignment: .leading) {
-                                                Text(resource.name)
-                                                    .font(.headline)
-                                                Text(resource.address ?? "")
-                                                    .font(.subheadline)
-                                                    .foregroundColor(.gray)
-                                            }
-                                            .padding()
-                                        }
-                                        .buttonStyle(.plain)
-                    }
-                    .listStyle(PlainListStyle())
-                    .frame(height: geometry.size.height * 0.4) // Restrict the list to 40% of the screen height
+                        List(shelters) { resource in
+                            Button(action: {
+                                print("Selecting resource: \(resource.name)")
+                                withAnimation {
+                                    selectedResource = resource
+                                }
+                            }) {
+                                VStack(alignment: .leading) {
+                                    Text(resource.name)
+                                        .font(.headline)
+                                    Text(resource.address ?? "")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+                                .padding()
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        .listStyle(PlainListStyle())
+                        .frame(height: geometry.size.height * 0.4) // Restrict the list to 40% of the screen height
                     
                     Button(action: {
                         withAnimation {

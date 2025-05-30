@@ -87,7 +87,6 @@ struct ButtonView: View {
                             let streetCards = loadStreetCardData().filter { $0.type == "Free Meals" }
                                         let streetCardResources = streetCards.map { resource(from: $0) }
                                         shelters.append(contentsOf: streetCardResources)
-                                        print("Inside Columbus!")
                         } else {
                             if let region = visibleRegion {
                                 performSearch(in: region, queryWords: queryWords, type: "FoodBank")
@@ -120,12 +119,13 @@ struct ButtonView: View {
                         shelters.removeAll()
                         showBottomSheet = false
                         showShelter = true
+                        
                         queryWords = ["homeless shelter for people", "drop-in homeless shelter", "overnight homeless shelter", "men's homeless shelter", "women's homeless shelter", "family shelter"]
                         if let center = visibleRegion?.center, isInColumbus(center) {
                             let streetCards = loadStreetCardData().filter { $0.type == "Shelters" }
                                         let streetCardResources = streetCards.map { resource(from: $0) }
                                         shelters.append(contentsOf: streetCardResources)
-                                        print("Inside Columbus!")
+                            
                         } else {
                             if let region = visibleRegion {
                                 performSearch(in: region, queryWords: queryWords, type: "Shelter")
@@ -181,7 +181,6 @@ struct ButtonView: View {
                             let streetCards = loadStreetCardData().filter { $0.type == "Free Clothing" }
                                         let streetCardResources = streetCards.map { resource(from: $0) }
                                         shelters.append(contentsOf: streetCardResources)
-                                        print("Inside Columbus!")
                         } else {
                             if let region = visibleRegion {
                                 shelters.removeAll()

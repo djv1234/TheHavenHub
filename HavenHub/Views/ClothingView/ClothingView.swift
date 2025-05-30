@@ -36,7 +36,6 @@ struct ClothingView: View {
                         Button(action: {
                                             withAnimation {
                                                 selectedResource = resource
-                                                isShowingDetail = true
                                             }
                                         }) {
                                             VStack(alignment: .leading) {

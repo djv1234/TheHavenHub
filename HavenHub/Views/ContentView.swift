@@ -13,7 +13,7 @@ struct ContentView: View {
     @StateObject var viewManager = ViewManager()
     @StateObject var authViewModel = AuthViewModel()
     
-    @State private var showBottomSheet: Bool = false
+    @State private var showBottomSheet: Bool = true
     @State private var showResources: Bool = false
     @State private var cameraPosition: MapCameraPosition = .automatic
     @State private var visibleRegion: MKCoordinateRegion?
@@ -25,7 +25,12 @@ struct ContentView: View {
         VStack {
             switch viewManager.currentView {
             case .main:
-                MainView(viewManager: viewManager, visibleRegion: $visibleRegion)
+                MainView(viewManager: viewManager,
+                         cameraPosition: cameraPosition,
+                         visibleRegion: $visibleRegion,
+                         showBottomSheet: showBottomSheet,
+                         selectedResource: $selectedResource,
+                         isShowingDetail: $isShowingDetail)
                     .transition(.asymmetric(insertion: .move(edge: .leading), removal: .opacity))
             case .health:
                 HealthView(viewManager: viewManager)
@@ -74,19 +79,17 @@ struct ContentView: View {
                 ProfileView(viewManager: viewManager, authViewModel: authViewModel)
             }
         }
-        .sheet(isPresented: $isShowingDetail) {
-                    if let resource = selectedResource {
-                        switch resource.type {
-                        case "Shelter":
-                            ShelterDetailView(resource: resource)
-                        case "FoodBank":
-                            FoodBankDetailView(resource: resource)
-                        case "Clothing":
-                            ClothingDetailView(resource: resource)
-                        default:
-                            Text("Unknown resource type")
-                        }
-                    }
-                }
+        .sheet(item: $selectedResource) { resource in
+            switch resource.type {
+            case "Shelter":
+                ShelterDetailView(resource: resource)
+            case "FoodBank":
+                FoodBankDetailView(resource: resource)
+            case "Clothing":
+                ClothingDetailView(resource: resource)
+            default:
+                Text("Unknown resource type")
+            }
+        }
     }
 }

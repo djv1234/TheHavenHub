@@ -31,8 +31,8 @@ struct MainView: View {
     @State var shelters: [Resource] = []
     @State var selectedResult: MKMapItem?
     @State var isSheetPresented: Bool = false
-    @State private var selectedResource: Resource? // Added for navigation
-    @State private var isShowingDetail: Bool = false // Added for sheet control
+    @Binding var selectedResource: Resource? // Added for navigation
+    @Binding var isShowingDetail: Bool // Added for sheet control
     
     let userLocation = UserLocation()
     let routeCalc = RouteCalculator()
@@ -86,7 +86,7 @@ struct MainView: View {
                 }
                 
                 if (showFoodBank){
-                    FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle, selectedResource: $selectedResource, isShowingDetail: $isShowingDetail)
+                    FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle, offsetY: offsetY, selectedResource: $selectedResource, isShowingDetail: $isShowingDetail)
                 }
                 
                 if (showClothing){

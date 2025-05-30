@@ -25,53 +25,54 @@ struct MainMapView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            Map(position: $cameraPosition, selection: $selectedResult) {
-                ForEach(shelters.filter { $0.coordinate != nil }) { resource in
-                                    if let coordinate = resource.coordinate {
-                                        Annotation(resource.name, coordinate: coordinate) {
-                                            Button(action: {
-                                                withAnimation {
-                                                    selectedResource = resource
-                                                    isShowingDetail = true
-                                                }
-                                            }) {
-                                                Image(systemName: "mappin")
-                                                    .padding(6)
-                                                    .background(Color.accentColor.opacity(0.8))
-                                                    .foregroundColor(.white)
-                                                    .clipShape(Capsule())
-                                            }
-                                        }
+            ZStack(alignment: .center) {
+                Map(position: $cameraPosition) {
+                    ForEach(shelters.filter { $0.coordinate != nil }) { resource in
+                        if let coordinate = resource.coordinate {
+                            Annotation(resource.name, coordinate: coordinate) {
+                                Button(action: {
+                                    print("Selecting resource: \(resource.name)")
+                                    withAnimation {
+                                        selectedResource = resource
                                     }
+                                }) {
+                                    Image(systemName: "mappin")
+                                        .padding(6)
+                                        .background(Color.accentColor.opacity(0.8))
+                                        .foregroundColor(.white)
+                                        .clipShape(Capsule())
                                 }
-                
-                
-                
-                if let currentItem = currentItem {
-                    Annotation("", coordinate: currentItem.mapItem.placemark.coordinate) {
-                        MapItemBubble(mapItem: currentItem)
+                            }
+                        }
                     }
-                }
-
-                UserAnnotation()
-
-                if let route = route {
-                    MapPolyline(route)
-                        .stroke(
-                            Color.blue,
-                            style: StrokeStyle(
-                                lineWidth: 7,
-                                lineCap: .round,
-                                lineJoin: .round
+                    
+                    if let currentItem = currentItem {
+                        Annotation("", coordinate: currentItem.mapItem.placemark.coordinate) {
+                            MapItemBubble(mapItem: currentItem)
+                        }
+                    }
+                    
+                    UserAnnotation()
+                    
+                    if let route = route {
+                        MapPolyline(route)
+                            .stroke(
+                                Color.blue,
+                                style: StrokeStyle(
+                                    lineWidth: 7,
+                                    lineCap: .round,
+                                    lineJoin: .round
+                                )
                             )
-                        )
-
-                    if let centerCoordinate = routeCalc.getCenterCoordinate(from: route) {
-                        Annotation("", coordinate: centerCoordinate) {
-                            TravelTimeBubble(from: userLocation.getUserLocation().center, to: currentItem!.mapItem.placemark.coordinate, distanceCalc: distanceCalc)
+                        
+                        if let centerCoordinate = routeCalc.getCenterCoordinate(from: route) {
+                            Annotation("", coordinate: centerCoordinate) {
+                                TravelTimeBubble(from: userLocation.getUserLocation().center, to: currentItem!.mapItem.placemark.coordinate, distanceCalc: distanceCalc)
+                            }
                         }
                     }
                 }
+                
             }
             .onAppear {
                 userLocation.goToUserLocation(cameraPosition: $cameraPosition)

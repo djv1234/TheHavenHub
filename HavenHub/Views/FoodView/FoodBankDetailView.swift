@@ -180,25 +180,25 @@ struct FoodBankDetailView: View {
                             .padding(.trailing, 16)
                             .padding(.top, 16)
                             .accessibilityLabel("Close details")
-        .navigationTitle("Free Meal Resource Details")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    ZStack {
-                        Circle()
-                            .fill(Color.red)
-                            .frame(width: 36, height: 36)
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .bold))
-                    }
-                }
-            }
-        }
+//        .navigationTitle("Free Meal Resource Details")
+//        .navigationBarTitleDisplayMode(.inline)
+//        .navigationBarBackButtonHidden(true)
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button(action: {
+//                    dismiss()
+//                }) {
+//                    ZStack {
+//                        Circle()
+//                            .fill(Color.red)
+//                            .frame(width: 36, height: 36)
+//                        Image(systemName: "arrow.left")
+//                            .foregroundColor(.white)
+//                            .font(.system(size: 16, weight: .bold))
+//                    }
+//                }
+//            }
+ //       }
     }
     }
 }
