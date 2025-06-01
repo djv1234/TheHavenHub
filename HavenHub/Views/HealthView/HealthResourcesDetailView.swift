@@ -54,27 +54,26 @@ struct HealthResourcesDetailView: View {
 
             
                 VStack(alignment: .leading, spacing: 10) {
-                                        if let phoneNumber = resource.phoneNumber {
+                                        if let phone = resource.phoneNumber {
                                             Button(action: {
-                                                if let phoneURL = URL(string: "tel://" + phoneNumber) {
+                                                if let phoneURL = URL(string: "tel://\(phone.replacingOccurrences(of: " ", with: ""))") {
                                                     UIApplication.shared.open(phoneURL)
                                                 }
                                             }) {
                                                 ZStack {
                                                     RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.accentColor)
+                                                        .fill(Color.red)
                                                         .frame(height: 50)
-                                                    Text("Call \(phoneNumber)")
-                                                        .foregroundColor(.white)
-                                                        .fontWeight(.bold)
+                                                    HStack(spacing: 8) {
+                                                        Image(systemName: "phone.fill")
+                                                        Text("Call \(phone)")
+                                                            .fontWeight(.bold)
+                                                    }
+                                                    .foregroundColor(.white)
+                                                    .padding(.horizontal, 10)
                                                 }
                                             }
-                                        } else {
-                                            Text("Phone number unavailable")
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
                                         }
-
                                         // Website
                                         if let url = resource.url, !url.absoluteString.contains("mailto:") {
                                             Button(action: {
@@ -82,19 +81,19 @@ struct HealthResourcesDetailView: View {
                                             }) {
                                                 ZStack {
                                                     RoundedRectangle(cornerRadius: 20)
-                                                        .fill(Color.accentColor)
+                                                        .fill(Color.red)
                                                         .frame(height: 50)
-                                                    Text(url.absoluteString)
-                                                        .foregroundColor(.white)
-                                                        .fontWeight(.bold)
-                                                        .truncationMode(.tail)
-                                                        .padding(.horizontal, 10)
+                                                    HStack(spacing: 8) {
+                                                        Image(systemName: "safari.fill")
+                                                        Text("Visit \(url.absoluteString)")
+                                                            .fontWeight(.bold)
+                                                            .lineLimit(nil)
+                                                            .truncationMode(.tail)
+                                                    }
+                                                    .foregroundColor(.white)
+                                                    .padding(.horizontal, 10)
                                                 }
                                             }
-                                        } else {
-                                            Text("Website unavailable")
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
                                         }
 
                                         // Address
@@ -106,11 +105,15 @@ struct HealthResourcesDetailView: View {
                                                     RoundedRectangle(cornerRadius: 20)
                                                         .fill(Color.accentColor)
                                                         .frame(height: 50)
-                                                    Text(address)
-                                                        .foregroundColor(.white)
-                                                        .fontWeight(.bold)
-                                                        .truncationMode(.tail)
-                                                        .padding(.horizontal, 10)
+                                                    HStack(spacing: 8) {
+                                                        Image(systemName: "globe.americas.fill")
+                                                        Text("Navigate to \(address)")
+                                                            .fontWeight(.bold)
+                                                            .lineLimit(2)
+                                                            .truncationMode(.tail)
+                                                    }
+                                                    .foregroundColor(.white)
+                                                    .padding(.horizontal, 10)
                                                 }
                                             }
                                             .confirmationDialog("Open in ...", isPresented: $showMapOptions, titleVisibility: .visible) {
@@ -132,11 +135,7 @@ struct HealthResourcesDetailView: View {
                                                 }
                                                 Button("Cancel", role: .cancel) { }
                                             }
-                                        } else {
-                                            Text("Address unavailable")
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
-                                        }
+                                        } 
                                         // Description
                                         Text("Description")
                                             .font(.headline)

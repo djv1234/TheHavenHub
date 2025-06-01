@@ -12,7 +12,6 @@ struct ContentView: View {
     
     @StateObject var viewManager = ViewManager()
     @StateObject var authViewModel = AuthViewModel()
-    
     @State private var showBottomSheet: Bool = true
     @State private var showResources: Bool = false
     @State private var cameraPosition: MapCameraPosition = .automatic
@@ -20,6 +19,7 @@ struct ContentView: View {
     @State private var resources: [MKMapItem] = []
     @State private var selectedResource: Resource?
     @State private var isShowingDetail: Bool = false
+    @StateObject var userLocation = UserLocation()
     
     var body: some View {
         VStack {
@@ -30,7 +30,8 @@ struct ContentView: View {
                          visibleRegion: $visibleRegion,
                          showBottomSheet: showBottomSheet,
                          selectedResource: $selectedResource,
-                         isShowingDetail: $isShowingDetail)
+                         isShowingDetail: $isShowingDetail,
+                         userLocation: userLocation)
                     .transition(.asymmetric(insertion: .move(edge: .leading), removal: .opacity))
             case .health:
                 HealthView(viewManager: viewManager)
@@ -40,7 +41,8 @@ struct ContentView: View {
                                 showBottomSheet: $showBottomSheet,
                                 showResources: $showResources,
                                 resources: $resources,
-                                healthModel: healthModel)
+                                healthModel: healthModel,
+                                userLocation: userLocation)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
             case .healthResources(let healthModel):
                             HealthResourcesView(
@@ -50,7 +52,7 @@ struct ContentView: View {
                                 showBottomSheet: $showBottomSheet,
                                 showResources: $showResources,
                                 showTitle: .constant(false),
-                                viewManager: viewManager
+                                viewManager: viewManager, userLocation: userLocation
                             )
                             .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
             case .healthDetail(let mapItem, let healthModel):

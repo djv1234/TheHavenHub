@@ -540,6 +540,17 @@
     },
     {
         "type": "Shelters",
+        "name": "Mt. Carmel Housing Outreach Hotline",
+        "latitude": null,
+        "longitude": null,
+        "services": "Call this number to get connected to shelters, housing, benefits and rent assistance, personalized healthcare resources, connect to employment resources, warming and cooling stations, and other support. This line is answered by a Mount Carmel team member. When appropriate, Mount Carmel will link people with the Southeast PATH team. Otherwise, Mount Carmel will begin engaging clients and working on access to needed care, determining a housing plan, and gathering documentation for housing.",
+        "address": "",
+        "phone": "(614) 512-2483",
+        "hours": "",
+        "website": ""
+    },
+    {
+        "type": "Shelters",
         "name": "Friends of the Homeless",
         "latitude": 39.9579916,
         "longitude": -82.9731484,

@@ -55,7 +55,6 @@ struct ShelterDetailView: View {
                         Text("Please contact the resource to get address and other information!")
                             .frame(height: 50)
                             .font(.headline)
-                            .foregroundColor(.black)
                             .padding()
                             .frame(maxWidth: .infinity, alignment: .center)
                             .multilineTextAlignment(.center)
@@ -65,7 +64,6 @@ struct ShelterDetailView: View {
                         if let services = resource.services, !services.isEmpty {
                             Text("Services: \(services)")
                                 .font(.headline)
-                                .foregroundColor(.black)
                                 .padding()
                                 .lineLimit(nil)
                                 .frame(maxWidth: .infinity, alignment: .center)
@@ -75,7 +73,6 @@ struct ShelterDetailView: View {
                         if let hours = resource.hours, !hours.isEmpty {
                             Text("Hours: \(hours)")
                                 .font(.headline)
-                                .foregroundColor(.black)
                                 .lineLimit(nil)
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .center)

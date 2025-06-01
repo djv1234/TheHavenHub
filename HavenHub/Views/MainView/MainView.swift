@@ -33,8 +33,7 @@ struct MainView: View {
     @State var isSheetPresented: Bool = false
     @Binding var selectedResource: Resource? // Added for navigation
     @Binding var isShowingDetail: Bool // Added for sheet control
-    
-    let userLocation = UserLocation()
+    @ObservedObject var userLocation: UserLocation
     let routeCalc = RouteCalculator()
     let distanceCalc = DistanceCalculator()
     

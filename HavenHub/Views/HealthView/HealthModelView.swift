@@ -19,9 +19,8 @@ struct HealthModelView: View {
     @Binding var showResources: Bool
     @Binding var resources: [MKMapItem]
     @State var healthModel: HealthModel
-    
     @State private var cameraPosition: MapCameraPosition = .automatic
-    @State private var visibleRegion: MKCoordinateRegion?
+    @ObservedObject var userLocation: UserLocation
     
     var body: some View {
         NavigationView {
@@ -85,7 +84,7 @@ struct HealthModelView: View {
                              //Button with navigation for food banks
                              Button(action: {
                                  withAnimation {
-                                     if let visibleRegion = visibleRegion {
+                                     if let visibleRegion = userLocation.currentRegion {
                                          let queryWords = ["food bank", "food pantry", "food donation", "soup kitchen"]
                                          performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                              if success {
@@ -154,7 +153,7 @@ struct HealthModelView: View {
                         if healthModel.info.title == "First Aid"{
                             Button(action: {
                                 withAnimation {
-                                    if let visibleRegion = visibleRegion {
+                                    if let visibleRegion = userLocation.currentRegion {
                                         let queryWords = ["pharmacy", "clinic", "hospital", "medicine", "urgent care", "emergency room"]
                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                             if success {
@@ -226,7 +225,7 @@ struct HealthModelView: View {
                             Button(action: {
                                 withAnimation {
                                     // Perform search based on healthModel.info.title
-                                    if let visibleRegion = visibleRegion {
+                                    if let visibleRegion = userLocation.currentRegion {
                                         let queryWords = ["Hygiene", "public bathroom",  "homeless shelter", "community center"]
                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                             if success {
@@ -308,7 +307,7 @@ struct HealthModelView: View {
                             Button(action: {
                                 withAnimation {
                                     // Perform search based on healthModel.info.title
-                                    if let visibleRegion = visibleRegion {
+                                    if let visibleRegion = userLocation.currentRegion {
                                         let queryWords = ["\(healthModel.info.title) resource", "counseling for \(healthModel.info.title)", "counseling", "mental health therapy", "mental health support",  "\(healthModel.info.title) health service"]
                                         performSearch(in: visibleRegion, queryWords: queryWords) { success in
                                             if success {
@@ -365,12 +364,12 @@ struct HealthModelView: View {
                         }
                     }
                 }
-              .onAppear {
-                    
-                    visibleRegion = MKCoordinateRegion(
-                       center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283), // Columbus Ohio
-                      span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)                   )
-               }
+//              .onAppear {
+//                    
+//                    visibleRegion = MKCoordinateRegion(
+//                       center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283), // Columbus Ohio
+//                      span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)                   )
+//               }
             }
         }
     }

@@ -19,7 +19,8 @@ struct HealthResourcesView: View {
     @State private var isKeyboardVisible: Bool = false
     @State var offsetY: CGFloat = 0
     @State var lastDragPosition: CGFloat = 0
-    @ObservedObject var viewManager: ViewManager
+    @StateObject var viewManager: ViewManager
+    @ObservedObject var userLocation: UserLocation
 
     var body: some View {
         GeometryReader { geometry in
@@ -69,6 +70,21 @@ struct HealthResourcesView: View {
                 .frame(height: geometry.size.height * 0.50) // 50% of screen for map
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
+                .onAppear {
+                                    // Set map to user's location or fallback to Columbus
+                                    if let userRegion = userLocation.currentRegion {
+                                        cameraPosition = .region(userRegion)
+                                        visibleRegion = userRegion
+                                    } else {
+                                        print("User location unavailable. Using default Columbus region.")
+                                        let defaultRegion = MKCoordinateRegion(
+                                            center: CLLocationCoordinate2D(latitude: 40.0061, longitude: -83.0283),
+                                            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                                        )
+                                        cameraPosition = .region(defaultRegion)
+                                        visibleRegion = defaultRegion
+                                    }
+                                }
 
                 // Bottom sheet with drag gesture
                                 VStack(spacing: 0) {
@@ -94,7 +110,6 @@ struct HealthResourcesView: View {
                                         }
                                     }
                                     .listStyle(PlainListStyle())
-                                    
                                 }
                                 .frame(height: geometry.size.height) // Allows sheet to go over the map
                                 .background(
