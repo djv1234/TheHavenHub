@@ -113,7 +113,7 @@ struct ShelterDetailView: View {
                                         Image(systemName: "safari.fill")
                                         Text("Visit \(url.absoluteString)")
                                             .fontWeight(.bold)
-                                            .lineLimit(nil)
+                                            .lineLimit(2)
                                             .truncationMode(.tail)
                                     }
                                     .foregroundColor(.white)

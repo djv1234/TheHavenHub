@@ -66,6 +66,7 @@ struct HealthResourcesView: View {
                             }
                         }
                     }
+                    UserAnnotation()
                 }
                 .frame(height: geometry.size.height * 0.50) // 50% of screen for map
                 .clipShape(RoundedRectangle(cornerRadius: 20))
