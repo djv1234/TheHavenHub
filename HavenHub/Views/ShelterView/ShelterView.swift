@@ -27,34 +27,41 @@ struct SheltersView: View {
                 Spacer() // Push the list to the bottom
                 
                 VStack(spacing: 0) {
-                    Capsule()
-                        .frame(width: 40, height: 6)
-                        .foregroundColor(.gray)
-                        .padding(.top, 10)
-                        .padding(.bottom, 4)
-                    
-                    List {
-                        Section(header: Text("Shelters & housing resources")
+                    VStack(spacing: 4) {
+                        Capsule()
+                            .frame(width: 40, height: 6)
+                            .foregroundColor(.gray)
+                            .padding(.top, 10)
+
+                        Text("Shelters & housing resources")
                             .font(.title2)
                             .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(.top, -10)) {
-                            ForEach(shelters) { resource in
-                                Button(action: {
-                                    withAnimation {
-                                        selectedResource = resource
-                                    }
-                                }) {
-                                    VStack(alignment: .leading) {
-                                        Text(resource.name)
-                                            .font(.headline)
-                                        Text(resource.address ?? "")
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
-                                    }
-                                    .padding()
+                            .padding(.bottom, 6)
+                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.sub)
+                            .shadow(radius: 10)
+                    )
+                    
+                    // List without Section Header
+                    List {
+                        ForEach(shelters) { resource in
+                            Button(action: {
+                                withAnimation {
+                                    selectedResource = resource
                                 }
-                                .buttonStyle(.plain)
+                            }) {
+                                VStack(alignment: .leading) {
+                                    Text(resource.name)
+                                        .font(.headline)
+                                    Text(resource.address ?? "")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+                                .padding()
                             }
+                            .buttonStyle(.plain)
                         }
                     }
                     .listStyle(PlainListStyle())

@@ -21,23 +21,32 @@ struct ClothingView: View {
     @Binding var selectedResource: Resource?
     @Binding var isShowingDetail: Bool
 
-    var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Spacer()
-                
-                VStack(spacing: 0) {
-                    Capsule()
-                        .frame(width: 40, height: 6)
-                        .foregroundColor(.gray)
-                        .padding(.top, 10)
-                        .padding(.bottom, 4)
+        var body: some View {
+            GeometryReader { geometry in
+                VStack {
+                    Spacer()
                     
-                    List {
-                        Section(header: Text("Free & affordable clothing")
-                            .font(.title2)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(.top, -10)) {
+                    VStack(spacing: 0) {
+                        // Capsule + Custom Header
+                        VStack(spacing: 4) {
+                            Capsule()
+                                .frame(width: 40, height: 6)
+                                .foregroundColor(.gray)
+                                .padding(.top, 10)
+
+                            Text("Free & affordable clothing")
+                                .font(.title2)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.bottom, 6)
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(.sub)
+                                .shadow(radius: 10)
+                        )
+                        
+                        // List without Section Header
+                        List {
                             ForEach(shelters) { resource in
                                 Button(action: {
                                     withAnimation {
@@ -56,35 +65,34 @@ struct ClothingView: View {
                                 .buttonStyle(.plain)
                             }
                         }
-                    }
-                    .listStyle(PlainListStyle())
-                    .frame(height: geometry.size.height * 0.4)
-                    
-                    Button(action: {
-                        withAnimation {
-                            shelters.removeAll()
-                            showClothing = false
-                            showBottomSheet = true
+                        .listStyle(PlainListStyle())
+                        .frame(height: geometry.size.height * 0.4)
+                        
+                        Button(action: {
+                            withAnimation {
+                                shelters.removeAll()
+                                showClothing = false
+                                showBottomSheet = true
+                            }
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .fill(.ultraThinMaterial)
+                                    .frame(width: 70, height: 70)
+                                
+                                Text("X")
+                                    .font(.system(size: 25))
+                                    .foregroundStyle(Color.primary)
+                            }
                         }
-                    }) {
-                        ZStack {
-                            Circle()
-                                .fill(.ultraThinMaterial)
-                                .frame(width: 70, height: 70)
-                            
-                            Text("X")
-                                .font(.system(size: 25))
-                                .foregroundStyle(Color.primary)
-                        }
+                        .padding()
                     }
-                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.sub)
+                            .shadow(radius: 10)
+                    )
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.sub)
-                        .shadow(radius: 10)
-                )
             }
         }
     }
-}
