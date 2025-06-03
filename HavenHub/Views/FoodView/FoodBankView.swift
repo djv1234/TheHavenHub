@@ -23,31 +23,39 @@ struct FoodBankView: View {
                     Capsule()
                         .frame(width: 40, height: 6)
                         .foregroundColor(.gray)
-                        .padding(10)
+                        .padding(.top, 10)
+                        .padding(.bottom, 4)
                     
-                        List(shelters) { resource in
-                            Button(action: {
-                                print("Selecting resource: \(resource.name)")
-                                withAnimation {
-                                    selectedResource = resource
+                    List {
+                        Section(header: Text("Hot meals & food pantries")
+                            .font(.title2)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.top, -10)) {
+                            ForEach(shelters) { resource in
+                                Button(action: {
+                                    withAnimation {
+                                        selectedResource = resource
+                                    }
+                                }) {
+                                    VStack(alignment: .leading) {
+                                        Text(resource.name)
+                                            .font(.headline)
+                                        Text(resource.address ?? "")
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
+                                    }
+                                    .padding()
                                 }
-                            }) {
-                                VStack(alignment: .leading) {
-                                    Text(resource.name)
-                                        .font(.headline)
-                                    Text(resource.address ?? "")
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
-                                }
-                                .padding()
+                                .buttonStyle(.plain)
                             }
-                            .buttonStyle(.plain)
                         }
-                        .listStyle(PlainListStyle())
-                        .frame(height: geometry.size.height * 0.4) // Restrict the list to 40% of the screen height
+                    }
+                    .listStyle(PlainListStyle())
+                    .frame(height: geometry.size.height * 0.4)
                     
                     Button(action: {
                         withAnimation {
+                            shelters.removeAll()
                             showFoodBank = false
                             showBottomSheet = true
                         }

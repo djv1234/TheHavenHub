@@ -30,30 +30,39 @@ struct SheltersView: View {
                     Capsule()
                         .frame(width: 40, height: 6)
                         .foregroundColor(.gray)
-                        .padding(10)
+                        .padding(.top, 10)
+                        .padding(.bottom, 4)
                     
-                    List(shelters) { resource in
-                        Button(action: {
-                                            withAnimation {
-                                                selectedResource = resource
-                                            }
-                                        }) {
-                                            VStack(alignment: .leading) {
-                                                Text(resource.name)
-                                                    .font(.headline)
-                                                Text(resource.address ?? "")
-                                                    .font(.subheadline)
-                                                    .foregroundColor(.gray)
-                                            }
-                                            .padding()
-                                        }
-                                        .buttonStyle(.plain)
+                    List {
+                        Section(header: Text("Shelters & housing resources")
+                            .font(.title2)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.top, -10)) {
+                            ForEach(shelters) { resource in
+                                Button(action: {
+                                    withAnimation {
+                                        selectedResource = resource
+                                    }
+                                }) {
+                                    VStack(alignment: .leading) {
+                                        Text(resource.name)
+                                            .font(.headline)
+                                        Text(resource.address ?? "")
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
+                                    }
+                                    .padding()
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
                     }
                     .listStyle(PlainListStyle())
-                    .frame(height: geometry.size.height * 0.4) // Restrict the list to 40% of the screen height
+                    .frame(height: geometry.size.height * 0.4)
                     
                     Button(action: {
                         withAnimation {
+                            shelters.removeAll()
                             showShelter = false
                             showBottomSheet = true
                         }
