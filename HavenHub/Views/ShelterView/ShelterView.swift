@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import UIKit
 
 struct SheltersView: View {
     @Binding var cameraPosition: MapCameraPosition
@@ -16,23 +17,34 @@ struct SheltersView: View {
     @Binding var showShelter: Bool
     @Binding var showTitle: Bool
     @State private var isKeyboardVisible: Bool = false
-    @State var offsetY: CGFloat = 540
-    @State var lastDragPosition: CGFloat = 0
+    @State private var visibleHeight: CGFloat = 0
+    @State private var isDragging: Bool = false
+    @State private var initialDragHeight: CGFloat? = nil // For throttling updates
     @Binding var selectedResource: Resource?
-    @Binding var isShowingDetail: Bool
+    
+    // Precompute constants
+    private let screenHeight: CGFloat = UIScreen.main.bounds.height
+    private let minHeight: CGFloat = UIScreen.main.bounds.height * 0.55
+    private let maxHeight: CGFloat = UIScreen.main.bounds.height * 0.9
 
+    
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                Spacer() // Push the list to the bottom
-                
+            // Use precomputed constants for consistency
+            let localScreenHeight = geometry.size.height
+            let localMinHeight = localScreenHeight * 0.55
+            let localMaxHeight = localScreenHeight * 0.9
+            
+            ZStack(alignment: .bottom) {
+                // Main content (header and list)
                 VStack(spacing: 0) {
+                    // Capsule + Custom Header (draggable area)
                     VStack(spacing: 4) {
                         Capsule()
                             .frame(width: 40, height: 6)
                             .foregroundColor(.gray)
                             .padding(.top, 10)
-
+                        
                         Text("Shelters & housing resources")
                             .font(.title2)
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -41,10 +53,40 @@ struct SheltersView: View {
                     .background(
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.sub)
-                            .shadow(radius: 10)
+                            .shadow(radius: isDragging ? 0 : 3) // Disable shadow during drag
+                    )
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { gesture in
+                                if initialDragHeight == nil {
+                                    initialDragHeight = visibleHeight
+                                    isDragging = true
+                                    let impact = UIImpactFeedbackGenerator(style: .light)
+                                    impact.prepare()
+                                    impact.impactOccurred()
+                                }
+                                let proposedHeight = initialDragHeight! - gesture.translation.height
+                                visibleHeight = max(localMinHeight, min(localMaxHeight, proposedHeight))
+                            }
+                            .onEnded { _ in
+                                isDragging = false
+                                let delta = visibleHeight - localMinHeight
+                                let totalDelta = localMaxHeight - localMinHeight
+                                withAnimation(.interactiveSpring(response: 0.3, dampingFraction: 0.8, blendDuration: 0.5)) {
+                                    if delta < totalDelta / 2 {
+                                        visibleHeight = localMinHeight
+                                    } else {
+                                        visibleHeight = localMaxHeight
+                                    }
+                                }
+                                let impact = UIImpactFeedbackGenerator(style: .medium)
+                                impact.prepare()
+                                impact.impactOccurred()
+                                initialDragHeight = nil
+                            }
                     )
                     
-                    // List without Section Header
+                    // Scrollable List
                     List {
                         ForEach(shelters) { resource in
                             Button(action: {
@@ -59,38 +101,45 @@ struct SheltersView: View {
                                         .font(.subheadline)
                                         .foregroundColor(.gray)
                                 }
-                                .padding()
+                                .padding(9)
                             }
                             .buttonStyle(.plain)
                         }
                     }
                     .listStyle(PlainListStyle())
-                    .frame(height: geometry.size.height * 0.4)
-                    
-                    Button(action: {
-                        withAnimation {
-                            shelters.removeAll()
-                            showShelter = false
-                            showBottomSheet = true
-                        }
-                    }) {
-                        ZStack {
-                            Circle()
-                                .fill(.ultraThinMaterial)
-                                .frame(width: 70, height: 70)
-                            
-                            Text("X")
-                                .font(.system(size: 25))
-                                .foregroundStyle(Color.primary)
-                        }
-                    }
-                    .padding()
+                    .padding(.bottom, 100) // Space for the dismiss button
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 20)
                         .fill(.sub)
-                        .shadow(radius: 10)
+                        .shadow(radius: isDragging ? 0 : 3) // Disable shadow during drag
                 )
+                .frame(width: geometry.size.width, height: visibleHeight)
+                
+                // Dismiss Button
+                Button(action: {
+                    withAnimation {
+                        shelters.removeAll()
+                        showShelter = false
+                        showBottomSheet = true
+                    }
+                }) {
+                    ZStack {
+                        Circle()
+                            .fill(.ultraThinMaterial)
+                            .frame(width: 70, height: 70)
+                        
+                        Text("X")
+                            .font(.system(size: 25))
+                            .foregroundStyle(Color.primary)
+                    }
+                }
+                .padding()
+            }
+            .frame(width: geometry.size.width, height: visibleHeight)
+            .offset(y: localScreenHeight - visibleHeight)
+            .onAppear {
+                visibleHeight = localMinHeight
             }
         }
     }

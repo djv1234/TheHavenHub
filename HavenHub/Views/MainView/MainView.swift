@@ -49,7 +49,7 @@ struct MainView: View {
                             shelters: $shelters,
                             selectedResult: $selectedResult,
                             selectedResource: $selectedResource,
-                            isShowingDetail: $isShowingDetail,
+                            isShowingDetail: .constant(false),
                             userLocation: userLocation,
                             distanceCalc: distanceCalc,
                             routeCalc: routeCalc
@@ -85,15 +85,15 @@ struct MainView: View {
                 }
                 
                 if (showFoodBank){
-                    FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle, offsetY: offsetY, selectedResource: $selectedResource, isShowingDetail: $isShowingDetail)
+                    FoodBankView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showTitle: $showTitle, selectedResource: $selectedResource)
                 }
                 
                 if (showClothing){
-                    ClothingView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showClothing: $showClothing, showTitle: $showTitle, selectedResource: $selectedResource, isShowingDetail: $isShowingDetail)
+                    ClothingView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showClothing: $showClothing, showTitle: $showTitle, selectedResource: $selectedResource)
                 }
                 
                 if (showShelter){
-                    SheltersView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showShelter: $showShelter, showTitle: $showTitle, selectedResource: $selectedResource, isShowingDetail: $isShowingDetail)
+                    SheltersView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showShelter: $showShelter, showTitle: $showTitle, selectedResource: $selectedResource)
                 }
         
                 
