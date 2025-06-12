@@ -58,14 +58,21 @@ struct HealthModelView: View {
                         .cornerRadius(10)
                         .padding(.bottom, 10)
                     
-                    if healthModel.info.title == "MyProgress"{
-                        VStack(alignment: .center, spacing: 8) {
-                            Text("COMING SOON!")
+                    if healthModel.info.title == "MyProgress" {
+                        VStack(alignment: .center, spacing: 16) {
+                            Text("Track Your Progress")
                                 .font(.title)
-                                .padding(.bottom, 10)
-                            Text("We are not here just to help you survive. We want to see you THRIVE. Stay tuned for the next update, which will include features to provide you with more insight into your health and allow you to set measurable goals to track your overall progress!")
-                                .font(.headline)
-                                .padding(.top, 10)
+                                .bold()
+
+                            Text("Set measurable goals and monitor your journey toward thriving.")
+                                .font(.subheadline)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+
+                            NavigationLink(destination: GoalView()) {
+                                Text("Open Goal Tracker")
+                            }
+                            .padding(.top, 10)
                         }
                         .padding()
                     }
