@@ -64,15 +64,40 @@ struct HealthModelView: View {
                                 .font(.title)
                                 .bold()
 
-                            Text("Set measurable goals and monitor your journey toward thriving.")
+                            Text("Set a SMART Goal")
+                                .font(.title2)
+                            .fontWeight(.bold)
+
+                            Text("A SMART goal helps you stay focused by being ")
+                            + Text("Specific, Measurable, Achievable, Relevant, ")
+                                .italic()
+                            + Text("and ")
+                            + Text("Time-bound.")
+                                .italic()
+
+                            Text("Set clear goals you can track — one step at a time toward thriving.")
                                 .font(.subheadline)
-                                .multilineTextAlignment(.center)
-                                .padding(.horizontal)
+
+                            Text("Example:")
+                                .font(.headline)
+
+                            Text("“I will apply to 3 jobs and attend one job fair within the next 2 weeks.”")
+                                .italic()
+                                .padding(.leading, 10)
+
+                            Text("This goal is clear, has a number you can track, and a deadline to work toward.")
+                                .font(.subheadline)
+                            
 
                             NavigationLink(destination: GoalView()) {
                                 Text("Open Goal Tracker")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
                             }
-                            .padding(.top, 10)
+                            .padding()
                         }
                         .padding()
                     }
