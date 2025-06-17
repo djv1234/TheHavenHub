@@ -1,3 +1,10 @@
+//
+//  ProgressView.swift
+//  HavenHub
+//
+//  Created by Khush Patel on 6/12/25.
+//
+
 import SwiftUI
 
 struct Goal: Identifiable, Codable {
