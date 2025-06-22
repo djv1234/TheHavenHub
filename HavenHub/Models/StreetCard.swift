@@ -17,4 +17,5 @@ struct StreetCard: Codable {
     let phone: String
     let hours: String
     let website: String
+    let city: String
 }

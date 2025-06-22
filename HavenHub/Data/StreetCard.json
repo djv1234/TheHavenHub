@@ -2,13 +2,14 @@
     {
         "type": "Health resources",
         "name": "Equitas Healthcare",
-        "latitude": 39.967530,
+        "latitude": 39.96753,
         "longitude": -82.981401,
         "services": "General healthcare needs",
         "address": "750 East Long St, Columbus, OH, United States",
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -19,7 +20,8 @@
         "address": "1033 North High St, Columbus, OH, United States",
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -30,7 +32,8 @@
         "address": "4400 North High St, Columbus, OH, United States",
         "phone": "(614) 340-6777",
         "hours": "Monday-Friday 9AM-4PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -41,7 +44,8 @@
         "address": "240 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 884-2441",
         "hours": "Monday 4:30 PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -52,7 +56,8 @@
         "address": "2231 North High St, Columbus, OH, United States",
         "phone": "(614) 404-8417",
         "hours": "Thursday 5PM arrive",
-        "website": "https://columbusfreeclinic.com"
+        "website": "https://columbusfreeclinic.com",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -63,7 +68,8 @@
         "address": "5100 Karl Road, Columbus, OH, United States",
         "phone": "(614) 262-5094",
         "hours": "Walk-ins Thursday 2-4:30PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -74,7 +80,8 @@
         "address": "245 North Grant Ave, Columbus, OH, United States",
         "phone": "(614) 224-6617",
         "hours": "Monday - Friday 8:30AM-5PM, Thursday 6PM-8PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -85,7 +92,8 @@
         "address": "1160 West Broad St, Columbus, OH, United States",
         "phone": "(614) 274-1455",
         "hours": "",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -96,7 +104,8 @@
         "address": "",
         "phone": "(614) 234-4777",
         "hours": "",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -107,7 +116,8 @@
         "address": "25 W 5th Ave, Columbus, OH, United States",
         "phone": "(614) 294-0134",
         "hours": "Sunday 7AM-8:30AM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -118,7 +128,8 @@
         "address": "16 West Long St, Columbus, OH, United States",
         "phone": "(614) 225-0990",
         "hours": "Monday-Friday 8AM-5PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -129,7 +140,8 @@
         "address": "524 West Broad St, Columbus, OH, United States",
         "phone": "(614) 225-0990",
         "hours": "Monday-Friday 8AM-5PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -140,7 +152,8 @@
         "address": "888 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 445-8400",
         "hours": "Every Monday and 3rd Thursday 5:30PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -151,7 +164,8 @@
         "address": "171 E 5th Ave, Columbus, OH, United States",
         "phone": "(614) 259-5428",
         "hours": "",
-        "website": "https://www.vineyardcommunitycenter.org/free-health-legal-clinic"
+        "website": "https://www.vineyardcommunitycenter.org/free-health-legal-clinic",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -162,7 +176,8 @@
         "address": "6000 Cooper Rd, Columbus, OH, United States",
         "phone": "(614) 259-5428",
         "hours": "Hours vary, call for details",
-        "website": "https://www.vineyardcommunitycenter.org/free-health-legal-clinic"
+        "website": "https://www.vineyardcommunitycenter.org/free-health-legal-clinic",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -173,7 +188,8 @@
         "address": "240 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 654-1850",
         "hours": "Hours vary, call for details",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -184,7 +200,8 @@
         "address": "1934 N. Fourth St, Columbus, OH, United States",
         "phone": "(614) 654-1850",
         "hours": "1st and 3rd Monday each month",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Health resources",
@@ -195,7 +212,8 @@
         "address": "",
         "phone": "(614) 645-0521",
         "hours": "Call for details & locations",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -206,40 +224,44 @@
         "address": "206 N. Garfield Ave, Columbus, OH, United States",
         "phone": "(614) 253-0077",
         "hours": "Sat 11:30AM-1:30PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
         "name": "The Dream Center",
-        "latitude": 39.986390,
+        "latitude": 39.98639,
         "longitude": -83.006483,
         "services": "",
         "address": "38 W. Greenwood Ave, Columbus, OH, United States",
         "phone": "(614) 547-3138",
         "hours": "Mon, Tue, Thur, Fri 7:00PM and Mon Tue, Wed, Fri 9:30AM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
         "name": "Victory Ministries Center of Hope",
-        "latitude": 39.956290,
+        "latitude": 39.95629,
         "longitude": -82.892888,
         "services": "",
         "address": "3964 E. Main St, Columbus, OH, United States",
         "phone": "(614) 252-2500",
         "hours": "Tue & Fri 12:00pm-3:00pm for pantry, clothing",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
         "name": "Community Kitchen Inc.",
         "latitude": 39.952156,
-        "longitude": -82.971120,
+        "longitude": -82.97112,
         "services": "",
         "address": "640 S. Ohio Ave, Columbus, OH, United States",
         "phone": "(614) 252-6428",
         "hours": "Mon-Sat 8:30AM-10:00AM & 11:30AM-1:00PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -250,7 +272,8 @@
         "address": "588 W. Gay St, Columbus, OH, United States",
         "phone": "(614) 461-9444",
         "hours": "Mon-Fri Sack lunch 9:00AM-12:00PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -261,7 +284,8 @@
         "address": "125 E. Broad St, Columbus, OH, United States",
         "phone": "(614) 224-8634",
         "hours": "Wed at 12:00PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -272,18 +296,20 @@
         "address": "428 E. Main St, Columbus, OH, United States",
         "phone": "(614) 221-3446",
         "hours": "Fri 11:00AM-1:00PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
         "name": "New Life Community Outreach",
-        "latitude": 39.841530,
+        "latitude": 39.84153,
         "longitude": -82.807941,
         "services": "breakfast",
         "address": "25 W. 5th St, Columbus, OH, United States",
         "phone": "(614) 294-0134",
         "hours": "Sun 7:00AM-8:30AM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -294,7 +320,8 @@
         "address": "1037 Parsons Ave, Columbus, OH, United States",
         "phone": "(614) 222-2885",
         "hours": "Mon-Fri 10:30AM-2:00PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -305,7 +332,8 @@
         "address": "787 E. Broad St, Columbus, OH, United States",
         "phone": "",
         "hours": "Lunch Wed 11:00AM-1:00PM, Thur-Sat 9:30AM-10:15AM & 7:00Pm-7:45PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -316,18 +344,20 @@
         "address": "244 E. Rich St, Columbus, OH, United States",
         "phone": "(614) 241-2569",
         "hours": "Meals Mon-Fri 12:00PM-2:00PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
         "name": "First English Lutheran",
-        "latitude": 39.957610,
+        "latitude": 39.95761,
         "longitude": -82.972118,
         "services": "",
         "address": "1015 E. Main St, Columbus, OH, United States",
         "phone": "(614) 252-3191",
         "hours": "Thur 5:30PM-6:30PM, Sun 8:30AM-9:30AM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -336,9 +366,10 @@
         "longitude": -82.9794063,
         "services": "",
         "address": "787 E Broad St., Columbus, OH, United States",
-        "phone": "‭(614) 500-0656‬",
+        "phone": "\u202d(614) 500-0656\u202c",
         "hours": "Breakfast Thu, Fri & Sat. 9:30am-10:15am. Dinner Thur, Fri & Sat. 7pm-7:45pm",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -349,7 +380,8 @@
         "address": "888 Parsons Ave., Columbus, OH, United States",
         "phone": "(614) 445-8400",
         "hours": "Meals Mon. - Fri. 8:30am-4:30pm",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -360,7 +392,8 @@
         "address": "125 E Broad St., Columbus, OH, United States",
         "phone": "(614) 221-5351",
         "hours": "Meals Sunday 1:00PM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -371,7 +404,8 @@
         "address": "800 Frebis Ave., Columbus, OH, United States",
         "phone": "(614) 517-2038",
         "hours": "Meals Sat. 11:30am - 1:30pm ",
-        "website": "https://www.cbusrelief.org"
+        "website": "https://www.cbusrelief.org",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -382,7 +416,8 @@
         "address": "2364 W Broad St., Columbus, OH, United States",
         "phone": "(614) 721-5414",
         "hours": "Dinner Tues 6pm - 8pm ",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -393,7 +428,8 @@
         "address": "1003 W. Town St., Columbus, OH, United States",
         "phone": "(614) 620-1420",
         "hours": "Serving meals Fri. & Sat 6-9pm",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -404,7 +440,8 @@
         "address": "14 W. Lakeview Ave., Columbus, OH, United States",
         "phone": "(614) 268-8818",
         "hours": "Meals M-F 12pm-4pm ",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -415,7 +452,8 @@
         "address": "1150 E Main St, Columbus, OH, United States",
         "phone": "(614) 252-3157",
         "hours": "",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -426,7 +464,8 @@
         "address": "342 N. Hague Ave, Columbus, OH, United States",
         "phone": "(614) 507-3246",
         "hours": "Daily lunch 11 am to 1 pm",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Meals",
@@ -437,7 +476,8 @@
         "address": "280 Reeb Avenue, Columbus, OH, United States",
         "phone": "",
         "hours": "Meals: Lunch M-F 11am-2pm. Dinner Tues 5pm-7pm",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Clothing",
@@ -448,7 +488,8 @@
         "address": "",
         "phone": "(614) 863-1371",
         "hours": "Call to schedule appointment!",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Clothing",
@@ -459,7 +500,8 @@
         "address": "25 W. 5th Ave., Columbus, OH, United States",
         "phone": "(614) 294-0134",
         "hours": "Sunday 7:00AM-8:15AM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Clothing",
@@ -470,7 +512,8 @@
         "address": "",
         "phone": "(614) 288-0810",
         "hours": "",
-        "website": "https://christs-cocoons.org"
+        "website": "https://christs-cocoons.org",
+        "city": "Columbus"
     },
     {
         "type": "Free Clothing",
@@ -481,7 +524,8 @@
         "address": "946 Parsons Ave., Columbus, OH, United States",
         "phone": "(614) 443-1713",
         "hours": "Tue, Thur, Sat 10:00AM-12:30PM & Wed 1:00PM - 3:30PM, Fri 3:00PM-5:30PM. Fresh Produce: T - Sat- 10AM to 4PM, Weds - 10:00 - 11:00AM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Clothing",
@@ -492,18 +536,20 @@
         "address": "578 E. Main St, Columbus, OH, United States",
         "phone": "(614) 241-3554",
         "hours": "Mon, Tue, Thur 10:00AM-12:00PM ID Needed",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Free Clothing",
         "name": "Jordan's Crossing",
         "latitude": 39.961699,
-        "longitude": -83.075740,
+        "longitude": -83.07574,
         "services": "",
         "address": "342 N. Hague Ave, Columbus, OH, United States",
         "phone": "(614) 507-3246",
         "hours": "Mon-Fri 9:00AM-5:00PM, Sat 9:00AM-11:00AM",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -514,7 +560,8 @@
         "address": "",
         "phone": "(614) 274-7000",
         "hours": "",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -525,7 +572,8 @@
         "address": "",
         "phone": "(614) 224-4663",
         "hours": "",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -536,7 +584,8 @@
         "address": "",
         "phone": "(614) 294-5553",
         "hours": "",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -547,7 +596,8 @@
         "address": "",
         "phone": "(614) 512-2483",
         "hours": "",
-        "website": ""
+        "website": "",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -558,7 +608,8 @@
         "address": "924 East Main Street, Columbus, OH, United States",
         "phone": "(614) 274-7000",
         "hours": "",
-        "website": "http://www.fohcolumbus.com"
+        "website": "http://www.fohcolumbus.com",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -569,7 +620,8 @@
         "address": "245 N Grant Ave, Columbus, OH, United States",
         "phone": "(614) 274-7000",
         "hours": "",
-        "website": "https://lssnetworkofhope.org/faithmission/"
+        "website": "https://lssnetworkofhope.org/faithmission/",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -580,7 +632,8 @@
         "address": "599 E 8th Ave, Columbus, OH, United States",
         "phone": "(614) 274-7000",
         "hours": "",
-        "website": "https://lssnetworkofhope.org/faithmission/"
+        "website": "https://lssnetworkofhope.org/faithmission/",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -591,7 +644,8 @@
         "address": "325 E Long St, Columbus, OH, United States",
         "phone": "(614) 274-7000",
         "hours": "",
-        "website": "https://lssnetworkofhope.org/faithmission/"
+        "website": "https://lssnetworkofhope.org/faithmission/",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -602,7 +656,8 @@
         "address": "595 Van Buren Drive, Columbus, OH, United States",
         "phone": "(614) 274-7000",
         "hours": "",
-        "website": "https://ymcacolumbus.org/locations/vanburen"
+        "website": "https://ymcacolumbus.org/locations/vanburen",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -613,7 +668,8 @@
         "address": "65 South Fourth Street, Columbus, OH, United States",
         "phone": "(614) 274-7000",
         "hours": "",
-        "website": "https://www.ywcacolumbus.org"
+        "website": "https://www.ywcacolumbus.org",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -624,7 +680,8 @@
         "address": "900 Harvey Court, Columbus, OH, United States",
         "phone": "(614) 274-7000",
         "hours": "",
-        "website": "https://www.ywcacolumbus.org"
+        "website": "https://www.ywcacolumbus.org",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -635,7 +692,8 @@
         "address": "1791 Alum Creek Dr, Columbus, OH, United States",
         "phone": "(614) 445-8131",
         "hours": "",
-        "website": "https://maryhaven.com/homeless-services/"
+        "website": "https://maryhaven.com/homeless-services/",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -646,7 +704,8 @@
         "address": "1220 Corrugate Way, Columbus, OH, United States",
         "phone": "(614) 826-5868",
         "hours": "",
-        "website": "https://www.starhouse.us"
+        "website": "https://www.starhouse.us",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -657,7 +716,8 @@
         "address": "1421 Hamlet Street, Columbus, OH, United States",
         "phone": "(614) 294-5553",
         "hours": "",
-        "website": "https://huckhouse.org"
+        "website": "https://huckhouse.org",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -668,7 +728,8 @@
         "address": "2216 Bancroft Street, Columbus, OH, United States",
         "phone": "(614) 294-5553",
         "hours": "",
-        "website": "https://huckhouse.org"
+        "website": "https://huckhouse.org",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -679,7 +740,8 @@
         "address": "1105 Schrock Rd, Suite 100, Columbus, OH, United States",
         "phone": "(614) 224-4663",
         "hours": "",
-        "website": "https://lssnetworkofhope.org/choices/"
+        "website": "https://lssnetworkofhope.org/choices/",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -690,7 +752,8 @@
         "address": "342 North Hague Avenue, Columbus, OH, United States",
         "phone": "(380) 219-8950",
         "hours": "",
-        "website": "https://jordanscrossingcolumbus.org"
+        "website": "https://jordanscrossingcolumbus.org",
+        "city": "Columbus"
     },
     {
         "type": "Shelters",
@@ -701,6 +764,768 @@
         "address": "61 East Mound Street, Columbus, OH, United States",
         "phone": "(614) 222-2885",
         "hours": "",
-        "website": "https://theopenshelter.org"
+        "website": "https://theopenshelter.org",
+        "city": "Columbus"
     }
+    
+    
+    
+    
+    
+    {
+        "type": "Shelters",
+        "name": "City Mission",
+        "latitude": null,
+        "longitude": null,
+        "services": "Shelter for men",
+        "address": "5310 Carnegie Ave",
+        "phone": "216-431-3515",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Shelters",
+        "name": "St. Herman's House of Hospitality",
+        "latitude": null,
+        "longitude": null,
+        "services": "Shelter for men",
+        "address": "4410 Franklin Blvd",
+        "phone": "216-961-3806",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Shelters",
+        "name": "Laura's Home",
+        "latitude": null,
+        "longitude": null,
+        "services": "Shelter for women",
+        "address": "18120 Puritas Ave",
+        "phone": "216-472-5500",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Shelters",
+        "name": "Journey Center for Safety and Healing",
+        "latitude": null,
+        "longitude": null,
+        "services": "Domestic violence shelter",
+        "address": "Call for Intake",
+        "phone": "216-391-4357",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Shelters",
+        "name": "Broken Connections (Youth 10-17)",
+        "latitude": null,
+        "longitude": null,
+        "services": "Shelter for youth",
+        "address": "12832 Euclid Ave, East Cleveland",
+        "phone": "216-721-9527",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Shelters",
+        "name": "Zelie's Home (Pregnancy)",
+        "latitude": null,
+        "longitude": null,
+        "services": "Shelter for pregnant women",
+        "address": "Intake by phone",
+        "phone": "216-282-8053",
+        "hours": "M-F 9am-5pm",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Housing",
+        "name": "Cuyahoga Metropolitan Housing Authority",
+        "latitude": null,
+        "longitude": null,
+        "services": "Housing assistance",
+        "address": "8120 Kinsman Rd",
+        "phone": "216-348-5000",
+        "hours": "M-F 8am-5pm",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Housing",
+        "name": "CHN Housing Partners",
+        "latitude": null,
+        "longitude": null,
+        "services": "Housing assistance",
+        "address": "2999 Payne Ave, Suite 134",
+        "phone": "216-574-7100",
+        "hours": "M-F 8:30am-5pm",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Housing",
+        "name": "HUD Housing",
+        "latitude": null,
+        "longitude": null,
+        "services": "Housing assistance",
+        "address": "",
+        "phone": "216-357-7900",
+        "hours": "M-F 8:20am-5pm",
+        "website": "",
+        "city": "Cleveland"
+    }
+    {
+        "type": "Free Meals",
+        "name": "Antioch Baptist Church",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site (*Take out only)",
+        "address": "8869 Cedar Ave",
+        "phone": "216-421-1516",
+        "hours": "Lunch: Mon, Tues, Thurs 11am-12pm",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "St. Augustine Center",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site (*Dine in meals)",
+        "address": "2486 W 14th St",
+        "phone": "216-781-5530",
+        "hours": "Lunch: M-F from 11am-12:30pm AND Sat from 11am-2pm",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Cosgrove Center / Catholic Charities",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site",
+        "address": "1736 Superior Ave",
+        "phone": "216-781-8262",
+        "hours": "Breakfast: M-F 8-9am, Lunch: M-F 11:30am-1:30pm (*Closed second Monday)",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "St. Herman\u2019s",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site",
+        "address": "4410 Franklin Blvd (use side door)",
+        "phone": "216-961-3806",
+        "hours": "Breakfast: Daily 7:30-9am, Lunch: Daily 11:30am-Noon, Dinner: Daily 5:30-6pm",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "St. Malachi Church",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site",
+        "address": "W 25th & Washington, School Bldg, Lower Hall",
+        "phone": "216-861-5343",
+        "hours": "Breakfast: Sat 9-11am, Lunch: M-F 10am-1pm, Dinner: Mon 5-6:15pm",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "St. Patrick's Church",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site",
+        "address": "3602 Bridge Ave",
+        "phone": "216-631-6872",
+        "hours": "Dinner: Tues & Thurs 4:30-6pm (*Pantry 1st, 3rd, 5th Wed 9:30am-Noon)",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "West Side Catholic Center",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site (*Grab-n-go)",
+        "address": "3135 Lorain Ave",
+        "phone": "216-631-4741",
+        "hours": "Breakfast: M-Sat 9-10am, Lunch: M-F Noon-1pm, Dinner: Sat 4:30-5:30pm",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Faith Baptist Community Center",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site",
+        "address": "2355 E 55th St",
+        "phone": "216-881-8816",
+        "hours": "Wed: 11:30am-12:30pm (anyone), Thurs: 11:30am (women only), Sat: 1:30-3:30pm (youth only)",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "East Shore United Methodist Church",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site (*Take out only)",
+        "address": "23002 Lakeshore Blvd, Eastlake",
+        "phone": "216-261-1688",
+        "hours": "Dinner: Wed 4:30-5:30pm",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Franklin Circle Christian Church",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site (*Clothing closet open)",
+        "address": "1688 Fulton Road",
+        "phone": "216-781-8232",
+        "hours": "Breakfast: 1st and 3rd Sunday 8:30-10am",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Free Meals",
+        "name": "Catholic Worker Storefront",
+        "latitude": null,
+        "longitude": null,
+        "services": "Meal site",
+        "address": "4241 Lorain Ave",
+        "phone": "",
+        "hours": "Breakfast: Sat & Sun 9:30-11:30am, Dinner: Mon 3-5pm & Fri 3:30-5pm",
+        "website": "",
+        "city": "Cleveland"
+    }
+    {
+      "type": "Health Clinic",
+      "name": "NEON Collinwood Health Center",
+      "address": "15322 St. Clair",
+      "phone": "216-851-1500",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "Care Alliance Health Centers, Medical, Dental and Behavioral Health",
+      "address": "1530 St. Clair",
+      "phone": "216-535-9100",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "Care Alliance Health Centers, Medical, Dental and Behavioral Health",
+      "address": "2916 Central",
+      "phone": "216-535-9100",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "Care Alliance Health Centers, Medical, Dental and Behavioral Health",
+      "address": "6001 Woodland Ave",
+      "phone": "216-535-9100",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "The Centers (formerly Circle Health Services)",
+      "address": "12201 Euclid",
+      "phone": "216-721-4010",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "J. Glen Smith Health Center",
+      "address": "11100 St. Clair",
+      "phone": "216-957-5600",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "MetroHealth Express Care Walk In Clinic",
+      "address": "Several locations; call for nearest",
+      "phone": "216-957-1680",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "MetroHealth Medical Center",
+      "address": "2500 MetroHealth Dr",
+      "phone": "216-778-7800",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "Ohio City Health Ctr",
+      "address": "4757 Lorain Ave",
+      "phone": "216-957-4848",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "CC Steph. Tubbs Jones",
+      "address": "13944 Euclid Ave",
+      "phone": "216-767-4242",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "St. Vincent Charity Medical Ctr",
+      "address": "2351 E 22nd St",
+      "phone": "216-861-6200",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "NEON Superior Health Center",
+      "address": "12100 Superior Ave",
+      "phone": "216-851-2600",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "Faith Baptist Community Center",
+      "address": "2355 E 55th St",
+      "phone": "216-881-8816",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "Central Outreach Wellness Center",
+      "address": "2040 Lee Rd, Cleveland Heights 44118",
+      "phone": "216-350-1000",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Health Clinic",
+      "name": "Medworks",
+      "address": "1400 E 105th St",
+      "phone": "216-231-5350",
+      "city": "Cleveland"
+    }
+    {
+      "type": "Counseling",
+      "name": "Applewood Centers, Inc.",
+      "address": "3518 W 25th St, Cleveland, OH, United States",
+      "phone": "216-741-2241",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "Journey Center for Safety and Healing (Domestic Violence Helpline)",
+      "address": "2806 Payne Ave, Cleveland, OH, United States",
+      "phone": "216-391-4357",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "Catholic Charities Services (Chemical Dependency Counseling)",
+      "address": "3135 Euclid Ave, Cleveland, OH, United States",
+      "phone": "216-391-2030",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "Center for Families & Children (Hispanic Behavioral Health)",
+      "address": "5209 Detroit Ave, Cleveland, OH, United States",
+      "phone": "216-651-2037",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "Cleveland Rape Crisis Hotline",
+      "address": "1228 Euclid Ave #200, Cleveland, OH, United States",
+      "phone": "216-619-6192",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "May Dugan Center",
+      "address": "4115 Bridge Ave, Cleveland, OH, United States",
+      "phone": "216-631-5800",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "MomsFirst",
+      "address": "75 Erie View Plaza, 3rd Floor, Cleveland, OH, United States",
+      "phone": "216-664-4194",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "Murtis Taylor Counseling",
+      "address": "13422 Kinsman Ave, Cleveland, OH, United States",
+      "phone": "216-283-4400 ext. 5",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "24 Hr On Call Nurses - Cleveland Clinic",
+      "address": "Cleveland, OH, United States",
+      "phone": "216-442-0310",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "24 Hr On Call Nurses - MetroHealth",
+      "address": "Cleveland, OH, United States",
+      "phone": "216-778-7878",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "The Centers",
+      "address": "Call for nearest location, Cleveland, OH, United States",
+      "phone": "216-432-200",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "Renee Jones Empowerment Center",
+      "address": "3764 Pearl Rd., Suite #200, Cleveland, OH, United States",
+      "phone": "216-417-0823",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "Guiding Point",
+      "address": "5500 S. Marginal Rd, Cleveland, OH, United States",
+      "phone": "216-273-7233",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Counseling",
+      "name": "Brighter Tomorrow Community Services",
+      "address": "2800 Euclid Ave, Suite #335, Cleveland, OH, United States",
+      "phone": "216-772-2095",
+      "city": "Cleveland"
+    }
+    {
+        "type": "Mental Health",
+        "name": "Mobile Crisis Team/Suicide Hotline & Referral",
+        "latitude": null,
+        "longitude": null,
+        "services": "Mobile crisis and mental health referral",
+        "address": "1744 Payne Ave",
+        "phone": "216-623-6888 (hotline), 216-623-6555 (referral)",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Mental Health",
+        "name": "Cleveland Clinic Stephanie Tubbs Jones Health Center",
+        "latitude": null,
+        "longitude": null,
+        "services": "General behavioral health services",
+        "address": "13944 Euclid Ave",
+        "phone": "216-767-4242",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Mental Health",
+        "name": "Care Alliance Behavioral Health Centers",
+        "latitude": null,
+        "longitude": null,
+        "services": "Medical, dental, and behavioral health",
+        "address": "1530 St. Clair; 2916 Central; 6001 Woodland Ave",
+        "phone": "216-535-9100",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Mental Health",
+        "name": "Murtis Taylor Multi-Service Center",
+        "latitude": null,
+        "longitude": null,
+        "services": "Behavioral health support",
+        "address": "13422 Kinsman Rd",
+        "phone": "216-283-4400",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Mental Health",
+        "name": "St. Vincent Charity Psychiatric ER",
+        "latitude": null,
+        "longitude": null,
+        "services": "Psychiatric emergency services",
+        "address": "2351 E 22nd St",
+        "phone": "216-363-2538",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Mental Health",
+        "name": "ADAMHS Board Referrals",
+        "latitude": null,
+        "longitude": null,
+        "services": "Mental health, alcohol, and drug treatment referrals",
+        "address": "2012 W 25th St, 6th floor",
+        "phone": "216-241-3400 ext. 825 or 216-241-3400 ext. 819",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Mental Health",
+        "name": "St. Vincent Outpatient Behavioral Health Services",
+        "latitude": null,
+        "longitude": null,
+        "services": "Outpatient behavioral health",
+        "address": "2351 E 22nd St",
+        "phone": "216-363-2580",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    },
+    {
+        "type": "Mental Health",
+        "name": "Kindred Harbor Behavioral Health",
+        "latitude": null,
+        "longitude": null,
+        "services": "Behavioral health treatment",
+        "address": "1440 Rockside Rd, Suite 216",
+        "phone": "216-777-6062",
+        "hours": "",
+        "website": "",
+        "city": "Cleveland"
+    }
+    {
+      "type": "Medicaid/Medicare",
+      "name": "Care Alliance",
+      "latitude": null,
+      "longitude": null,
+      "services": "Medicaid sign-up assistance",
+      "address": "1530 St. Clair",
+      "phone": "216-535-9100",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Medicaid/Medicare",
+      "name": "Care Alliance",
+      "latitude": null,
+      "longitude": null,
+      "services": "Medicaid sign-up assistance",
+      "address": "2916 Central",
+      "phone": "216-535-9100",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Medicaid/Medicare",
+      "name": "Care Alliance",
+      "latitude": null,
+      "longitude": null,
+      "services": "Medicaid sign-up assistance",
+      "address": "6001 Woodland Ave",
+      "phone": "216-535-9100",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Medicaid/Medicare",
+      "name": "Cuyahoga Jobs and Family Services",
+      "latitude": null,
+      "longitude": null,
+      "services": "Medicaid sign-up assistance",
+      "address": "4261 Fulton Pkwy",
+      "phone": "1-844-640-6446 (press 3)",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Medicaid/Medicare",
+      "name": "St. Vincent",
+      "latitude": null,
+      "longitude": null,
+      "services": "Medicaid support",
+      "address": "2351 E 22nd St",
+      "phone": "216-694-4652 or 216-694-4653",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "Medicaid/Medicare",
+      "name": "Social Security Medicare Enrollment",
+      "latitude": null,
+      "longitude": null,
+      "services": "Medicare enrollment support",
+      "address": "ssa.gov/emergency",
+      "phone": "1-800-772-1213",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    }
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "The LGBT Community Center of Greater Cleveland",
+      "latitude": null,
+      "longitude": null,
+      "services": "LGBTQ+ community services",
+      "address": "6705 Detroit Ave",
+      "phone": "216-651-5428",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "B. Riley House LGBTQ+ Drug and Alcohol Treatment Center",
+      "latitude": null,
+      "longitude": null,
+      "services": "LGBTQ+ addiction treatment",
+      "address": "2121 W 117th St.",
+      "phone": "216-417-4831",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "Cleveland Clinic Center for LGBTQ+ Care - Lakewood Family Health Center",
+      "latitude": null,
+      "longitude": null,
+      "services": "LGBTQ+ health care",
+      "address": "14601 Detroit Ave, Lakewood, Ohio",
+      "phone": "216-237-5500",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "Transgender Care \u2013 Cleveland Clinic Main Campus",
+      "latitude": null,
+      "longitude": null,
+      "services": "Transgender health care",
+      "address": "9500 Euclid Ave",
+      "phone": "216-445-6308",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "MetroHealth - LGBTQI+ Pride Network Clinic",
+      "latitude": null,
+      "longitude": null,
+      "services": "LGBTQI+ health care",
+      "address": "Call to schedule appointment",
+      "phone": "216-957-4905 (adults), 216-778-8564 (youth)",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "University Hospitals LGBTQ+ & Gender Care Services",
+      "latitude": null,
+      "longitude": null,
+      "services": "LGBTQ+ and gender-affirming care",
+      "address": "Call to schedule appointment",
+      "phone": "216-286-5428",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "LGBT National Hotline",
+      "latitude": null,
+      "longitude": null,
+      "services": "Resources, affirmations, and support",
+      "address": "Remote",
+      "phone": "1-888-843-4564",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "Trans Lifeline",
+      "latitude": null,
+      "longitude": null,
+      "services": "Confidential trans peer support",
+      "address": "Remote",
+      "phone": "877-565-8860",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "PFLAG Cleveland Chapter",
+      "latitude": null,
+      "longitude": null,
+      "services": "Support group and resources",
+      "address": "Remote",
+      "phone": "216-220-7030",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "The Trevor Project",
+      "latitude": null,
+      "longitude": null,
+      "services": "Mental health crisis and suicide prevention",
+      "address": "Remote",
+      "phone": "1-866-488-7386",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "Equality Ohio Legal Clinic",
+      "latitude": null,
+      "longitude": null,
+      "services": "Free legal services for LGBTQ+ individuals",
+      "address": "Remote",
+      "phone": "855-5428-529",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    },
+    {
+      "type": "LGBTQ+ Resources",
+      "name": "Planned Parenthood of Ohio",
+      "latitude": null,
+      "longitude": null,
+      "services": "Hormone therapy and general services",
+      "address": "Call for nearest location",
+      "phone": "1-800-230-7526",
+      "hours": "",
+      "website": "",
+      "city": "Cleveland"
+    }
+    
 ]
