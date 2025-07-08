@@ -194,6 +194,8 @@ struct MapItemBubble: View {
                 systemName = "cross.fill"
             case "Clothing Center":
                 systemName = "hanger"
+            case "Work":
+                systemName = "briefcase.fill"
             default:
                 systemName = "house.fill"
             }

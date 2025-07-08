@@ -2,6 +2,7 @@ import SwiftUI
 import MapKit
 
 struct BottomSheetView: View {
+    @Binding var showWork: Bool
     @Binding var offsetY: CGFloat
     @Binding var isKeyboardVisible: Bool
     @Binding var cameraPosition: MapCameraPosition
@@ -56,7 +57,7 @@ struct BottomSheetView: View {
                             MapMenuView(mapItem: $currentItem, showingMenu: $showingMenu)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         } else {
-                            ButtonView(showEmergency: $showEmergency, showFavorites: $showFavorites, geometry: geometry, cameraPosition: $cameraPosition, viewManager: viewManager, shelters: $shelters, visibleRegion: $region, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showClothing: $showClothing, showShelter: $showShelter)
+                            ButtonView(showEmergency: $showEmergency, showFavorites: $showFavorites, geometry: geometry, cameraPosition: $cameraPosition, viewManager: viewManager, shelters: $shelters, visibleRegion: $region, showBottomSheet: $showBottomSheet, showFoodBank: $showFoodBank, showClothing: $showClothing, showShelter: $showShelter, showWork: $showWork)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }

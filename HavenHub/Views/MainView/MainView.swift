@@ -26,6 +26,7 @@ struct MainView: View {
     @State var showFoodBank: Bool = false
     @State var showClothing: Bool = false
     @State var showShelter: Bool = false
+    @State var showWork: Bool = false
     @State var showFavorites: Bool = false
     @State var showBottomSheet: Bool = true
     @State var shelters: [Resource] = []
@@ -60,6 +61,7 @@ struct MainView: View {
                 
                 if (showBottomSheet) {
                     BottomSheetView(
+                        showWork: $showWork,
                         offsetY: $offsetY,
                         isKeyboardVisible: $isKeyboardVisible,
                         cameraPosition: $cameraPosition,
@@ -76,6 +78,7 @@ struct MainView: View {
                         showClothing: $showClothing,
                         showShelter: $showShelter,
                         showFavorites: $showFavorites,
+                        
                         
                         userLocation: MKCoordinateRegion(
                             center: CLLocationCoordinate2D(latitude: 39.9612, longitude: -82.9988),
@@ -94,6 +97,10 @@ struct MainView: View {
                 
                 if (showShelter){
                     SheltersView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showShelter: $showShelter, showTitle: $showTitle, selectedResource: $selectedResource)
+                }
+                
+                if (showWork){
+                    WorkView(cameraPosition: $cameraPosition, visibleRegion: $visibleRegion, shelters: $shelters, showBottomSheet: $showBottomSheet, showWork: $showWork, showTitle: $showTitle, selectedResource: $selectedResource)
                 }
         
                 
@@ -116,6 +123,8 @@ struct MainView: View {
                                     FoodBankDetailView(resource: resource)
                                 case "Clothing":
                                     ClothingDetailView(resource: resource)
+                                case "Work":
+                                    WorkDetailView(resource: resource)
                                 default:
                                     Text("Unknown resource type")
                                 }
@@ -124,4 +133,3 @@ struct MainView: View {
         }
     }
 }
-

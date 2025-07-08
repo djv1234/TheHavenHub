@@ -89,6 +89,8 @@ struct ContentView: View {
                 FoodBankDetailView(resource: resource)
             case "Clothing":
                 ClothingDetailView(resource: resource)
+            case "Work":
+                WorkDetailView(resource: resource)
             default:
                 Text("Unknown resource type")
             }

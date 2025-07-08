@@ -20,6 +20,7 @@ struct ButtonView: View {
     @Binding var showFoodBank: Bool
     @Binding var showClothing: Bool
     @Binding var showShelter: Bool
+    @Binding var showWork: Bool
     @State var queryWords: [String] = []
     
     var body: some View {
@@ -36,7 +37,7 @@ struct ButtonView: View {
 //                        // Background style
 //                        RoundedRectangle(cornerRadius: 20)
 //                            .fill(Color.green)
-//                        
+//
 //                        // Icon and label
 //                        VStack {
 //                            Image(systemName: "star.fill")
@@ -47,7 +48,61 @@ struct ButtonView: View {
 //                        }
 //                    }
 //                }
-                
+                Button(action: {
+                    // Hide the bottom sheet when food banks are shown
+                    withAnimation {
+                        shelters.removeAll()
+                        showBottomSheet = false
+                        showWork = true
+                        queryWords = ["employment center", "job center"]
+                        if let center = visibleRegion?.center, isInColumbus(center) {
+                            if let region = visibleRegion {
+                                performSearch(in: region, queryWords: queryWords, type: "Work")
+                            } else {
+                                // Fallback region if visibleRegion is nil
+                                let defaultRegion = MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                                )
+                                performSearch(in: defaultRegion, queryWords: queryWords, type: "Work")
+                            }
+                            let streetCards = loadStreetCardData().filter { $0.type == "Work" }
+                                        let streetCardResources = streetCards.map { resource(from: $0) }
+                                        shelters.append(contentsOf: streetCardResources)
+                        } else {
+                            if let region = visibleRegion {
+                                performSearch(in: region, queryWords: queryWords, type: "Work")
+                            } else {
+                                // Fallback region if visibleRegion is nil
+                                let defaultRegion = MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(latitude: cameraPosition.region?.center.latitude ?? 40.4, longitude: cameraPosition.region?.center.longitude ?? -84.5),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                                )
+                                performSearch(in: defaultRegion, queryWords: queryWords, type: "Work")
+                            }
+                        }
+                    }
+                    // Action for the Food button (placeholder)
+                }) {
+                    ZStack {
+                        // Background style
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.main) // Custom main color
+                            .shadow(radius: 4) // Shadow for depth
+                        VStack(spacing: 8) {
+                                   Image(systemName: "briefcase.fill")
+                                       .resizable()
+                                       .scaledToFit()
+                                       .frame(width: 30, height: 30)
+                                       .foregroundColor(.gray)
+                                   Text("Work Centers")
+                                       .font(.footnote)
+                                       .foregroundColor(Color(UIColor.label))
+
+                               }
+                               .padding()
+                    }
+                }
                 // Emergency Button
                 Button(action: {
                     withAnimation() {
